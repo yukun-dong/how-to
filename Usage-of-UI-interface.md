@@ -229,8 +229,8 @@ In CLI, the file picker is simply a text input box:
 ## Message dialog
 
 There are two cases when message dialogs are needed: 
--  The system shows some message and need collect user feedback.
--  The system shows some message and don't need any user confirm.
+-  The system shows some message and wait for user input.
+-  The system shows some informative message and don't need to wait for user input.
 
 `showMessage` API is provided to show such message dialog. 
 
