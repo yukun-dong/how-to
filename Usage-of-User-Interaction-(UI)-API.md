@@ -96,3 +96,23 @@ export interface UserInteraction {
   runWithProgress<T>(task: RunnableTask<T>, config: TaskConfig, ...args: any): Promise<Result<T, FxError>>;
 }
 ```
+
+## Text Input
+Text inputs are common ways to collect user input, which is an input text box for user to input a text string. 
+User can call the following API to show a text box and collect input from human:
+```
+const res:Result<InputTextResult, FxError> = await ui.inputText({
+  name: "questionId",
+  title: "title",
+  prompt: 'prompt',
+  placeholder: 'My Placeholder'
+});
+```
+For VS Code extension, text input looks like this:
+
+For CLI, text input is just a command-line query like this:
+![image](https://user-images.githubusercontent.com/1658418/123195677-2a726b00-d4db-11eb-8966-94370123e2d0.png)
+
+## Selection
+
+
