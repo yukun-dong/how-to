@@ -203,3 +203,10 @@ const res:Result<SingleSelectResult, FxError> = await ui.selectOption({
 ```
 `string[]` option type is straitforward while `OptionItem[]` provides more sophisticated ways to display the option item.
 
+Here is a sample of UI in VS Code extension:
+
+![image](https://user-images.githubusercontent.com/1658418/123198695-27c64480-d4e0-11eb-9e3f-d21e11fc5c3d.png)
+
+Here is the CLI counterparts:
+
+![image](https://user-images.githubusercontent.com/1658418/123198809-53492f00-d4e0-11eb-9214-72a4e8bb1c7c.png)
