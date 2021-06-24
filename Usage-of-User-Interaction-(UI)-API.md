@@ -108,9 +108,12 @@ const res:Result<InputTextResult, FxError> = await ui.inputText({
   placeholder: 'My Placeholder'
 });
 ```
-For VS Code extension, text input looks like this:
+For VS Code extension, you can define richer experience with `prompt` and `placeholder`. Text input looks like this:
+
+![image](https://user-images.githubusercontent.com/1658418/123195813-63124480-d4db-11eb-842a-786567d9c086.png)
 
 For CLI, text input is just a command-line query like this:
+
 ![image](https://user-images.githubusercontent.com/1658418/123195677-2a726b00-d4db-11eb-8966-94370123e2d0.png)
 
 ## Selection
