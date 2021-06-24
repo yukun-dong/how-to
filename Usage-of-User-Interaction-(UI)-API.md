@@ -193,7 +193,7 @@ For CLI, text input is just a command-line query like this:
 ## Selection
 
 Selections are frequently used when a list of options will pop up for user to select. There are two types of selections: single selection (`selectOption`) and multiple selection (`selectOptions`).
-
+By calling `` or `` APIs, you need to specify the option list with type `string[]` or `OptionItem[]`. 
 ```
 const res:Result<SingleSelectResult, FxError> = await ui.selectOption({
   name: "questionId",
@@ -201,3 +201,5 @@ const res:Result<SingleSelectResult, FxError> = await ui.selectOption({
   options: ["option1","option2"]
 });
 ```
+`string[]` option type is straitforward while `OptionItem[]` provides more sophisticated ways to display the option item.
+
