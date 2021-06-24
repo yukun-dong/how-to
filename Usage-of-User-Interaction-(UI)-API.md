@@ -238,8 +238,11 @@ For the first case, you need to set parameter `modal` as true to show a modal di
 For modal dialog, you need to wait until user input, so you need to await until the returned promise is resolved:
 ```
 const res:Result<string | undefined, FxError> = await ui.showMessasge("info", "message content", true, "item1", "item2");
-
 ```
+The returned result string is the item that user clicked, which is defined by the `items` parameter of `showMessage` method.
+For VS Code extension, when user click the cancel button or the cross button on the right corner, the returned result is `undefined`. 
+Notice that the cancel button exists by default and there is no need to passing `cancel` in the `items` parameter.
+
 For the second case, you need to set `modal` as false, which will disappear if it loses focus.
 
 For non-modal dialog, normally, you don't need the user input. So we suggest you don't need to add wait the promise to be resolved:
