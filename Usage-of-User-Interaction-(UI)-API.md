@@ -1,5 +1,7 @@
 ## Introduction
-`UserInteraction` defines a unified user interaction interface for Both CLI toolkit and VS Code extension toolkit.
+`UserInteraction` defines a unified user interaction interface for Both CLI toolkit and VS Code extension toolkit. 
+It is a utility interface that helps to show UI elements to collect input from human. It also provide some utility functions like open a link in external browser or show progress bar for some time consuming task.  
+Here we describes some basic usage sample for each of them and how it acts in both CLI and VS Code extension.
 
 ```
 
