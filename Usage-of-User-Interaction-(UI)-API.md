@@ -232,7 +232,21 @@ There are two cases when message dialogs are needed:
 -  The system shows some message and need collect user feedback.
 -  The system shows some message and don't need any user confirm.
 
-`showMessage` API is provided to show such message dialog. For the first case, you need to set parameter `modal` as true to show a modal dialog which will not disappear until user inputs. For the second case, you need to set `modal` as false, which will disappear if it loses focus.
+`showMessage` API is provided to show such message dialog. 
+
+For the first case, you need to set parameter `modal` as true to show a modal dialog which will not disappear until user inputs. 
+For modal dialog, you need to wait until user input, so you need to await until the returned promise is resolved:
+```
+const res:Result<string | undefined, FxError> = await ui.showMessasge("info", "message content", true, "item1", "item2");
+
+```
+For the second case, you need to set `modal` as false, which will disappear if it loses focus.
+
+For non-modal dialog, normally, you don't need the user input. So we suggest you don't need to add wait the promise to be resolved:
+```
+ui.showMessasge("info", "message content", false, "item1", "item2");
+
+```
 
 Here is the UI of showing message using modal dialog in VS Code extension:
 
