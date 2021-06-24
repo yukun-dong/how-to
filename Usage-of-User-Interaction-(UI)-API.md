@@ -215,5 +215,17 @@ Here is the CLI counterparts:
 
 File pickers are use when the system need user to select file(s) from local file system. The answer to the file picker is a string path or an array of paths.
 
+`selectFile`, `selectFiles` and `selectFolder` are three APIs related to file picker. The difference is `selectFile` is used for single file selection, `selectFiles` is used for multiple files selection, and `selectFolder` is used for folder selection.
+
+File picker shows richer UI in VS Code extension than what in CLI. 
+In VS Code, the file picker looks like this: a dialog will pop up for user to select file(s):
+
+![image](https://user-images.githubusercontent.com/1658418/123214834-49ccc080-d4fa-11eb-96c1-78ea852003dc.png)
+
+In CLI, the file picker is simply a text input box:
+
+![image](https://user-images.githubusercontent.com/1658418/123215054-8a2c3e80-d4fa-11eb-932f-868ff9b48d5b.png)
+
+
 
 
