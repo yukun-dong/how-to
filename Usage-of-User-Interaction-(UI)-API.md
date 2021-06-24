@@ -210,3 +210,10 @@ Here is a sample of UI in VS Code extension:
 Here is the CLI counterparts:
 
 ![image](https://user-images.githubusercontent.com/1658418/123198809-53492f00-d4e0-11eb-9214-72a4e8bb1c7c.png)
+
+## File picker
+
+File pickers are use when the system need user to select file(s) from local file system. The answer to the file picker is a string path or an array of paths.
+
+
+
