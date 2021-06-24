@@ -98,6 +98,11 @@ export interface UserInteraction {
 ```
 
 ## Common UI Config
+
+We have many different UI elements such as text input, selection, file selector. Most of them have some commonly defined config fields to specify.
+
+The common UI config is defined by `UIConfig` interface:
+
 ```
 /**
  * A base structure of user interaction (UI) configuration
@@ -120,7 +125,7 @@ export interface UIConfig<T> {
    */
   prompt?: string;
   /**
-   * `step` and `totalSteps` are used to discribe the progress in question flow
+   * `step` and `totalSteps` are used to describe the progress in question flow
    * `step` is the sequence number of current question
    */
   step?: number;
@@ -143,6 +148,14 @@ export interface UIConfig<T> {
   validation?: (input: T) => string | undefined | Promise<string | undefined>;
 }
 ```
+`name`, `title` are basic required fields for a UI config. `name` is the unique ID of the question, title is the display name of the question. 
+`prompt`, `placeholder`, `default` provide user richer experience, which are supported in VS Code extension. 
+`step` and `totalSteps` are used to describe the progress in question flow. Each UI element can have a `go-back` and `continue` button to control the progress of the question flow:
+
+![image](https://user-images.githubusercontent.com/1658418/123196983-69a1bb80-d4dd-11eb-9af2-199f110cb918.png)
+
+The left arrow ![image](https://user-images.githubusercontent.com/1658418/123197025-7de5b880-d4dd-11eb-9705-e3f2b3c0cf0e.png) is `go back` button if the UI element has `step` greater than one. 
+The tick ![image](https://user-images.githubusercontent.com/1658418/123197245-d3ba6080-d4dd-11eb-9f36-af6288abcd94.png) is an `ok` button to continue to next question in the question flow.
 
 ## Text Input
 Text inputs are common ways to collect user input, which is an input text box for user to input a text string. 
