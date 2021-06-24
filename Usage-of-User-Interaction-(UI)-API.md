@@ -226,6 +226,19 @@ In CLI, the file picker is simply a text input box:
 
 ![image](https://user-images.githubusercontent.com/1658418/123215054-8a2c3e80-d4fa-11eb-932f-868ff9b48d5b.png)
 
+## Message dialog
 
+There are two cases when message dialogs are needed: 
+-  The system shows some message and need collect user feedback.
+-  The system shows some message and don't need any user confirm.
 
+`showMessage` API is provided to show such message dialog. For the first case, you need to set parameter `modal` as true to show a modal dialog which will not disappear until user inputs. For the second case, you need to set `modal` as false, which will disappear if it loses focus.
+
+Here is the UI of showing message using modal dialog in VS Code extension:
+
+![image](https://user-images.githubusercontent.com/1658418/123233959-18a9bb80-d50d-11eb-90a5-28a56192958a.png)
+
+Here is the UI of showing message using non-modal dialog in VS Code extension:
+
+![image](https://user-images.githubusercontent.com/1658418/123234286-67efec00-d50d-11eb-80a1-e4013630f235.png)
 
