@@ -173,7 +173,7 @@ In CLI, it looks like this:
 
 ## Text Input
 Text inputs are common ways to collect user input, which is an input text box for user to input a text string. 
-User can call the following API to show a text box and collect input from human:
+You can call the following API to show a text box and collect input from human:
 ```
 const res:Result<InputTextResult, FxError> = await ui.inputText({
   name: "questionId",
@@ -192,4 +192,12 @@ For CLI, text input is just a command-line query like this:
 
 ## Selection
 
+Selections are frequently used when a list of options will pop up for user to select. There are two types of selections: single selection (`selectOption`) and multiple selection (`selectOptions`).
 
+```
+const res:Result<SingleSelectResult, FxError> = await ui.selectOption({
+  name: "questionId",
+  title: "title",
+  options: ["option1","option2"]
+});
+```
