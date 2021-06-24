@@ -161,7 +161,7 @@ The left arrow ![image](https://user-images.githubusercontent.com/1658418/123197
 
 The tick ![image](https://user-images.githubusercontent.com/1658418/123197245-d3ba6080-d4dd-11eb-9f36-af6288abcd94.png) is an `ok` button to continue to next question in the question flow.
 
-`validation` are validation definition for user input. Both VS Code extension and CLI will provide validating mechanism to check whether input is valid or not and show warning message if validation fails:
+`validation` is a validation function to validate the user input. Both VS Code extension and CLI will provide validating mechanism and show warning message if validation fails:
 
 In VS Code extension, validation warning look like this:
 
