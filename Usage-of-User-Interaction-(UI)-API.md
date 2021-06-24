@@ -97,6 +97,53 @@ export interface UserInteraction {
 }
 ```
 
+## Common UI Config
+```
+/**
+ * A base structure of user interaction (UI) configuration
+ */
+export interface UIConfig<T> {
+  /**
+   * name is the identifier of the UI
+   */
+  name: string;
+  /**
+   * human readable meaningful display name of the UI
+   */
+  title: string;
+  /**
+   * placeholder in the UI
+   */
+  placeholder?: string;
+  /**
+   * prompt text providing some ask or explanation to the user
+   */
+  prompt?: string;
+  /**
+   * `step` and `totalSteps` are used to discribe the progress in question flow
+   * `step` is the sequence number of current question
+   */
+  step?: number;
+  /**
+   * `totalStep` is the number of questions totally
+   */
+  totalSteps?: number;
+  /**
+   * default input value
+   */
+  default?: T;
+
+  /**
+   * A function that will be called to validate input and to give a hint to the user.
+   *
+   * @param input The current value of the input to be validated.
+   * @return A human-readable string which is presented as diagnostic message.
+   * Return `undefined` when 'value' is valid.
+   */
+  validation?: (input: T) => string | undefined | Promise<string | undefined>;
+}
+```
+
 ## Text Input
 Text inputs are common ways to collect user input, which is an input text box for user to input a text string. 
 User can call the following API to show a text box and collect input from human:
@@ -110,7 +157,7 @@ const res:Result<InputTextResult, FxError> = await ui.inputText({
 ```
 For VS Code extension, you can define richer experience with `prompt` and `placeholder`. Text input looks like this:
 
-![image](https://user-images.githubusercontent.com/1658418/123195813-63124480-d4db-11eb-842a-786567d9c086.png)
+![image](https://user-images.githubusercontent.com/1658418/123196195-12e7b200-d4dc-11eb-802f-f4b598392528.png)
 
 For CLI, text input is just a command-line query like this:
 
