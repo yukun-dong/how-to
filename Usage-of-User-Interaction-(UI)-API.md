@@ -165,7 +165,7 @@ The tick ![image](https://user-images.githubusercontent.com/1658418/123197245-d3
 
 In VS Code extension, validation warning look like this:
 
-![image](https://user-images.githubusercontent.com/1658418/123197622-5c390100-d4de-11eb-8cad-cde2d45e58f9.png)
+![image](https://user-images.githubusercontent.com/1658418/123197905-d1a4d180-d4de-11eb-9179-e5ca455be321.png)
 
 In CLI, it looks like this:
 
