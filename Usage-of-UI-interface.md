@@ -171,6 +171,24 @@ In CLI, it looks like this:
 
 ![image](https://user-images.githubusercontent.com/1658418/123197667-6fe46780-d4de-11eb-8a20-c5063e055f90.png)
 
+The following UI operations are basic UI types which aims to collect user inputs/answers: `inputText`,`selectOption`, `selectOptions`,`selectFile`,`selectFiles`,`selectFolder`. So the return values of these APIs are wrappered in an `InputResult` interface:
+```
+export interface InputResult<T> {
+  type: "success" | "skip" | "back";
+  result?: T;
+}
+``` 
+In question flow, in addition to the real value that user provide, the operation type is also provided. We define 5 types of operation types:
+- `success`: the returned answer value is successfully collected when user click predefined ok button/key, user will continue to answer the next question if available
+- `skip`: the answer value is automatically selected when `skipSingleOption` is true for single/multiple selection list, user will continue to answer the next question if available
+- `back`: the returned answer is undefined because user click the go-back button/key and will go back to re-answer the previous question in the question flow
+- cancel: Cancel operation is encoded into `UserCancelError` in `Result<>` interface, which means user want to cancel the input.
+
+- other error: some other error happens in progress of collecting user input. 
+
+The first three cases are encoded in `InputResult<>` structure, while the last two cases are returned as `FxError` in `Result<>` object.
+
+
 ## Text Input
 Text inputs are common ways to collect user input, which is an input text box for user to input a text string. 
 You can call the following API to show a text box and collect input from human:
@@ -182,6 +200,8 @@ const res:Result<InputTextResult, FxError> = await ui.inputText({
   placeholder: 'My Placeholder'
 });
 ```
+
+
 For VS Code extension, you can define richer experience with `prompt` and `placeholder`. Text input looks like this:
 
 ![image](https://user-images.githubusercontent.com/1658418/123196195-12e7b200-d4dc-11eb-802f-f4b598392528.png)
