@@ -5,7 +5,7 @@ We really appreciate your feedback! If you encounter any issue or error, please 
 Teams Toolkit provides seamless integration with Azure resources, and we integrate with ARM so that you can now declaratively provision Azure resources your application needs using infrastructure as code approach with [Azure Resource Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/overview) template.
 
 ## How to enable this feature
-1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension) from the Visual Studio Code market place.
+1. Upgrade to the latest [Teams Toolkit](https://github.com/OfficeDev/TeamsFx/releases/download/ms-teams-vscode-extension%402.6.0-rc.0/ms-teams-vscode-extension-2.6.0-rc.0.vsix).
 1. Open Visual Studio Code and find `Manage` icon from sidebar (Bottom Left) 
 1. Select `Settings` and find `Teams Toolkit` under `Extensions` section.
 1. Tick the checkbox for `Arm Support Enabled` and `Validate Bicep` settings.
