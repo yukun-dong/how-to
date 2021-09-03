@@ -2,7 +2,7 @@
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us [here](https://github.com/OfficeDev/TeamsFx/issues/new/choose).
 
 # Provision Azure Resources with ARM Template
-Teams Toolkit provides seamless integration with Azure resources, and we integrate with ARM so that you can now declaratively provision Azure resources your application needs using infrastructure as code approach with [Azure Resource Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/overview) template.
+Teams Toolkit provides seamless integration with Azure resources, and we integrate with ARM so that you can now declaratively provision Azure resources your application needs using infrastructure as code approach using [Bicep](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview) as a domain-specific language  (DSL) to author [Azure Resource Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/overview) template.
 
 ## How to enable this feature
 1. Upgrade to the latest [Teams Toolkit](https://github.com/OfficeDev/TeamsFx/releases/download/ms-teams-vscode-extension%402.6.0-rc.0/ms-teams-vscode-extension-2.6.0-rc.0.vsix).
