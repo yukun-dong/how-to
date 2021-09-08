@@ -4,6 +4,7 @@ There are many ways to define customized errors in the project:
 1. Define an error as a constant value
 1. Define an error as a function that returns a `UserError` or `SystemError`
 1. Define an customized error class
+1. directly construct a `UserError` or `SystemError` in the place where error happens
 
 **We don't suggest first method**, unless you don't care about the stack at all.
 Because the error stack is constant and meaningless in such a case.
@@ -21,7 +22,7 @@ The error stack will contains the function `MyError`, which is not expected:
 
 ![image](https://user-images.githubusercontent.com/1658418/132477124-3e0904fb-2a06-485e-9e73-d61a5780e26c.png)
 
-**We strongly suggest the third method** to write your own error class that extends `UserError` or `SystemError`.
+**We suggest the third method** to write your own error class that extends `UserError` or `SystemError`.
 
 For example: 
 ```
@@ -53,3 +54,19 @@ The reason is the in constructor of `UserError`, we have some checking on error 
 
 ![image](https://user-images.githubusercontent.com/1658418/132478785-319c8d87-0ef4-4736-ad5f-c8627337eeeb.png)
 
+In addition to method three, **We also suggest the fourth method**, because it is the most flexible. 
+
+You will find there are many parameters in `UserError` and `SystemError`, which is somehow not so convenient to create. 
+
+We have tried to simplified the error constructor, but it will cause to refactor a lot of legacy codes. So we add a new set of builder functions for them:
+![image](https://user-images.githubusercontent.com/1658418/132480106-adc4e4b5-4f64-4e83-ad91-b6a2c4011412.png)
+
+We support two override constructors. We support a wrapped error builder that take the predefined `Error` as input and create a wrapped error.
+Such builder is useful when we meet with some errors that is throwed by third party modules and we can directly wrap the error and convert into `FxError`:
+
+```
+const wrap = UserError.build("API", new RangeError("range error"));
+console.log(wrap);
+```
+The output of the above code is:
+![image](https://user-images.githubusercontent.com/1658418/132480991-fc8a9474-4390-4f6f-9721-83b17cba3961.png)
