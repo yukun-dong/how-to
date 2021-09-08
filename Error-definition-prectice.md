@@ -67,6 +67,10 @@ Such builder is useful when we meet with some errors that is throwed by third pa
 ```
 const wrap = UserError.build("API", new RangeError("range error"));
 console.log(wrap);
+console.log(wrap instanceof UserError); //true
+console.log(wrap.name); //RangeError
 ```
 The output of the above code is:
-![image](https://user-images.githubusercontent.com/1658418/132480991-fc8a9474-4390-4f6f-9721-83b17cba3961.png)
+![image](https://user-images.githubusercontent.com/1658418/132481211-baa8ce2e-741b-4a92-a8ef-d8c111b81ca8.png)
+
+In such a case the wrap.name is the error name the name of input error: `RangeError`.
