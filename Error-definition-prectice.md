@@ -38,3 +38,15 @@ Another advantage of the third method is that it support `instanceof` operation 
 console.log(new MyError() instanceof MyError); // output `true`
 ```
 Because in the constructor, we have passed `new.target.name` (which is actually `MyError`) as error name parameter into the `super` constructor.
+Alternatively, if we don't want to define an error name different from the class name, we can just pass an empty string as the error name.
+The following definition is equivalent to previous one:
+```
+class MyError extends UserError {
+  constructor () {
+    super("", "my error message", "API")
+  }
+}
+```
+The reason is the in constructor of `UserError`, we have some checking on error name, if the name is empty string, we will use the constructor name as the default error name:
+
+![image](https://user-images.githubusercontent.com/1658418/132478785-319c8d87-0ef4-4736-ad5f-c8627337eeeb.png)
