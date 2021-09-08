@@ -1,3 +1,5 @@
+## Three basic method to define error
+
 There are many ways to define customized errors in the project:
 1. Define an error as a constant value
 1. Define an error as a function that returns a `UserError` or `SystemError`
@@ -50,3 +52,4 @@ class MyError extends UserError {
 The reason is the in constructor of `UserError`, we have some checking on error name, if the name is empty string, we will use the constructor name as the default error name:
 
 ![image](https://user-images.githubusercontent.com/1658418/132478785-319c8d87-0ef4-4736-ad5f-c8627337eeeb.png)
+
