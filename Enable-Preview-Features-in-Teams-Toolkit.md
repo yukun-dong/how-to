@@ -10,7 +10,7 @@ Teams Toolkit provides seamless integration with Azure resources, and we integra
 > * Create a new project from sample gallery and provision using ARM template
 
 ## How to enable this feature
-1. Upgrade to the latest [Teams Toolkit](https://github.com/OfficeDev/TeamsFx/releases/download/ms-teams-vscode-extension%402.6.0-rc.0/ms-teams-vscode-extension-2.6.0-rc.0.vsix).
+1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
 1. Open Visual Studio Code and find `Manage` icon from sidebar (Bottom Left) 
 1. Select `Settings` and find `Teams Toolkit` under `Extensions` section.
 1. Tick the checkbox for `Arm Support Enabled` and `Validate Bicep` settings.
