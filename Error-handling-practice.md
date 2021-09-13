@@ -1,3 +1,5 @@
+# How to define/use error
+
 ## Three basic method to define error
 
 There are many ways to define customized errors in the project:
@@ -104,3 +106,8 @@ chai.assert.equal(error.message, "");
 chai.assert.equal(error.source, "unknown");
 chai.assert.isTrue(error instanceof UserError);
 ```
+
+# How to classify `UserError` and `SystemError`
+
+# Error process tool
+
