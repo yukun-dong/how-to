@@ -87,12 +87,20 @@ chai.assert.equal(error.innerError, innerError);
 When constructing with existing Error object, the name of the input Error will have higher priority than the constructor name.
 
 ### Constructor with an option (`UserErrorOptions`/`SystemErrorOptions`) object
-
+This approach provides most flexible way to construct a Error:
 ```
 const error = new UserError({ error: new RangeError(myMessage), source: mySource, helpLink: myHelpLink });
 chai.assert.equal(error.name, "RangeError");
 chai.assert.equal(error.message, myMessage);
 chai.assert.equal(error.source, mySource);
 chai.assert.equal(error.helpLink, myHelpLink);
+chai.assert.isTrue(error instanceof UserError);
+```
+You can input an empty option to build an error, the constructor will replace empty values with some default values:
+```
+const error = new UserError({});
+chai.assert.equal(error.name, "UserError");
+chai.assert.equal(error.message, "");
+chai.assert.equal(error.source, "unknown");
 chai.assert.isTrue(error instanceof UserError);
 ```
