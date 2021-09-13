@@ -61,16 +61,38 @@ In addition to method three, **We also suggest the fourth method**, because it i
 
 ## Construct a UserError/SystemError
 
-We have three override constructors. We support a wrapped error builder that take the predefined `Error` as input and create a wrapped error.
-Such builder is useful when we meet with some errors that is throwed by third party modules and we can directly wrap the error and convert into `FxError`:
+We have three override constructors for `UserError` or `SystemError`.  
+
+### Constructor with `name`, `message` and `source` string
+```
+const error = new UserError(myName, myMessage, mySource, undefined, myHelpLink);
+chai.assert.equal(error.name, myName);
+chai.assert.equal(error.message, myMessage);
+chai.assert.equal(error.source, mySource);
+chai.assert.equal(error.helpLink, myHelpLink);
+chai.assert.isDefined(error.timestamp);
+chai.assert.isTrue(error instanceof UserError);
+```
+
+### Constructor with existing `Error` object
+```
+const innerError = new RangeError(myMessage);
+const error = new UserError(innerError, mySource);
+chai.assert.equal(error.name, "RangeError");
+chai.assert.equal(error.message, myMessage);
+chai.assert.equal(error.source, mySource);
+chai.assert.isTrue(error instanceof UserError);
+chai.assert.equal(error.innerError, innerError);
+```
+When constructing with existing Error object, the name of the input Error will have higher priority than the constructor name.
+
+### Constructor with an option (`UserErrorOptions`/`SystemErrorOptions`) object
 
 ```
-const wrap = UserError.build("API", new RangeError("range error"));
-console.log(wrap);
-console.log(wrap instanceof UserError); //true
-console.log(wrap.name); //RangeError
+const error = new UserError({ error: new RangeError(myMessage), source: mySource, helpLink: myHelpLink });
+chai.assert.equal(error.name, "RangeError");
+chai.assert.equal(error.message, myMessage);
+chai.assert.equal(error.source, mySource);
+chai.assert.equal(error.helpLink, myHelpLink);
+chai.assert.isTrue(error instanceof UserError);
 ```
-The output of the above code is:
-![image](https://user-images.githubusercontent.com/1658418/132481211-baa8ce2e-741b-4a92-a8ef-d8c111b81ca8.png)
-
-In such a case the wrap.name is the error name the name of input error: `RangeError`.
