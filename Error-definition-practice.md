@@ -12,7 +12,7 @@ There are many ways to define customized errors in the project:
 **We don't suggest first method**, unless you don't care about the stack at all.
 Because the error stack is constant and meaningless in such a case.
 
-**We don't suggest the second method either**, which add one more call stack on top of the stacks where the error really happens.
+**We don't suggest the second method neither**, which add one more call stack on top of the stacks where the error really happens.
 
 Here is a bad sample:
 ```
