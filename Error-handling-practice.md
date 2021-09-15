@@ -1,4 +1,13 @@
-# How to define/use error
+# How to classify `UserError` and `SystemError`
+UserError: errors caused by user's input/behavior, which can fixed by user's proper behavior. For example:
+   - User's subscription has no permission on some resources
+   - User input an invalid project path
+   - Concurrent operation error, please wait until the running task finishs or you can reload the window to cancel it.
+SystemError: errors caused by system bugs or failures, which can not fixed by user. For example, 
+   - Cannot read property 'subscriptionId' of undefined
+
+
+# How to define error
 
 ## Three basic method to define error
 
@@ -107,7 +116,7 @@ chai.assert.equal(error.source, "unknown");
 chai.assert.isTrue(error instanceof UserError);
 ```
 
-# How to classify `UserError` and `SystemError`
+
 
 # Error process tool
 
