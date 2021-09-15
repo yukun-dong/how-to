@@ -3,6 +3,7 @@ UserError: errors caused by user's input/behavior, which can fixed by user's pro
    - User's subscription has no permission on some resources
    - Invalid inputs
    - Concurrent operation error, please wait until the running task finishs or you can reload the window to cancel it.
+
 SystemError: errors caused by system bugs or failures, which can not fixed by user. For example, 
    - Cannot read property ' [*] ' of undefined
 For Errors thrown by third-party modules, it's better to analyze and classify the Error types: 
