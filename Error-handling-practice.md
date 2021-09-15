@@ -7,9 +7,13 @@ UserError: errors caused by user's input/behavior, which can fixed by user's pro
 SystemError: errors caused by system bugs or failures, which can not fixed by user. For example, 
    - Cannot read property ' [*] ' of undefined
 For Errors thrown by third-party modules, it's better to analyze and classify the Error types: 
+
 ```
 failed to exec dotnet script.,errorStack=Failed to install .NET Core SDK (v3.1). Install .NET Core SDK (v3.1) manually and restart Visual Studio Code
 ```
+Frequent UserError means that user experience of the product should be improved to decrease the possibility of user using the toolkit in the wrong way.
+Frequent SysteError means that the system should reduce bugs to improve the quality and increase the usability.
+
 
 # How to define error
 
