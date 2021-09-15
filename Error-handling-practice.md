@@ -6,8 +6,7 @@ UserError: errors caused by user's input/behavior, which can fixed by user's pro
 
 SystemError: errors caused by system bugs or failures, which can not fixed by user. For example, 
    - Cannot read property ' [*] ' of undefined
-For Errors thrown by third-party modules, it's better to analyze and classify the Error types: 
-
+   - For Errors thrown by third-party modules, it's better to analyze and classify the Error types: 
 ```
 failed to exec dotnet script.,errorStack=Failed to install .NET Core SDK (v3.1). Install .NET Core SDK (v3.1) manually and restart Visual Studio Code
 ```
