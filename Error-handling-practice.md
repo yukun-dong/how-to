@@ -1,11 +1,14 @@
 # How to classify `UserError` and `SystemError`
 UserError: errors caused by user's input/behavior, which can fixed by user's proper behavior. For example:
    - User's subscription has no permission on some resources
-   - User input an invalid project path
+   - Invalid inputs
    - Concurrent operation error, please wait until the running task finishs or you can reload the window to cancel it.
 SystemError: errors caused by system bugs or failures, which can not fixed by user. For example, 
-   - Cannot read property 'subscriptionId' of undefined
-
+   - Cannot read property ' [*] ' of undefined
+For Errors thrown by third-party modules, it's better to analyze and classify the Error types: 
+```
+failed to exec dotnet script.,errorStack=Failed to install .NET Core SDK (v3.1). Install .NET Core SDK (v3.1) manually and restart Visual Studio Code
+```
 
 # How to define error
 
