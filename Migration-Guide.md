@@ -1,6 +1,6 @@
 # File structure change
 Once migration success, the file structure has changed. </p>
-There generates new folder named `templates` under root path, new folders named `configs`, `migrationbackup`, `publishProfiles` under .fx folder. </p>
+There generates new folder named `templates` under root path, and `configs`, `migrationbackup`, `publishProfiles` under .fx folder. </p>
 
 Besides `subscriptioninfo.json` under .fx folder, other original files will be deleted.
 # Backup
