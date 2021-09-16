@@ -1,7 +1,9 @@
 # File structure change
 Once migration success, the file structure has changed. </p>
 There generates new folder named `templates` under root path, 
-new folders named `configs`, `migrationbackup`, `publishProfiles` under .fx folder, besides `subscriptioninfo.json`, other original files will be deleted
+new folders named `configs`, `migrationbackup`, `publishProfiles` under .fx folder. </p> 
+
+Besides `subscriptioninfo.json`, other original files will be deleted
 # Backup
 We suggest you backup the project before migration.</p>
 Toolkit helps to backup env.default.json file under .fx/migrationbackup 
