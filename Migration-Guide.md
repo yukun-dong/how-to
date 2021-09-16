@@ -1,4 +1,4 @@
-# Prerequisites
+# Prerequisition
 Once you both enable the ARM and Multi-Env feature gate, toolkit will help migration original project to support Multi-Env and ARM bicep.
 # File structure change
 Once migration success, the file structure has changed. </p>
