@@ -1,7 +1,7 @@
-# File structure changes after migratio
+# File structure changes after migration
 Once migration success, The file structure has changed. </p>
-there generates new folder named **"templates"** under root path, 
-new folders named **configs** **migrationbackup** **publishProfiles** under .fx folder
+there generates new folder named **templates** under root path, 
+new folders named **configs**, **migrationbackup**, **publishProfiles** under .fx folder
 # Backup
 We suggest you backup manually before migration.</br>
 toolkit helps to backup env.default.json file under .fx/migrationbackup folder
@@ -9,7 +9,7 @@ toolkit helps to backup env.default.json file under .fx/migrationbackup folder
 After migration, you must provision again. </p>
 Toolkit will creates some new resources for bot / tab instead of reusing existing resources 
 # Provision issues after migration
-Provision may fail if project has SQL, you may modify the SQL bicep manually and run provision again </p>
+Provision may fail if project has SQL, you may modify *templates/azure/modules/azureSqlProvision.bicep* manually and run provision again </p>
 ```
 resource sqlServer 'Microsoft.Sql/servers@2021-02-01-preview' = {
   location: resourceGroup().location
