@@ -7,7 +7,18 @@ We suggest you backup manually before migration.</br>
 toolkit helps to backup env.default.json file under .fx/migrationbackup folder
 # Must-do steps after migration success
 After migration, you must provision again. </p>
-if project bot, we will create a new bot for you. 
-if project uses tab, we will generate new tab resource for you.
+Toolkit will creates some new resources for bot / tab instead of reusing existing resources 
+# Provision issues after migration
+Provision may fail if project has SQL, you may modify the SQL bicep manually and run provision again </p>
+```
+resource sqlServer 'Microsoft.Sql/servers@2021-02-01-preview' = {
+  location: resourceGroup().location
+  name: sqlServerName
+  properties: {
+    administratorLogin: empty(administratorLogin) ? null: administratorLogin
+    administratorLoginPassword: administratorLoginPassword
+  }
+}
+```
 
 
