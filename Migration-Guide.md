@@ -1,5 +1,8 @@
 # Prerequisites
 Once you both enable the ARM and Multi-Env feature gate, toolkit will help migration original project to support Multi-Env and ARM bicep.
+### How to enable ARM and Multi-Env feature gate
+`ARM`: [Enable ARM feature Gate](https://github.com/OfficeDev/TeamsFx/wiki/Enable-Preview-Features-in-Teams-Toolkit#how-to-enable-this-feature) </p>
+`Multi-Env`: set environment `TEAMSFX_MULTI_ENV` as true
 # File structure change
 Once migration success, the file structure has changed. </p>
 There generates new folder named `templates` under root path, and `configs`, `migrationbackup`, `publishProfiles` under .fx folder. </p>
