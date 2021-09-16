@@ -1,2 +1,4 @@
-# provision after migration success
-please provision after migration success, otherwise the following commands will not work success.
+# After migration success
+once migration success, The file structure has changed. 
+there generates new folder **configs** **migrationbackup** publishProfiles** 
+
