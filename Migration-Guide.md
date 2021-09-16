@@ -1,4 +1,4 @@
-# File structure changes after migration
+# File structure change
 Once migration success, the file structure has changed. </p>
 There generates new folder named **templates** under root path, 
 new folders named **configs**, **migrationbackup**, **publishProfiles** under .fx folder
