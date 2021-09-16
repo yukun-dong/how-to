@@ -11,11 +11,11 @@ Besides `subscriptioninfo.json` under .fx folder, other original files will be d
 # Backup
 We suggest you backup the project before migration.</p>
 Toolkit helps to backup `.fx/env.default.json` file to `.fx/migrationbackup`
-# Must-do steps after migration success
-After migration, you must provision again. </p>
+# Must-do Steps after Migration
+After migration success, you must provision again. </p>
 Toolkit will creates some new resources for bot / tab instead of reusing existing resources 
-# Provision issues after migration
-Provision again meets fail after migration.
+# Provision Issues
+Provision again may meets fail after migration success.
 1.  Azure SQL failure. please modify `templates/azure/modules/azureSqlProvision.bicep` manually and run provision again </p>
 ```
 resource sqlServer 'Microsoft.Sql/servers@2021-02-01-preview' = {
