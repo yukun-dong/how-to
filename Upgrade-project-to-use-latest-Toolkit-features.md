@@ -8,7 +8,7 @@ As Teams Toolkit continues to evolve, some of the features will require an updat
 Once migration succeeds, your project file structure will be changed.
 We will generate a new folder named `templates` under root path, and `configs`, `migrationbackup`, `publishProfiles` under `.fx` folder.
 
-All other original files will be deleted except `subscriptioninfo.json` under `.fx` folder, 
+All other original files will be deleted except `subscriptioninfo.json` under `.fx` folder.
 
 ## Backup your project
 We recommend you initialize your project with `git` or backup the project before migration to better tracking file changes. Teams Toolkit will automatically backup `.fx/env.default.json` file to `.fx/migrationbackup`.
