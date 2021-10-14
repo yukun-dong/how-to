@@ -3,8 +3,7 @@ As Teams Toolkit continues to evolve, some of the features will require an updat
 > Please note that ARM and multiple environment features will be enabled by default in the future release of Teams Toolkit. We thrive to make Teams Toolkit compatible with exiting projects but long time backward compatibility is not 100% guaranteed thus we strongly recommend you updating your project configurations to continue using the latest Teams Toolkit.
 
 ## How to enable ARM and Multi-Env feature flag
-`ARM`: [Enable ARM feature Gate](https://github.com/OfficeDev/TeamsFx/wiki/Enable-Preview-Features-in-Teams-Toolkit#how-to-enable-this-feature) </p>
-`Multi-Env`: set environment variable `TEAMSFX_MULTI_ENV` to `true`.
+Learn [how to enable insider preview features](https://github.com/OfficeDev/TeamsFx/wiki/Enable-Preview-Features-in-Teams-Toolkit#how-to-enable-preview-features).
 
 ## File structure change
 Once migration succeeds, your project file structure will be changed.
