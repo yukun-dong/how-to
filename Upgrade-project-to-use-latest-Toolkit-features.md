@@ -16,22 +16,8 @@ All other original files will be deleted except `subscriptioninfo.json` under `.
 We recommend you initialize your project with `git` or backup the project before migration to better tracking file changes. Teams Toolkit will automatically backup `.fx/env.default.json` file to `.fx/migrationbackup`.
 
 ## Required Steps After Migration
-After migration success, you will need to provision your project again. And please note that Teams Toolkit will create new Azure resources for to host your bot and tab project instead of reusing existing resources.
-
+If you have already provisioned the bot service before the migration, and you want to continue to use the bot service after the migration, please provision again. We will create a new bot service for this project, and other resources will not change.
 ## Known Issues
-* Provision again may fail after migration success.
-Azure SQL failure. please modify `templates/azure/modules/azureSqlProvision.bicep` manually and run provision again </p>
-   ```
-   resource sqlServer 'Microsoft.Sql/servers@2021-02-01-preview' = {
-     location: resourceGroup().location
-     name: sqlServerName
-     properties: {
-       administratorLogin: empty(administratorLogin) ? null: administratorLogin
-       administratorLoginPassword: administratorLoginPassword
-     }
-   }
-   ```
-
 * Local Debug will create a new teams App added to the Teams Developer Portal after migration success. You can get the app id from **.fx/configs/localSettings.json** file.
 
 
