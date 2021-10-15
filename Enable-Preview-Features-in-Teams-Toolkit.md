@@ -102,7 +102,7 @@ Teams Toolkit now natively support add other collaborators for TeamsFx project w
 
 
 #### E2E Work Flow in VSCode
-##### Creator
+##### As a Project Creator
 - Open VSCode, create a new TeamsFx Tab project (You can also select bot), and the hosting type select Azure
 
 - Login M365 account and Azure account
@@ -117,7 +117,7 @@ Teams Toolkit now natively support add other collaborators for TeamsFx project w
 
 - Push your project to GitHub
 
-##### Collaborator
+##### As a Project Collaborator
 - Clone the project from GitHub
 -	Login M365 account use collaborator’s account
 -	Login Azure account which has contributor permission for all the Azure resources
@@ -137,18 +137,18 @@ Teams Toolkit CLI provides `teamsFx permission` Commands for collaboration scena
 ***
 
 #### Parameters for `teamsfx permission grant`
-##### `--env`
-**(Required)** Provide env name.
+- ##### `--env`
+	**(Required)** Provide env name.
 
-##### `--email`
-**(Required)** Provide collaborator's M365 email address. Note that the collaborators's account should be in the same tenant with creator.
+- ##### `--email`
+	**(Required)** Provide collaborator's M365 email address. Note that the collaborators's account should be in the same tenant with creator.
 
 #### Parameters for `teamsfx permission status`
-##### `--env`
-**(Required)** Provide env name.
+- ##### `--env`
+	**(Required)** Provide env name.
 
-##### `--list-all-collaborators`
-With this flag, Teams Toolkit CLI will print out all collaborators for this project.
+- ##### `--list-all-collaborators`
+	With this flag, Teams Toolkit CLI will print out all collaborators for this project.
 
 ### Examples
 Here are some examples for you to better handling permission for `TeamsFx` projects.
