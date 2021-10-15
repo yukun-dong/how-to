@@ -10,6 +10,7 @@ We really appreciate your feedback! If you encounter any issue or error, please 
 1. Select `Settings` and find `Teams Toolkit` under `Extensions` section.
 1. Tick the checkbox for `Insider Preview` setting.
 1. Restart Visual Studio Code.
+> Note: If you enabled `Provision Azure Resources with ARM Template` preview feature, you need to to tick the checkbox for `Insider Preview` again to continue use this preview feature.
 
 ## TeamsFx CLI
 1. Upgrade to the latest [TeamsFx CLI](https://www.npmjs.com/package/@microsoft/teamsfx-cli).
