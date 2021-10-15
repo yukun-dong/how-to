@@ -44,7 +44,7 @@ And then input your new environment name:
 
 If you have more than one existing environments, you will need to select an existing environment to create the environment copy. Behind the scenes, the file content of `config.<newEnv>.json` and `azure.parameters.<newEnv>.json` will be copied from the existing environment you selected.
 
-### Customize Environment Provision
+### Customize Environment-related Configuration Files
 The toolkit provides the flexibility to let users customize the resource provision behavior for an environment.
 
 Here is some common scenarios we can support for customized provision:
@@ -60,7 +60,7 @@ Here is some common scenarios we can support for customized provision:
 - For how to use BICEP files in Teams toolkit, you can refer to [official BICEP document](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/) for help.
 
 ### Select Target Environment on Provision/Deploy/Publish/Preview
-As we introduce multi-environments concept in Teams toolkit, for all environment related operation, you will need to select the target environment to perform with.
+As we introduce multi-environments concept in Teams toolkit, for all environment related operations, you will need to select a target environment to perform with. The toolkit will prompt and ask for a target environment when needed.
 
 ![select-env](https://user-images.githubusercontent.com/10163840/137431518-31c5fa2d-7867-441b-ab90-c5f87f78e8b9.png)
 
