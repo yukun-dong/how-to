@@ -31,7 +31,11 @@ The Azure parameter file supports referencing values from environment variable. 
  The Teams toolkit provide a simple way for developers to easily create multiple environments and deploy artifacts to a target environment for a Teams app.
 
 ### Create a New Environment Copy
-By default, the toolkit generates a `dev` environment after creating a new project. To add another environment for the app, you can use the `Teams: Create new environment copy` command in the tree view:
+By default, the toolkit generates: 
+- a `local` environment to represent your local machine environment configurations. 
+- a `dev` environment after creating a new project to represent a remote environment configurations.
+
+To add another remote environment for the app, you can use the `Teams: Create new environment copy` command in the tree view:
 
 ![add-env](https://user-images.githubusercontent.com/10163840/137431115-3a68fde9-ee81-49a3-a100-c5cc13f51bc2.png)
 
