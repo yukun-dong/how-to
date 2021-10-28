@@ -2,7 +2,7 @@ Teams Toolkit continuously evolve to offer useful features for developers. Recen
 
 > Please note that ARM and multiple environment features will be enabled by default in the future release of Teams Toolkit. We thrive to make Teams Toolkit compatible with exiting projects but long time backward compatibility is not 100% guaranteed thus we strongly recommend you updating your project configurations to continue using the latest Teams Toolkit.
 
-## How to enable ARM and Multi-Env feature flag
+## How to upgrade
 You will need to enable the insider features, and Teams Toolkit will automatically upgrade your original project folder structure. Learn [how to enable insider preview features](https://github.com/OfficeDev/TeamsFx/wiki/Enable-Preview-Features-in-Teams-Toolkit#how-to-enable-preview-features).
 
 ## File structure change
