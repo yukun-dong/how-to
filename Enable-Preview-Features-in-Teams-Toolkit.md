@@ -27,6 +27,9 @@ Teams Toolkit provides seamless integration with Azure resources, and we integra
 If you want to customize the ARM template, just update the bicep files at `templates/azure` and Azure parameter files at `.fx/configs`, then trigger provision command again to provision with your customized ARM template.
 The Azure parameter file supports referencing values from environment variable. Just put `{{YOUR_ENV_NAME}}` to the value part, and our tooling will replace it with actual value. There're also some predefined placeholders in the parameter file. We're working to provide more detailed documents for you. Please stay tuned.
 
+> Knwown issues
+> * When adding resource, the `.fx/azure.parameters.{env}.json` will also be regenerated, which will change the resource name being provisioned. Please go to `templates/azure/backup/{timestamp}/parameters/` folder and copy the value of `resourceBaseName` as well as other customized content to the new file to ensure the tooling functions well. We're working on features to avoid regenerating these files.
+
 ## Managing Multiple Environments in Teams Toolkit
  The Teams toolkit provide a simple way for developers to easily create multiple environments and deploy artifacts to a target environment for a Teams app.
 
