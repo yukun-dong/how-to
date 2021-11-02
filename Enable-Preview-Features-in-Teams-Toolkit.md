@@ -67,7 +67,7 @@ As we introduce multi-environments concept in Teams toolkit, for all environment
 
 ![select-env](https://user-images.githubusercontent.com/10163840/137431518-31c5fa2d-7867-441b-ab90-c5f87f78e8b9.png)
 
-### Appendix
+### Project's Folder Structure
 Main changes in project's folder structure:
 - `.fx/configs`: config files that user can customize for the Teams app.
     - `config.<envName>.json`: per-environment configuration file.
