@@ -16,7 +16,7 @@ Teams Toolkit helps you to upgrade Teams applications to work with Outlook and O
 ## Prerequisites
 
 1. Install `2.10.0` or later version of Teams Toolkit from Visual Studio Code extension in [Teams Toolkit (Preview) - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
-1. [Set up your dev environment](https://docs.microsoft.com/en-us/windows/uwp/m365-apps/prerequisites).
+1. [Set up your dev environment](https://docs.microsoft.com/en-us/microsoftteams/platform/m365-apps/prerequisites).
 
 The following are the steps to upgrade manifest and `TeamsJS` client SDK:
 
@@ -43,10 +43,10 @@ This command will:
 
 * `package.json` references to TeamsJS SDK Preview
 * Import statements for TeamsJS SDK Preview
-* [Function](https://docs.microsoft.com/en-us/windows/uwp/m365-apps/using-teams-client-sdk-preview?tabs=manifest-teams-toolkit%2Cjavascript#apis-organized-into-capabilities) references for TeamsJS SDK Preview
-* [Enum](https://docs.microsoft.com/en-us/windows/uwp/m365-apps/using-teams-client-sdk-preview?tabs=manifest-teams-toolkit%2Cjavascript#apis-organized-into-capabilities) and [Interface](https://docs.microsoft.com/en-us/windows/uwp/m365-apps/using-teams-client-sdk-preview?tabs=manifest-teams-toolkit%2Cjavascript#apis-organized-into-capabilities) references for TeamsJS SDK Preview
-* `TODO` comment reminders to review areas that might be impacted by [Context](https://docs.microsoft.com/en-us/windows/uwp/m365-apps/using-teams-client-sdk-preview?tabs=manifest-teams-toolkit%2Cjavascript#updates-to-the-context-interface) interface changes
-* `TODO` comment reminders to ensure [conversion to promises functions from callback style functions](https://docs.microsoft.com/en-us/windows/uwp/m365-apps/using-teams-client-sdk-preview?tabs=manifest-teams-toolkit%2Cjavascript#callbacks-converted-to-promises) has gone well at every call site the tool found
+* [Function](https://docs.microsoft.com/en-us/microsoftteams/platform/m365-apps/using-teams-client-sdk-preview?tabs=manifest-teams-toolkit%2Cjavascript#apis-organized-into-capabilities) references for TeamsJS SDK Preview
+* [Enum](https://docs.microsoft.com/en-us/microsoftteams/platform/m365-apps/using-teams-client-sdk-preview?tabs=manifest-teams-toolkit%2Cjavascript#apis-organized-into-capabilities) and [Interface](https://docs.microsoft.com/en-us/microsoftteams/platform/m365-apps/using-teams-client-sdk-preview?tabs=manifest-teams-toolkit%2Cjavascript#apis-organized-into-capabilities) references for TeamsJS SDK Preview
+* `TODO` comment reminders to review areas that might be impacted by [Context](https://docs.microsoft.com/en-us/microsoftteams/platform/m365-apps/using-teams-client-sdk-preview?tabs=manifest-teams-toolkit%2Cjavascript#updates-to-the-context-interface) interface changes
+* `TODO` comment reminders to ensure [conversion to promises functions from callback style functions](https://docs.microsoft.com/en-us/microsoftteams/platform/m365-apps/using-teams-client-sdk-preview?tabs=manifest-teams-toolkit%2Cjavascript#callbacks-converted-to-promises) has gone well at every call site the tool found
 
 > [!IMPORTANT]
 > Ensure that you review any of the `TODO` items deposited by the tool.
