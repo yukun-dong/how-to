@@ -17,7 +17,48 @@ We recommend you initialize your project with `git` or backup the project before
 ## Required Steps After Migration
 If you have already provisioned the bot service before the migration, and you want to continue to use the bot service after the migration, please provision again. We will create a new bot service for this project, and other resources will not change.
 
-## Manual work to use existing resource
+## Manual work to use existing bot
+There you need to modify three files
+1. './templates/azure/provision/bot.bicep'   
+```
+resource botService 'Microsoft.BotService/botServices@2021-03-01' = {
+  kind: 'bot'
+  location: 'global'
+  name: botServiceName
+  properties: {
+    displayName: botDisplayName
+    endpoint: uri('https://${webApp.properties.defaultHostName}', '/api/messages')
+    msaAppId: botAadAppClientId
+  }
+  sku: {
+    name: 'F0'
+  }
+}
+```
+2. `.fx/configs/azure.parameter.dev.json`
+add four parameter, and replace the placeholder with the target value in `.backup/.fx/env.default.json`.
+```
+"botServiceName": "${fx-resource-bot.botChannelReg}",
+"botDisplayName": "${fx-resource-bot.botChannelReg}",
+"botServerfarmsName": "${fx-resource-bot.appServicePlan}",
+"botSitesName": "${fx-resource-bot.siteName}"
+```
+3. `.fx/states/state.dev.json`
+you need to remove the existing fx-resource-bot object, and add following fx-resource-bot object, please replace the placeholder with the value in `.backup/.fx/env.default.json`
+```
+"fx-resource-bot": {
+        "botId": "${fx-resource-bot.botId}",
+        "botPassword": "{{fx-resource-bot.botPassword}}",
+        "objectId": "${fx-resource-bot.objectId}",
+        "skuName": "${fx-resource-bot.skuName}",
+        "siteName": "${fx-resource-bot.siteName}",
+        "validDomain": "${fx-resource-bot.validDomain}",
+        "appServicePlanName": "${fx-resource-bot.appServicePlan}",
+        "botChannelRegName": "${fx-resource-bot.botChannelReg}",
+        "botWebAppResourceId": "/subscriptions/${solution.subscriptionId}/resourceGroups/${solution.resourceGroupName}/providers/Microsoft.Web/sites/${fx-resource-bot.siteName}",
+        "siteEndpoint": "${fx-resource-bot.siteEndpoint}"
+    }
+```
 
 ## Known Issues
 * Local Debug will create a new teams App added to the Teams Developer Portal after migration success. You can get the app id from `.fx/configs/localSettings.json` file.
