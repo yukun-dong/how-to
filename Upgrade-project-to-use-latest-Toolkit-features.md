@@ -16,6 +16,9 @@ We recommend you initialize your project with `git` or backup the project before
 
 ## Required Steps After Migration
 If you have already provisioned the bot service before the migration, and you want to continue to use the bot service after the migration, please provision again. We will create a new bot service for this project, and other resources will not change.
+
+## Manual work to use existing resource instead of provision new resources.
+
 ## Known Issues
 * Local Debug will create a new teams App added to the Teams Developer Portal after migration success. You can get the app id from `.fx/configs/localSettings.json` file.
 * Once upgrade success, if you provision resource in a new group resource using a newly created environment, this operation will cause an error. For example, you create a new environment named as test, in order to provision successful, just delete all parameters which value has exact value in  `.fx/configs/azure.parameters.test.json` 
