@@ -2,22 +2,22 @@ Teams Toolkit continuously evolve to offer useful features for developers. Recen
 
 > Please note that ARM and multiple environment features will be enabled by default in the future release of Teams Toolkit. We thrive to make Teams Toolkit compatible with existing projects but long time backward compatibility is not 100% guaranteed thus we strongly recommend you updating your project configurations to continue using the latest Teams Toolkit.
 
-## How to upgrade
+## How to Upgrade
 You will need to enable the insider features, and Teams Toolkit will automatically upgrade your original project folder structure. Learn [how to enable insider preview features](https://github.com/OfficeDev/TeamsFx/wiki/Enable-Preview-Features-in-Teams-Toolkit#how-to-enable-preview-features).
 
-## File structure change
+## File Structure Change
 Once migration succeeds, your project file structure will be changed.
 We will generate a new folder named `templates` under root path, and `configs`, `migrationbackup`, `publishProfiles` under `.fx` folder.
 
 All other original files will be deleted except `subscriptioninfo.json` under `.fx` folder.
 
-## Backup your project
+## Backup Your Project
 We recommend you initialize your project with `git` or backup the project before migration to better tracking file changes. Teams Toolkit will automatically backup `.fx/env.default.json` file to `.fx/migrationbackup`.
 
 ## Required Steps After Migration
 If you have already provisioned the bot service before the migration, and you want to continue to use the bot service after the migration, please provision again. We will create a new bot service for this project, and other resources will not change.
 
-## Manual work to use existing bot
+## Manual Work to Use Existing Bot
 There you need to modify three files
 1. Modify `./templates/azure/provision/bot.bicep` with following config  
     ```bicep
@@ -59,7 +59,7 @@ you need to remove the existing fx-resource-bot object, and add following fx-res
         }
     ```
 
-## Manual work to Customize APIM
+## Manual Work to Customize APIM
 After upgrade project, APIM related services are defined in *./templates/azure/provision/apim.bicep* and *./templates/azure/teamsFx/apim.bicep* with parameters in *.fx/configs/azure.parameters.dev.json*.
 
 1. SKU, publisher name and publisher email of APIM service might be updated. To customize them, update SKU in *./templates/azure/provision/apim.bicep* directly and add `apimPublisherEmail` and `apimPublisherName` as customized parameters in *./.fx/configs/azure.parameters.dev.json*.
