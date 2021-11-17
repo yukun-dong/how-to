@@ -19,7 +19,7 @@ If you have already provisioned the bot service before the migration, and you wa
 
 ## Manual work to use existing bot
 There you need to modify three files
-1. './templates/azure/provision/bot.bicep'   
+1. Modify `./templates/azure/provision/bot.bicep` with following config  
 ```
 resource botService 'Microsoft.BotService/botServices@2021-03-01' = {
   kind: 'bot'
@@ -35,15 +35,14 @@ resource botService 'Microsoft.BotService/botServices@2021-03-01' = {
   }
 }
 ```
-2. `.fx/configs/azure.parameter.dev.json`
-add four parameter, and replace the placeholder with the target value in `.backup/.fx/env.default.json`.
+2. Add four parameter to `.fx/configs/azure.parameter.dev.json`, and replace the placeholder with the target value in `.backup/.fx/env.default.json`.
 ```
 "botServiceName": "${fx-resource-bot.botChannelReg}",
 "botDisplayName": "${fx-resource-bot.botChannelReg}",
 "botServerfarmsName": "${fx-resource-bot.appServicePlan}",
 "botSitesName": "${fx-resource-bot.siteName}"
 ```
-3. `.fx/states/state.dev.json`
+3. In the `.fx/states/state.dev.json`,
 you need to remove the existing fx-resource-bot object, and add following fx-resource-bot object, please replace the placeholder with the value in `.backup/.fx/env.default.json`
 ```
 "fx-resource-bot": {
