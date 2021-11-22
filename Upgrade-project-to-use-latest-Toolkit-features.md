@@ -114,7 +114,15 @@ After upgrade project, APIM related services are defined in *./templates/azure/p
     ```
 
 ## Manual Work to Local Debug with SQL
-TODO
+Teams Toolkit support connecting to an Azure SQL database when local debug the Teams app.
+You can connect to a SQL instance for frontend (tabs/), function (api/) and bot (bot/) components. There may already be a `.env.teamsfx.local` file under each component folder. If not you can create a new `.env.teamsfx.local` by yourself, and add the following environment variables in `.env.teamsfx.local` to specify the SQL connection information:
+
+```
+SQL_ENDPOINT=YOUR_SQL_ENDPOINT
+SQL_DATABASE_NAME=YOUR_YOUR_DATABASE_NAME
+SQL_USER_NAME=YOUR_SQL_USER_NAME
+SQL_PASSWORD=YOUR_SQL_USER_PASSWORD
+```
 
 ## Known Issues
 * Local Debug will create a new teams App added to the Teams Developer Portal after migration success. You can get the app id from `.fx/configs/localSettings.json` file.
