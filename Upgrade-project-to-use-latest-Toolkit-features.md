@@ -113,6 +113,8 @@ After upgrade project, APIM related services are defined in *./templates/azure/p
     }
     ```
 
+## Manual Work to Local Debug with SQL
+TODO
 
 ## Known Issues
 * Local Debug will create a new teams App added to the Teams Developer Portal after migration success. You can get the app id from `.fx/configs/localSettings.json` file.
