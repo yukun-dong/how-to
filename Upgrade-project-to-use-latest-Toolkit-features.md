@@ -7,12 +7,17 @@ You will need to enable the insider features, and Teams Toolkit will automatical
 
 ## File Structure Change
 Once migration succeeds, your project file structure will be changed.
-We will generate a new folder named `templates` under root path, and `configs`, `migrationbackup`, `publishProfiles` under `.fx` folder.
+The existing project configuration files under the `.fx` folder are outdated and incompatible with the current version of Teams Toolkit. So some clean-ups are made and now your `.fx` folder will consist:
+* `azure.parameters.*.json:` Parameters for Provisioning Azure Resource, specific for each environment.
+* `config.*.json:` Configurations for Manifest, AAD, etc, specific for each environment.
+* `projectSettings.json:` Project Settings, including capabilities, programming languages, etc.
+* `localSettings.json:` Local Settings, including necessary information to start debugging the project locally.
 
-All other original files will be deleted except `subscriptioninfo.json` under `.fx` folder.
+`templates` folder will consist: 
+* `appPackage:` The manifest template and resources for creating a Teams App. You generally only have to modify `config.*.json` rather than this template for customizing your Teams App.
+* `azure:` The ARM templates for provisioning Azure resources. The ARM templates are authored using [Bicep](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview).
 
-## Backup Your Project
-We recommend you initialize your project with `git` or backup the project before migration to better tracking file changes. Teams Toolkit will automatically backup `.fx/env.default.json` file to `.fx/migrationbackup`.
+We will update those files according to your original project settings and move existing ones into `.backup` folder for your reference. You can safely delete the `.backup` folder after you have compared and reviewed the changes.
 
 ## Required Steps After Migration
 If you have already provisioned the bot service before the migration, and you want to continue to use the bot service after the migration, please provision again. We will create a new bot service for this project, and other resources will not change.
