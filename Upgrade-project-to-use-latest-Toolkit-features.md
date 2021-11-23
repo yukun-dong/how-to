@@ -380,3 +380,121 @@ Notes:
     }
 }
 ```
+
+## Upgrade SPFX project manually
+You can manually upgrade your project in just two steps:
+1. Check and copy the three files: `env.default.json`, `settings.json`, `manifest.source.json`.
+2. Reload VSCode and confirm the upgrade dialog.
+
+### env.default.json
+Copy the following content to the file named `env.default.json` under the `.fx` folder.
+```json
+{
+    "solution": {},
+    "fx-resource-spfx": {},
+    "fx-resource-local-debug": {},
+    "fx-resource-appstudio": {}
+}
+```
+
+### settings.json
+Copy the following content to the file named `settings.json` under the `.fx` folder.
+
+Notes:
+  * Replace the value of `appName / projectId / programmingLanguage` with yours.
+
+```json
+{
+    "appName": "{your appName}",
+    "projectId": "{your projectId}",
+    "solutionSettings": {
+        "name": "fx-solution-azure",
+        "version": "1.0.0",
+        "hostType": "SPFx",
+        "azureResources": [],
+        "capabilities": [
+            "Tab"
+        ],
+        "activeResourcePlugins": [
+            "fx-resource-spfx",
+            "fx-resource-local-debug",
+            "fx-resource-appstudio"
+        ]
+    },
+    "version": "2.0.0",
+    "isFromSample": false,
+    "programmingLanguage": "typescript"
+}
+```
+
+### manifest.source.json
+Copy the following content to the file named `manifest.source.json` under the `appPackge` folder.
+
+Notes:
+  * `color.png` and `outline.png` should be in the `appPackage` folder.
+  * Replace `{your web part name}` with your app name.
+  * Replace `{your appid}` with your app id.
+```json
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.11/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.11",
+    "packageName": "{your web part name}",
+    "id": "{your appid}",
+    "version": "1.0.0",
+    "developer": {
+        "name": "SPFx + Teams Dev",
+        "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+        "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+        "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+    },
+    "name": {
+        "short": "{your web part name}"
+    },
+    "description": {
+        "short": "{your web part name}",
+        "full": "{your web part name}"
+    },
+    "icons": {
+        "outline": "outline.png",
+        "color": "color.png"
+    },
+    "accentColor": "#004578",
+    "staticTabs": [
+        {
+            "entityId": "7ea8b186-1636-471a-9e96-08d89f68771e",
+            "name": "{your web part name}",
+            "contentUrl": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest=/_layouts/15/teamshostedapp.aspx%3Fteams%26personal%26componentId=7ea8b186-1636-471a-9e96-08d89f68771e%26forceLocale={locale}",
+            "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+            "scopes": [
+                "personal"
+            ]
+        }
+    ],
+    "configurableTabs": [
+        {
+            "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=7ea8b186-1636-471a-9e96-08d89f68771e%26forceLocale={locale}",
+            "canUpdateConfiguration": true,
+            "scopes": [
+                "team"
+            ]
+        }
+    ],
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],
+    "validDomains": [
+        "*.login.microsoftonline.com",
+        "*.sharepoint.com",
+        "*.sharepoint-df.com",
+        "spoppe-a.akamaihd.net",
+        "spoprod-a.akamaihd.net",
+        "resourceseng.blob.core.windows.net",
+        "msft.spoppe.com"
+    ],
+    "webApplicationInfo": {
+        "resource": "https://{teamSiteDomain}",
+        "id": "00000003-0000-0ff1-ce00-000000000000"
+    }
+}
+```
