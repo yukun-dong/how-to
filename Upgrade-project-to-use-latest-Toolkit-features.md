@@ -433,12 +433,12 @@ Copy the following content to the file named `manifest.source.json` under the `a
 Notes:
   * `color.png` and `outline.png` should be in the `appPackage` folder.
   * Replace `{your web part name}` with your app name.
-  * Replace `{your appid}` with your app id.
+  * Replace `{your entityId}` with your entity id.
 ```json
 {
     "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.11/MicrosoftTeams.schema.json",
     "manifestVersion": "1.11",
-    "packageName": "{your web part name}",
+    "packageName": "{your entityId}",
     "id": "{your appid}",
     "version": "1.0.0",
     "developer": {
@@ -461,9 +461,9 @@ Notes:
     "accentColor": "#004578",
     "staticTabs": [
         {
-            "entityId": "7ea8b186-1636-471a-9e96-08d89f68771e",
+            "entityId": "{your entityId}",
             "name": "{your web part name}",
-            "contentUrl": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest=/_layouts/15/teamshostedapp.aspx%3Fteams%26personal%26componentId=7ea8b186-1636-471a-9e96-08d89f68771e%26forceLocale={locale}",
+            "contentUrl": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest=/_layouts/15/teamshostedapp.aspx%3Fteams%26personal%26componentId={your entityId}%26forceLocale={locale}",
             "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
             "scopes": [
                 "personal"
@@ -472,7 +472,7 @@ Notes:
     ],
     "configurableTabs": [
         {
-            "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=7ea8b186-1636-471a-9e96-08d89f68771e%26forceLocale={locale}",
+            "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId={your entityId}%26forceLocale={locale}",
             "canUpdateConfiguration": true,
             "scopes": [
                 "team"
