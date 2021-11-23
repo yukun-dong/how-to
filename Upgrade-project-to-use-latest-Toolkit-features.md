@@ -133,7 +133,8 @@ You can manually upgrade your project in just two steps:
 1. Check and copy the three files: `env.default.json`, `settings.json`, `manifest.source.json`.
 2. Reload VSCode and confirm the upgrade dialog.
 
-### env.default.json
+**env.default.json**
+
 Copy the following content to the file named `env.default.json` under the `.fx` folder.
 
 Notes:
@@ -160,7 +161,8 @@ Notes:
 }
 ```
 
-### settings.json
+**settings.json**
+
 Copy the following content to the file named `settings.json` under the `.fx` folder.
 
 Notes:
@@ -200,7 +202,8 @@ Notes:
 }
 ```
 
-### manifest.source.json
+**manifest.source.json**
+
 Copy the following content to the file named `manifest.source.json` under the `appPackge` folder.
 
 Notes:
@@ -386,7 +389,8 @@ You can manually upgrade your SPFx project in just two steps:
 1. Check and copy the three files: `env.default.json`, `settings.json`, `manifest.source.json`.
 2. Reload VSCode and confirm the upgrade dialog.
 
-### env.default.json
+**env.default.json**
+
 Copy the following content to the file named `env.default.json` under the `.fx` folder.
 ```json
 {
@@ -397,7 +401,8 @@ Copy the following content to the file named `env.default.json` under the `.fx` 
 }
 ```
 
-### settings.json
+**settings.json**
+
 Copy the following content to the file named `settings.json` under the `.fx` folder.
 
 Notes:
@@ -427,7 +432,8 @@ Notes:
 }
 ```
 
-### manifest.source.json
+**manifest.source.json**
+
 Copy the following content to the file named `manifest.source.json` under the `appPackge` folder.
 
 Notes:
