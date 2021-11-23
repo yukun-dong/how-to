@@ -20,7 +20,7 @@ The existing project configuration files under the `.fx` folder are outdated and
 We will update those files according to your original project settings and move existing ones into `.backup` folder for your reference. You can safely delete the `.backup` folder after you have compared and reviewed the changes.
 
 ## Required Steps After Migration
-If you have already provisioned the bot service before the migration, and you want to continue to use the bot service after the migration, please provision again. We will create a new bot service for this project, and other resources will not change.
+If your project contains bot capability which has already been successfully provisioned and just got upgrade by Toolkit, the project requires re-provision of bot Azure resources. Since before upgrade, the project uses Bot Channels Registration which is the [legacy](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-4.0&tabs=userassigned#create-the-resource), and toolkits helps upgrade to Azure Bot Service now. So you will be asked to provision again before deploy or publish the project. If you still want to use existing bot, please follow [these steps](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-4.0&tabs=userassigned#create-the-resource)
 
 ## Manual Work to Use Existing Bot
 There you need to modify three files
