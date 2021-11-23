@@ -128,3 +128,255 @@ SQL_PASSWORD=YOUR_SQL_USER_PASSWORD
 * Local Debug will create a new teams App added to the Teams Developer Portal after migration success. You can get the app id from `.fx/configs/localSettings.json` file.
 * Once upgrade success, if you provision resource in a new group resource using a newly created environment, this operation will cause an error. For example, you create a new environment named as test, in order to provision successful, just delete all parameters which value has exact value in  `.fx/configs/azure.parameters.test.json` 
 
+## Upgrade your project manually
+You can manually upgrade your project in just two steps:
+1. Check and copy the three files: `env.default.json`, `settings.json`, `manifest.source.json`.
+2. Reload VSCode and confirm the upgrade dialog.
+
+### env.default.json
+Copy the following content to the file named `env.default.json` under the `.fx` folder.
+
+Notes:
+  * If your project does not have `tabs` folder
+    - Delete `trustDevCert`
+  * If your project does not have `bot` folder
+    - Delete `fx-resource-bot`
+    - Delete `skipNgrok` and `localBotEndpoint` in fx-resource-local-debug
+```json
+{
+    "solution": {},
+    "fx-resource-frontend-hosting": {},
+    "fx-resource-bot": {
+        "skuName": "F1"
+    },
+    "fx-resource-aad-app-for-teams": {},
+    "fx-resource-local-debug": {
+        "trustDevCert": "{{fx-resource-local-debug.trustDevCert}}",
+        "skipNgrok": "{{fx-resource-local-debug.skipNgrok}}",
+        "localBotEndpoint": "{{fx-resource-local-debug.localBotEndpoint}}"
+    },
+    "fx-resource-appstudio": {},
+    "fx-resource-simple-auth": {}
+}
+```
+
+### settings.json
+Copy the following content to the file named `settings.json` under the `.fx` folder.
+
+Notes:
+  * Replace the value of `appName / projectId / programmingLanguage` with yours.
+  * If your project does not have `tabs` folder:
+    - Delete `Tab` in capabilities
+    - Delete `fx-resource-frontend-hosting` and `fx-resource-simple-auth` in activeResourcePlugins
+  * If your project does not have `bot` folder
+    - Delete `Bot` and `MessagingExtension` in capabilities
+    - Delete `fx-resource-bot` in activeResourcePlugins
+```json
+{
+    "appName": "{your appName}",
+    "projectId": "{your projectId}",
+    "solutionSettings": {
+        "name": "fx-solution-azure",
+        "version": "1.0.0",
+        "hostType": "Azure",
+        "azureResources": [],
+        "capabilities": [
+            "Tab",
+            "Bot",
+            "MessagingExtension"
+        ],
+        "activeResourcePlugins": [
+            "fx-resource-frontend-hosting",
+            "fx-resource-bot",
+            "fx-resource-aad-app-for-teams",
+            "fx-resource-local-debug",
+            "fx-resource-appstudio",
+            "fx-resource-simple-auth"
+        ]
+    },
+    "version": "2.0.0",
+    "isFromSample": false,
+    "programmingLanguage": "{javascript or typescript}"
+}
+```
+
+### manifest.source.json
+Copy the following content to the file named `manifest.source.json` under the `appPackge` folder.
+
+Notes:
+  * `color.png` and `outline.png` should be in the `appPackage` folder.
+  * Replace `{your appName}` with your app name.
+  * If your project does not have `tabs` folder
+    - Replace `"configurableTabs": [...]` and `"staticTabs": [...]` with `"configurableTabs": []` and `"staticTabs": []`
+  * If your project does not have `bot` folder
+    - Replace `"bots": [...]` and `"composeExtensions": [...]` with `"bots": []` and `"composeExtensions": []`
+```json
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.11/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.11",
+    "version": "1.0.0",
+    "id": "{appid}",
+    "packageName": "com.microsoft.teams.extension",
+    "developer": {
+        "name": "Teams App, Inc.",
+        "websiteUrl": "{baseUrl}",
+        "privacyUrl": "{baseUrl}/index.html#/privacy",
+        "termsOfUseUrl": "{baseUrl}/index.html#/termsofuse"
+    },
+    "icons": {
+        "color": "color.png",
+        "outline": "outline.png"
+    },
+    "name": {
+        "short": "{your appName}",
+        "full": "This field is not used"
+    },
+    "description": {
+        "short": "Short description of {your appName}.",
+        "full": "Full description of {your appName}."
+    },
+    "accentColor": "#FFFFFF",
+    "bots": [
+        {
+            "botId": "{botId}",
+            "scopes": [
+                "personal",
+                "team",
+                "groupchat"
+            ],
+            "supportsFiles": false,
+            "isNotificationOnly": false,
+            "commandLists": [
+                {
+                    "scopes": [
+                        "personal",
+                        "team",
+                        "groupchat"
+                    ],
+                    "commands": [
+                        {
+                            "title": "welcome",
+                            "description": "Resend welcome card of this Bot"
+                        },
+                        {
+                            "title": "learn",
+                            "description": "Learn about Adaptive Card and Bot Command"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "composeExtensions": [
+        {
+            "botId": "{botId}",
+            "commands": [
+                {
+                    "id": "createCard",
+                    "context": [
+                        "compose"
+                    ],
+                    "description": "Command to run action to create a Card from Compose Box",
+                    "title": "Create Card",
+                    "type": "action",
+                    "parameters": [
+                        {
+                            "name": "title",
+                            "title": "Card title",
+                            "description": "Title for the card",
+                            "inputType": "text"
+                        },
+                        {
+                            "name": "subTitle",
+                            "title": "Subtitle",
+                            "description": "Subtitle for the card",
+                            "inputType": "text"
+                        },
+                        {
+                            "name": "text",
+                            "title": "Text",
+                            "description": "Text for the card",
+                            "inputType": "textarea"
+                        }
+                    ]
+                },
+                {
+                    "id": "shareMessage",
+                    "context": [
+                        "message"
+                    ],
+                    "description": "Test command to run action on message context (message sharing)",
+                    "title": "Share Message",
+                    "type": "action",
+                    "parameters": [
+                        {
+                            "name": "includeImage",
+                            "title": "Include Image",
+                            "description": "Include image in Hero Card",
+                            "inputType": "toggle"
+                        }
+                    ]
+                },
+                {
+                    "id": "searchQuery",
+                    "context": [
+                        "compose",
+                        "commandBox"
+                    ],
+                    "description": "Test command to run query",
+                    "title": "Search",
+                    "type": "query",
+                    "parameters": [
+                        {
+                            "name": "searchQuery",
+                            "title": "Search Query",
+                            "description": "Your search query",
+                            "inputType": "text"
+                        }
+                    ]
+                }
+            ],
+            "messageHandlers": [
+                {
+                    "type": "link",
+                    "value": {
+                        "domains": [
+                            "*.botframework.com"
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "configurableTabs": [
+        {
+            "configurationUrl": "{baseUrl}/index.html#/config",
+            "canUpdateConfiguration": true,
+            "scopes": [
+                "team",
+                "groupchat"
+            ]
+        }
+    ],
+    "staticTabs": [
+        {
+            "entityId": "index",
+            "name": "Personal Tab",
+            "contentUrl": "{baseUrl}/index.html#/tab",
+            "websiteUrl": "{baseUrl}/index.html#/tab",
+            "scopes": [
+                "personal"
+            ]
+        }
+    ],
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],
+    "validDomains": [],
+    "webApplicationInfo": {
+        "id": "{appClientId}",
+        "resource": "{webApplicationInfoResource}"
+    }
+}
+```
