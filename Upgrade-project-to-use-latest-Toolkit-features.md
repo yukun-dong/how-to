@@ -382,7 +382,7 @@ Notes:
 ```
 
 ## Upgrade SPFX project manually
-You can manually upgrade your project in just two steps:
+You can manually upgrade your SPFX project in just two steps:
 1. Check and copy the three files: `env.default.json`, `settings.json`, `manifest.source.json`.
 2. Reload VSCode and confirm the upgrade dialog.
 
