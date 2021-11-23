@@ -129,15 +129,13 @@ SQL_PASSWORD=YOUR_SQL_USER_PASSWORD
 * Once upgrade success, if you provision resource in a new group resource using a newly created environment, this operation will cause an error. For example, you create a new environment named as test, in order to provision successful, just delete all parameters which value has exact value in  `.fx/configs/azure.parameters.test.json` 
 
 ## Upgrade your project manually
-You can manually upgrade your project in just two steps:
-1. Check and copy the three files: `env.default.json`, `settings.json`, `manifest.source.json`.
-2. Reload VSCode and confirm the upgrade dialog.
+There are chances when upgrading will fail, you can still manually update configuration files to make sure it works with the Teams Toolkit, Here are the steps:
+1. Create or update these three files: `env.default.json`, `settings.json`, `manifest.source.json` under `.fx` folder based on the details below.
+2. Reload Visual Studio Code and click confirm in the upgrade dialog.
 
-**env.default.json**
 
-Copy the following content to the file named `env.default.json` under the `.fx` folder.
-
-Notes:
+### For Azure Based App
+1. Copy the following content to the file named **`env.default.json`** under the `.fx` folder. And make these updates if necessary:
   * If your project does not have `tabs` folder
     - Delete `trustDevCert`
   * If your project does not have `bot` folder
@@ -161,16 +159,12 @@ Notes:
 }
 ```
 
-**settings.json**
-
-Copy the following content to the file named `settings.json` under the `.fx` folder.
-
-Notes:
-  * Replace the value of `appName / projectId / programmingLanguage` with yours.
-  * If your project does not have `tabs` folder:
-    - Delete `Tab` in capabilities
-    - Delete `fx-resource-frontend-hosting` and `fx-resource-simple-auth` in activeResourcePlugins
-  * If your project does not have `bot` folder
+2. Copy the following content to the file named **`settings.json`** under the `.fx` folder. And make these updates if necessary:
+   * Replace the value of `appName / projectId / programmingLanguage` with yours.
+   * If your project does not have `tabs` folder:
+     - Delete `Tab` in capabilities
+     - Delete `fx-resource-frontend-hosting` and `fx-resource-simple-auth` in activeResourcePlugins
+   * If your project does not have `bot` folder
     - Delete `Bot` and `MessagingExtension` in capabilities
     - Delete `fx-resource-bot` in activeResourcePlugins
 ```json
@@ -202,11 +196,7 @@ Notes:
 }
 ```
 
-**manifest.source.json**
-
-Copy the following content to the file named `manifest.source.json` under the `appPackge` folder.
-
-Notes:
+3. Copy the following content to the file named **`manifest.source.json`** under the `appPackge` folder. And make these updates if necessary:
   * `color.png` and `outline.png` should be in the `appPackage` folder.
   * Replace `{your appName}` with your app name.
   * If your project does not have `tabs` folder
@@ -384,14 +374,9 @@ Notes:
 }
 ```
 
-## Upgrade your SPFx project manually
-You can manually upgrade your SPFx project in just two steps:
-1. Check and copy the three files: `env.default.json`, `settings.json`, `manifest.source.json`.
-2. Reload VSCode and confirm the upgrade dialog.
+### For SharePoint Based App
 
-**env.default.json**
-
-Copy the following content to the file named `env.default.json` under the `.fx` folder.
+Copy the following content to the file named **`env.default.json`** under the `.fx` folder.
 ```json
 {
     "solution": {},
@@ -401,11 +386,7 @@ Copy the following content to the file named `env.default.json` under the `.fx` 
 }
 ```
 
-**settings.json**
-
-Copy the following content to the file named `settings.json` under the `.fx` folder.
-
-Notes:
+Copy the following content to the file named **`settings.json`** under the `.fx` folder. And make these updates if necessary:
   * Replace the value of `appName / projectId / programmingLanguage` with yours.
 
 ```json
@@ -432,11 +413,7 @@ Notes:
 }
 ```
 
-**manifest.source.json**
-
-Copy the following content to the file named `manifest.source.json` under the `appPackge` folder.
-
-Notes:
+Copy the following content to the file named **`manifest.source.json`** under the `appPackge` folder. And make these updates if necessary:
   * `color.png` and `outline.png` should be in the `appPackage` folder.
   * Replace `{your web part name}` with your app name.
   * Replace `{your entityId}` with your entity id.
