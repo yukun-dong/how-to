@@ -22,7 +22,7 @@ We will update those files according to your original project settings and move 
 ## Required Steps After Migration
 If your project contains bot capability which has already been successfully provisioned and just got upgrade by Toolkit, the project requires re-provision bot resource. Since Bot Channels Registration become a [legacy production](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-4.0&tabs=userassigned#create-the-resource), toolkit helps upgrade Bot Channels Registration to Azure Bot Service, so you will be asked to provision again before deploy or publish the project. If you still want to use existing bot, please follow [these steps](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-4.0&tabs=userassigned#create-the-resource).
 
-### Manual Work to Use Existing Bot
+## Manual Work to Use Existing Bot
 There you need to modify three files
 1. Modify `./templates/azure/provision/bot.bicep` with following config  
     ```bicep
@@ -64,7 +64,7 @@ you need to remove the existing fx-resource-bot object, and add following fx-res
         }
     ```
 
-### Manual Work to Customize APIM
+## Manual Work to Customize APIM
 After upgrade project, APIM related services are defined in *./templates/azure/provision/apim.bicep* and *./templates/azure/teamsFx/apim.bicep* with parameters in *.fx/configs/azure.parameters.dev.json*.
 
 1. SKU, publisher name and publisher email of APIM service might be updated. To customize them, update SKU in *./templates/azure/provision/apim.bicep* directly and add `apimPublisherEmail` and `apimPublisherName` as customized parameters in *./.fx/configs/azure.parameters.dev.json*.
