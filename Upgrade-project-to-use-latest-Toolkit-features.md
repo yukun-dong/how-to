@@ -64,7 +64,7 @@ you need to remove the existing fx-resource-bot object, and add following fx-res
         }
     ```
 
-## Manual Work to Customize APIM
+### Manual Work to Customize APIM
 After upgrade project, APIM related services are defined in *./templates/azure/provision/apim.bicep* and *./templates/azure/teamsFx/apim.bicep* with parameters in *.fx/configs/azure.parameters.dev.json*.
 
 1. SKU, publisher name and publisher email of APIM service might be updated. To customize them, update SKU in *./templates/azure/provision/apim.bicep* directly and add `apimPublisherEmail` and `apimPublisherName` as customized parameters in *./.fx/configs/azure.parameters.dev.json*.
