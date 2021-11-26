@@ -31,10 +31,10 @@ Teams Toolkit now supports creating multiple environments for a project, and you
 
 ## What you should do after upgrading
 
-### Bot Project
+### Reprovision Bot Project
 If your project contains bot capability which has already been successfully provisioned and just got upgraded by Toolkit, the project requires re-provision bot resource. Since Bot Channels Registration become a [legacy production](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-4.0&tabs=userassigned#create-the-resource), the toolkit helps upgrade Bot Channels Registration to Azure Bot Service, so you will be asked to provision again before deploying or publishing the project. If you still want to use the existing bot, please follow [these steps](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-4.0&tabs=userassigned#create-the-resource).
 
-### Manual Work to Use Existing Bot
+Below are manual steps to use an existing Bot:
 There you need to modify three files
 1. Modify `./templates/azure/provision/bot.bicep` with following config  
     ```bicep
@@ -77,7 +77,7 @@ you need to remove the existing fx-resource-bot object, and add following fx-res
     ```
 
 ### Customize APIM Service
-After upgrade project, APIM related services are defined in *./templates/azure/provision/apim.bicep* and *./templates/azure/teamsFx/apim.bicep* with parameters in *.fx/configs/azure.parameters.dev.json*.
+Please note that **SKU**, **publisher email** and **publisher name** properties for APIM service will be updated based on the definition in `*./templates/azure/provision/apim.bicep*`, which might not be the same as your previous setting. If you prefer to keep previous values, you can customize the bicep file (*./templates/azure/provision/apim.bicep*) / parameter files (*.fx/configs/azure.parameters.dev.json*).
 
 1. SKU, publisher name and publisher email of APIM service might be updated. To customize them, update SKU in *./templates/azure/provision/apim.bicep* directly and add `apimPublisherEmail` and `apimPublisherName` as customized parameters in *./.fx/configs/azure.parameters.dev.json*.
     ```bicep
@@ -135,6 +135,9 @@ SQL_DATABASE_NAME=YOUR_YOUR_DATABASE_NAME
 SQL_USER_NAME=YOUR_SQL_USER_NAME
 SQL_PASSWORD=YOUR_SQL_USER_PASSWORD
 ```
+
+### Change resource name when creating a new environment
+Teams Toolkit will reuse your provisioned resource when upgrading (except Bot Service), when you wish to add a new environment after project upgrading, please remember to change resource name in `{config.your_env_name.json}` to avoid name conflicts. 
 
 ## Known Issues
 * Local Debug will create a new teams App added to the Teams Developer Portal after migration success. You can get the app id from `.fx/configs/localSettings.json` file.
