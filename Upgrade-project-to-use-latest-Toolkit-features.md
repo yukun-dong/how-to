@@ -1,28 +1,40 @@
-Teams Toolkit continuously evolve to offer useful features for developers. Recently a group of new features are available to preview in insider features, such as provisioning Azure resources with ARM templates and managing multiple environments. These insider features will require an update to your existing project code structures. Teams Toolkit can automatically upgrade your original project to support Multiple Environments and ARM provision features.
+Teams Toolkit continuously evolves to offer more powerful features for developers. Recently a group of new features has been available to preview in insider features, such as provisioning Azure resources with ARM templates and managing multiple environments. These insider features will require an update to your existing project code structures. Teams Toolkit can automatically upgrade your original project to support Multiple Environments and ARM provision features.
 
-> Please note that ARM and multiple environment features will be enabled by default in the future release of Teams Toolkit. We thrive to make Teams Toolkit compatible with existing projects but long time backward compatibility is not 100% guaranteed thus we strongly recommend you updating your project configurations to continue using the latest Teams Toolkit.
+> Please note that ARM and multiple environment features will be enabled by default in the future release of Teams Toolkit. We thrive to make Teams Toolkit compatible with existing projects but long time backward compatibility is not 100% guaranteed thus we strongly recommend you update your project configurations to continue using the latest Teams Toolkit.
 
 ## How to Upgrade
 Teams Toolkit will automatically upgrade your original project folder structure and not change your custom code.
 
 ## File Structure Change
 Once migration succeeds, your project file structure will be changed.
+
+### Project Configuration Files
 The existing project configuration files under the `.fx` folder are outdated and incompatible with the current version of Teams Toolkit. So some clean-ups are made and now your `.fx` folder will consist:
 * `azure.parameters.*.json:` Parameters for Provisioning Azure Resource, specific for each environment.
 * `config.*.json:` Configurations for Manifest, AAD, etc, specific for each environment.
 * `projectSettings.json:` Project Settings, including capabilities, programming languages, etc.
 * `localSettings.json:` Local Settings, including necessary information to start debugging the project locally.
 
-`templates` folder will consist: 
-* `appPackage:` The manifest template and resources for creating a Teams App. You generally only have to modify `config.*.json` rather than this template for customizing your Teams App.
-* `azure:` The ARM templates for provisioning Azure resources. The ARM templates are authored using [Bicep](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview).
-
 We will update those files according to your original project settings and move existing ones into `.backup` folder for your reference. You can safely delete the `.backup` folder after you have compared and reviewed the changes.
 
-## Required Steps After Migration
-If your project contains bot capability which has already been successfully provisioned and just got upgrade by Toolkit, the project requires re-provision bot resource. Since Bot Channels Registration become a [legacy production](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-4.0&tabs=userassigned#create-the-resource), toolkit helps upgrade Bot Channels Registration to Azure Bot Service, so you will be asked to provision again before deploy or publish the project. If you still want to use existing bot, please follow [these steps](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-4.0&tabs=userassigned#create-the-resource).
+### ARM Template and Manifest Template File.
+Pre-cooked ARM templates tailored to your project will be automatically added under the `templates/azure` folder. The ARM templates are authored using [Bicep](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview). 
 
-## Manual Work to Use Existing Bot
+Teams app manifest files are located in `templates/appPackage` folder. The folder contains two manifest files:
+* `manifest.local.template.json`: Manifest file for Teams app running locally.
+* `manifest.remote.template.json`: Manifest file for Teams app running remotely (After deployed to Azure).
+
+Both files contain template arguments with `{...}` statements which will be replaced at build time. You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more information.
+
+### Environment Specific Configuration Files
+Teams Toolkit now supports creating multiple environments for a project, and you can customize the configurations for a specific environment, for example using different app names in the manifest for different environments. You can read more about what you can do in [this wiki](https://github.com/OfficeDev/TeamsFx/wiki/Enable-Preview-Features-in-Teams-Toolkit#managing-multiple-environments-in-teams-toolkit).
+
+## What you should do after upgrading
+
+### Bot Project
+If your project contains bot capability which has already been successfully provisioned and just got upgraded by Toolkit, the project requires re-provision bot resource. Since Bot Channels Registration become a [legacy production](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-4.0&tabs=userassigned#create-the-resource), the toolkit helps upgrade Bot Channels Registration to Azure Bot Service, so you will be asked to provision again before deploying or publishing the project. If you still want to use the existing bot, please follow [these steps](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-4.0&tabs=userassigned#create-the-resource).
+
+### Manual Work to Use Existing Bot
 There you need to modify three files
 1. Modify `./templates/azure/provision/bot.bicep` with following config  
     ```bicep
@@ -64,7 +76,7 @@ you need to remove the existing fx-resource-bot object, and add following fx-res
         }
     ```
 
-## Manual Work to Customize APIM
+### Customize APIM Service
 After upgrade project, APIM related services are defined in *./templates/azure/provision/apim.bicep* and *./templates/azure/teamsFx/apim.bicep* with parameters in *.fx/configs/azure.parameters.dev.json*.
 
 1. SKU, publisher name and publisher email of APIM service might be updated. To customize them, update SKU in *./templates/azure/provision/apim.bicep* directly and add `apimPublisherEmail` and `apimPublisherName` as customized parameters in *./.fx/configs/azure.parameters.dev.json*.
@@ -99,7 +111,7 @@ After upgrade project, APIM related services are defined in *./templates/azure/p
         }
     }
     ```
-2. If you prefer using an existing APIM service and don't want toolkit to update it. You can update Bicep file *./templates/azure/provision/apim.bicep* to use existing APIM service:
+2. If you prefer using an existing APIM service and don't want the toolkit to update it. You can update Bicep file *./templates/azure/provision/apim.bicep* to use existing APIM service:
     ```bicep
     resource apimService 'Microsoft.ApiManagement/service@2020-12-01' existing = {
       name: apimServiceName
@@ -113,7 +125,7 @@ After upgrade project, APIM related services are defined in *./templates/azure/p
     }
     ```
 
-## Manual Work to Local Debug with SQL
+### Local Debug with SQL
 Teams Toolkit support connecting to an Azure SQL database when local debug the Teams app.
 You can connect to a SQL instance for frontend (tabs/), function (api/) and bot (bot/) components. There may already be a `.env.teamsfx.local` file under each component folder. If not you can create a new `.env.teamsfx.local` by yourself, and add the following environment variables in `.env.teamsfx.local` to specify the SQL connection information:
 
@@ -126,7 +138,7 @@ SQL_PASSWORD=YOUR_SQL_USER_PASSWORD
 
 ## Known Issues
 * Local Debug will create a new teams App added to the Teams Developer Portal after migration success. You can get the app id from `.fx/configs/localSettings.json` file.
-* Once upgrade success, if you provision resource in a new group resource using a newly created environment, this operation will cause an error. For example, you create a new environment named as test, in order to provision successful, just delete all parameters which value has exact value in  `.fx/configs/azure.parameters.test.json` 
+* Once upgrade success, if you provision resources in a new group resource using a newly created environment, this operation will cause an error. For example, you create a new environment named as test, in order to provision successful, just delete all parameters which value has exact value in  `.fx/configs/azure.parameters.test.json` 
 
 ## Upgrade your project manually
 There are chances when upgrading will fail, you can still manually update configuration files to make sure it works with the Teams Toolkit, Here are the steps:
