@@ -137,7 +137,7 @@ SQL_PASSWORD=YOUR_SQL_USER_PASSWORD
 ```
 
 ### Change resource name when creating a new environment
-Teams Toolkit will reuse your provisioned resource when upgrading (except Bot Service), when you wish to add a new environment after project upgrading, please remember to change resource name in `{config.your_env_name.json}` to avoid name conflicts. 
+Teams Toolkit will reuse your provisioned resource when upgrading (except Bot Service), when you wish to add a new environment after project upgrading, please remember to change resource name in `azure.parameters.{your_env_name}.json` to avoid name conflicts. 
 
 ## Known Issues
 * Local Debug will create a new teams App added to the Teams Developer Portal after migration success. You can get the app id from `.fx/configs/localSettings.json` file.
