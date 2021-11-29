@@ -502,7 +502,7 @@ If you still want to restore your project configuration after the upgrade is suc
 1. Copy the `.backup/.fx` folder to your project root path.
 2. Copy the `.backup/appPackage` folder to your project root path.
 3. Open VSCode settings and make sure the setting `fx-extension: (Obsolete)WorkOnTeamsToolkitV2ProjectConfigurationFiles` is enabled.
-   > Temporarily work on Teams Toolkit V2 project configuration files. This setting is obsolete and will be removed soon.
+> Temporarily work on Teams Toolkit V2 project configuration files. This setting is obsolete and will be removed soon.
 4. Reload VSCode.
 
 If your upgrade is failed, you just need to do steps **3** and **4**.
