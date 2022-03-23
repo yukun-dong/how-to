@@ -21,11 +21,13 @@ After initializing the project, you can view the project folders and files in th
 ## Scenario 1: Send Notification to Teams
 
 Sending a message in response to stimulus tasks through conversations.
+
 // TODO
 
 ## Scenario 2: Build Command And Response
 
 Running simple and repetitive automated tasks through conversations.
+
 // TODO
 
 ## Scenario 3: Embed your existing web pages in Teams
