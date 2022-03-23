@@ -12,7 +12,7 @@ After initializing the project, you can view the project folders and files in th
 |- | -|
 |`.fx/configs/config.local.json`| Configuration file for local environment |
 |`.fx/configs/config.dev.json`| Configuration file for dev environment |
-|`.fx/configs/projectSettings.json`| Global project settings , which apply to all environments |
+|`.fx/configs/projectSettings.json`| Global project settings, which apply to all environments |
 |`templates/appPackage/manifest.template.json`|Teams app manifest template|
 |`templates/appPackage/resources`|Teams app's icon referenced by manifest template|
 
@@ -20,13 +20,17 @@ After initializing the project, you can view the project folders and files in th
 
 ## Scenario 1: Send Notification to Teams
 
+Sending a message in response to stimulus tasks through conversations.
 // TODO
 
 ## Scenario 2: Build Command And Response
 
+Running simple and repetitive automated tasks through conversations.
 // TODO
 
 ## Scenario 3: Embed your existing web pages in Teams
+
+Integrate with your existing web page application to build a Teams app.
 
 * Step 1: launch your existing app, and get the exposed public endpoint.
 * Step 2: define variables with above endpoint inside the config file.
