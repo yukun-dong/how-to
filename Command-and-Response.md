@@ -1,4 +1,4 @@
-# Command and Response Bot
+# Command and Response with Bot Command Manu
 A command and response bot is an app that responds to simple commands sent in Teams chat and replies a result in meaningful ways.
 
 ## How to add command and response
