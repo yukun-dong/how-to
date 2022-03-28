@@ -9,28 +9,7 @@ TODO.
     * The command `title` that user type in the message compose area to trigger the command.
     * The `command` description for this command.
 
-    ```json
-    "commandLists": [
-        {
-            "scopes": [
-                "personal",
-                "team",
-                "groupchat"
-            ],
-            "commands": [
-                {
-                    "title": "command1",
-                    "description": "description of command1"
-                },
-                // add more command definition here
-                // {
-                //     "title": "<your-command-name>",
-                //     "description": "<your-command-description>"
-                // }
-            ]
-        }
-    ]
-    ```
+      ![manifest-add-command](https://user-images.githubusercontent.com/10163840/160374446-7fd164d6-63c9-47b2-9bf1-0d6a88731e8d.png)
 
 1. Handle command in your bot
     * Add a .ts/.js file (e.g. `xxxCommandHandler.ts`) under `bot/src` to handle your bot command, and include the following boilerplate code to get-started:
