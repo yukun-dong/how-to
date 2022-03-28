@@ -1,6 +1,9 @@
 # Command and Response with Bot Command Manu
 A command and response bot is an app that responds to simple commands sent in Teams chat and replies a result in meaningful ways.
 
+## Take a tour of your app source code
+TODO
+
 ## How to add command and response
 1. Add command definition in manifest. You can edit the manifest template file `templates\appPackage\manifest.template.json` to include:
     * The command `title` that user type in the message compose area to trigger the command.
