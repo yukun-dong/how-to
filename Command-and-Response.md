@@ -4,7 +4,7 @@ A command and response bot is an app that responds to simple commands sent in Te
 ## How to create a command-response bot
 TODO.
 
-## How to incrementally add a command-response bot into an existing project
+## How to incrementally add a command-response bot
 TODO.
 
 ## Take a tour of your app source code
