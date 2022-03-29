@@ -1,6 +1,12 @@
 # Command and Response with Bot Command Manu
 A command and response bot is an app that responds to simple commands sent in Teams chat and replies a result in meaningful ways.
 
+## How to create a command-response bot
+TODO.
+
+## How to incrementally add a command-response bot into an existing project
+TODO.
+
 ## Take a tour of your app source code
 After scaffolding or adding a command-response bot, you will find your bot's source code under `bot/` folder:
 | File name | Contents |
