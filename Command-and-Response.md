@@ -16,8 +16,8 @@ After scaffolding or adding a command-response bot, you will find your bot's sou
 |`bot/src/helloworldCommandHandler.ts`| A hello world command handler to process a `helloworld` command and return an adaptive card as response |
 |`bot/src/adaptiveCards/*.json`| Adaptive card JSON file used as your command response |
 
-
-# How to add more command and response
+# Development
+## How to add more command and response
 1. Add command definition in manifest. You can edit the manifest template file `templates\appPackage\manifest.template.json` to include:
     * The command `title` that user type in the message compose area to trigger the command.
     * The `command` description for this command.
@@ -67,3 +67,6 @@ Open `bot\src\internal\initialize.ts`, update the call to `ConversationBot.initi
     ```
 
 Now, you are all done with the code development of adding a new command and response into your bot app. You can just press `F5` to loca debug with the command-response bot, or use provision and deploy command to deploy the change to Azure.
+
+## How to extend command-response bot for notification
+TODO
