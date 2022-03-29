@@ -2,9 +2,16 @@
 A command and response bot is an app that responds to simple commands sent in Teams chat and replies a result in meaningful ways.
 
 ## Take a tour of your app source code
-TODO.
+After scaffolding or adding a command-response bot, you will find your bot's source code under `bot/` folder:
+| File name | Contents |
+|- | -|
+|`bot/src/internal/initialize.ts`| Create the global bot adapter and initialize with Teams Frameworks|
+|`bot/src/index.ts`| Server code to host the bot app and listen on `/api/messages` to process Teams activity with Bot Framework |
+|`bot/src/helloworldCommandHandler.ts`| A hello world command handler to process a `helloworld` command and return an adaptive card as response |
+|`bot/src/adaptiveCards/*.json`| Adaptive card JSON file used as your command response |
 
-## How to add command and response
+
+## How to add more command and response
 1. Add command definition in manifest. You can edit the manifest template file `templates\appPackage\manifest.template.json` to include:
     * The command `title` that user type in the message compose area to trigger the command.
     * The `command` description for this command.
