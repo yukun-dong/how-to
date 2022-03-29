@@ -1,0 +1,191 @@
+# Notification via Teams Bot
+
+A notifiction bot is an app that proactively sends messages in Teams channel / group chat / personal chat.
+
+## Create a new Notification Project
+
+In VSCode, open Teams Toolkit extension:
+- Click `Create a new Teams app` or from command palette `Teams: Create a new Teams app`.
+- Select `Create a new Teams app`.
+  
+  ![Create a new Teams app](notification/create-1.png)
+- Select `Notification`.
+  
+  ![Create Notification](notification/create-2.png)
+- Select triggers. `(Restify)` means the created app code is restify web app, and `(Azure Functions)` means the created app code is Azure Functions.
+  
+  ![Select Triggers](notification/create-3.png)
+- Enter your app name then click `OK`.
+
+// TODO (CLI)
+
+## Take a tour of your app source code
+
+The created app is a normal TeamsFx project that will contain following folders:
+
+| Folder | Contents |
+| - | - |
+| `.fx` | Project level settings and configurations |
+| `.vscode` | VSCode files for local debug |
+| `bot` | The bot source code |
+| `templates` |Templates for Teams app manifest and corresponding Azure resources|
+
+### Restify hosted Bot
+
+If you select `(Restify)` trigger(s), the `bot/` folder is restify web app with following content:
+
+| File / Folder | Contents |
+| - | - |
+| `src/adaptiveCards/` | Adaptive card templates |
+| `src/internal/` | Generated initialize code for notification functionality |
+| `src/adaptiveCard.*s` | Adaptive card builder utilities |
+| `src/cardModels.*s` | Adaptive card data models |
+| `src/index.*s` | The entrypoint to handle bot messages and send notifications |
+| `.gitignore` | The git ignore file to exclude local files from bot project |
+| `package.json` | The NPM package file for bot project |
+
+### Azure Functions hosted Bot
+
+If you select `(Azure Functions)` trigger(s), the `bot/` folder is azure functions app with following content:
+
+| File / Folder | Contents |
+| - | - |
+| `messageHandler/` | The function to handle bot messages |
+| `*Trigger/` | The function to trigger notification |
+| `src/adaptiveCards/` | Adaptive card templates |
+| `src/internal/` | Generated initialize code for notification functionality |
+| `src/adaptiveCard.*s` | Adaptive card builder utilities |
+| `src/cardModels.*s` | Adaptive card data models |
+| `src/*Trigger.*s` | The entrypoint of each notification trigger |
+| `.funcignore` | The azure functions ignore file to exclude local files |
+| `.gitignore` | The git ignore file to exclude local files from bot project |
+| `host.json` | The azure functions host file |
+| `local.settings.json` | The azure functions local setting file |
+| `package.json` | The NPM package file for bot project |
+
+## How to send more notifications
+
+### Initialize
+
+To send notification, you need to initialize `ConversationBot` first. (Code already generated at `bot/src/internal/initialize.*s`)
+
+``` typescript
+// create your own bot framework adapter
+const adapter = new BotFrameworkAdapter(...);
+
+// initialize ConversationBot with notification enabled
+ConversationBot.initialize(adapter, { enableNotification: true });
+```
+
+### Customize Storage
+
+You can initialize with your own storage. This storage will be used to persist notification connections.
+
+``` typescript
+// create your own bot framework adapter
+const adapter = new BotFrameworkAdapter(...);
+
+// implement your own storage
+class MyStorage implements NotificationTargetStorage {...}
+const myStorage = new MyStorage(...);
+
+// initialize ConversationBot with notification enabled and customized storage
+ConversationBot.initialize(
+    adapter,
+    {
+        enableNotification: true,
+        storage: myStorage,
+    }
+);
+```
+
+> Note: It's recommended to use your own shared storage for production environment. If `storage` is not provided, a default local file storage will be used, which stores notification connections into:
+>   - *.notification.localstore.json* if running locally
+>   - *${process.env.TEMP}/.notification.localstore.json* if `process.env.RUNNING_ON_AZURE` is set to "1"
+
+### Notify
+
+A Teams bot can be installed into a team, or a group chat, or as personal app, depending on difference scopes.
+
+To send notification in team/channel:
+``` typescript
+// list all installation targets
+for (const target of await ConversationBot.installations()) {
+    // "Channel" means this bot is installed to a Team (default to notify General channel)
+    if (target.type === "Channel") {
+        // Directly notify the Team (to the default General channel)
+        await target.sendAdaptiveCard(...);
+
+        // List all members in the Team then notify individual person
+        const members = await target.members();
+        for (const member of members) {
+            await member.sendAdaptiveCard(...);
+        }
+
+        // List all channels in the Team then notify each channel
+        const channels = await target.channels();
+        for (const channel of channels) {
+            await channel.sendAdaptiveCard(...);
+        }
+    }
+}
+```
+
+To send notification in group chat
+``` typescript
+// list all installation targets
+for (const target of await ConversationBot.installations()) {
+    // "Group" means this bot is installe to a Group Chat
+    if (target.type === "Group") {
+        // Directly notify the Group Chat
+        await target.sendAdaptiveCard(...);
+
+        // List all members in the Group Chat then notify individual person
+        const members = await target.members();
+        for (const member of members) {
+            await member.sendAdaptiveCard(...);
+        }
+    }
+}
+```
+
+To send notification in personal chat
+``` typescript
+// list all installation targets
+for (const target of await ConversationBot.installations()) {
+    // "Person" means this bot is installed as Personal app
+    if (target.type === "Person") {
+        // Directly notify the individual person
+        await target.sendAdaptiveCard(...);
+    }
+}
+```
+
+## How notification works
+
+Technically, Bot Framework SDK provides the functionality to [proactively message in Teams](https://docs.microsoft.com/microsoftteams/platform/bots/how-to/conversations/send-proactive-messages?tabs=typescript). And TeamsFx SDK provides the functionality to manage bot's conversation references when bot event is triggered.
+
+Current TeamsFx SDK recognize following bot events:
+
+| Event | Behavior |
+| - | - |
+| Bot is installed | Add the target conversation reference to storage |
+| Bot is messaged / mentioned | Add the target conversation reference to storage if not exist yet |
+| Bot is uninstalled | Remove the target conversation reference from storage |
+| Team that bot installed in is deleted | Remove the target conversation reference from storage |
+| Team that bot installed in is restored | Add the target conversation reference to storage |
+
+When notifying, TeamsFx SDK creates new conversation from the selected conversation reference and send messages. Or, for advanced usage, you can directly access the conversation reference to execute your own bot logic:
+``` typescript
+// list all installation targets
+for (const target of await ConversationBot.installations()) {
+    // call Bot Framework's adapter.continueConversation()
+    await target.adapter.continueConversation(target.conversationReference, async (context) => {
+        // your own bot logic
+        await context...
+    });
+}
+```
+
+# Notification via Incoming Webhook
+//TODO (Sample)
