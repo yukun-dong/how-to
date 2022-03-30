@@ -17,7 +17,13 @@ In VSCode, open Teams Toolkit extension:
   ![Select Triggers](notification/create-3.png)
 - Enter your app name then click `OK`.
 
-// TODO (CLI)
+In CLI, use `teamsfx new` command:
+- If you prefer interactive mode, just enter `teamsfx new` then use keyboard to select step-by-step.
+
+  ![Select in CLI](notification/create-cli-1.png)
+- Or, if you prefer non-interactive mode, enter all required parameters in one command.
+
+  `teamsfx new --interactive false --capabilities "notification" --bot-host-type-trigger "http-restify" --programming-language "typescript" --folder "./" --app-name MyAppName`
 
 ## Take a tour of your app source code
 
@@ -116,7 +122,7 @@ for (const target of await ConversationBot.installations()) {
         // Directly notify the Team (to the default General channel)
         await target.sendAdaptiveCard(...);
 
-        // List all members in the Team then notify individual person
+        // List all members in the Team then notify each member
         const members = await target.members();
         for (const member of members) {
             await member.sendAdaptiveCard(...);
@@ -135,12 +141,12 @@ To send notification in group chat
 ``` typescript
 // list all installation targets
 for (const target of await ConversationBot.installations()) {
-    // "Group" means this bot is installe to a Group Chat
+    // "Group" means this bot is installed to a Group Chat
     if (target.type === "Group") {
         // Directly notify the Group Chat
         await target.sendAdaptiveCard(...);
 
-        // List all members in the Group Chat then notify individual person
+        // List all members in the Group Chat then notify each member
         const members = await target.members();
         for (const member of members) {
             await member.sendAdaptiveCard(...);
@@ -186,6 +192,38 @@ for (const target of await ConversationBot.installations()) {
     });
 }
 ```
+
+## Frequently Asked Questions
+
+### How to add more triggers?
+
+It depends on your host type.
+
+- If you created Restify notification project, you can add HTTP trigger(s) by creating new routing
+
+  ``` typescript
+  server.post("/api/new-trigger", ...);
+  ```
+
+  Or add Timer trigger(s) via widely-used npm packages such as [cron](https://www.npmjs.com/package/cron), [node-schedule](https://www.npmjs.com/package/node-schedule), etc.
+
+  Or add other trigger(s) via other packages.
+
+- If you created Azure Functions notification project, you can add any Azure Functions trigger(s) with your own `function.json` file and code file(s). [Azure Functions supported triggers](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings?tabs=javascript#supported-bindings).
+
+### Why notification target is lost after restart / redeploy the bot app?
+
+Notification target connections are stored in the persistence storage. If you are using the default local file storage, Azure Web App and Azure Functions will clean up the local file when restart / redeploy.
+
+It's recommended to use your own shared storage for production environment. See [Customize Storage](#customize-storage).
+
+Or, as a workaround, after restart / redeplou, you can mention your bot in Teams chat / group / channel to re-add connections to the storage.
+
+### Can I know all the targets my bot is installed in, out of the notification project?
+
+There are [Microsoft Graph APIs](https://docs.microsoft.com/graph/api/team-list-installedapps) to list apps installed in a team / group / chat. So it may require you to iterate all your teams / groups / chats to get all the targets a certain app is installed in.
+
+In notification project, it uses persistence storage to store installation targets. See [How Notification Works](#how-notification-works) for more information.
 
 # Notification via Incoming Webhook
 //TODO (Sample)
