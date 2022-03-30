@@ -27,9 +27,6 @@ In CLI, use the `teamsfx new` command:
     teamsfx new --interactive false --capabilities "command-and-response" --programming-language "typescript" --folder "./" --app-name myAppName
     ```
 
-## How to incrementally add a command-response bot
-TODO.
-
 ## Take a tour of your app source code
 After scaffolding or adding a command-response bot, you will find your bot's source code under `bot/` folder:
 | File name | Contents |
