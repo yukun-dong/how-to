@@ -2,7 +2,30 @@
 A command and response bot is an app that responds to simple commands sent in Teams chat and replies a result in meaningful ways.
 
 ## How to create a command-response bot
-TODO.
+In Visual Studio Code:
+
+1. Open Teams Toolkit Select the Teams Toolkit ![teams-toolkit-sidebar-icon](https://user-images.githubusercontent.com/10163840/160794831-e0a370ce-888f-4176-bb26-f16a64b72118.png) icon in the Visual Studio Code sidebar or select `Teams: Create a new Teams app` from command palette.
+
+1. Select `Create a new Teams app`.
+    ![create-new-project](https://user-images.githubusercontent.com/10163840/160793793-630fe4dd-ff92-4d43-8bf4-47c12a10e0b5.png)
+
+1. Select the `Command and Response` capability
+    ![select-command-response](https://user-images.githubusercontent.com/10163840/160793837-7bb11e26-7608-44ca-8f06-ee7c9597a0f7.png)
+    
+1. Select `TypeScript` as the programming language.
+    ![select-typescript](https://user-images.githubusercontent.com/10163840/160793855-8c5f5821-5dd5-4194-8aa4-17844ae720df.png)
+
+1. Provide your app name and click `OK`.
+    ![provide-app-name](https://user-images.githubusercontent.com/10163840/160793811-014c9b88-4fc8-4785-bb51-a861f7433c91.png)
+
+In CLI, use the `teamsfx new` command: 
+
+- By default, `teamsfx new` goes into interactive mode and guides you through the process of creating a new Teams application.
+    ![cli-create-new](https://user-images.githubusercontent.com/10163840/160799625-6f956a40-0525-4906-8740-592384b7a9a8.png)
+- Or, if you prefer non-interactive mode, enter all required parameters in one command
+    ```
+    teamsfx new --interactive false --capabilities "command-and-response" --programming-language "typescript" --folder "./" --app-name myAppName
+    ```
 
 ## How to incrementally add a command-response bot
 TODO.
