@@ -71,7 +71,52 @@ After scaffolding or adding a command-response bot, you will find your bot's sou
 
     * Provide the `commandNameOrPattern` that can trigger this command handler. Usally it's the command name defined in your manifest, or you can use RegExp to handle a complex command (e.g. with some options in the command message)
 
-    * Implement `handleCommandReceived` to handle the command and return a response that will be used to nofity the end users.
+    * Implement `handleCommandReceived` to handle the command and return a response that will be used to notify the end users. 
+        * You can retrieve useful information for the conversation from the `context` parameter if needed. 
+        * You can build your response data in text format or follow the steps bellow to use adaptive card to render rich content in Teams:
+            * Prepare your adaptive card content in a JSON file （e.g. myCard.json) under the `bot/adaptiveCards` folder, here is a sample adaptive card JSON payload:
+                ```json
+                {
+                    "type": "AdaptiveCard",
+                    "body": [
+                    {
+                        "type": "TextBlock",
+                        "size": "Medium",
+                        "weight": "Bolder",
+                        "text": "Your Hello World Bot is Running"
+                    },
+                    {
+                        "type": "TextBlock",
+                        "text": "Congratulations! Your hello world bot is running. Click the documentation below to learn more about Bots and the Teams Toolkit.",
+                        "wrap": true
+                    }
+                    ],
+                    "actions": [
+                    {
+                        "type": "Action.OpenUrl",
+                        "title": "Bot Framework Docs",
+                        "url": "https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0"
+                    },
+                    {
+                        "type": "Action.OpenUrl",
+                        "title": "Teams Toolkit Docs",
+                        "url": "https://aka.ms/teamsfx-docs"
+                    }
+                    ],
+                    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                    "version": "1.4"
+                }
+                ```
+            * Import your card content into your code file
+              ```typescript
+              import myCard from "./adaptiveCards/myCard.json"
+              ```
+            * In your `handleCommandReceived` API, use `MessageBuilder.attachAdaptiveCardWithoutData` or `MessageBuilder.attachAdaptiveCard` to build a bot message activity with the adaptive card and return the message.
+                ```typescript              
+                return MessageBuilder.attachAdaptiveCardWithoutData(myCard);
+                ```
+
+            > Note: If you'd like to send adaptive card with dynamic data, please refer to [this section](#how-to-build-command-response-using-adaptive-card-with-dynamic-content).
   
 
 1. Register your command handler to the underlying bot.
@@ -92,7 +137,18 @@ The TeamsFx Command-Response Bots are created using the [Bot Framework SDK](http
 
 Behind the scenes, the TeamsFx SDK leverages [Bot Framework Middleware](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-middleware?view=azure-bot-service-4.0) to handle the integration with the underlying activity handlers. This middleware handles the incoming message activity and invokes the corresponding `handlerCommandReceived` function if the received message text matches the command pattern provided in a `TeamsFxBotCommandHandler` instance. After processing, the middleware will call `context.sendActivity` to send the command response returned from the `handlerCommandReceived` function to the user.
 
+## Frequently Asked Questions
 
-## FAQ
-### How to extend command-response bot for notification
+### How to build command response using adaptive card with dynamic content?
+Adaptive card provides [Template Language](https://docs.microsoft.com/en-us/adaptive-cards/templating/) to allow users to render dynamic content with the same layout (the template). For example, use the adaptive card to render a list of items (todo items, assigned bugs, etc) that could varies according to different user. 
+
+1. Add your adaptive card template JSON file under `bot/adativeCards` folder
+1. Import the card template to you code file where your command handler exists (e.g. `myCommandHandler.ts`)
+1. Model your card data
+1. Use `MessageBuilder.attachAdaptiveCard` to render the template with dynamic card data
+
+### How can I extend my notification bot to support command and response?
+TODO
+
+### How can I extend my command and response bot to support notification?
 TODO
