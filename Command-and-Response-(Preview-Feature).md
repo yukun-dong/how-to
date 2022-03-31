@@ -44,8 +44,7 @@ After scaffolding or adding a command-response bot, you will find your bot's sou
       ![manifest-add-command](https://user-images.githubusercontent.com/10163840/160374446-7fd164d6-63c9-47b2-9bf1-0d6a88731e8d.png)
 
 1. Handle command in your bot
-    * Add a .ts/.js file (e.g. `xxxCommandHandler.ts`) under `bot/src` to handle your bot command, and include the following boilerplate code to get-started:
-    
+    1. Add a .ts/.js file (e.g. `xxxCommandHandler.ts`) under `bot/src` to handle your bot command, and include the following boilerplate code to get-started:   
         ```typescript
         import { Activity, TurnContext } from "botbuilder";
         import { TeamsFxBotCommandHandler, MessageBuilder } from "@microsoft/teamsfx";
@@ -69,12 +68,12 @@ After scaffolding or adding a command-response bot, you will find your bot's sou
         }
         ```
 
-    * Provide the `commandNameOrPattern` that can trigger this command handler. Usally it's the command name defined in your manifest, or you can use RegExp to handle a complex command (e.g. with some options in the command message)
+    1. Provide the `commandNameOrPattern` that can trigger this command handler. Usally it's the command name defined in your manifest, or you can use RegExp to handle a complex command (e.g. with some options in the command message).
 
-    * Implement `handleCommandReceived` to handle the command and return a response that will be used to notify the end users. 
+    1. Implement `handleCommandReceived` to handle the command and return a response that will be used to notify the end users. 
         * You can retrieve useful information for the conversation from the `context` parameter if needed. 
         * You can build your response data in text format or follow the steps bellow to use adaptive card to render rich content in Teams:
-            * Prepare your adaptive card content in a JSON file （e.g. myCard.json) under the `bot/adaptiveCards` folder, here is a sample adaptive card JSON payload:
+            * Prepare your adaptive card content in a JSON file（e.g. myCard.json) under the `bot/adaptiveCards` folder, here is a sample adaptive card JSON payload:
                 ```json
                 {
                     "type": "AdaptiveCard",
@@ -107,10 +106,12 @@ After scaffolding or adding a command-response bot, you will find your bot's sou
                     "version": "1.4"
                 }
                 ```
-            * Import your card content into your code file
+
+            * Import your card content into your code file where your command handler exists:
               ```typescript
               import myCard from "./adaptiveCards/myCard.json"
               ```
+
             * In your `handleCommandReceived` API, use `MessageBuilder.attachAdaptiveCardWithoutData` or `MessageBuilder.attachAdaptiveCard` to build a bot message activity with the adaptive card and return the message.
                 ```typescript              
                 return MessageBuilder.attachAdaptiveCardWithoutData(myCard);
