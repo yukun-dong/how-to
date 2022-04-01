@@ -19,7 +19,7 @@ Here's the comparison of the two approaches to help you make decision.
 
 ## Teams Bot App
 
-To create a Teams Bot Notification App, see [Create a new Notification Project](./%5BDocument%5D-Notification-(Preview-feature).md#create-a-new-notification-project).
+To create a Teams Bot Notification App, see [Create a new Notification Project](%5BDocument%5D-Notification-(Preview-feature)#create-a-new-notification-project#create-a-new-notification-project).
 
 The project is based on Microsoft Bot Framework and will require Azure Bot Service. TeamsFx helps you on creating project, local debugging, provisioning and deploying Azure resources, managing and previewing your Teams app.
 
