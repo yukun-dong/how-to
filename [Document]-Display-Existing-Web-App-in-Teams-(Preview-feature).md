@@ -42,13 +42,13 @@ The following table lists all the scaffolded folder and files by Teams Toolkit:
 |`templates/appPackage/resources`|Teams app's icon referenced by manifest template|
 |`.gitignore` | The git ignore file to exclude local files from TeamsFx project |
 
-# Frequently Asked Questions
+## Frequently Asked Questions
 
-## Why the existing web app endpoint must be HTTPS secured?
+### Why the existing web app endpoint must be HTTPS secured?
 
 Microsoft Teams is an entirely cloud-based product, it requires all services it accesses to be available publicly using HTTPS endpoints.
 
-## What's the prerequisites for existing web app?
+### What's the prerequisites for existing web app?
 
 Ensure that you adhere to the following prerequisites for your existing app:
 * Allow your tab pages to be discovered in an iFrame, using X-Frame-Options and Content-Security-Policy HTTP response headers.
