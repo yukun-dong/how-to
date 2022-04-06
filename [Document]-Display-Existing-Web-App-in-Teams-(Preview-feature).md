@@ -6,19 +6,21 @@ In Visual Studio Code:
 1. Open Teams Toolkit Select the Teams Toolkit ![teams-toolkit-sidebar-icon](https://user-images.githubusercontent.com/10163840/160794831-e0a370ce-888f-4176-bb26-f16a64b72118.png) icon in the Visual Studio Code sidebar or select `Teams: Create a new Teams app` from command palette.
 
 1. Select `Create a new Teams app`.
-    ![create-new-project](https://user-images.githubusercontent.com/10163840/160793793-630fe4dd-ff92-4d43-8bf4-47c12a10e0b5.png)
-
+    
+   <img src="https://user-images.githubusercontent.com/10163840/160793793-630fe4dd-ff92-4d43-8bf4-47c12a10e0b5.png" width=500>
+   
 1. Select the `Existing Tab` capability
    
-   // TODO: add snapshot
-
+   <img src="https://user-images.githubusercontent.com/15644078/161890885-7ef47aac-5db1-4f55-94ce-f980e6380f06.png" width=500>
+  
 1. Provide your existing web app endpoint and click `OK`.
-
-   // TODO: add snapshot
-
+    
+   <img src="https://user-images.githubusercontent.com/15644078/161890945-e2f4b95f-8d0b-408d-9884-f5922c5b324d.png" width=500>
+  
 1. Provide your app name and click `OK`.
-    ![provide-app-name](https://user-images.githubusercontent.com/10163840/160793811-014c9b88-4fc8-4785-bb51-a861f7433c91.png)
-
+    
+   <img src="https://user-images.githubusercontent.com/10163840/160793811-014c9b88-4fc8-4785-bb51-a861f7433c91.png" width=500>
+   
 In CLI, use the `teamsfx new` command: 
 
 - By default, `teamsfx new` goes into interactive mode and guides you through the process of creating a new Teams application.
