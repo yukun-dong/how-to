@@ -9,7 +9,7 @@ In Visual Studio Code:
     
    <img src="https://user-images.githubusercontent.com/10163840/160793793-630fe4dd-ff92-4d43-8bf4-47c12a10e0b5.png" width=500>
    
-1. Select the `Existing Tab` capability
+1. Select the `Existing Tab` capability.
    
    <img src="https://user-images.githubusercontent.com/15644078/161890885-7ef47aac-5db1-4f55-94ce-f980e6380f06.png" width=500>
   
@@ -24,10 +24,7 @@ In Visual Studio Code:
 In CLI, use the `teamsfx new` command: 
 
 - By default, `teamsfx new` goes into interactive mode and guides you through the process of creating a new Teams application.
-  
-  // TODO: add snapshot
-  
-- Or, if you prefer non-interactive mode, enter all required parameters in one command
+- Or, if you prefer non-interactive mode, enter all required parameters in one command.
     ```
     teamsfx new --interactive false --capabilities "existing-tab" --existing-tab-endpoint "https://localhost:3000" --folder "./" --app-name myAppName
     ```
