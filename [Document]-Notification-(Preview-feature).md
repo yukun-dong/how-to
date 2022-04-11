@@ -44,7 +44,6 @@ If you select `(Restify)` trigger(s), the `bot/` folder is restify web app with 
 | - | - |
 | `src/adaptiveCards/` | Adaptive card templates |
 | `src/internal/` | Generated initialize code for notification functionality |
-| `src/adaptiveCard.*s` | Adaptive card builder utilities |
 | `src/cardModels.*s` | Adaptive card data models |
 | `src/index.*s` | The entrypoint to handle bot messages and send notifications |
 | `.gitignore` | The git ignore file to exclude local files from bot project |
@@ -60,7 +59,6 @@ If you select `(Azure Functions)` trigger(s), the `bot/` folder is azure functio
 | `*Trigger/` | The function to trigger notification |
 | `src/adaptiveCards/` | Adaptive card templates |
 | `src/internal/` | Generated initialize code for notification functionality |
-| `src/adaptiveCard.*s` | Adaptive card builder utilities |
 | `src/cardModels.*s` | Adaptive card data models |
 | `src/*Trigger.*s` | The entrypoint of each notification trigger |
 | `.funcignore` | The azure functions ignore file to exclude local files |
@@ -73,14 +71,21 @@ If you select `(Azure Functions)` trigger(s), the `bot/` folder is azure functio
 
 ### Initialize
 
-To send notification, you need to initialize `ConversationBot` first. (Code already generated at `bot/src/internal/initialize.*s`)
+To send notification, you need to create `ConversationBot` first. (Code already generated at `bot/src/internal/initialize.*s`)
 
 ``` typescript
-// create your own bot framework adapter
-const adapter = new BotFrameworkAdapter(...);
-
-// initialize ConversationBot with notification enabled
-ConversationBot.initialize(adapter, { enableNotification: true });
+const bot = new ConversationBot({
+    // The bot id and password to create BotFrameworkAdapter.
+    // See https://aka.ms/about-bot-adapter to learn more about adapters.
+    adapterConfig: {
+        appId: process.env.BOT_ID,
+        appPassword: process.env.BOT_PASSWORD,
+    },
+    // Enable notification
+    notification: {
+        enabled: true,
+    },
+});
 ```
 
 ### Customize Storage
@@ -88,21 +93,24 @@ ConversationBot.initialize(adapter, { enableNotification: true });
 You can initialize with your own storage. This storage will be used to persist notification connections.
 
 ``` typescript
-// create your own bot framework adapter
-const adapter = new BotFrameworkAdapter(...);
-
 // implement your own storage
 class MyStorage implements NotificationTargetStorage {...}
 const myStorage = new MyStorage(...);
 
 // initialize ConversationBot with notification enabled and customized storage
-ConversationBot.initialize(
-    adapter,
-    {
-        enableNotification: true,
+const bot = new ConversationBot({
+    // The bot id and password to create BotFrameworkAdapter.
+    // See https://aka.ms/about-bot-adapter to learn more about adapters.
+    adapterConfig: {
+        appId: process.env.BOT_ID,
+        appPassword: process.env.BOT_PASSWORD,
+    },
+    // Enable notification
+    notification: {
+        enabled: true,
         storage: myStorage,
-    }
-);
+    },
+});
 ```
 
 > Note: It's recommended to use your own shared storage for production environment. If `storage` is not provided, a default local file storage will be used, which stores notification connections into:
@@ -116,7 +124,7 @@ A Teams bot can be installed into a team, or a group chat, or as personal app, d
 To send notification in team/channel:
 ``` typescript
 // list all installation targets
-for (const target of await ConversationBot.installations()) {
+for (const target of await bot.notification.installations()) {
     // "Channel" means this bot is installed to a Team (default to notify General channel)
     if (target.type === "Channel") {
         // Directly notify the Team (to the default General channel)
@@ -140,7 +148,7 @@ for (const target of await ConversationBot.installations()) {
 To send notification in group chat
 ``` typescript
 // list all installation targets
-for (const target of await ConversationBot.installations()) {
+for (const target of await bot.notification.installations()) {
     // "Group" means this bot is installed to a Group Chat
     if (target.type === "Group") {
         // Directly notify the Group Chat
@@ -158,7 +166,7 @@ for (const target of await ConversationBot.installations()) {
 To send notification in personal chat
 ``` typescript
 // list all installation targets
-for (const target of await ConversationBot.installations()) {
+for (const target of await bot.notification.installations()) {
     // "Person" means this bot is installed as Personal app
     if (target.type === "Person") {
         // Directly notify the individual person
@@ -184,7 +192,7 @@ Current TeamsFx SDK recognize following bot events:
 When notifying, TeamsFx SDK creates new conversation from the selected conversation reference and send messages. Or, for advanced usage, you can directly access the conversation reference to execute your own bot logic:
 ``` typescript
 // list all installation targets
-for (const target of await ConversationBot.installations()) {
+for (const target of await bot.notification.installations()) {
     // call Bot Framework's adapter.continueConversation()
     await target.adapter.continueConversation(target.conversationReference, async (context) => {
         // your own bot logic
