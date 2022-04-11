@@ -51,7 +51,7 @@ After scaffolding or adding a command-response bot, you will find your bot's sou
         import { MessageBuilder } from "@microsoft/teamsfx";
 
         export class xxxCommandHandler implements TeamsFxBotCommandHandler {
-            triggerPatterns: TriggerPatterns = "string or RegExp pattern to trigger the command";
+            triggerPatterns: TriggerPatterns = "<string or RegExp pattern to trigger the command>";
 
             async handleCommandReceived(
                 context: TurnContext,
