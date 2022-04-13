@@ -10,7 +10,7 @@ Here's the comparison of the two approaches to help you make decision.
 | - | - | - |
 | Able to message individual person | Yes | No |
 | Able to message group chat | Yes | No |
-| Able to message channel | Yes | No |
+| Able to message channel | Yes | Yes |
 | Able to send card message | Yes | Yes |
 | Able to send welcome message | Yes | No |
 | Able to retrieve Teams context | Yes | No |
