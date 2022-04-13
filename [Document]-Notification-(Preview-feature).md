@@ -88,6 +88,27 @@ const bot = new ConversationBot({
 });
 ```
 
+### Customize Adapter
+
+You can initialize with your own adapter, or customize after initialization.
+
+``` typescript
+// Create your own adapter
+const adapter = new BotFrameworkAdapter(...);
+
+// Customize your adater, e.g., error handling
+adapter.onTurnError = ...
+
+const bot = new ConversationBot({
+    // use your own adapter
+    adapter: adapter;
+    ...
+});
+
+// Or, customize later
+bot.adapter.onTurnError = ...
+```
+
 ### Customize Storage
 
 You can initialize with your own storage. This storage will be used to persist notification connections.
