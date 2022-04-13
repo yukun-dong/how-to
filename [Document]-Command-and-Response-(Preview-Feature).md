@@ -37,13 +37,7 @@ After scaffolding or adding a command-response bot, you will find your bot's sou
 |`bot/src/adaptiveCards/*.json`| Adaptive card JSON file used as your command response |
 
 ## How to add more command and response
-1. Add command definition in manifest. You can edit the manifest template file `templates\appPackage\manifest.template.json` to include:
-    * The command `title` that user type in the message compose area to trigger the command.
-    * The `command` description for this command.
-
-      ![manifest-add-command](https://user-images.githubusercontent.com/10163840/160374446-7fd164d6-63c9-47b2-9bf1-0d6a88731e8d.png)
-
-1. Handle command in your bot
+1. Add new command handler to your bot
     1. Add a .ts/.js file (e.g. `xxxCommandHandler.ts`) under `bot/src` to handle your bot command, and include the following boilerplate code to get-started:   
         ```typescript
         import { Activity, TurnContext } from "botbuilder";
@@ -155,6 +149,12 @@ After scaffolding or adding a command-response bot, you will find your bot's sou
            new yyyCommandHandler()
        ]);
        ```
+
+1. Add command definition in manifest. You can edit the manifest template file `templates\appPackage\manifest.template.json` to include:
+    * The command `title` that user type in the message compose area to trigger the command.
+    * The `command` description for this command.
+
+      ![manifest-add-command](https://user-images.githubusercontent.com/10163840/160374446-7fd164d6-63c9-47b2-9bf1-0d6a88731e8d.png)
 
 Now, you are all done with the code development of adding a new command and response into your bot app. You can just press `F5` to loca debug with the command-response bot, or use provision and deploy command to deploy the change to Azure.
 
