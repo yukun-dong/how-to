@@ -1,5 +1,16 @@
 # Display Existing Web App in Teams
 
+## Prerequisites
+* An [M365 account for development](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts).
+* Ensure that your existing app adhere to the following prerequisites:
+  * Allow your tab pages to be discovered in an iFrame, using X-Frame-Options and Content-Security-Policy HTTP response headers.
+    * Set header: `Content-Security-Policy: frame-ancestors teams.microsoft.com *.teams.microsoft.com *.skype.com`
+    * For Internet Explorer 11 compatibility, set `X-Content-Security-Policy`.
+    * Alternately, set header `X-Frame-Options: ALLOW-FROM https://teams.microsoft.com/`. This header is deprecated but still accepted by most browsers.
+  * Browsers same-origin policy restriction prevents webpages from making requests to different domains than the served web page. So, you can redirect the configuration or content page to another domain or subdomain. Your cross-domain navigation logic needs to allow the Teams client to validate the origin against a static `validDomains` list in the app manifest when loading or communicating with the tab.
+  * Microsoft Teams tab doesn't support the ability to load intranet websites that use self-signed certificates.
+* Launch your existing app and update the endpoint in the environment config file (`.fx/configs/config.[env].json`) accordingly.
+
 ## Create a new Existing Tab Project
 In Visual Studio Code:
 
@@ -41,16 +52,15 @@ The following table lists all the scaffolded folder and files by Teams Toolkit:
 |`templates/appPackage/resources`|Teams app's icon referenced by manifest template|
 |`.gitignore` | The git ignore file to exclude local files from TeamsFx project |
 
-## Prerequisites
-* An [M365 account for development](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts).
-* Ensure that your existing app adhere to the following prerequisites:
-  * Allow your tab pages to be discovered in an iFrame, using X-Frame-Options and Content-Security-Policy HTTP response headers.
-    * Set header: `Content-Security-Policy: frame-ancestors teams.microsoft.com *.teams.microsoft.com *.skype.com`
-    * For Internet Explorer 11 compatibility, set `X-Content-Security-Policy`.
-    * Alternately, set header `X-Frame-Options: ALLOW-FROM https://teams.microsoft.com/`. This header is deprecated but still accepted by most browsers.
-  * Browsers same-origin policy restriction prevents webpages from making requests to different domains than the served web page. So, you can redirect the configuration or content page to another domain or subdomain. Your cross-domain navigation logic needs to allow the Teams client to validate the origin against a static `validDomains` list in the app manifest when loading or communicating with the tab.
-  * Microsoft Teams tab doesn't support the ability to load intranet websites that use self-signed certificates.
-* Launch your existing app and update the endpoint in the environment config file (`.fx/configs/config.[env].json`) accordingly.
+## Preview
+
+* For local environment: you could preview the Teams app directly via environment tree view in Teams Toolkit:
+
+  <img src="https://user-images.githubusercontent.com/15644078/163303755-54d24c19-a020-473f-b1b4-c3ef454f09c5.png" width=300>
+
+* For remote environment: you need to run `Teams: Provision in the cloud` first, then you could preview the Teams app via environment tree view in Teams Toolkit:
+
+  <img src="https://user-images.githubusercontent.com/15644078/163303988-887b72f7-eff6-4746-96ac-51c82af27ead.png" width=300>
 
 ## Frequently Asked Questions
 
