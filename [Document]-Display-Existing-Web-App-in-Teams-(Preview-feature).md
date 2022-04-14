@@ -52,7 +52,7 @@ The following table lists all the scaffolded folder and files by Teams Toolkit:
 |`templates/appPackage/resources`|Teams app's icon referenced by manifest template|
 |`.gitignore` | The git ignore file to exclude local files from TeamsFx project |
 
-## Preview
+## Preview your Teams app
 
 * For local environment: you could preview the Teams app directly via environment tree view in Teams Toolkit:
 
