@@ -1,4 +1,5 @@
 > The content is under construction and is subject to change in the future
+> This section describes the built-in app setting support by Teams Toolkit. You're free to use other approaches to configure your app settings.
 
 # Add app setting to Azure services
 If you use Azure to host your application, you can declare your app settings for your Azure services via ARM template. We suggest you go through this [document](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/provision) to gain deeper understanding about the provision behavior of Teams Toolkit as well as how to customize the ARM template in the project.
@@ -86,3 +87,12 @@ You can follow these steps to add app settings to the Azure Web App that hosts y
     }
     ```
 6. Run `Teams: Provision in the cloud` command to apply your changes to Azure
+
+# Add app setting for local debugging
+
+Each project (tab / bot / api) has `.env.teamsfx.local` file in the root that defines environment variables available during local debugging. You can follow the syntax of [dotenv](https://www.npmjs.com/package/dotenv) package to add customized environment variables to it. If `.env.teamsfx.local` file does not exist, you can create an empty file and modify it.
+
+For example, to add `CUSTOM_APP_SETTING` to your bot project, you can edit `bot/.env.teamsfx.local` file and add following content to it:
+```
+CUSTOM_APP_SETTING=my_app_setting_value
+```
