@@ -1,4 +1,4 @@
-# Display Existing Web App in Teams
+# Embed Existing Web App
 
 ## Prerequisites
 * An [M365 account for development](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts).
