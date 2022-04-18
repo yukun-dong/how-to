@@ -2,14 +2,14 @@
 
 ## Prerequisites
 * An [M365 account for development](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts).
-* Ensure that your existing app adhere to the following prerequisites:
+
+Also, make sure that your existing app adhere to the following prerequisites:
   * Allow your tab pages to be discovered in an iFrame, using X-Frame-Options and Content-Security-Policy HTTP response headers.
     * Set header: `Content-Security-Policy: frame-ancestors teams.microsoft.com *.teams.microsoft.com *.skype.com`
     * For Internet Explorer 11 compatibility, set `X-Content-Security-Policy`.
     * Alternately, set header `X-Frame-Options: ALLOW-FROM https://teams.microsoft.com/`. This header is deprecated but still accepted by most browsers.
   * Browsers same-origin policy restriction prevents webpages from making requests to different domains than the served web page. So, you can redirect the configuration or content page to another domain or subdomain. Your cross-domain navigation logic needs to allow the Teams client to validate the origin against a static `validDomains` list in the app manifest when loading or communicating with the tab.
   * Microsoft Teams tab doesn't support the ability to load intranet websites that use self-signed certificates.
-* Launch your existing app and update the endpoint in the environment config file (`.fx/configs/config.[env].json`) accordingly.
 
 ## Create a new Existing Tab Project
 In Visual Studio Code:
