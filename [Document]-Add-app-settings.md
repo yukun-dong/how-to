@@ -96,3 +96,14 @@ For example, to add `CUSTOM_APP_SETTING` to your bot project, you can edit `bot/
 ```
 CUSTOM_APP_SETTING=my_app_setting_value
 ```
+
+# App settings predefined by Teams Toolkit
+
+Teams toolkit will define necessary app settings for your Teams app. You can refer following table to learn where to find the predefined app settings:
+| Project | Predefined app settings for Azure (via [bicep](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/)) | Predefined app settings for local debugging (via [dotenv](https://www.npmjs.com/package/dotenv)) |
+| --- | --- | --- |
+| tab | N/A | tabs/.env.teamsfx.local |
+| bot | templates/azure/teamsfx/bot.bicep | bot/.env.teamsfx.local |
+| api | templates/azure/teamsfx/function.bicep | api/.env.teamsfx.local |
+
+> Note: the .env.teamsfx.local is generated during local debugging. You need to local debug first to see this file.
