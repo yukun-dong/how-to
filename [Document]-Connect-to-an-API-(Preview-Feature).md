@@ -24,7 +24,14 @@ The feature is available in VS Code Teams Toolkit and TeamsFx CLI.
 
 ## Use this feature in TeamsFx CLI
 
-To be added
+The base command of this feature is `teamsfx add api-connection [authentication type]`. Here is the list of available authentication type and corresponding sample command. You can use `teamsfx add api-connection [authentication type] -h` to get help document.
+| Authentication type | Sample command |
+| --- | --- |
+| Basic | teamsfx add api-connection basic --endpoint https://example.com --component bot --alias example --user-name exampleuser --interactive false |
+| API Key | teamsfx add api-connection apikey --endpoint https://example.com --component bot --alias example --key-location header --key-name example-key-name --interactive false |
+| AAD | teamsfx add api-connection aad --endpoint https://example.com --component bot --alias example --app-type custom --tenant-id your_tenant_id --app-id your_app_id --interactive false |
+| Certificate | teamsfx add api-connection cert --endpoint https://example.com --component bot --alias example --interactive false |
+| Custom | teamsfx add api-connection cert --endpoint https://example.com --component bot --alias example --interactive false |
 
 # How this feature changes your project
 
