@@ -163,6 +163,10 @@ The TeamsFx Command-Response Bots are created using the [Bot Framework SDK](http
 
 Behind the scenes, the TeamsFx SDK leverages [Bot Framework Middleware](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-middleware?view=azure-bot-service-4.0) to handle the integration with the underlying activity handlers. This middleware handles the incoming message activity and invokes the corresponding `handlerCommandReceived` function if the received message text matches the command pattern provided in a `TeamsFxBotCommandHandler` instance. After processing, the middleware will call `context.sendActivity` to send the command response returned from the `handlerCommandReceived` function to the user.
 
+## Connect to existing API
+
+If you want to invoke external APIs in your code but do not have the appropriate SDK, the "Teams: Connect to an API" command in Teams Toolkit VS Code extension or "teamsfx add api-connection" command in TeamsFx CLI would be helpful to bootstrap  code to call target APIs. For more information, you can visit [Connect existing API document](https://aka.ms/teamsfx-connect-existing-api).
+
 ## Frequently Asked Questions
 
 ### How to build command response using adaptive card with dynamic content?
