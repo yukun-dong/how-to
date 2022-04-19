@@ -1,6 +1,16 @@
 # Command and Response with Teams Bot
 A command and response bot is an app that responds to simple commands sent in Teams chat and replies a result in meaningful ways.
 
+> Please be advised these features are currently under active development, with a lot of changes taking place. Please expect breaking changes as we continue to iterate.
+We really appreciate your feedback! If you encounter any issue or error, please report issues to us [here](https://github.com/OfficeDev/TeamsFx/issues/new/choose).
+
+## How to enable preview features
+1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
+1. Open Visual Studio Code and find `Manage` icon from sidebar (Bottom Left) 
+1. Select `Settings` and find `Teams Toolkit` under `Extensions` section.
+1. Tick the checkbox for `Enable GA Preview Features.
+1. Restart Visual Studio Code.
+
 ## How to create a command-response bot
 In Visual Studio Code:
 
