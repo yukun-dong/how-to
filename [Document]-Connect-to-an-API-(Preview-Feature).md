@@ -98,3 +98,29 @@ class CustomAuthProvider implements AuthProvider {
     };
 }
 ```
+
+### Gain API permission for your Teams app's AAD app registration
+
+When using AAD app to authenticate service to service requests, there're 2 common ways to configure the API permissions: using Access Control List (ACL) or using AAD application permission. How to gain permission for your target API depends on the actual implementation of the API server. Here're the common steps to gain permission for your Teams app's AAD app registration.
+
+#### Steps to gain permission for APIs that use AAD application permission for access control
+1. Open `templates/appPackage/aad.template.json`, add following content to `requiredResourceAccess` property:
+   ```
+    {
+        "resourceAppId": "fill your target API's app id",
+        "resourceAccess": [
+            {
+                "id": "fill the id of target API's application permission",
+                "type": "Role"
+            }
+        ]
+    }
+   ```
+2. Start local debug or provision an cloud environment for your project. This step created AAD app for your Teams app.
+3. Go to `.fx/states/state.{env}.json`, record the value of `clientId` under `fx-resource-aad-app-for-teams` property.
+4. Follow this [document](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/grant-admin-consent#grant-admin-consent-in-app-registrations) to gain admin consent for the required application permission. You need step 3's client id when following the document to find AAD app registration.
+
+#### Steps to gain permission for APIs that use Access Control List (ACL)
+1. Start local debug or provision an cloud environment for your project. This step created AAD app for your Teams app.
+2. Go to `.fx/states/state.{env}.json`, record the value of `clientId` under `fx-resource-aad-app-for-teams` property.
+3. Provide the client id to your API provider to configure permissions from server side.
