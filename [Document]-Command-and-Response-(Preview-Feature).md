@@ -1,8 +1,9 @@
 # Command and Response with Teams Bot
-A command and response bot is an app that responds to simple commands sent in Teams chat and replies a result in meaningful ways.
 
 > Please be advised these features are currently under active development, with a lot of changes taking place. Please expect breaking changes as we continue to iterate.
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us [here](https://github.com/OfficeDev/TeamsFx/issues/new/choose).
+
+A command and response bot is an app that responds to simple commands sent in Teams chat and replies a result in meaningful ways.
 
 ## How to enable preview features
 1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
