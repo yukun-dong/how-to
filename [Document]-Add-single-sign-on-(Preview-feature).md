@@ -1,3 +1,16 @@
+Following content applies to VS Code Teams Toolkit v3.8.0+.
+
+> Please be advised these features are currently under active development, with a lot of changes taking place. Please expect breaking changes as we continue to iterate.
+We really appreciate your feedback! If you encounter any issue or error, please report issues to us [here](https://github.com/OfficeDev/TeamsFx/issues/new/choose).
+
+## How to enable preview features
+1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
+1. Open Visual Studio Code and find `Manage` icon from sidebar (Bottom Left) 
+1. Select `Settings` and find `Teams Toolkit` under `Extensions` section.
+1. Tick the checkbox for `Enable GA Preview Features.
+1. Restart Visual Studio Code.
+
+
 ## Overview
 
 Single sign-on (SSO) authentication in Microsoft Azure Active Directory (Azure AD) silently refreshes the authentication token to minimize the number of times users need to enter their sign in credentials. If users agree to use your app, they don't have to provide consent again on another device as they're signed in automatically. Teams Tabs and bots have similar flow for SSO support. You can refer to [Tab SSO](https://docs.microsoft.com/en-us/microsoftteams/platform/tabs/how-to/authentication/auth-aad-sso?tabs=dotnet) and [Bot SSO](https://docs.microsoft.com/en-us/microsoftteams/platform/bots/how-to/authentication/auth-aad-sso-bots) for more info.
