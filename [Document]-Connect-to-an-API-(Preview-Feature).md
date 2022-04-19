@@ -1,5 +1,14 @@
-> The content is under construction and is subject to change in the future.
+> Please be advised these features are currently under active development, with a lot of changes taking place. Please expect breaking changes as we continue to iterate.
+We really appreciate your feedback! If you encounter any issue or error, please report issues to us [here](https://github.com/OfficeDev/TeamsFx/issues/new/choose).
 
+## How to enable preview features
+1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
+1. Open Visual Studio Code and find `Manage` icon from sidebar (Bottom Left) 
+1. Select `Settings` and find `Teams Toolkit` under `Extensions` section.
+1. Tick the checkbox for `Enable GA Preview Features.
+1. Restart Visual Studio Code.
+
+# Connect to an API
 If you want to make http(s) requests to an API that is not part of your project and do not have appropriate SDK, you could leverage this feature to bootstrap some code which handles authentication for your API requests automatically. If you already have SDK for target API, it's suggested to use SDK in your code.
 
 # How to use this feature
