@@ -1,9 +1,9 @@
 # Notification via Teams Bot
 
-A notification bot is an app that proactively sends messages in Teams channel / group chat / personal chat.
-
 > Please be advised these features are currently under active development, with a lot of changes taking place. Please expect breaking changes as we continue to iterate.
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us [here](https://github.com/OfficeDev/TeamsFx/issues/new/choose).
+
+A notification bot is an app that proactively sends messages in Teams channel / group chat / personal chat.
 
 ## How to enable preview features
 1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
