@@ -215,7 +215,6 @@ Current TeamsFx SDK recognize following bot events:
 | Event | Behavior |
 | - | - |
 | Bot is installed | Add the target conversation reference to storage |
-| Bot is messaged / mentioned | Add the target conversation reference to storage if not exist yet |
 | Bot is uninstalled | Remove the target conversation reference from storage |
 | Team that bot installed in is deleted | Remove the target conversation reference from storage |
 | Team that bot installed in is restored | Add the target conversation reference to storage |
