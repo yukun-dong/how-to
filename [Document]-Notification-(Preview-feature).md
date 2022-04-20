@@ -259,13 +259,17 @@ Notification target connections are stored in the persistence storage. If you ar
 
 It's recommended to use your own shared storage for production environment. See [Customize Storage](#customize-storage).
 
-Or, as a workaround, after restart / redeplou, you can mention your bot in Teams chat / group / channel to re-add connections to the storage.
+Or, as a workaround, after restart / redeploy, you can mention your bot in Teams chat / group / channel to re-add connections to the storage.
 
 ### Can I know all the targets my bot is installed in, out of the notification project?
 
 There are [Microsoft Graph APIs](https://docs.microsoft.com/graph/api/team-list-installedapps) to list apps installed in a team / group / chat. So it may require you to iterate all your teams / groups / chats to get all the targets a certain app is installed in.
 
 In notification project, it uses persistence storage to store installation targets. See [How Notification Works](#how-notification-works) for more information.
+
+### How to customize the azurite listening ports?
+If azurite exits due to port in use, you can [specify another listening port](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio#blob-listening-port-configuration) and update the [connection string](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio#http-connection-strings
+) of `AzureWebJobsStorage` in `bot/local.settings.json`
 
 # Notification via Incoming Webhook
 //TODO (Sample)
