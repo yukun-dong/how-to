@@ -2,7 +2,7 @@
 
 The AAD manifest contains a definition of all the attributes of an AAD application object in the Microsoft identity platform. There is a [document](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-app-manifest) to introduce AAD manifest schema and definitions. You can also find AAD manifest from AAD application page on Azure Portal.
 
-Before enabling AAD manifest features in Teams Toolkit extension, AAD application is created/update by the extension, and users can only modify/update AAD application from Azure portal, and some update may may conflict with extension. With the latest version of Teams Toolkit extension, we added AAD manifest build-in support in the extension, which make it easier for user to customize AAD application.
+Before enabling AAD manifest features in Teams Toolkit extension, AAD application is created/update by the extension, and users can only modify/update AAD application from Azure portal, and some update may conflict with extension. With the latest version of Teams Toolkit extension, we added AAD manifest build-in support in the extension, which make it easier for user to customize AAD application.
 
 ## AAD manifest in VSCode Teams Toolkit extension
 
