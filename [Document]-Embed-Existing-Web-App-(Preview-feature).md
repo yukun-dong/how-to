@@ -1,13 +1,22 @@
-# Embed Existing Web App
+# Embed existing web page
 > Please be advised these features are currently under active development, with a lot of changes taking place. Please expect breaking changes as we continue to iterate.
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us [here](https://github.com/OfficeDev/TeamsFx/issues/new/choose).
 
-## How to enable preview features
-1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
-1. Open Visual Studio Code and find `Manage` icon from sidebar (Bottom Left) 
-1. Select `Settings` and find `Teams Toolkit` under `Extensions` section.
-1. Tick the checkbox for `Enable GA Preview Features.
-1. Restart Visual Studio Code.
+> How to enable preview features
+> 1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
+> 1. Open Visual Studio Code and find `Manage` icon from sidebar (Bottom Left) 
+> 1. Select `Settings` and find `Teams Toolkit` under `Extensions` section.
+> 1. Tick the checkbox for `Enable GA Preview Features.
+> 1. Restart Visual Studio Code.
+
+Teams Toolkit helps you embed your running web pages as Teams tab application easily.
+
+In this tutorial, you will learn:
+* [What's the prerequisite to embed an existing web page in Teams](#Prerequisites)
+* [How to embed your existing web pages by creating an empty project with Teams Toolkit](#Create-a-new-Existing-Tab-Project)
+* [How to understand the empty project](#Take-a-tour-of-your-app-source-code)
+* [How to preview your existing web pages in Teams](#Preview-your-Teams-app)
+
 
 ## Prerequisites
 * An [M365 account for development](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts).
@@ -19,6 +28,8 @@ Also, make sure that your existing app adhere to the following prerequisites:
     * Alternately, set header `X-Frame-Options: ALLOW-FROM https://teams.microsoft.com/`. This header is deprecated but still accepted by most browsers.
   * Browsers same-origin policy restriction prevents webpages from making requests to different domains than the served web page. So, you can redirect the configuration or content page to another domain or subdomain. Your cross-domain navigation logic needs to allow the Teams client to validate the origin against a static `validDomains` list in the app manifest when loading or communicating with the tab.
   * Microsoft Teams tab doesn't support the ability to load intranet websites that use self-signed certificates.
+
+<p align="right"><a href="#Embed-existing-web-page">back to top</a></p>
 
 ## Create a new Existing Tab Project
 In Visual Studio Code:
@@ -48,6 +59,8 @@ In CLI, use the `teamsfx new` command:
     ```
     teamsfx new --interactive false --capabilities "existing-tab" --existing-tab-endpoint "https://localhost:3000" --folder "./" --app-name myAppName
     ```
+<p align="right"><a href="#Embed-existing-web-page">back to top</a></p>
+
 ## Take a tour of your app source code
 
 The following table lists all the scaffolded folder and files by Teams Toolkit:
@@ -61,6 +74,8 @@ The following table lists all the scaffolded folder and files by Teams Toolkit:
 |`templates/appPackage/resources`|Teams app's icon referenced by manifest template|
 |`.gitignore` | The git ignore file to exclude local files from TeamsFx project |
 
+<p align="right"><a href="#Embed-existing-web-page">back to top</a></p>
+
 ## Preview your Teams app
 
 * For local environment: you could preview the Teams app directly via environment tree view in Teams Toolkit:
@@ -70,6 +85,9 @@ The following table lists all the scaffolded folder and files by Teams Toolkit:
 * For remote environment: you need to run `Teams: Provision in the cloud` first, then you could preview the Teams app via environment tree view in Teams Toolkit:
 
   <img src="https://user-images.githubusercontent.com/15644078/163303988-887b72f7-eff6-4746-96ac-51c82af27ead.png" width=300>
+
+<p align="right"><a href="#Embed-existing-web-page">back to top</a></p>
+
 
 ## Frequently Asked Questions
 
