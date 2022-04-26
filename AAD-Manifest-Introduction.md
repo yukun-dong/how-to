@@ -6,7 +6,7 @@ Before enabling AAD manifest features in Teams Toolkit extension, AAD applicatio
 
 ## AAD manifest in VSCode Teams Toolkit extension
 
-When create App using Teams Toolkit with SSO support, or after adding SSO support in a non-SSO project, AAD manifest template will be added to `templates\appPackage\aad.template.json`. Extension will use this AAD manifest template file to create/update AAD application for these scenarios:
+When create app using Teams Toolkit with SSO support, or after adding SSO support in a non-SSO project, AAD manifest template will be added to `templates\appPackage\aad.template.json`. Extension will use this AAD manifest template file to create/update AAD application for these scenarios:
 
 ### AAD manifest lifecycle in F5 local debug command
 
@@ -22,12 +22,23 @@ When create App using Teams Toolkit with SSO support, or after adding SSO suppor
 
 1. If need to create a new AAD application, extension will create it using AAD manifest template file, and for some properties which required additional context (such as `replyUrls` property need to know frontend or bot endpoint), it will ignore it during this creating stage.
 
-1. After other resources successfully provisioned, update AAD application's `identifierUris` and `replyUrls` according to frontend hosting / bot endpoint.
+1. After other resources have successfully provisioned, update AAD application's `identifierUris` and `replyUrls` according to frontend hosting / bot endpoint.
 
 ### AAD manifest lifecycle in Deploy command
 
 1. `Deploy resource to cloud` command will not handle AAD application, you need to use `Deploy Azure Active Directory app manifest` instead if you want to update AAD application
 1. `Deploy Azure Active Directory app manifest` will update the AAD application according to the AAD manifest template file, if current environment hasn't provisioned and AAD application is not existed, it will throw errors. If your project has already been provisioned and you want to update your AAD application, you can use this command.
+
+After the AAD application has successfully deployed, you can follow steps below to find the AAD app: 
+
+#### How to view AAD app on Azure portal
+1. Copy AAD app client id from `state.xxx.json` (xxx is the environment name that you have deployed the AAD app) file in `fx-resource-aad-app-for-teams` property.
+
+1. Go to Azure portal and login your M365 account which used for the Teams app.
+
+1. Open [app registrations page](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps), search the AAD app using client id which copied from step 1.
+
+1. If everything works fine, you can find your AAD app.
 
 ## Placeholders in AAD manifest template
 
@@ -102,7 +113,7 @@ User can customize AAD manifest template to update AAD application.
 
 ### Customize requiredResourceAccess
 
-If your Teams App required more permissions to call API with additional permissions, you need to update `requiredResourceAccess` property in the AAD manifest template. Here is an example for this property:
+If your Teams app required more permissions to call API with additional permissions, you need to update `requiredResourceAccess` property in the AAD manifest template. Here is an example for this property:
 
 ```json
 "requiredResourceAccess": [
@@ -156,7 +167,7 @@ Here is an example for this property:
 
 `preAuthorizedApplications.appId` property is used for the application you want to authorize. If you doesn't know the application id but only knows the application name, you can go to Azure Portal following this steps to search the application to find the id:
 
-1. Go to [Azure Portal and open App Registrations](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)
+1. Go to [Azure Portal and open app Registrations](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)
 
 1. Click `All applications` and search the application name
 
