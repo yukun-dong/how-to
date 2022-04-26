@@ -91,17 +91,25 @@ Some times you may not want to hardcode the values in AAD manifest template. For
 
 AAD manifest template file has codelens to help you better reviewing and editing it.
 
+![codelens overview](./aadManifest/codelens-overview.png)
+
 ### Preview codelens
 
 At the beginning of the AAD manifest template file, there is a preview codelens. Click this codelens, it will generate AAD manifest based on the environment you selected.
+
+![codelens preview](./aadManifest/codelens-preview.png)
 
 ### Placeholder argument codelens
 
 Placeholder argument has codelens to help you take quick look of the values for local debug and develop environment. If your mouse hover on the placeholder argument, it will show tooltip box for the values of all the environment.
 
+![codelens placeholder argument](./aadManifest/codelens-placeholder-argument.png)
+
 ### Required resource access codelens
 
 Different from official [AAD manifest schema](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-app-manifest) that `resourceAppId` and `resourceAccess` id in `requiredResourceAccess` property only support uuid, AAD manifest template in Teams Toolkit also support user readable strings for `Microsoft Graph` and `Office 365 SharePoint Online` permissions. If you input uuid, codelens will show user readable strings, otherwise, codelens will show uuid.
+
+![codelens resource access](./aadManifest/codelens-resource-access.png)
 
 ### Pre-authorized applications codelens
 
