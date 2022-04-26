@@ -28,7 +28,7 @@ If you started with following project, you can incrementally add SSO:
 * Tab
 * Bot
 * Command bot (hosted on Azure App Service)
-* Embed existing web app)
+* Embed existing web app
 
 To enable SSO support:
 
@@ -62,6 +62,8 @@ After command execution, Teams Toolkit will do the following things:
 |Create| `auth/tab` | reference code, auth redirect pages and a `README.md` file will be generated in this path for a tab project. |
 |Create| `auth/bot` | reference code, auth redirect pages and a `README.md` file will be generated in this path for a bot project. |
 
+> Please note this by adding SSO, Teams Toolkit won't change anything in the cloud until you trigger local debug or provision. You also need to update your code to ensure SSO works in your project. 
+
 <p align="right"><a href="#Add-single-sign-on">back to top</a></p>
 
 ## What you need to do after triggering 'Add SSO' command
@@ -81,7 +83,7 @@ These two HTML files are used for auth redirects.
         ```
         import { GetUserProfile } from "../../sso/GetUserProfile";
         ```
-1. Replace the following line: `<AddSSO />` with`<GetUserProfile />`
+1. Replace the following line: `<AddSSO />` with `<GetUserProfile />`.
 
 <p align="right"><a href="#Add-single-sign-on">back to top</a></p>
 
