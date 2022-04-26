@@ -39,6 +39,8 @@ Here's the comparison of the two approaches to help you make decision.
 | Require installation step on Teams | Yes | No |
 | Require Azure resource | Azure Bot Service | No |
 
+<p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
+
 # Notification via Teams bot application
 ## Create a new Notification Project
 
@@ -62,6 +64,8 @@ In CLI, use `teamsfx new` command:
 - Or, if you prefer non-interactive mode, enter all required parameters in one command.
 
   `teamsfx new --interactive false --capabilities "notification" --bot-host-type-trigger "http-restify" --programming-language "typescript" --folder "./" --app-name MyAppName`
+
+<p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
 
 ## Take a tour of your app source code
 
@@ -104,6 +108,8 @@ If you select `(Azure Functions)` trigger(s), the `bot/` folder is azure functio
 | `host.json` | The azure functions host file |
 | `local.settings.json` | The azure functions local setting file |
 | `package.json` | The NPM package file for bot project |
+
+<p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
 
 ## How to send more notifications
 
@@ -234,6 +240,8 @@ for (const target of await bot.notification.installations()) {
 }
 ```
 
+<p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
+
 ## How notification works
 
 Technically, Bot Framework SDK provides the functionality to [proactively message in Teams](https://docs.microsoft.com/microsoftteams/platform/bots/how-to/conversations/send-proactive-messages?tabs=typescript). And TeamsFx SDK provides the functionality to manage bot's conversation references when bot event is triggered.
@@ -258,9 +266,14 @@ for (const target of await bot.notification.installations()) {
     });
 }
 ```
+
+<p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
+
 ## Connect to existing API
 
 If you want to invoke external APIs in your code but do not have the appropriate SDK, the "Teams: Connect to an API" command in Teams Toolkit VS Code extension or "teamsfx add api-connection" command in TeamsFx CLI would be helpful to bootstrap  code to call target APIs. For more information, you can visit [Connect existing API document](https://aka.ms/teamsfx-connect-existing-api).
+
+<p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
 
 ## Frequently Asked Questions
 
@@ -298,5 +311,9 @@ In notification project, it uses persistence storage to store installation targe
 If azurite exits due to port in use, you can [specify another listening port](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio#blob-listening-port-configuration) and update the [connection string](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio#http-connection-strings
 ) of `AzureWebJobsStorage` in `bot/local.settings.json`
 
+<p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
+
 # Notification via Incoming Webhook
 //TODO (Sample)
+
+<p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
