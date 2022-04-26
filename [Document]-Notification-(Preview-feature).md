@@ -1,17 +1,45 @@
-# Notification via Teams Bot
+# Send notification to Teams
 
 > Please be advised these features are currently under active development, with a lot of changes taking place. Please expect breaking changes as we continue to iterate.
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us [here](https://github.com/OfficeDev/TeamsFx/issues/new/choose).
 
-A notification bot is an app that proactively sends messages in Teams channel / group chat / personal chat.
+> How to enable preview features
+> 1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
+> 1. Open Visual Studio Code and find `Manage` icon from sidebar (Bottom Left) 
+> 1. Select `Settings` and find `Teams Toolkit` under `Extensions` section.
+> 1. Tick the checkbox for `Enable GA Preview Features.
+> 1. Restart Visual Studio Code.
 
-## How to enable preview features
-1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
-1. Open Visual Studio Code and find `Manage` icon from sidebar (Bottom Left) 
-1. Select `Settings` and find `Teams Toolkit` under `Extensions` section.
-1. Tick the checkbox for `Enable GA Preview Features.
-1. Restart Visual Studio Code.
+Notification in Teams means you can proactively message an individual person, a chat, or a channel via plain text or different [cards](https://docs.microsoft.com/en-us/microsoftteams/platform/task-modules-and-cards/cards/cards-reference).
 
+In this tutorial, you will learn:
+* [Different approaches to send notifications to Teams](#Teams-bot-application-or-Teams-incoming-webhook)
+* [Send notification to Teams via Teams bot application](#Notification-via-Teams-bot-application)
+  * [How to create a new notification bot with Teams Toolkit](#Create-a-new-Notification-Project)
+  * [How to understand notification bot project](#Take-a-tour-of-your-app-source-code)
+  * [How to send more notifications](#How-to-send-more-notifications)
+  * [How notification works](#How-notification-works)
+  * [How to connect to an existing API](#Connect-to-existing-API)
+* [Send notification to Teams via Teams incoming webhook](#Notification-via-Incoming-Webhook)
+
+# Teams bot application or Teams incoming webhook
+Microsoft Teams Framework (TeamsFx) supports two major ways to help you send notifications from your system to Teams by creating a Teams Bot Application or Teams Incoming Webhook.
+
+Here's the comparison of the two approaches to help you make decision.
+
+| | **Teams Bot App** | **Teams Incoming Webhook** |
+| - | - | - |
+| Able to message individual person | Yes | No |
+| Able to message group chat | Yes | No |
+| Able to message public channel | Yes | Yes |
+| Able to message private channel | No | Yes |
+| Able to send card message | Yes | Yes |
+| Able to send welcome message | Yes | No |
+| Able to retrieve Teams context | Yes | No |
+| Require installation step on Teams | Yes | No |
+| Require Azure resource | Azure Bot Service | No |
+
+# Notification via Teams bot application
 ## Create a new Notification Project
 
 In VSCode, open Teams Toolkit extension:
