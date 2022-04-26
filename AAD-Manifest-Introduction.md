@@ -6,11 +6,11 @@ Before enabling AAD manifest features in Teams Toolkit extension, AAD applicatio
 
 ## AAD manifest in VSCode Teams Toolkit extension
 
-When create App using Teams Toolkit with SSO support, or after adding SSO support in a non-SSO project, AAD manifest template will be added to `templates\appPackage\aad.template.json`. Extension will use this AAD manifest template file to create/update AAD application for these scenario:
+When create App using Teams Toolkit with SSO support, or after adding SSO support in a non-SSO project, AAD manifest template will be added to `templates\appPackage\aad.template.json`. Extension will use this AAD manifest template file to create/update AAD application for these scenarios:
 
 ### AAD manifest lifecycle in F5 local debug command
 
-1. Read `state.local.json` file to check whether AAD application for local debug has already been created, if yes then use the existing AAD application instead of create a new one.
+1. Read `state.local.json` file to check whether AAD application for local debug has already been created, if yes then use the existing AAD application instead of creating new one.
 
 1. If need to create a new AAD application, extension will create it using AAD manifest template file, and for some properties which required additional context (such as `replyUrls` property need to know current local debug endpoint), it will ignore it during this creating stage.
 
@@ -18,7 +18,7 @@ When create App using Teams Toolkit with SSO support, or after adding SSO suppor
 
 ### AAD manifest lifecycle in provision command
 
-1. Read `state.xxx.json` file to check whether AAD application for the environment has already been created, if yes then use the existing AAD application instead of create a new one.
+1. Read `state.xxx.json` file to check whether AAD application for the environment has already been created, if yes then use the existing AAD application instead of creating a new one.
 
 1. If need to create a new AAD application, extension will create it using AAD manifest template file, and for some properties which required additional context (such as `replyUrls` property need to know frontend or bot endpoint), it will ignore it during this creating stage.
 
@@ -90,7 +90,7 @@ Placeholder argument has codelens to help you take quick look of the values for 
 
 ### Required resource access codelens
 
-Different from official [AAD manifest schema](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-app-manifest) that `resourceAppId` and `resourceAccess` id in `requiredResourceAccess` property only support uuid, AAD manifest template in Teams Toolkit also support user readable strings for `Graph API` and `SharePoint` permissions. If you input uuid, codelens will show user readable strings, otherwise, codelens will show uuid.
+Different from official [AAD manifest schema](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-app-manifest) that `resourceAppId` and `resourceAccess` id in `requiredResourceAccess` property only support uuid, AAD manifest template in Teams Toolkit also support user readable strings for `Microsoft Graph` and `Office 365 SharePoint Online` permissions. If you input uuid, codelens will show user readable strings, otherwise, codelens will show uuid.
 
 ### Pre-authorized applications codelens
 
@@ -135,7 +135,7 @@ If your Teams App required more permissions to call API with additional permissi
 
 `resourceAccess.id` property is for different permissions, for `Microsoft Graph` and `Office 365 SharePoint Online`, you can input the permission name directly instead of uuid, and for other APIs, you need to use uuid.
 
-`resourceAccess.type` property is used for delegated permission or application permission. If the value is `Scope`, it means delegated permission, if the value is `Role`, it means application permission.
+`resourceAccess.type` property is used for delegated permission or application permission. `Scope` means delegated permission and `Role` means application permission.
 
 ### Customize preAuthorizedApplications
 
@@ -160,7 +160,7 @@ Here is an example for this property:
 
 1. Click `All applications` and search the application name
 
-1. If you find the application that you search for, you can click the application and get the Application Id from the application overview page
+1. If you find the application that you search for, you can click the application and get the application id from the overview page
 
 ### Customize redirect URLs
 
@@ -197,7 +197,7 @@ Redirect URLs is used when returning authentication responses (tokens) after suc
     1. [Register a new AAD application](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) on Azure Portal.
     1. Click `API permissions` from the AAD application page.
     1. Click `Add a permission` to add the permission you want.
-    1. Click `Manifest`, from the `requiredResourceAccess`, you can find the ids of API and permissions.
+    1. Click `Manifest`, from the `requiredResourceAccess` property, you can find the ids of API and permissions.
 
 
 
