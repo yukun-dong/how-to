@@ -3,14 +3,22 @@
 > Please be advised these features are currently under active development, with a lot of changes taking place. Please expect breaking changes as we continue to iterate.
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us [here](https://github.com/OfficeDev/TeamsFx/issues/new/choose).
 
-If you want to make http(s) requests to an API that is not part of your project and do not have appropriate SDK, you could leverage this feature to bootstrap some code which handles authentication for your API requests automatically. If you already have SDK for target API, it's suggested to use SDK in your code.
+> How to enable preview features
+> 1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
+> 1. Open Visual Studio Code and find `Manage` icon from sidebar (Bottom Left) 
+> 1. Select `Settings` and find `Teams Toolkit` under `Extensions` section.
+> 1. Tick the checkbox for `Enable GA Preview Features.
+> 1. Restart Visual Studio Code.
 
-## How to enable preview features
-1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
-1. Open Visual Studio Code and find `Manage` icon from sidebar (Bottom Left) 
-1. Select `Settings` and find `Teams Toolkit` under `Extensions` section.
-1. Tick the checkbox for `Enable GA Preview Features.
-1. Restart Visual Studio Code.
+You usually want to access data or information when building Teams application. If you do not have an appropriate SDK that helps you make an API request, Teams Toolkit is here to help you bootstrap sample code which handles authentication for your API requests.
+
+In this tutorial, you will learn:
+* [How to connect to an API with Teams Toolkit](#How-to-use-this-feature)
+* [How to understand what will be changed for your project](#How-this-feature-changes-your-project)
+* [How to invoke API in local environment](#Invoke-API-in-local-environment)
+* [How to add app settings for the remote environment](#Invoke-the-API-in-remote-environment)
+* [How to use custom authentication provider](#Custom-authentication-provider)
+* [How to obtain API permission with Azure Active Directory protected API request](#Gain-API-permission-for-your-Teams-apps-AAD-app-registration)
 
 ## How to use this feature
 
@@ -43,6 +51,8 @@ The base command of this feature is `teamsfx add api-connection [authentication 
 | Certificate | teamsfx add api-connection cert --endpoint https://example.com --component bot --alias example --interactive false |
 | Custom | teamsfx add api-connection cert --endpoint https://example.com --component bot --alias example --interactive false |
 
+<p align="right"><a href="#Connect-to-an-API">back to top</a></p>
+
 ## How this feature changes your project
 
 After you successfully triggered the command, the tooling will make following changes to `bot` or `api` folder based on selected component(s):
@@ -50,7 +60,9 @@ After you successfully triggered the command, the tooling will make following ch
 2. Add `@microsoft/teamsfx` package to `package.json` if your project does not have this package. The package provides support for common API authentication methods.
 4. Add several environment variables to `.env.teamsfx.local` to provide necessary information for selected authentication type. The generated code will read values from these environment variables. You can rename the environment variables and update generated code to use your favorite names.
 
-## Next steps after you ran the command
+<p align="right"><a href="#Connect-to-an-API">back to top</a></p>
+
+## Invoke API in local environment
 
 After the command updated your project, please follow the instructions displayed by the tooling to invoke your APIs. Generally, you need to do following things. You can visit the generated file to get more details for these action items.
 
@@ -67,12 +79,16 @@ import { yourApiClient } from '{relative path to the generated file}'
 ```
 
 ### 4. Make http(s) requests to target API (with axios)
-The generated API client is an axios instance. [Axios](https://www.npmjs.com/package/axios) is a popular nodejs package that helps you making http(s) requests. You can visit https://axios-http.com/docs/example to learn how to make http(s) requests with it.
+The generated API client is an axios instance. [Axios](https://www.npmjs.com/package/axios) is a popular nodejs package that helps you make http(s) requests. You can visit axios [documentation](https://axios-http.com/docs/example) to learn how to make http(s) requests with it.
 
-### 5. Add app settings for your hosting environments
-The command only setups app settings for your local environment to help you debugging your code. Before you deploy your code to your hosting environments, you need to add necessary app settings to your hosting environments. The sample code contains comments that tell you what app settings you need to configure.
+## Invoke the API in remote environment
+Please add app settings for your hosting environments if you are ready to move your application to the cloud.
 
-If you're using Azure to host your application, you can visit https://aka.ms/teamsfx-add-appsettings to learn how to add app settings.
+Teams Toolkit only sets up app settings for your local environment to help you debug your code. Before you deploy your code to your hosting environments, you need to add necessary app settings to your hosting environments. The bootstrapped sample code contains comments that tell you what app settings you need to configure.
+
+If you're using Azure to host your application, you can visit this [documentation](https://aka.ms/teamsfx-add-appsettings) to learn how to add app settings.
+
+<p align="right"><a href="#Connect-to-an-API">back to top</a></p>
 
 ## Advanced scenarios
 
@@ -99,6 +115,8 @@ class CustomAuthProvider implements AuthProvider {
 }
 ```
 
+<p align="right"><a href="#Connect-to-an-API">back to top</a></p>
+
 ### Gain API permission for your Teams app's AAD app registration
 
 When using AAD app to authenticate service to service requests, there're 2 common ways to configure the API permissions: using Access Control List (ACL) or using AAD application permission. How to gain permission for your target API depends on the actual implementation of the API server. Here're the common steps to gain permission for your Teams app's AAD app registration.
@@ -124,3 +142,5 @@ When using AAD app to authenticate service to service requests, there're 2 commo
 1. Start local debug or provision an cloud environment for your project. This step created AAD app for your Teams app.
 2. Go to `.fx/states/state.{env}.json`, record the value of `clientId` under `fx-resource-aad-app-for-teams` property.
 3. Provide the client id to your API provider to configure permissions from server side.
+
+<p align="right"><a href="#Connect-to-an-API">back to top</a></p>
