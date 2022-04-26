@@ -1,16 +1,25 @@
-# Command and Response with Teams Bot
+# Build command and response
 
 > Please be advised these features are currently under active development, with a lot of changes taking place. Please expect breaking changes as we continue to iterate.
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us [here](https://github.com/OfficeDev/TeamsFx/issues/new/choose).
 
-A command and response bot is an app that responds to simple commands sent in Teams chat and replies a result in meaningful ways.
+> How to enable preview features
+> 1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
+> 1. Open Visual Studio Code and find `Manage` icon from sidebar (Bottom Left) 
+> 1. Select `Settings` and find `Teams Toolkit` under `Extensions` section.
+> 1. Tick the checkbox for `Enable GA Preview Features.
+> 1. Restart Visual Studio Code.
 
-## How to enable preview features
-1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
-1. Open Visual Studio Code and find `Manage` icon from sidebar (Bottom Left) 
-1. Select `Settings` and find `Teams Toolkit` under `Extensions` section.
-1. Tick the checkbox for `Enable GA Preview Features.
-1. Restart Visual Studio Code.
+Microsoft Teams allows you to automate simple and repetitive tasks right inside a conversation. You can build a Teams bot that can respond to simple commands sent in chats with adaptive cards.
+
+In this tutorial, you will learn:
+* [How to create a command bot with Teams Toolkit](#How-to-create-a-command-response-bot)
+* [How to understand command bot project](#Take-a-tour-of-your-app-source-code)
+* [How to add more command and response](#How-to-add-more-command-and-response)
+* [How command and response bot works](#How-command-and-response-works)
+* [How to connect to and existing API](#Connect-to-existing-API)
+* [How to build dynamic content in response with adaptive cards](#How-to-build-command-response-using-adaptive-card-with-dynamic-content)
+
 
 ## How to create a command-response bot
 In Visual Studio Code:
@@ -38,6 +47,8 @@ In CLI, use the `teamsfx new` command:
     teamsfx new --interactive false --capabilities "command-and-response" --programming-language "typescript" --folder "./" --app-name myAppName
     ```
 
+<p align="right"><a href="#Build-command-and-response">back to top</a></p>
+
 ## Take a tour of your app source code
 After scaffolding or adding a command-response bot, you will find your bot's source code under `bot/` folder:
 | File name | Contents |
@@ -46,6 +57,8 @@ After scaffolding or adding a command-response bot, you will find your bot's sou
 |`bot/src/index.ts`| Server code to host the bot app and listen on `/api/messages` to process Teams activity with Bot Framework |
 |`bot/src/helloworldCommandHandler.ts`| A hello world command handler to process a `helloworld` command and return an adaptive card as response |
 |`bot/src/adaptiveCards/*.json`| Adaptive card JSON file used as your command response |
+
+<p align="right"><a href="#Build-command-and-response">back to top</a></p>
 
 ## How to add more command and response
 1. Add new command handler to your bot
@@ -169,14 +182,20 @@ After scaffolding or adding a command-response bot, you will find your bot's sou
 
 Now, you are all done with the code development of adding a new command and response into your bot app. You can just press `F5` to loca debug with the command-response bot, or use provision and deploy command to deploy the change to Azure.
 
+<p align="right"><a href="#Build-command-and-response">back to top</a></p>
+
 ## How command-and-response works
 The TeamsFx Command-Response Bots are created using the [Bot Framework SDK](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-basics?view=azure-bot-service-4.0). The Bot Framework SDK provides [built-in message handler](https://docs.microsoft.com/en-us/microsoftteams/platform/bots/bot-basics?tabs=javascript#teams-activity-handlers) to handle the incoming message activity, which requires learning curve to understand the concept of Bot Framework (e.g. the [event-driven conversation model](https://docs.microsoft.com/en-us/azure/bot-service/bot-activity-handler-concept?view=azure-bot-service-4.0&tabs=javascript)). To simplify the development, the TeamsFx SDK provides command-response abstraction layer to let developers only focus on the development of business logic to handle the command request without learning the Bot Framework SDK.
 
 Behind the scenes, the TeamsFx SDK leverages [Bot Framework Middleware](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-middleware?view=azure-bot-service-4.0) to handle the integration with the underlying activity handlers. This middleware handles the incoming message activity and invokes the corresponding `handlerCommandReceived` function if the received message text matches the command pattern provided in a `TeamsFxBotCommandHandler` instance. After processing, the middleware will call `context.sendActivity` to send the command response returned from the `handlerCommandReceived` function to the user.
 
+<p align="right"><a href="#Build-command-and-response">back to top</a></p>
+
 ## Connect to existing API
 
 If you want to invoke external APIs in your code but do not have the appropriate SDK, the "Teams: Connect to an API" command in Teams Toolkit VS Code extension or "teamsfx add api-connection" command in TeamsFx CLI would be helpful to bootstrap  code to call target APIs. For more information, you can visit [Connect existing API document](https://aka.ms/teamsfx-connect-existing-api).
+
+<p align="right"><a href="#Build-command-and-response">back to top</a></p>
 
 ## Frequently Asked Questions
 
@@ -187,6 +206,8 @@ Adaptive card provides [Template Language](https://docs.microsoft.com/en-us/adap
 1. Import the card template to you code file where your command handler exists (e.g. `myCommandHandler.ts`)
 1. Model your card data
 1. Use `MessageBuilder.attachAdaptiveCard` to render the template with dynamic card data
+
+<p align="right"><a href="#Build-command-and-response">back to top</a></p>
 
 ### How can I extend my notification bot to support command and response?
 TODO
