@@ -27,7 +27,8 @@ In this tutorial, you will learn:
 If you started with following project, you can incrementally add SSO: 
 * Tab
 * Bot
-* Command bot (hosted on Azure App Service)
+* Notification bot (restify server)
+* Command bot
 * Embed existing web app
 
 To enable SSO support:
