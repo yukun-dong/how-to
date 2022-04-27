@@ -242,6 +242,18 @@ for (const target of await bot.notification.installations()) {
 
 <p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
 
+## Go production
+
+If you choose http trigger, the scaffolded notification API does not have authentication / authorization enabled. We suggest you add authentication / authorization for this API before using it for production purpose. Here're some common ways to add authentication / authorization for an API:
+
+1. Use an API Key. If you chose Azure Functions to host your notification bot, it already provides [function access keys](https://docs.microsoft.com/en-us/azure/azure-functions/security-concepts?tabs=v4#function-access-keys), which may be helpful to you.
+
+2. Use an access token issued by [Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/authentication/)
+
+There would be more authentication / authorization solutions for an API. You can choose the one that satisfies your requirement best.
+
+<p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
+
 ## How notification works
 
 Technically, Bot Framework SDK provides the functionality to [proactively message in Teams](https://docs.microsoft.com/microsoftteams/platform/bots/how-to/conversations/send-proactive-messages?tabs=typescript). And TeamsFx SDK provides the functionality to manage bot's conversation references when bot event is triggered.
