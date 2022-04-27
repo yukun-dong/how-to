@@ -210,7 +210,12 @@ Adaptive card provides [Template Language](https://docs.microsoft.com/en-us/adap
 <p align="right"><a href="#Build-command-and-response">back to top</a></p>
 
 ### How can I extend my notification bot to support command and response?
-TODO
+1. Go to `bot\src\internal\initialize.ts(js)`, update your `conversationBot` initialization to enable command-response feature. , 
+
+   ![enable-command](https://user-images.githubusercontent.com/10163840/165430233-04648a2a-d637-41f0-bb17-b34ddbd609f7.png)
+
+1. Follow [this instruction](#How-to-add-more-command-and-response) to add command to your bot.
 
 ### How can I extend my command and response bot to support notification?
+
 TODO
