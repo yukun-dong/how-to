@@ -222,6 +222,8 @@ Adaptive card provides [Template Language](https://docs.microsoft.com/en-us/adap
 
 1. Follow [this instruction](#How-to-add-more-command-and-response) to add command to your bot.
 
+<p align="right"><a href="#Build-command-and-response">back to top</a></p>
+
 ### How can I extend my command and response bot to support notification?
 
 TODO
