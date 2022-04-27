@@ -49,7 +49,7 @@ The base command of this feature is `teamsfx add api-connection [authentication 
 | API Key | teamsfx add api-connection apikey --endpoint https://example.com --component bot --alias example --key-location header --key-name example-key-name --interactive false |
 | AAD | teamsfx add api-connection aad --endpoint https://example.com --component bot --alias example --app-type custom --tenant-id your_tenant_id --app-id your_app_id --interactive false |
 | Certificate | teamsfx add api-connection cert --endpoint https://example.com --component bot --alias example --interactive false |
-| Custom | teamsfx add api-connection cert --endpoint https://example.com --component bot --alias example --interactive false |
+| Custom | teamsfx add api-connection custom --endpoint https://example.com --component bot --alias example --interactive false |
 
 <p align="right"><a href="#Connect-to-an-API">back to top</a></p>
 
