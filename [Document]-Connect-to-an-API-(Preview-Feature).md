@@ -29,6 +29,7 @@ Teams Toolkit helps you connect to an API easily from a computing resource (Azur
 To add an API connection:
 ### In Visual Studio Code
 1. Open a TeamsFx project, from the Teams Toolkit side bar select `Add features` or open command palette and select `Teams: Add features`
+
 ![image](https://user-images.githubusercontent.com/11220663/165349151-bf009c88-907a-4fd1-9d2d-cdb26e2a93cc.png)
 
 2. Scroll down and select `API Connection`
