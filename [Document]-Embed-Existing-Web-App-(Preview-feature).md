@@ -6,7 +6,7 @@ We really appreciate your feedback! If you encounter any issue or error, please 
 > 1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
 > 1. Open Visual Studio Code and find `Manage` icon from sidebar (Bottom Left) 
 > 1. Select `Settings` and find `Teams Toolkit` under `Extensions` section.
-> 1. Tick the checkbox for `Enable GA Preview Features.
+> 1. Tick the checkbox for `Enable GA Preview Features`.
 > 1. Restart Visual Studio Code.
 
 Teams Toolkit helps you embed your running web pages as Teams tab application easily.
@@ -32,33 +32,37 @@ Also, make sure that your existing app adhere to the following prerequisites:
 <p align="right"><a href="#Embed-existing-web-page">back to top</a></p>
 
 ## Create a new Existing Tab Project
-In Visual Studio Code:
 
-1. Open Teams Toolkit Select the Teams Toolkit ![teams-toolkit-sidebar-icon](https://user-images.githubusercontent.com/10163840/160794831-e0a370ce-888f-4176-bb26-f16a64b72118.png) icon in the Visual Studio Code sidebar or select `Teams: Create a new Teams app` from command palette.
+### In Visual Studio Code
 
-1. Select `Create a new Teams app`.
+1. From Teams Toolkit sidebar click `Create a new Teams app` or select `Teams: Create a new Teams app` from command palette.
 
-   <img src="https://user-images.githubusercontent.com/15644078/163351003-dd3eaa81-a66e-4d27-a4c2-aa6a196c3f12.png" width=500>
+![image](https://user-images.githubusercontent.com/11220663/165435370-99aa79b8-044f-44ea-b2a9-e42a055a3f6c.png)
+
+2. Select `Create a new Teams app`.
+
+![image](https://user-images.githubusercontent.com/11220663/165435420-566f8b99-ab44-482e-ba5f-857f80af4081.png)
    
-1. Select the `Embed existing web app` capability.
+3. Select the `Embed existing web app` from Scenario-based Teams app section.
 
-   <img src="https://user-images.githubusercontent.com/15644078/163351136-37abc835-8144-4db8-9653-d8389c98faa9.png" width=500>
+![image](https://user-images.githubusercontent.com/11220663/165440419-01df1c66-ce23-4c16-a957-d98fff9582f9.png)
   
-1. Enter your web app's local endpoint and continue.
+4. Enter your web app's local endpoint and press enter. Please make sure it's on `HTTPS`
 
-   <img src="https://user-images.githubusercontent.com/15644078/163351438-0ae226d4-d931-4aa4-88de-9c6daa9c20e8.png" width=500>
-  
-1. enter your app name and click `OK`.
-    
-   <img src="https://user-images.githubusercontent.com/15644078/163351597-e1f0652d-d9bd-46f6-bada-7d46b0a82312.png" width=500>
+![image](https://user-images.githubusercontent.com/11220663/165440497-6211d374-366b-4c91-8978-d2d06ef9746a.png)
+
+5. Enter an application name and then press enter.
+
+![image](https://user-images.githubusercontent.com/11220663/165435852-686deaef-119e-4311-9343-d8ef4b335516.png)
    
-In CLI, use the `teamsfx new` command: 
+### In TeamsFx CLI
 
-- By default, `teamsfx new` goes into interactive mode and guides you through the process of creating a new Teams application.
-- Or, if you prefer non-interactive mode, enter all required parameters in one command.
-    ```
-    teamsfx new --interactive false --capabilities "existing-tab" --existing-tab-endpoint "https://localhost:3000" --folder "./" --app-name myAppName
-    ```
+* If you prefer interactive mode, execute `teamsfx new` command, then use the keyboard to go through the same flow as in Visual Studio Code.
+
+* If you prefer non-interactive mode, enter all required parameters in one command.
+
+`teamsfx new --interactive false --capabilities "existing-tab" --existing-tab-endpoint "https://localhost:3000" --folder "./" --app-name myAppName`
+
 <p align="right"><a href="#Embed-existing-web-page">back to top</a></p>
 
 ## Take a tour of your app source code
@@ -80,11 +84,11 @@ The following table lists all the scaffolded folder and files by Teams Toolkit:
 
 * For local environment: you could preview the Teams app directly via environment tree view in Teams Toolkit:
 
-  <img src="https://user-images.githubusercontent.com/15644078/163303755-54d24c19-a020-473f-b1b4-c3ef454f09c5.png" width=300>
+![image](https://user-images.githubusercontent.com/11220663/165440914-f002a0ac-67d9-40dd-977d-247ab9d3dd2e.png)
 
 * For remote environment: you need to run `Teams: Provision in the cloud` first, then you could preview the Teams app via environment tree view in Teams Toolkit:
 
-  <img src="https://user-images.githubusercontent.com/15644078/163303988-887b72f7-eff6-4746-96ac-51c82af27ead.png" width=300>
+![image](https://user-images.githubusercontent.com/11220663/165440981-b2b7a711-4ea8-4075-93dd-5ce94fd2ad5f.png)
 
 <p align="right"><a href="#Embed-existing-web-page">back to top</a></p>
 
