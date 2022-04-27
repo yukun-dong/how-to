@@ -19,7 +19,7 @@ In this tutorial, you will learn:
 * [How command and response bot works](#How-command-and-response-works)
 * [How to connect to and existing API](#Connect-to-existing-API)
 * [How to build dynamic content in response with adaptive cards](#How-to-build-command-response-using-adaptive-card-with-dynamic-content)
-
+* [How can I extend my notification bot to support command and response](#how-can-i-extend-my-notification-bot-to-support-command-and-response)
 
 ## How to create a command-response bot
 In Visual Studio Code:
