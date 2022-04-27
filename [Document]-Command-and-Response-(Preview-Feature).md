@@ -35,7 +35,7 @@ In this tutorial, you will learn:
 
 3. Select the `Command bot` from Scenario-based Teams app section.
 
-![image](https://user-images.githubusercontent.com/11220663/165438953-9c766ed9-7c58-4a94-b1f7-9ac44c991ed7.png)
+![image](https://user-images.githubusercontent.com/11220663/165442739-16ecd6da-ac09-4f8e-b6e8-3452905e2f22.png)
 
 4. Select programming language
 
