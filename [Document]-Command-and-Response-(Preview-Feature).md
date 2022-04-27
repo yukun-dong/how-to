@@ -241,7 +241,7 @@ Adaptive card provides [Template Language](https://docs.microsoft.com/en-us/adap
       res.json({});
     });
 
-3. Uninstall your previous bot installation from Teams, and re-run local debug to test your bot notification. Then you can send a notification to the bot installation targets (channel/group chat/personal chat) by using a HTTP POST request with taret URL `https://localhost:3978/api/notification`.
+3. Uninstall your previous bot installation from Teams, and re-run local debug to test your bot notification. Then you can send a notification to the bot installation targets (channel/group chat/personal chat) by using a HTTP POST request with target URL `https://localhost:3978/api/notification`.
 
 To explore more details of the notification feature (e.g. send notification with adaptive card, add more triggers), you can further refer to [the notification document](https://aka.ms/teamsfx-notification).
 
