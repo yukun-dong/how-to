@@ -45,7 +45,7 @@ Also, make sure that your existing app adhere to the following prerequisites:
    
 3. Select the `Embed existing web app` from Scenario-based Teams app section.
 
-![image](https://user-images.githubusercontent.com/11220663/165440419-01df1c66-ce23-4c16-a957-d98fff9582f9.png)
+![image](https://user-images.githubusercontent.com/11220663/165442880-696b6b4a-b8a3-4602-baea-0390f43f1fd2.png)
   
 4. Enter your web app's local endpoint and press enter. Please make sure it's on `HTTPS`
 
