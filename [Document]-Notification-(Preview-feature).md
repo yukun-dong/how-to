@@ -7,7 +7,7 @@ We really appreciate your feedback! If you encounter any issue or error, please 
 > 1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
 > 1. Open Visual Studio Code and find `Manage` icon from sidebar (Bottom Left) 
 > 1. Select `Settings` and find `Teams Toolkit` under `Extensions` section.
-> 1. Tick the checkbox for `Enable Preview Features.
+> 1. Tick the checkbox for `Enable Preview Features`.
 > 1. Restart Visual Studio Code.
 
 Notification in Teams means you can proactively message an individual person, a chat, or a channel via plain text or different [cards](https://docs.microsoft.com/en-us/microsoftteams/platform/task-modules-and-cards/cards/cards-reference).
@@ -72,7 +72,7 @@ Here's the comparison of the two approaches to help you make the decision.
 
 
 ### In TeamsFx CLI
-* If you prefer interactive mode, execute `teamsfx new` command then use the keyboard to go through the same flow as in Visual Studio Code.
+* If you prefer interactive mode, execute `teamsfx new` command, then use the keyboard to go through the same flow as in Visual Studio Code.
 
 * If you prefer non-interactive mode, enter all required parameters in one command.
 
@@ -296,7 +296,7 @@ for (const target of await bot.notification.installations()) {
 
 ## Connect to existing API
 
-If you want to invoke external APIs in your code but do not have the appropriate SDK, the "Teams: Connect to an API" command in Teams Toolkit VS Code extension or "teamsfx add api-connection" command in TeamsFx CLI would be helpful to bootstrap  code to call target APIs. For more information, you can visit [Connect existing API document](https://aka.ms/teamsfx-connect-existing-api).
+If you want to invoke external APIs in your code but do not have the appropriate SDK, the "Teams: Connect to an API" command in Teams Toolkit VS Code extension or "teamsfx add api-connection" command in TeamsFx CLI would be helpful to bootstrap code to call target APIs. For more information, you can visit [Connect existing API document](https://aka.ms/teamsfx-connect-existing-api).
 
 <p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
 
