@@ -7,7 +7,7 @@ We really appreciate your feedback! If you encounter any issue or error, please 
 > 1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
 > 1. Open Visual Studio Code and find `Manage` icon from sidebar (Bottom Left) 
 > 1. Select `Settings` and find `Teams Toolkit` under `Extensions` section.
-> 1. Tick the checkbox for `Enable GA Preview Features.
+> 1. Tick the checkbox for `Enable Preview Features.
 > 1. Restart Visual Studio Code.
 
 Notification in Teams means you can proactively message an individual person, a chat, or a channel via plain text or different [cards](https://docs.microsoft.com/en-us/microsoftteams/platform/task-modules-and-cards/cards/cards-reference).
@@ -26,7 +26,7 @@ In this tutorial, you will learn:
 # Teams bot application or Teams incoming webhook
 Microsoft Teams Framework (TeamsFx) supports two major ways to help you send notifications from your system to Teams by creating a Teams Bot Application or Teams Incoming Webhook.
 
-Here's the comparison of the two approaches to help you make decision.
+Here's the comparison of the two approaches to help you make the decision.
 
 | | **Teams Bot App** | **Teams Incoming Webhook** |
 | - | - | - |
@@ -43,28 +43,40 @@ Here's the comparison of the two approaches to help you make decision.
 <p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
 
 # Notification via Teams bot application
-## Create a new Notification Project
+## Create a new notification project
 
-In VSCode, open Teams Toolkit extension:
-- Click `Create a new Teams app` or from command palette `Teams: Create a new Teams app`.
-- Select `Create a new Teams app`.
+### In Visual Studio Code
+1. From Teams Toolkit side bar click `Create a new Teams app` or select `Teams: Create a new Teams app` from the command palette.
+
+![image](https://user-images.githubusercontent.com/11220663/165435370-99aa79b8-044f-44ea-b2a9-e42a055a3f6c.png)
+
+2. Select `Create a new Teams app`.
   
-  ![Create a new Teams app](notification/create-1.png)
-- Select `Notification`.
+![image](https://user-images.githubusercontent.com/11220663/165435420-566f8b99-ab44-482e-ba5f-857f80af4081.png)
+
+3. Select `Notification bot` from Scenario-based Teams app section.
+
+![image](https://user-images.githubusercontent.com/11220663/165435543-a2de8080-9467-4dee-93e7-11f08b1b2245.png)
+
+4. Select triggers. You can choose from `HTTP Trigger` or `Timer Trigger`. The triggers are based on `Restify Server` (means the created app code is a restify web app) or `Azure Functions` (means the created app code is Azure Functions).
   
-  ![Create Notification](notification/create-2.png)
-- Select triggers. `(Restify)` means the created app code is restify web app, and `(Azure Functions)` means the created app code is Azure Functions.
-  
-  ![Select Triggers](notification/create-3.png)
-- Enter your app name then click `OK`.
+![image](https://user-images.githubusercontent.com/11220663/165435740-cd795eb4-8723-4ad0-b7a2-91ebb49180e8.png)
 
-In CLI, use `teamsfx new` command:
-- If you prefer interactive mode, just enter `teamsfx new` then use keyboard to select step-by-step.
+5. Select programming language
 
-  ![Select in CLI](notification/create-cli-1.png)
-- Or, if you prefer non-interactive mode, enter all required parameters in one command.
+![image](https://user-images.githubusercontent.com/11220663/165435816-e6d46074-6e0a-4186-804b-c83bfbe12b6f.png)
 
-  `teamsfx new --interactive false --capabilities "notification" --bot-host-type-trigger "http-restify" --programming-language "typescript" --folder "./" --app-name MyAppName`
+6. Enter an application name and then press enter.
+
+![image](https://user-images.githubusercontent.com/11220663/165435852-686deaef-119e-4311-9343-d8ef4b335516.png)
+
+
+### In TeamsFx CLI
+* If you prefer interactive mode, execute `teamsfx new` command then use the keyboard to go through the same flow as in Visual Studio Code.
+
+* If you prefer non-interactive mode, enter all required parameters in one command.
+
+`teamsfx new --interactive false --capabilities "notification" --bot-host-type-trigger "http-restify" --programming-language "typescript" --folder "./" --app-name MyAppName`
 
 <p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
 
