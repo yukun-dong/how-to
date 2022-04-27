@@ -31,7 +31,7 @@ Also, make sure that your existing app adhere to the following prerequisites:
 
 <p align="right"><a href="#Embed-existing-web-page">back to top</a></p>
 
-## Create a new Existing Tab Project
+## Embed existing web pages
 
 ### In Visual Studio Code
 
