@@ -191,7 +191,7 @@ const bot = new ConversationBot({
 });
 ```
 
-**[This Sample](https://github.com/OfficeDev/TeamsFx-Samples/blob/ga/adaptive-card-notification/bot/src/storage/blobsStorage.ts) provides a sample implementation that persists to Azure Blob Storage.
+**[This Sample](https://github.com/OfficeDev/TeamsFx-Samples/blob/ga/adaptive-card-notification/bot/src/storage/blobsStorage.ts)** provides a sample implementation that persists to Azure Blob Storage.
 
 > Note: It's recommended to use your own shared storage for production environment. If `storage` is not provided, a default local file storage will be used, which stores notification connections into:
 >   - *.notification.localstore.json* if running locally
@@ -324,7 +324,7 @@ It depends on your host type.
 
 One possible cause is that the installation event was omitted or did not reached to the bot service. Teams only send such event at the first installation time, so if the bot app was already installed before your notification bot service is launched, you are probably in this case.
 
-To fix, uninstall the bot app from Teams then re-debug/re-launch again.
+To fix, **uninstall the bot app from Teams then re-debug/re-launch again**.
 
 Technically, notification target connections are stored in the persistence storage. If you are using the default local file storage, all installations will be stored under `bot/.notification.localstore.json`. Or refer to [Customize Storage](#customize-storage) to add your own storage.
 
@@ -334,7 +334,7 @@ Notification target connections are stored in the persistence storage. If you ar
 
 It's recommended to use your own shared storage for production environment. See [Customize Storage](#customize-storage).
 
-Or, as a workaround, after restart / redeploy, you can mention your bot in Teams chat / group / channel to re-add connections to the storage.
+Or, as a workaround, after restart / redeploy, uninstall the bot from Teams, then re-install it to re-add connections to the storage.
 
 ### Can I know all the targets my bot is installed in, out of the notification project?
 
