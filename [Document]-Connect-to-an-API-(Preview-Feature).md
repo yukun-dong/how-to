@@ -7,7 +7,7 @@ We really appreciate your feedback! If you encounter any issue or error, please 
 > 1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
 > 1. Open Visual Studio Code and find `Manage` icon from sidebar (Bottom Left) 
 > 1. Select `Settings` and find `Teams Toolkit` under `Extensions` section.
-> 1. Tick the checkbox for `Enable GA Preview Features.
+> 1. Tick the checkbox for `Enable Preview Features.
 > 1. Restart Visual Studio Code.
 
 You usually want to access data or information when building Teams application. If you do not have an appropriate SDK that helps you make an API request, Teams Toolkit is here to help you bootstrap sample code which handles authentication for your API requests.
@@ -21,26 +21,43 @@ In this tutorial, you will learn:
 * [How to obtain API permission with Azure Active Directory protected API request](#Gain-API-permission-for-your-Teams-apps-AAD-app-registration)
 
 ## How to use this feature
+Teams Toolkit helps you connect to an API easily from a computing resource (Azure Functions or Bot). By adding an API connection, Teams Toolkit will:
+* Generate sample code under `./bot` or `./api` folder.
+* Add the appropriate version of `@microsoft/teamsfx` package to `package.json` if this does not exist.
+* Add new app settings for your API to `.env.teamsfx.local`, which is used during local debugging.
 
-The feature is available in VS Code Teams Toolkit and TeamsFx CLI.
+To add an API connection:
+### In Visual Studio Code
+1. Open a TeamsFx project, from the Teams Toolkit side bar select `Add features` or open command palette and select `Teams: Add features`
+![image](https://user-images.githubusercontent.com/11220663/165349151-bf009c88-907a-4fd1-9d2d-cdb26e2a93cc.png)
 
-### Use this feature in VS Code Teams Toolkit
-1. Open a TeamsFx project, press `Ctrl + Shift + P` to open command palatte and choose command `Teams: Connect to an API`
-    ![command](./connectExistingApi/vscode_command.PNG)
-2. Input endpoint for your API. The endpoint should be a valid http(s) url. It will be added to your project's local app setting and used as base url when making requests. This means you don't need to input full api url for every request.
-    ![input_endpoint](./connectExistingApi/vscode_input_endpoint.PNG)
-3. Choose which component needs to invoke the API. We will make following changes to the selected component:
-    * Generate sample code under component root folder
-    * Add appropriate version of `@microsoft/teamsfx` package to package.json if you don't have this package in your component
-    * Add new app settings for your API to `.env.teamsfx.local`, which is used during local debugging
-    ![select_component](./connectExistingApi/vscode_select_component.PNG)
-4. Input alias for your API. The alias is used to generate app setting names for your API, which will be added to your project's local app setting.
-    ![input_alias](./connectExistingApi/vscode_input_alias.PNG)
-5. Select how you want to authenticate the API requests. We will generate appropriate sample code and add corresponding local app settings based on your selectiong.
-    ![select_auth_type](./connectExistingApi/vscode_select_auth_type.PNG)
-6. There will be some additional questions for your selected auth type. Provide information each question to complete the command.
+2. Scroll down and select `API Connection`
 
-### Use this feature in TeamsFx CLI
+![image](https://user-images.githubusercontent.com/11220663/165430594-3793de91-ac4b-4746-9810-e004aadea19b.png)
+
+
+3. Input endpoint for your API. 
+The endpoint should be a valid http(s) url. It will be added to your project's local app setting and used as base url when making requests. This means you don't need to input full api url for every request.
+
+![image](https://user-images.githubusercontent.com/11220663/165430748-9c61a7a0-e51e-4642-8735-04affdc2bf74.png)
+
+
+4. Choose which component needs to invoke the API.
+
+![image](https://user-images.githubusercontent.com/11220663/165430964-b5273e72-ee76-41f5-b103-3dcc440e17f7.png)
+
+5. Input alias for your API. The alias is used to generate app setting names for your API, which will be added to your project's local app setting.
+
+![image](https://user-images.githubusercontent.com/11220663/165431010-28b22571-31a4-4fcc-9b90-e14626ef182c.png)
+
+
+6. Select how you want to authenticate the API requests. We will generate appropriate sample code and add corresponding local app settings based on your selection.
+
+![image](https://user-images.githubusercontent.com/11220663/165431048-66b522d3-c616-4b84-b7aa-41a14f92696a.png)
+
+7. There will be some additional questions based on your selection of an authentication type. Provide information for each question to complete the flow.
+
+### In TeamsFx CLI
 
 The base command of this feature is `teamsfx add api-connection [authentication type]`. Here is the list of available authentication type and corresponding sample command. You can use `teamsfx add api-connection [authentication type] -h` to get help document.
 | Authentication type | Sample command |
