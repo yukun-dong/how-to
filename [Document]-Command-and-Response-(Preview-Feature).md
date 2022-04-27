@@ -7,7 +7,7 @@ We really appreciate your feedback! If you encounter any issue or error, please 
 > 1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
 > 1. Open Visual Studio Code and find `Manage` icon from sidebar (Bottom Left) 
 > 1. Select `Settings` and find `Teams Toolkit` under `Extensions` section.
-> 1. Tick the checkbox for `Enable GA Preview Features.
+> 1. Tick the checkbox for `Enable Preview Features`.
 > 1. Restart Visual Studio Code.
 
 Microsoft Teams allows you to automate simple and repetitive tasks right inside a conversation. You can build a Teams bot that can respond to simple commands sent in chats with adaptive cards.
@@ -19,33 +19,39 @@ In this tutorial, you will learn:
 * [How command and response bot works](#How-command-and-response-works)
 * [How to connect to and existing API](#Connect-to-existing-API)
 * [How to build dynamic content in response with adaptive cards](#How-to-build-command-response-using-adaptive-card-with-dynamic-content)
-* [How can I extend my notification bot to support command and response](#how-can-i-extend-my-notification-bot-to-support-command-and-response)
+* [How to extend my notification bot to support command and response](#how-can-i-extend-my-notification-bot-to-support-command-and-response)
 
 ## How to create a command-response bot
-In Visual Studio Code:
 
-1. Open Teams Toolkit and select the Teams Toolkit ![teams-toolkit-sidebar-icon](https://user-images.githubusercontent.com/10163840/160794831-e0a370ce-888f-4176-bb26-f16a64b72118.png) icon in the Visual Studio Code sidebar or select `Teams: Create a new Teams app` from command palette.
+### In Visual Studio Code
 
-1. Select `Create a new Teams app`.
-    ![create-new-project](https://user-images.githubusercontent.com/10163840/160793793-630fe4dd-ff92-4d43-8bf4-47c12a10e0b5.png)
+1. From Teams Toolkit sidebar click `Create a new Teams app` or select `Teams: Create a new Teams app` from command palette.
 
-1. Select the `Command and Response` capability
-    ![select-command-response](https://user-images.githubusercontent.com/10163840/160793837-7bb11e26-7608-44ca-8f06-ee7c9597a0f7.png)
-    
-1. Select `TypeScript` as the programming language.
-    ![select-typescript](https://user-images.githubusercontent.com/10163840/160793855-8c5f5821-5dd5-4194-8aa4-17844ae720df.png)
+![image](https://user-images.githubusercontent.com/11220663/165435370-99aa79b8-044f-44ea-b2a9-e42a055a3f6c.png)
 
-1. Provide your app name and click `OK`.
-    ![provide-app-name](https://user-images.githubusercontent.com/10163840/160793811-014c9b88-4fc8-4785-bb51-a861f7433c91.png)
+2. Select `Create a new Teams app`.
 
-In CLI, use the `teamsfx new` command: 
+![image](https://user-images.githubusercontent.com/11220663/165435420-566f8b99-ab44-482e-ba5f-857f80af4081.png)
 
-- By default, `teamsfx new` goes into interactive mode and guides you through the process of creating a new Teams application.
-    ![cli-create-new](https://user-images.githubusercontent.com/10163840/160799625-6f956a40-0525-4906-8740-592384b7a9a8.png)
-- Or, if you prefer non-interactive mode, enter all required parameters in one command
-    ```
-    teamsfx new --interactive false --capabilities "command-and-response" --programming-language "typescript" --folder "./" --app-name myAppName
-    ```
+3. Select the `Command bot` from Scenario-based Teams app section.
+
+![image](https://user-images.githubusercontent.com/11220663/165438953-9c766ed9-7c58-4a94-b1f7-9ac44c991ed7.png)
+
+4. Select programming language
+
+![image](https://user-images.githubusercontent.com/11220663/165435816-e6d46074-6e0a-4186-804b-c83bfbe12b6f.png)
+
+5. Enter an application name and then press enter.
+
+![image](https://user-images.githubusercontent.com/11220663/165435852-686deaef-119e-4311-9343-d8ef4b335516.png)
+
+### In TeamsFx CLI
+
+* If you prefer interactive mode, execute `teamsfx new` command, then use the keyboard to go through the same flow as in Visual Studio Code.
+
+* If you prefer non-interactive mode, enter all required parameters in one command.
+
+`teamsfx new --interactive false --capabilities "command-and-response" --programming-language "typescript" --folder "./" --app-name myAppName`
 
 <p align="right"><a href="#Build-command-and-response">back to top</a></p>
 
@@ -193,7 +199,7 @@ Behind the scenes, the TeamsFx SDK leverages [Bot Framework Middleware](https://
 
 ## Connect to existing API
 
-If you want to invoke external APIs in your code but do not have the appropriate SDK, the "Teams: Connect to an API" command in Teams Toolkit VS Code extension or "teamsfx add api-connection" command in TeamsFx CLI would be helpful to bootstrap  code to call target APIs. For more information, you can visit [Connect existing API document](https://aka.ms/teamsfx-connect-existing-api).
+If you want to invoke external APIs in your code but do not have the appropriate SDK, the "Teams: Connect to an API" command in Teams Toolkit VS Code extension or "teamsfx add api-connection" command in TeamsFx CLI would be helpful to bootstrap code to call target APIs. For more information, you can visit [Connect existing API document](https://aka.ms/teamsfx-connect-existing-api).
 
 <p align="right"><a href="#Build-command-and-response">back to top</a></p>
 
