@@ -6,7 +6,7 @@ We really appreciate your feedback! If you encounter any issue or error, please 
 > 1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
 > 1. Open Visual Studio Code and find `Manage` icon from sidebar (Bottom Left) 
 > 1. Select `Settings` and find `Teams Toolkit` under `Extensions` section.
-> 1. Tick the checkbox for `Enable GA Preview Features`.
+> 1. Tick the checkbox for `Enable Preview Features`.
 > 1. Restart Visual Studio Code.
 
 Teams Toolkit helps you embed your running web pages as Teams tab application easily.
