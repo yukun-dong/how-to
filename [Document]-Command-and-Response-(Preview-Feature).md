@@ -20,6 +20,7 @@ In this tutorial, you will learn:
 * [How to connect to and existing API](#Connect-to-existing-API)
 * [How to build dynamic content in response with adaptive cards](#How-to-build-command-response-using-adaptive-card-with-dynamic-content)
 * [How to extend my notification bot to support command and response](#how-can-i-extend-my-notification-bot-to-support-command-and-response)
+* [How can I extend my command and response bot to support notification](#how-can-i-extend-my-command-and-response-bot-to-support-notification)
 
 ## How to create a command-response bot
 
@@ -241,9 +242,7 @@ Adaptive card provides [Template Language](https://docs.microsoft.com/en-us/adap
     });
 
 3. Uninstall your previous bot installation from Teams, and re-run local debug to test your bot notification. Then you can send a notification to the bot installation targets (channel/group chat/personal chat) by using a HTTP POST request with taret URL `https://localhost:3978/api/notification`.
-    ```
-    curl -X POST https://localhost:3978/api/notification
-    ```
 
 To explore more details of the notification feature (e.g. send notification with adaptive card, add more triggers), you can further refer to [the notification document](https://aka.ms/teamsfx-notification).
+
 <p align="right"><a href="#Build-command-and-response">back to top</a></p>
