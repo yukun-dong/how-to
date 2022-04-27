@@ -339,6 +339,11 @@ If azurite exits due to port in use, you can [specify another listening port](ht
 <p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
 
 # Notification via Incoming Webhook
-//TODO (Sample)
+Incoming Webhooks help in posting messages from apps to Teams. If Incoming Webhooks are enabled for a team in any channel, it exposes the HTTPS endpoint, which accepts correctly formatted JSON and inserts the messages into that channel. For example, you can create an Incoming Webhook in your DevOps channel, configure your build, and simultaneously deploy and monitor services to send alerts.
+
+Teams Framework has built a [sample](https://github.com/OfficeDev/TeamsFx-Samples/tree/ga/incoming-webhook-notification) that walks you through:
+* How to create an incoming webhook in Teams.
+* How to send notifications using incoming webhooks with adaptive cards.
+
 
 <p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
