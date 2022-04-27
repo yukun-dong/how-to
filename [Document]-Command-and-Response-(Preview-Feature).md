@@ -225,5 +225,25 @@ Adaptive card provides [Template Language](https://docs.microsoft.com/en-us/adap
 <p align="right"><a href="#Build-command-and-response">back to top</a></p>
 
 ### How can I extend my command and response bot to support notification?
+1. Go to `bot\src\internal\initialize.ts(js)`, update your `conversationBot` initialization to enable notification feature:
 
-TODO
+    ![enable-notification](https://user-images.githubusercontent.com/10163840/165462039-12bd4f61-3fc2-4fc8-8910-6a4b1e138626.png)
+
+2. Follow [this intruction](https://github.com/OfficeDev/TeamsFx/wiki/%5BDocument%5D-Notification-(Preview-feature)#notify) to send notification to the bot installation target (channel/group chat/personal chat). To quickly add a sample notification triggered by a HTTP endpoint, you can add the following sample code in `bot\src\index.ts(js)`:
+
+    ```typescript
+    server.post("/api/notification", async (req, res) => {
+      for (const target of await commandBot.notification.installations()) {
+        await target.sendMessage("This is a sample notification message");
+      }
+    
+      res.json({});
+    });
+
+3. Uninstall your previous bot installation from Teams, and re-run local debug to test your bot notification. Then you can send a notification to the bot installation targets (channel/group chat/personal chat) by using a HTTP POST request with taret URL `https://localhost:3978/api/notification`.
+    ```
+    curl -X POST https://localhost:3978/api/notification
+    ```
+
+To explore more details of the notification feature (e.g. send notification with adaptive card, add more triggers), you can further refer to [the notification document](https://aka.ms/teamsfx-notification).
+<p align="right"><a href="#Build-command-and-response">back to top</a></p>
