@@ -18,6 +18,7 @@ In this tutorial, you will learn:
   * [How to create a new notification bot with Teams Toolkit](#Create-a-new-Notification-Project)
   * [How to understand notification bot project](#Take-a-tour-of-your-app-source-code)
   * [How to send more notifications](#How-to-send-more-notifications)
+  * [How to add authentication for your notification API](#Add-authentication-for-your-notification-API)
   * [How notification works](#How-notification-works)
   * [How to connect to an existing API](#Connect-to-existing-API)
 * [Send notification to Teams via Teams incoming webhook](#Notification-via-Incoming-Webhook)
@@ -242,7 +243,7 @@ for (const target of await bot.notification.installations()) {
 
 <p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
 
-## Go production
+## Add authentication for your notification API
 
 If you choose http trigger, the scaffolded notification API does not have authentication / authorization enabled. We suggest you add authentication / authorization for this API before using it for production purpose. Here're some common ways to add authentication / authorization for an API:
 
