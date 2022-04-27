@@ -19,8 +19,8 @@ In this tutorial, you will learn:
 * [How command and response bot works](#How-command-and-response-works)
 * [How to connect to and existing API](#Connect-to-existing-API)
 * [How to build dynamic content in response with adaptive cards](#How-to-build-command-response-using-adaptive-card-with-dynamic-content)
-* [How to extend my notification bot to support command and response](#how-can-i-extend-my-notification-bot-to-support-command-and-response)
-* [How can I extend my command and response bot to support notification](#how-can-i-extend-my-command-and-response-bot-to-support-notification)
+* [How to extend my notification bot to support command and response](#how-to-extend-my-notification-bot-to-support-command-and-response)
+* [How to extend my command and response bot to support notification](#how-to-extend-my-command-and-response-bot-to-support-notification)
 
 ## How to create a command-response bot
 
@@ -216,7 +216,7 @@ Adaptive card provides [Template Language](https://docs.microsoft.com/en-us/adap
 
 <p align="right"><a href="#Build-command-and-response">back to top</a></p>
 
-### How can I extend my notification bot to support command and response?
+### How to extend my notification bot to support command and response?
 1. Go to `bot\src\internal\initialize.ts(js)`, update your `conversationBot` initialization to enable command-response feature:
 
    ![enable-command](https://user-images.githubusercontent.com/10163840/165430233-04648a2a-d637-41f0-bb17-b34ddbd609f7.png)
@@ -225,7 +225,7 @@ Adaptive card provides [Template Language](https://docs.microsoft.com/en-us/adap
 
 <p align="right"><a href="#Build-command-and-response">back to top</a></p>
 
-### How can I extend my command and response bot to support notification?
+### How to extend my command and response bot to support notification?
 1. Go to `bot\src\internal\initialize.ts(js)`, update your `conversationBot` initialization to enable notification feature:
 
     ![enable-notification](https://user-images.githubusercontent.com/10163840/165462039-12bd4f61-3fc2-4fc8-8910-6a4b1e138626.png)
