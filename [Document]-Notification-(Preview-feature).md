@@ -78,6 +78,11 @@ Here's the comparison of the two approaches to help you make the decision.
 
 `teamsfx new --interactive false --capabilities "notification" --bot-host-type-trigger "http-restify" --programming-language "typescript" --folder "./" --app-name MyAppName`
 
+After you successfully created the project, you can quickly start local debugging via `F5` in VSCode. Select `Debug (Edge)` or `Debug (Chrome)` debug option of your preferred browser. If you created a timer triggered notification, after running this template and you will get a notification as below:
+
+<img alt="notification-message" src="https://user-images.githubusercontent.com/11220663/165900532-9132644d-0783-422f-8ca8-5aeec626972c.png">
+
+
 <p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
 
 ## Take a tour of your app source code
