@@ -54,6 +54,10 @@ In this tutorial, you will learn:
 
 `teamsfx new --interactive false --capabilities "command-and-response" --programming-language "typescript" --folder "./" --app-name myAppName`
 
+After you successfully created the project, you can quickly start local debugging via `F5` in VSCode. Select `Debug (Edge)` or `Debug (Chrome)` debug option of your preferred browser. You can send a `helloWorld` command after running this template and get a response as below:
+
+![command-response](https://user-images.githubusercontent.com/11220663/165891754-16916b68-c1b5-499d-b6a8-bdfb195f1fd0.png)
+
 <p align="right"><a href="#Build-command-and-response">back to top</a></p>
 
 ## Take a tour of your app source code
