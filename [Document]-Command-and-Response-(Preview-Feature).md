@@ -3,12 +3,6 @@
 > Please be advised these features are currently under active development, with a lot of changes taking place. Please expect breaking changes as we continue to iterate.
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us [here](https://github.com/OfficeDev/TeamsFx/issues/new/choose).
 
-> How to enable preview features
-> 1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
-> 1. Open Visual Studio Code and find `Manage` icon from sidebar (Bottom Left) 
-> 1. Select `Settings` and find `Teams Toolkit` under `Extensions` section.
-> 1. Tick the checkbox for `Enable Preview Features`.
-> 1. Restart Visual Studio Code.
 
 Microsoft Teams allows you to automate simple and repetitive tasks right inside a conversation. You can build a Teams bot that can respond to simple commands sent in chats with adaptive cards.
 
@@ -70,6 +64,26 @@ After scaffolding or adding a command-response bot, you will find your bot's sou
 |`bot/src/adaptiveCards/*.json`| Adaptive card JSON file used as your command response |
 
 <p align="right"><a href="#Build-command-and-response">back to top</a></p>
+
+## Customize initialization
+You can initialize with your own adapter or customize after initialization.
+
+``` typescript
+// Create your own adapter
+const adapter = new BotFrameworkAdapter(...);
+
+// Customize your adater, e.g., error handling
+adapter.onTurnError = ...
+
+const bot = new ConversationBot({
+    // use your own adapter
+    adapter: adapter;
+    ...
+});
+
+// Or, customize later
+bot.adapter.onTurnError = ...
+```
 
 ## How to add more command and response
 1. Add new command handler to your bot
