@@ -54,6 +54,10 @@ In this tutorial, you will learn:
 
 `teamsfx new --interactive false --capabilities "command-and-response" --programming-language "typescript" --folder "./" --app-name myAppName`
 
+After you successfully created the project, you can quickly start local debugging via `F5` in VSCode. Select `Debug (Edge)` or `Debug (Chrome)` debug option of your preferred browser. You can send a `helloWorld` command after running this template and get a response as below:
+
+![command-response](https://user-images.githubusercontent.com/11220663/165891754-16916b68-c1b5-499d-b6a8-bdfb195f1fd0.png)
+
 <p align="right"><a href="#Build-command-and-response">back to top</a></p>
 
 ## Take a tour of your app source code
@@ -230,7 +234,7 @@ Adaptive card provides [Template Language](https://docs.microsoft.com/en-us/adap
 
     ![enable-notification](https://user-images.githubusercontent.com/10163840/165462039-12bd4f61-3fc2-4fc8-8910-6a4b1e138626.png)
 
-2. Follow [this intruction](https://github.com/OfficeDev/TeamsFx/wiki/%5BDocument%5D-Notification-(Preview-feature)#notify) to send notification to the bot installation target (channel/group chat/personal chat). To quickly add a sample notification triggered by a HTTP request, you can add the following sample code in `bot\src\index.ts(js)`:
+2. Follow [this intruction](https://aka.ms/teamsfx-notification#notify) to send notification to the bot installation target (channel/group chat/personal chat). To quickly add a sample notification triggered by a HTTP request, you can add the following sample code in `bot\src\index.ts(js)`:
 
     ```typescript
     server.post("/api/notification", async (req, res) => {
