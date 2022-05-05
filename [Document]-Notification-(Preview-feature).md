@@ -1,9 +1,8 @@
 # Send notification to Teams
 
-> Please be advised these features are currently under active development, with a lot of changes taking place. Please expect breaking changes as we continue to iterate.
-We really appreciate your feedback! If you encounter any issue or error, please report issues to us [here](https://github.com/OfficeDev/TeamsFx/issues/new/choose).
+> This feature is currently under active development. Report any issues to us [here](https://github.com/OfficeDev/TeamsFx/issues/new/choose).
 
-Notification in Teams means you can proactively message an individual person, a chat, or a channel via plain text or different [cards](https://docs.microsoft.com/en-us/microsoftteams/platform/task-modules-and-cards/cards/cards-reference).
+The Notification in Teams feature enables you to build applications that consume events and send these as notifications to an individual person, a chat, or a channel in Teams. Notifications can be sent as plain text or [Adaptive Cards](https://docs.microsoft.com/en-us/microsoftteams/platform/task-modules-and-cards/cards/cards-reference).
 
 In this tutorial, you will learn:
 * [Different approaches to send notifications to Teams](#Teams-bot-application-or-Teams-incoming-webhook)
