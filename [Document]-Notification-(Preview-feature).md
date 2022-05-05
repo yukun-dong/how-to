@@ -3,13 +3,6 @@
 > Please be advised these features are currently under active development, with a lot of changes taking place. Please expect breaking changes as we continue to iterate.
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us [here](https://github.com/OfficeDev/TeamsFx/issues/new/choose).
 
-> How to enable preview features
-> 1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
-> 1. Open Visual Studio Code and find `Manage` icon from sidebar (Bottom Left) 
-> 1. Select `Settings` and find `Teams Toolkit` under `Extensions` section.
-> 1. Tick the checkbox for `Enable Preview Features`.
-> 1. Restart Visual Studio Code.
-
 Notification in Teams means you can proactively message an individual person, a chat, or a channel via plain text or different [cards](https://docs.microsoft.com/en-us/microsoftteams/platform/task-modules-and-cards/cards/cards-reference).
 
 In this tutorial, you will learn:
@@ -80,8 +73,7 @@ Here's the comparison of the two approaches to help you make the decision.
 
 After you successfully created the project, you can quickly start local debugging via `F5` in VSCode. Select `Debug (Edge)` or `Debug (Chrome)` debug option of your preferred browser. If you created a timer triggered notification, after running this template and you will get a notification as below:
 
-<img alt="notification-message" src="https://user-images.githubusercontent.com/11220663/165900532-9132644d-0783-422f-8ca8-5aeec626972c.png">
-
+![image](https://user-images.githubusercontent.com/11220663/166959087-a13abe67-e18a-4979-ab29-a8d7663b3489.png)
 
 <p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
 
