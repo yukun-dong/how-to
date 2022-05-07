@@ -83,7 +83,7 @@ Config file is located in `.fx\configs\config.xxx.json` (xxx is represent differ
 
 If you want to reference `short` value, you can use this placeholder argument in the AAD manifest: `{{config.manifest.appName.short}}`
 
-### Referencing config file values in AAD manifest template
+### Referencing environment variable in AAD manifest template
 
 Some times you may not want to hardcode the values in AAD manifest template. For example, when the value is a secret. AAD manifest template file supports referencing the values from environment variables. You can use syntax `{{env.YOUR_ENV_VARIABLE_NAME}}` in parameter values to tell the tooling that the value needs to be resolved from current environment variable.
 
