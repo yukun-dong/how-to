@@ -29,7 +29,6 @@ If you started with following project, you can incrementally add SSO:
 * Bot
 * Notification bot (restify server)
 * Command bot
-* Embed existing web app
 
 To enable SSO support:
 
