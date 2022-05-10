@@ -9,23 +9,27 @@
 > 1. Tick the checkbox for `Enable Preview Features`.
 > 1. Restart Visual Studio Code.
 
-You usually want to access data or information when building Teams application. If you do not have an appropriate SDK that helps you make an API request, Teams Toolkit is here to help you bootstrap sample code which handles authentication for your API requests.
+When building a Teams application often you will want to access existing APIs - these might be APIs developed by your organization or even 3rd party APIs. If you do not have language appropriate SDKs to access these APIs, Teams Toolkit helps you bootstrap sample code to access these APIs.
 
-In this tutorial, you will learn:
-* [How to connect to an API with Teams Toolkit](#How-to-use-this-feature)
-* [How to understand what will be changed for your project](#How-this-feature-changes-your-project)
-* [How to invoke API in local environment](#Invoke-API-in-local-environment)
-* [How to add app settings for the remote environment](#Invoke-the-API-in-remote-environment)
-* [How to use custom authentication provider](#Custom-authentication-provider)
-* [How to obtain API permission with Azure Active Directory protected API request](#Gain-API-permission-for-your-Teams-apps-AAD-app-registration)
+In this tutorial, you will:
+
+* [Use Teams Toolkit to connect to an existing API](#How-to-use-this-feature)
+* [Understand the changes to your project when you connect to an existing API](#How-this-feature-changes-your-project)
+* [Invoke the API in the Teams Toolkit local environment](#Invoke-API-in-local-environment)
+* [Add configuration to access the API when you deploy your application to Azure](#Invoke-the-API-in-remote-environment)
+* [Use a custom authentication provider](#Custom-authentication-provider)
+* [Obtain API permissions with Azure Active Directory protected API request](#Gain-API-permission-for-your-Teams-apps-AAD-app-registration)
 
 ## How to use this feature
-Teams Toolkit helps you connect to an API easily from a computing resource (Azure Functions or Bot). By adding an API connection, Teams Toolkit will:
+
+When you use Teams Toolkit to connect to an existing API, Teams Toolkit will:
+
 * Generate sample code under `./bot` or `./api` folder.
-* Add the appropriate version of `@microsoft/teamsfx` package to `package.json` if this does not exist.
-* Add new app settings for your API to `.env.teamsfx.local`, which is used during local debugging.
+* Add a reference to the `@microsoft/teamsfx` package to `package.json`.
+* Add application settings for your API in `.env.teamsfx.local`, which configures local debugging.
 
 To add an API connection:
+
 ### In Visual Studio Code
 1. Open a TeamsFx project, from the Teams Toolkit side bar select `Add features` or open command palette and select `Teams: Add features`
 
