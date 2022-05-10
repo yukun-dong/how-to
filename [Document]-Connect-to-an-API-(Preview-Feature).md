@@ -31,35 +31,35 @@ When you use Teams Toolkit to connect to an existing API, Teams Toolkit will:
 To add an API connection:
 
 ### In Visual Studio Code
-1. Open a TeamsFx project, from the Teams Toolkit side bar select `Add features` or open command palette and select `Teams: Add features`
+
+1. Open a TeamsFx project
+2. From the Teams Toolkit side bar select `Add features` or open the Visual Studio Code Command Palette and select `Teams: Add features`:
 
 ![image](https://user-images.githubusercontent.com/11220663/165349151-bf009c88-907a-4fd1-9d2d-cdb26e2a93cc.png)
 
-2. Scroll down and select `API Connection`
+2. Select `API Connection`:
 
 ![image](https://user-images.githubusercontent.com/11220663/165430594-3793de91-ac4b-4746-9810-e004aadea19b.png)
 
+3. Input endpoint for your API.
 
-3. Input endpoint for your API. 
-The endpoint should be a valid http(s) url. It will be added to your project's local app setting and used as base url when making requests. This means you don't need to input full api url for every request.
+The endpoint should be a valid http(s) url. It will be added to your project's local application settings and it is the base url for API  requests.
 
 ![image](https://user-images.githubusercontent.com/11220663/165430748-9c61a7a0-e51e-4642-8735-04affdc2bf74.png)
 
-
-4. Choose which component needs to invoke the API.
+4. Choose which component will access the API.
 
 ![image](https://user-images.githubusercontent.com/11220663/165430964-b5273e72-ee76-41f5-b103-3dcc440e17f7.png)
 
-5. Input alias for your API. The alias is used to generate app setting names for your API, which will be added to your project's local app setting.
+5. Input an alias for your API. This alias is used to generate the application settings name for your API, and it will be added to your project's local application settings.
 
 ![image](https://user-images.githubusercontent.com/11220663/165431010-28b22571-31a4-4fcc-9b90-e14626ef182c.png)
 
-
-6. Select how you want to authenticate the API requests. We will generate appropriate sample code and add corresponding local app settings based on your selection.
+6. Select how you want to authenticate the API requests. We will generate appropriate sample code and add corresponding local application settings based on your selection.
 
 ![image](https://user-images.githubusercontent.com/11220663/165431048-66b522d3-c616-4b84-b7aa-41a14f92696a.png)
 
-7. There will be some additional questions based on your selection of an authentication type. Provide information for each question to complete the flow.
+7. There will be some additional configuration required based on the authentication type selected.
 
 ### In TeamsFx CLI
 
