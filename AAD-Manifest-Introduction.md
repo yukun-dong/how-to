@@ -195,6 +195,9 @@ Redirect URLs is used when returning authentication responses (tokens) after suc
 ]
 ```
 
+## Use existing AAD app
+If you want to use existing AAD app for your Teams project, you can refer this [doc](https://github.com/OfficeDev/TeamsFx/wiki/Customize-provision-behaviors#use-an-existing-aad-app-for-your-teams-app) for more information.
+
 ## Limitations
 
 1. Not all the properties listed in [AAD manifest schema](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-app-manifest) are supported in Teams Toolkit extension, this tab show the properties that are not supported:
