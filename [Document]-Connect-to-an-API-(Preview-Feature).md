@@ -62,6 +62,7 @@ To add an API connection:
 ### In TeamsFx CLI
 
 The base command of this feature is `teamsfx add api-connection [authentication type]`. Here is the list of available authentication type and corresponding sample command. You can use `teamsfx add api-connection [authentication type] -h` to get help document.
+
 | Authentication type | Sample command |
 | --- | --- |
 | Basic | teamsfx add api-connection basic --endpoint https://example.com --component bot --alias example --user-name exampleuser --interactive false |
@@ -70,35 +71,37 @@ The base command of this feature is `teamsfx add api-connection [authentication 
 | Certificate | teamsfx add api-connection cert --endpoint https://example.com --component bot --alias example --interactive false |
 | Custom | teamsfx add api-connection custom --endpoint https://example.com --component bot --alias example --interactive false |
 
-<p align="right"><a href="#Connect-to-an-API">back to top</a></p>
+## Understanding the updates to your project
 
-## How this feature changes your project
+Teams Toolkit will make following changes to `bot` or `api` folder based on your selections:
 
-After you successfully triggered the command, the tooling will make following changes to `bot` or `api` folder based on selected component(s):
-1. Generate `{your_api_alias}.js/ts`. The file demostrates how to initialize an API client for your API with support of `@microsoft/teamsfx` package, as well as exported the API client to be consumed in other source code files.
-2. Add `@microsoft/teamsfx` package to `package.json` if your project does not have this package. The package provides support for common API authentication methods.
-4. Add several environment variables to `.env.teamsfx.local` to provide necessary information for selected authentication type. The generated code will read values from these environment variables. You can rename the environment variables and update generated code to use your favorite names.
+1. Generate `{your_api_alias}.js/ts`. The file initializes an API client for your API and exports the API client.
+2. Add `@microsoft/teamsfx` package to `package.json`. The package provides support for common API authentication methods.
+4. Add environment variables to `.env.teamsfx.local`. These are the configuration for the selected authentication type. The generated code will read values from these environment variables.
 
-<p align="right"><a href="#Connect-to-an-API">back to top</a></p>
+## Testing your API connection in the Teams Toolkit local environment
 
-## Invoke API in local environment
-
-After the command updated your project, please follow the instructions displayed by the tooling to invoke your APIs. Generally, you need to do following things. You can visit the generated file to get more details for these action items.
+After adding an API connection:
 
 ### 1. Run npm install
-You need to run `npm install` under `bot` or `api` folder to install added packages. This ensures you can have Intellisense support when coding.
 
-### 2. Add your API credentials to local app settings
-The command will not ask any credentials when generating sample code and adding local app settings. But it will leave some placeholders for you to fill your credentials. Please fill your API credentials to `.env.teamsfx.local` under `bot` or `api` folder to avoid authentication failures for your API requests.
+You need to run `npm install` under `bot` or `api` folder to install the added packages.
 
-### 3. Reference the generated API client
-The sample code initializes an API client instance for you and exports it. So in your source code, you can import the API client instance and use it:
+### 2. Add your API credentials to the local application settings
+
+Teams Toolkit does not ask for credentials but it will leave placeholders in the local application settings file. Substitute these placeholders with the appropriate credentials to access the API. The local application settings file is the `.env.teamsfx.local` file in the `bot` or `api` folder.
+
+### 3. Use the API client to make API requests
+Import the API client from the source code that needs access to the API:
+
 ``` ts
 import { yourApiClient } from '{relative path to the generated file}'
 ```
 
-### 4. Make http(s) requests to target API (with axios)
-The generated API client is an axios instance. [Axios](https://www.npmjs.com/package/axios) is a popular nodejs package that helps you make http(s) requests. You can visit axios [documentation](https://axios-http.com/docs/example) to learn how to make http(s) requests with it.
+### 4. Make http(s) requests to target API (with Axios)
+The generated API client is an Axios API client. Use the Axios client to make requests to the API.
+
+[Axios](https://www.npmjs.com/package/axios) is a popular nodejs package for making http(s) requests. You can visit Axios [documentation](https://axios-http.com/docs/example) for more information.
 
 ## Invoke the API in remote environment
 Please add app settings for your hosting environments if you are ready to move your application to the cloud.
