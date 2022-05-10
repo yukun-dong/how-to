@@ -41,9 +41,7 @@ To add an API connection:
 
 ![image](https://user-images.githubusercontent.com/11220663/165430594-3793de91-ac4b-4746-9810-e004aadea19b.png)
 
-3. Input endpoint for your API.
-
-The endpoint should be a valid http(s) url. It will be added to your project's local application settings and it is the base url for API  requests.
+3. Input endpoint for your API. The endpoint should be a valid http(s) url. It will be added to your project's local application settings and it is the base url for API  requests.
 
 ![image](https://user-images.githubusercontent.com/11220663/165430748-9c61a7a0-e51e-4642-8735-04affdc2bf74.png)
 
