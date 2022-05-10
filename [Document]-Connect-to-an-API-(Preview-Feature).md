@@ -103,19 +103,18 @@ The generated API client is an Axios API client. Use the Axios client to make re
 
 [Axios](https://www.npmjs.com/package/axios) is a popular nodejs package for making http(s) requests. You can visit Axios [documentation](https://axios-http.com/docs/example) for more information.
 
-## Invoke the API in remote environment
-Please add app settings for your hosting environments if you are ready to move your application to the cloud.
+## Deploy your application to Azure
 
-Teams Toolkit only sets up app settings for your local environment to help you debug your code. Before you deploy your code to your hosting environments, you need to add necessary app settings to your hosting environments. The bootstrapped sample code contains comments that tell you what app settings you need to configure.
+To deploy your application to Azure, you will need to add the authentication configuration to the application settings for the appropriate environment. For example, your API might have different credentials for `dev` and `prod`. You can configure Teams Toolkit appropriately based on your environment needs.
 
-If you're using Azure to host your application, you can visit this [documentation](https://aka.ms/teamsfx-add-appsettings) to learn how to add app settings.
-
-<p align="right"><a href="#Connect-to-an-API">back to top</a></p>
+Teams Toolkit only configures your local environment. The bootstrapped sample code contains comments that tell you what app settings you need to configure. This [document](https://aka.ms/teamsfx-add-appsettings) contains more information on adding application settings.
 
 ## Advanced scenarios
 
 ### Custom authentication provider
+
 Besides the authentication provider included in `@microsoft/teamsfx` package, you can also implement your customized authentication provider that implements `AuthProvider` interface and use it in `createApiClient(..)` function:
+
 ``` ts
 import { AuthProvider } from '@microsoft/teamsfx'
 
@@ -136,8 +135,6 @@ class CustomAuthProvider implements AuthProvider {
     };
 }
 ```
-
-<p align="right"><a href="#Connect-to-an-API">back to top</a></p>
 
 ### Gain API permission for your Teams app's AAD app registration
 
