@@ -136,18 +136,23 @@ class CustomAuthProvider implements AuthProvider {
 }
 ```
 
-### Gain API permission for your Teams app's AAD app registration
+### Connecting to APIs that require AAD permissions
 
-When using AAD app to authenticate service to service requests, there're 2 common ways to configure the API permissions: using Access Control List (ACL) or using AAD application permission. How to gain permission for your target API depends on the actual implementation of the API server. Here're the common steps to gain permission for your Teams app's AAD app registration.
+Some services are authenticated by AAD. To access these services, there are two common ways to configure the API permissions:
+* Use Access Control Lists (ACLs)
+* Use AAD application permissions
 
-#### Steps to gain permission for APIs that use AAD application permission for access control
+Obtaining a token with the right resource scopes for your API depends on the implementation of the API. Here are the steps to access these APIs:
+
+#### When using AAD application permissions
+
 1. Open `templates/appPackage/aad.template.json`, add following content to `requiredResourceAccess` property:
    ```
     {
-        "resourceAppId": "fill your target API's app id",
+        "resourceAppId": "The AAD App Id for the service providing the API you are connecting to",
         "resourceAccess": [
             {
-                "id": "fill the id of target API's application permission",
+                "id": "Target API's application permission",
                 "type": "Role"
             }
         ]
@@ -161,5 +166,3 @@ When using AAD app to authenticate service to service requests, there're 2 commo
 1. Start local debug or provision an cloud environment for your project. This step created AAD app for your Teams app.
 2. Go to `.fx/states/state.{env}.json`, record the value of `clientId` under `fx-resource-aad-app-for-teams` property.
 3. Provide the client id to your API provider to configure permissions from server side.
-
-<p align="right"><a href="#Connect-to-an-API">back to top</a></p>
