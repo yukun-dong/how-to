@@ -118,54 +118,6 @@ bot.adapter.onTurnError = ...
           * `message.text`: the use input message
           * `message.macthes`: the capture groups if you uses the RegExp for `triggerPatterns` to trigger the command.
 
-        * You can build your response data in text format or follow the steps bellow to use adaptive card to render rich content in Teams:
-            * Prepare your adaptive card content in a JSON file（e.g. myCard.json) under the `bot/adaptiveCards` folder, here is a sample adaptive card JSON payload:
-                ```json
-                {
-                    "type": "AdaptiveCard",
-                    "body": [
-                    {
-                        "type": "TextBlock",
-                        "size": "Medium",
-                        "weight": "Bolder",
-                        "text": "Your Hello World Bot is Running"
-                    },
-                    {
-                        "type": "TextBlock",
-                        "text": "Congratulations! Your hello world bot is running. Click the documentation below to learn more about Bots and the Teams Toolkit.",
-                        "wrap": true
-                    }
-                    ],
-                    "actions": [
-                    {
-                        "type": "Action.OpenUrl",
-                        "title": "Bot Framework Docs",
-                        "url": "https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0"
-                    },
-                    {
-                        "type": "Action.OpenUrl",
-                        "title": "Teams Toolkit Docs",
-                        "url": "https://aka.ms/teamsfx-docs"
-                    }
-                    ],
-                    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-                    "version": "1.4"
-                }
-                ```
-
-            * Import your card content into your code file where your command handler exists:
-              ```typescript
-              import myCard from "./adaptiveCards/myCard.json"
-              ```
-
-            * In your `handleCommandReceived` API, use `MessageBuilder.attachAdaptiveCardWithoutData` or `MessageBuilder.attachAdaptiveCard` to build a bot message activity with the adaptive card and return the message.
-                ```typescript              
-                return MessageBuilder.attachAdaptiveCardWithoutData(myCard);
-                ```
-
-            > Note: If you'd like to send adaptive card with dynamic data, please refer to [this section](#how-to-build-command-response-using-adaptive-card-with-dynamic-content).
-  
-
 1. Register your command handler to the underlying bot.
 
    Open `bot\src\internal\initialize.ts`: 
@@ -205,7 +157,58 @@ bot.adapter.onTurnError = ...
 
       ![manifest-add-command](https://user-images.githubusercontent.com/10163840/160374446-7fd164d6-63c9-47b2-9bf1-0d6a88731e8d.png)
 
-Now, you are all done with the code development of adding a new command and response into your bot app. You can just press `F5` to loca debug with the command-response bot, or use provision and deploy command to deploy the change to Azure.
+1. You can build your response data in text format or follow the steps bellow to use adaptive card to render rich content in Teams:
+
+    * Prepare your adaptive card content in a JSON file（e.g. myCard.json) under the `bot/adaptiveCards` folder, here is a sample adaptive card JSON payload:
+
+      ```json
+                {
+                    "type": "AdaptiveCard",
+                    "body": [
+                    {
+                        "type": "TextBlock",
+                        "size": "Medium",
+                        "weight": "Bolder",
+                        "text": "Your Hello World Bot is Running"
+                    },
+                    {
+                        "type": "TextBlock",
+                        "text": "Congratulations! Your hello world bot is running. Click the documentation below to learn more about Bots and the Teams Toolkit.",
+                        "wrap": true
+                    }
+                    ],
+                    "actions": [
+                    {
+                        "type": "Action.OpenUrl",
+                        "title": "Bot Framework Docs",
+                        "url": "https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0"
+                    },
+                    {
+                        "type": "Action.OpenUrl",
+                        "title": "Teams Toolkit Docs",
+                        "url": "https://aka.ms/teamsfx-docs"
+                    }
+                    ],
+                    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                    "version": "1.4"
+                }
+        ```
+          
+    * Import your card content into your code file where your command handler exists:
+
+        ```typescript
+        import myCard from "./adaptiveCards/myCard.json"
+        ```
+
+    * In your `handleCommandReceived` API, use `MessageBuilder.attachAdaptiveCardWithoutData` or `MessageBuilder.attachAdaptiveCard` to build a bot message activity with the adaptive card and return the message.
+
+        ```typescript              
+        return MessageBuilder.attachAdaptiveCardWithoutData(myCard);
+        ```
+
+> Note: If you'd like to send adaptive card with dynamic data, please refer to [this section](#how-to-build-command-response-using-adaptive-card-with-dynamic-content).
+
+Now, you are all done with the code development of adding a new command and response into your bot app. You can just press `F5` to loca debug with the command-response bot, or use provision and deploy command to deploy the change to Azure.     
 
 <p align="right"><a href="#Build-command-and-response">back to top</a></p>
 
