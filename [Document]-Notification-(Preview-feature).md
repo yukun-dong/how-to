@@ -320,7 +320,9 @@ It depends on your host type.
 
 One possible cause is that the installation event was omitted or did not reached to the bot service. Teams only send such event at the first installation time, so if the bot app was already installed before your notification bot service is launched, you are probably in this case.
 
-To fix, **uninstall the bot app from Teams then re-debug/re-launch again**.
+There are two options to fix this:
+- **Send a message to your *Personal* bot or mention your bot in *GroupChat* / *Channel***. (This is to re-reach the bot service with correct installation information)
+- **Uninstall the bot app from Teams then re-debug/re-launch again**. (This is to re-send the installation event to bot service)
 
 Technically, notification target connections are stored in the persistence storage. If you are using the default local file storage, all installations will be stored under `bot/.notification.localstore.json`. Or refer to [Customize Storage](#customize-storage) to add your own storage.
 
