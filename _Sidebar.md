@@ -1,5 +1,5 @@
 Tutorials
-* [Send notification to Teams](https://github.com/OfficeDev/TeamsFx/wiki/%5BDocument%5D-Notification-(Preview-feature))
-* [Build command and response](https://github.com/OfficeDev/TeamsFx/wiki/%5BDocument%5D-Command-and-Response-(Preview-Feature))
-* [Connect to an API](https://github.com/OfficeDev/TeamsFx/wiki/%5BDocument%5D-Connect-to-an-API-(Preview-Feature))
-* [Add single sign on](https://github.com/OfficeDev/TeamsFx/wiki/%5BDocument%5D-Add-single-sign-on-(Preview-feature))
+* [Send notification to Teams](https://aka.ms/teamsfx-send-notification)
+* [Build command and response](https://aka.ms/teamsfx-create-command)
+* [Connect to an API](https://aka.ms/teamsfx-connect-api)
+* [Add single sign on](https://aka.ms/teamsfx-add-sso)
