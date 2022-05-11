@@ -2,7 +2,9 @@
 
 > This feature is currently under active development. Report any issues to us [here](https://github.com/OfficeDev/TeamsFx/issues/new/choose).
 
-Microsoft Teams has provided a mechanism to minimize the number of times users need to enter their sign in credentials and this is called single sign on. Teams Framework (TeamsFx) added support on top of this mechanism to help developers build single sign feature easily.
+Microsoft Teams provides a mechanism by which an application can obtain the signed-in Teams user token to access Microsoft Graph (and other APIs). Teams Toolkit facilitates this interaction by abstracting some of the Azure Active Directory (AAD) flows and integrations behind some simple, high-level APIs. This enables you to add single sign-on (SSO) features easily to your Teams application.
+
+For a bot application, SSO manifests as an Adaptive Card which the user can interact with to invoke the AAD consent flow.
 
 In this tutorial, you will learn:
 
@@ -49,8 +51,8 @@ After command execution, Teams Toolkit will do the following things:
 
 |Type| File | Purpose |
 |-| - | - |
-|Create| `aad.template.json` under `template\appPackage` | This is the Azure Active Directory application manifest used to represent your AAD app. This template will be used to register an AAD app during local debug or provision stage. |
-|Modify | `manifest.template.json` under `template\appPackage` | An `webApplicationInfo` object will be added into your Teams app manifest template. This field is required by Teams when enabling SSO. This change will take effect when you trigger local debug or provision.|
+|Create| `aad.template.json` under `template/appPackage` | This is the Azure Active Directory application manifest used to represent your AAD app. This template will be used to register an AAD app during local debug or provision stage. |
+|Modify | `manifest.template.json` under `template/appPackage` | An `webApplicationInfo` object will be added into your Teams app manifest template. This field is required by Teams when enabling SSO. This change will take effect when you trigger local debug or provision.|
 |Create| `auth/tab` | reference code, auth redirect pages and a `README.md` file will be generated in this path for a tab project. |
 |Create| `auth/bot` | reference code, auth redirect pages and a `README.md` file will be generated in this path for a bot project. |
 
