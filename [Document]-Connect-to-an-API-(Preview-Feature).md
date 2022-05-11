@@ -146,23 +146,23 @@ Obtaining a token with the right resource scopes for your API depends on the imp
 
 #### When using AAD application permissions
 
-1. Open `templates/appPackage/aad.template.json`, add following content to `requiredResourceAccess` property:
+1. Open `templates/appPackage/aad.template.json` and add the following to `requiredResourceAccess` property:
    ```
     {
         "resourceAppId": "The AAD App Id for the service providing the API you are connecting to",
         "resourceAccess": [
             {
-                "id": "Target API's application permission",
+                "id": "Target API's application permission Id",
                 "type": "Role"
             }
         ]
     }
    ```
-2. Start local debug or provision an cloud environment for your project. This step created AAD app for your Teams app.
-3. Go to `.fx/states/state.{env}.json`, record the value of `clientId` under `fx-resource-aad-app-for-teams` property.
-4. Follow this [document](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/grant-admin-consent#grant-admin-consent-in-app-registrations) to gain admin consent for the required application permission. You need step 3's client id when following the document to find AAD app registration.
+2. Start local debug or provision an cloud environment for your project. This will create an AAD Application Registration your Teams application.
+3. Open `.fx/states/state.{env}.json` and note the value of `clientId` under `fx-resource-aad-app-for-teams` property. This is your Teams application client id.
+4. Follow this [document](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/grant-admin-consent#grant-admin-consent-in-app-registrations) to gain admin consent for the required application permission. You will need your application client id.
 
-#### Steps to gain permission for APIs that use Access Control List (ACL)
-1. Start local debug or provision an cloud environment for your project. This step created AAD app for your Teams app.
-2. Go to `.fx/states/state.{env}.json`, record the value of `clientId` under `fx-resource-aad-app-for-teams` property.
-3. Provide the client id to your API provider to configure permissions from server side.
+#### When using Access Control Lists (ACsL)
+1. Start local debug or provision an cloud environment for your project. This will create an AAD Application Registration your Teams application.
+2. Open `.fx/states/state.{env}.json` and note the value of `clientId` under `fx-resource-aad-app-for-teams` property.
+3. Provide the client id to your API provider to configure ACLs on the API service.
