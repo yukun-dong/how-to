@@ -5,7 +5,6 @@
 The Notification in Teams feature enables you to build applications that consume events and send these as notifications to an individual person, a chat, or a channel in Teams. Notifications can be sent as plain text or [Adaptive Cards](https://docs.microsoft.com/en-us/microsoftteams/platform/task-modules-and-cards/cards/cards-reference).
 
 In this tutorial, you will learn:
-* [Different approaches to send notifications to Teams](#Teams-bot-application-or-Teams-incoming-webhook)
 * [Send notification to Teams via Teams bot application](#Notification-via-Teams-bot-application)
   * [How to create a new notification bot with Teams Toolkit](#Create-a-new-Notification-Project)
   * [How to understand notification bot project](#Take-a-tour-of-your-app-source-code)
@@ -13,26 +12,8 @@ In this tutorial, you will learn:
   * [How to add authentication for your notification API](#Add-authentication-for-your-notification-API)
   * [How notification works](#How-notification-works)
   * [How to connect to an existing API](#Connect-to-existing-API)
+* [Different approaches to send notifications to Teams](#Teams-bot-application-or-Teams-incoming-webhook)
 * [Send notification to Teams via Teams incoming webhook](#Notification-via-Incoming-Webhook)
-
-# Teams bot application or Teams incoming webhook
-Microsoft Teams Framework (TeamsFx) supports two major ways to help you send notifications from your system to Teams by creating a Teams Bot Application or Teams Incoming Webhook.
-
-Here's the comparison of the two approaches to help you make the decision.
-
-| | **Teams Bot App** | **Teams Incoming Webhook** |
-| - | - | - |
-| Able to message individual person | Yes | No |
-| Able to message group chat | Yes | No |
-| Able to message public channel | Yes | Yes |
-| Able to message private channel | No | Yes |
-| Able to send card message | Yes | Yes |
-| Able to send welcome message | Yes | No |
-| Able to retrieve Teams context | Yes | No |
-| Require installation step on Teams | Yes | No |
-| Require Azure resource | Azure Bot Service | No |
-
-<p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
 
 # Notification via Teams bot application
 ## Create a new notification project
@@ -338,11 +319,30 @@ Or, as a workaround, after restart / redeploy, uninstall the bot from Teams, the
 
 There are [Microsoft Graph APIs](https://docs.microsoft.com/graph/api/team-list-installedapps) to list apps installed in a team / group / chat. So it may require you to iterate all your teams / groups / chats to get all the targets a certain app is installed in.
 
-In notification project, it uses persistence storage to store installation targets. See [How Notification Works](#how-notification-works) for more information.
+In the notification project, it uses persistence storage to store installation targets. See [How Notification Works](#how-notification-works) for more information.
 
 ### How to customize the azurite listening ports?
 If azurite exits due to port in use, you can [specify another listening port](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio#blob-listening-port-configuration) and update the [connection string](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio#http-connection-strings
 ) of `AzureWebJobsStorage` in `bot/local.settings.json`
+
+<p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
+
+# Teams bot application or Teams incoming webhook
+Microsoft Teams Framework (TeamsFx) supports two major ways to help you send notifications from your system to Teams by creating a Teams Bot Application or Teams Incoming Webhook.
+
+Here's the comparison of the two approaches to help you make the decision.
+
+| | **Teams Bot App** | **Teams Incoming Webhook** |
+| - | - | - |
+| Able to message individual person | Yes | No |
+| Able to message group chat | Yes | No |
+| Able to message public channel | Yes | Yes |
+| Able to message private channel | No | Yes |
+| Able to send card message | Yes | Yes |
+| Able to send welcome message | Yes | No |
+| Able to retrieve Teams context | Yes | No |
+| Require installation step on Teams | Yes | No |
+| Require Azure resource | Azure Bot Service | No |
 
 <p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
 
