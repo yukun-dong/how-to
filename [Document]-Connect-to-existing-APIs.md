@@ -2,23 +2,16 @@
 
 > This feature is currently under active development. Report any issues to us [here](https://github.com/OfficeDev/TeamsFx/issues/new/choose).
 
-> How to enable preview features
-> 1. Upgrade to the latest [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
-> 1. Open Visual Studio Code and find `Manage` icon from sidebar (Bottom Left) 
-> 1. Select `Settings` and find `Teams Toolkit` under `Extensions` section.
-> 1. Tick the checkbox for `Enable Preview Features`.
-> 1. Restart Visual Studio Code.
-
 When building a Teams application often you will want to access existing APIs - these might be APIs developed by your organization or even 3rd party APIs. If you do not have language appropriate SDKs to access these APIs, Teams Toolkit helps you bootstrap sample code to access these APIs.
 
 In this tutorial, you will:
 
 * [Use Teams Toolkit to connect to an existing API](#How-to-use-this-feature)
-* [Understand the changes to your project when you connect to an existing API](#How-this-feature-changes-your-project)
-* [Invoke the API in the Teams Toolkit local environment](#Invoke-API-in-local-environment)
-* [Add configuration to access the API when you deploy your application to Azure](#Invoke-the-API-in-remote-environment)
+* [Understand the changes to your project when you connect to an existing API](#Understanding-the-updates-to-your-project)
+* [Invoke the API in the Teams Toolkit local environment](#Testing-your-API-connection-in-the-Teams-Toolkit-local-environment)
+* [Add configuration to access the API when you deploy your application to Azure](#Deploy-your-application-to-Azure)
 * [Use a custom authentication provider](#Custom-authentication-provider)
-* [Obtain API permissions with Azure Active Directory protected API request](#Gain-API-permission-for-your-Teams-apps-AAD-app-registration)
+* [Obtain API permissions with Azure Active Directory protected API request](#Connecting-to-APIs-that-require-AAD-permissions)
 
 ## How to use this feature
 
@@ -71,6 +64,8 @@ The base command of this feature is `teamsfx add api-connection [authentication 
 | Certificate | teamsfx add api-connection cert --endpoint https://example.com --component bot --alias example --interactive false |
 | Custom | teamsfx add api-connection custom --endpoint https://example.com --component bot --alias example --interactive false |
 
+<p align="right"><a href="#Connect-to-existing-APIs">back to top</a></p>
+
 ## Understanding the updates to your project
 
 Teams Toolkit will make following changes to `bot` or `api` folder based on your selections:
@@ -78,6 +73,8 @@ Teams Toolkit will make following changes to `bot` or `api` folder based on your
 1. Generate `{your_api_alias}.js/ts`. The file initializes an API client for your API and exports the API client.
 2. Add `@microsoft/teamsfx` package to `package.json`. The package provides support for common API authentication methods.
 4. Add environment variables to `.env.teamsfx.local`. These are the configuration for the selected authentication type. The generated code will read values from these environment variables.
+
+<p align="right"><a href="#Connect-to-existing-APIs">back to top</a></p>
 
 ## Testing your API connection in the Teams Toolkit local environment
 
@@ -103,11 +100,15 @@ The generated API client is an Axios API client. Use the Axios client to make re
 
 [Axios](https://www.npmjs.com/package/axios) is a popular nodejs package for making http(s) requests. You can visit Axios [documentation](https://axios-http.com/docs/example) for more information.
 
+<p align="right"><a href="#Connect-to-existing-APIs">back to top</a></p>
+
 ## Deploy your application to Azure
 
 To deploy your application to Azure, you will need to add the authentication configuration to the application settings for the appropriate environment. For example, your API might have different credentials for `dev` and `prod`. You can configure Teams Toolkit appropriately based on your environment needs.
 
 Teams Toolkit only configures your local environment. The bootstrapped sample code contains comments that tell you what app settings you need to configure. This [document](https://aka.ms/teamsfx-add-appsettings) contains more information on adding application settings.
+
+<p align="right"><a href="#Connect-to-existing-APIs">back to top</a></p>
 
 ## Advanced scenarios
 
@@ -135,6 +136,8 @@ class CustomAuthProvider implements AuthProvider {
     };
 }
 ```
+
+<p align="right"><a href="#Connect-to-existing-APIs">back to top</a></p>
 
 ### Connecting to APIs that require AAD permissions
 
@@ -166,3 +169,5 @@ Obtaining a token with the right resource scopes for your API depends on the imp
 1. Start local debug or provision an cloud environment for your project. This will create an AAD Application Registration your Teams application.
 2. Open `.fx/states/state.{env}.json` and note the value of `clientId` under `fx-resource-aad-app-for-teams` property.
 3. Provide the client id to your API provider to configure ACLs on the API service.
+
+<p align="right"><a href="#Connect-to-existing-APIs">back to top</a></p>
