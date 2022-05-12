@@ -85,7 +85,7 @@ If you want to reference `short` value, you can use this placeholder argument in
 
 ### Referencing environment variable in AAD manifest template
 
-Some times you may not want to hardcode the values in AAD manifest template. For example, when the value is a secret. AAD manifest template file supports referencing the values from environment variables. You can use syntax `{{env.YOUR_ENV_VARIABLE_NAME}}` in parameter values to tell the tooling that the value needs to be resolved from current environment variable.
+Sometimes you may not want to hardcode the values in AAD manifest template. For example, when the value is a secret. AAD manifest template file supports referencing the values from environment variables. You can use syntax `{{env.YOUR_ENV_VARIABLE_NAME}}` in parameter values to tell the tooling that the value needs to be resolved from current environment variable.
 
 ## AAD manifest authoring supports
 
@@ -118,6 +118,36 @@ For `preAuthorizedApplications` property, codelens will show the application nam
 ## Customize AAD manifest template
 
 User can customize AAD manifest template to update AAD application.
+
+1. Open `aad.template.json` in your project
+    
+    ![image](https://user-images.githubusercontent.com/11220663/167983903-7093ee6b-6378-4e00-936e-1912f742ccfc.png)
+
+1. Update the template directly or [reference values from another file](#Placeholders-in-AAD-manifest-template). Below we have provided several customization scenarios:
+    * [Add an application permission](#Customize-requiredResourceAccess)
+    * [Preauthorize a client application](#Customize-preAuthorizedApplications)
+    * [Update redirect URL for authentication response](#Customize-redirect-URLs)
+
+1. Sync your AAD application changes for local environment
+    * Click `Preview` code lens in `aad.template.json`
+
+        ![image](https://user-images.githubusercontent.com/11220663/167984920-dd56c97b-588e-4634-846f-d745610114c3.png)
+    * Select `local` environment.
+
+        ![image](https://user-images.githubusercontent.com/11220663/167985022-63a946d3-fa60-4c22-ac1c-02a1d916ef0c.png)
+
+    * Click `Deploy AAD Manifest` code lens in `aad.local.json`
+
+        ![image](https://user-images.githubusercontent.com/11220663/167985157-302ecae4-3924-483a-8f73-71fea38219a9.png)
+
+    * And now the changes for AAD app used in local environment will be deployed.
+
+1. Sync your AAD application changes for remote environment.
+    * Once you have provisioned resources for Azure, you can sync up your AAD application changes for remote environment by right click on the `aad.template.json`
+    * Select `Deploy Azure Active Directory app manifest` from the context menu
+
+    ![image](https://user-images.githubusercontent.com/11220663/167985671-a5ab1ead-f458-4739-ae29-b49495ad5648.png)
+ 
 
 ### Customize requiredResourceAccess
 
