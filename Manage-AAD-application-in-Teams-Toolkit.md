@@ -7,22 +7,19 @@ The [Azure Active Directory manifest](https://docs.microsoft.com/en-us/azure/act
 Teams Toolkit now manages AAD application with this manifest file as the source of truth during your Teams application development lifecycles.
 
 In this document, you will learn:
-
-**Tutorials:**
-
-* [How to customize the AAD application](#How-to-customize-AAD-manifest-template) 
+* [How to customize the AAD application](#How-to-customize-the-AAD-manifest-template) 
     * [Add an application permission](#Customize-requiredResourceAccess)
     * [Preauthorize a client application](#Customize-preAuthorizedApplications)
     * [Update redirect URL for authentication response](#Customize-redirect-URLs)
-* [How to preview the AAD manifest placeholder values with code lens](#How-to-author-and-preview-AAD-manifest-with-code-lens) 
-* [How to deploy AAD application changes for local development](How-to-deploy-AAD-application-changes-for-local-environment)
-* [How to deploy AAD application changes for remote environment](How-to-deploy-AAD-application-changes-for-remote-environment)
-* [How to find the AAD application in the Azure Portal](#How-to-view-the-AAD-app-on-the-Azure-portal) 
-* [How to use an existing AAD application](How-to-use-an-existing-AAD-app) 
 * [How to reference values using placeholders in the AAD application manifest template](#Placeholders-in-AAD-manifest-template)
     * [Reference configuration files](#Reference-config-file-values-in-AAD-manifest-template)
     * [Reference state files](#Reference-state-file-values-in-AAD-manifest-template)
     * [Reference environment variables](#Reference-environment-variable-in-AAD-manifest-template)
+* [How to preview the AAD manifest placeholder values with code lens](#How-to-author-and-preview-AAD-manifest-with-code-lens) 
+* [How to deploy AAD application changes for local development](#How-to-deploy-AAD-application-changes-for-local-environment)
+* [How to deploy AAD application changes for remote environment](#How-to-deploy-AAD-application-changes-for-remote-environment)
+* [How to find the AAD application in the Azure Portal](#How-to-view-the-AAD-app-on-the-Azure-portal) 
+* [How to use an existing AAD application](#How-to-use-an-existing-AAD-app) 
 * [Understand AAD application in Teams app development lifecycle](#AAD-application-in-Teams-app-development-lifecycle)
 
 ## How to customize the AAD manifest template
@@ -116,6 +113,55 @@ Redirect URLs is used when returning authentication responses (tokens) after suc
     }
 ]
 ```
+
+<p align="right"><a href="#AAD-manifest-introduction">back to top</a></p>
+
+## Placeholders in AAD manifest template
+
+AAD manifest template file contains placeholder arguments with `{{...}}` statements. These statements will be replaced at build time for different environments. With placeholder arguments, you can make references to config file, state file and environment variables.
+
+### Reference state file values in AAD manifest template
+
+State file is located in `.fx\states\state.xxx.json` (xxx is represent different environment). A typical state file is as below:
+
+```json
+{
+    "solution": {
+        "teamsAppTenantId": "uuid",
+        ...
+    },
+    "fx-resource-aad-app-for-teams": {
+        "applicationIdUris": "api://xxx.com/uuid",
+        ...
+    }
+    ...
+}
+```
+
+If you want to reference `applicationIdUris` value in `fx-resource-aad-app-for-teams` property, you can use this placeholder argument in the AAD manifest: `{{state.fx-resource-aad-app-for-teams.applicationIdUris}}`
+
+### Reference config file values in AAD manifest template
+
+Config file is located in `.fx\configs\config.xxx.json` (xxx is represent different environment). A typical config file is as below:
+
+```json
+{
+  "$schema": "https://aka.ms/teamsfx-env-config-schema",
+  "description": "description.",
+  "manifest": {
+    "appName": {
+      "short": "app",
+      "full": "Full name for app"
+    }
+  }
+}
+```
+
+If you want to reference `short` value, you can use this placeholder argument in the AAD manifest: `{{config.manifest.appName.short}}`
+
+### Reference environment variable in AAD manifest template
+
+Sometimes you may not want to hardcode the values in AAD manifest template. For example, when the value is a secret. AAD manifest template file supports referencing the values from environment variables. You can use syntax `{{env.YOUR_ENV_VARIABLE_NAME}}` in parameter values to tell the tooling that the value needs to be resolved from current environment variable.
 
 <p align="right"><a href="#AAD-manifest-introduction">back to top</a></p>
 
@@ -248,55 +294,6 @@ When moving your application to the cloud, you would need to provision cloud res
 * You can follow this [instruction](#How-to-deploy-AAD-application-changes-for-remote-environment) to deploy AAD application changes for remote environment
 * Teams Toolkit will update the AAD application according to the AAD manifest template file.
 > Please note, when deploying AAD application for remote environment, you need to trigger provision first.
-
-<p align="right"><a href="#AAD-manifest-introduction">back to top</a></p>
-
-## Placeholders in AAD manifest template
-
-AAD manifest template file contains placeholder arguments with `{{...}}` statements. These statements will be replaced at build time for different environments. With placeholder arguments, you can make references to config file, state file and environment variables.
-
-### Reference state file values in AAD manifest template
-
-State file is located in `.fx\states\state.xxx.json` (xxx is represent different environment). A typical state file is as below:
-
-```json
-{
-    "solution": {
-        "teamsAppTenantId": "uuid",
-        ...
-    },
-    "fx-resource-aad-app-for-teams": {
-        "applicationIdUris": "api://xxx.com/uuid",
-        ...
-    }
-    ...
-}
-```
-
-If you want to reference `applicationIdUris` value in `fx-resource-aad-app-for-teams` property, you can use this placeholder argument in the AAD manifest: `{{state.fx-resource-aad-app-for-teams.applicationIdUris}}`
-
-### Reference config file values in AAD manifest template
-
-Config file is located in `.fx\configs\config.xxx.json` (xxx is represent different environment). A typical config file is as below:
-
-```json
-{
-  "$schema": "https://aka.ms/teamsfx-env-config-schema",
-  "description": "description.",
-  "manifest": {
-    "appName": {
-      "short": "app",
-      "full": "Full name for app"
-    }
-  }
-}
-```
-
-If you want to reference `short` value, you can use this placeholder argument in the AAD manifest: `{{config.manifest.appName.short}}`
-
-### Reference environment variable in AAD manifest template
-
-Sometimes you may not want to hardcode the values in AAD manifest template. For example, when the value is a secret. AAD manifest template file supports referencing the values from environment variables. You can use syntax `{{env.YOUR_ENV_VARIABLE_NAME}}` in parameter values to tell the tooling that the value needs to be resolved from current environment variable.
 
 <p align="right"><a href="#AAD-manifest-introduction">back to top</a></p>
 
