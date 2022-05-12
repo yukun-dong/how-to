@@ -34,11 +34,23 @@ After the AAD application has successfully deployed, you can follow steps below 
 #### How to view AAD app on Azure portal
 1. Copy AAD app client id from `state.xxx.json` (xxx is the environment name that you have deployed the AAD app) file in `fx-resource-aad-app-for-teams` property.
 
-1. Go to Azure portal and login your M365 account which used for the Teams app.
+    ![get aad object id](./aadManifest/get-aad-client-id.png)
+
+1. Go to Azure portal and login your M365 account which **must same with the account which created Teams app**.
 
 1. Open [app registrations page](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps), search the AAD app using client id which copied from step 1.
 
-1. If everything works fine, you can find your AAD app.
+    ![search aad on portal](./aadManifest/search-aad-on-portal.png)
+
+
+1. Click AAD app from search result to view the detailed information.
+
+1. In AAD app information page, click `Manifest` menu to view manifest of this app. The schema of the manifest is same as the one in `aad.template.json` file, for more information about manifest, you can refer this [doc](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-app-manifest).
+
+    ![view aad manifest on portal](./aadManifest/view-aad-manifest-on-portal.png)
+
+1. You can also click other menu to view or configure AAD app through portal. 
+
 
 ## Placeholders in AAD manifest template
 
