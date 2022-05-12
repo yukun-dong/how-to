@@ -68,16 +68,15 @@ You can follow the steps below to add SSO in your Teams app based on your Teams 
 
 ### Update your source code for Tab project
 
-1. Copy `auth-start.html` and `auth-end.htm` in `auth/public` folder to `tabs/public/`.
-These two HTML files are used for auth redirects.
+1. Move `auth-start.html` and `auth-end.htm`** in `auth/public` folder to `tabs/public/`. These two HTML files are used for auth redirects.
 
-1. Copy `sso` folder under `auth/tab` to `tabs/src/sso/`.
+1. Move `sso` folder under `auth/tab` to `tabs/src/sso/`.
 
-    `InitTeamsFx`: This file implements a function that initialize TeamsFx SDK and will open `GetUserProfile` component after SDK is initialized.
+    * `InitTeamsFx`: This file implements a function that initialize TeamsFx SDK and will open `GetUserProfile` component after SDK is initialized.
 
-    `GetUserProfile`: This file implements a function that calls Microsoft Graph API to get user info.
+    * `GetUserProfile`: This file implements a function that calls Microsoft Graph API to get user info.
 
-1. Execute the following commands under `tabs/`: `npm install @microsoft/teamsfx-react`
+1. Execute `npm install @microsoft/teamsfx-react` under `tabs/`
 1. Add the following lines to `tabs/src/components/sample/Welcome.tsx` to import `InitTeamsFx`:
     ```
     import { InitTeamsFx } from "../../sso/InitTeamsFx";
