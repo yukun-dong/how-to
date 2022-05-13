@@ -1,10 +1,19 @@
-> The content is under construction and is subject to change in the future
+> The content is under construction and is subject to change in the future.
+
 > This section describes the built-in app setting support by Teams Toolkit. You're free to use other approaches to configure your app settings.
+
+In this document, you will learn:
+
+* [How to add app settings to bot / message extension hosted on Azure Web App](#add-app-settings-to-bot--messaging-extension-hosted-by-azure-web-app)
+* [How to add app settings to api hosted on Azure Functions](#add-app-settings-to-api-hosted-by-azure-functions)
+* [How to add app settings for local debugging](#add-app-setting-for-local-debugging)
+* [How to find app settings predefined by Teams Toolkit](#app-settings-predefined-by-teams-toolkit)
+* [Understand how Teams Toolkit handles app setting for you](#how-teams-toolkit-handles-app-setting-for-you)
 
 # Add app setting to Azure services
 If you use Azure to host your application, you can declare your app settings for your Azure services via ARM template. We suggest you go through this [document](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/provision) to gain deeper understanding about the provision behavior of Teams Toolkit as well as how to customize the ARM template in the project.
 
-## Add app settings to bot / messaging extension (hosted by Azure Web App)
+## Add app settings to bot / message extension (hosted by Azure Web App)
 You can follow these steps to add app settings to the Azure Web App that hosts your bot:
 1. Open `{your_project_root}/.fx/configs/azure.parameters.{env}.json`
 2. Add new properties to the value of provisionParameters, which will be available during provision. Here is an example:
@@ -107,3 +116,26 @@ Teams toolkit will define necessary app settings for your Teams app. You can ref
 | api | templates/azure/teamsfx/function.bicep | api/.env.teamsfx.local |
 
 > Note: the .env.teamsfx.local is generated during local debugging. You need to local debug first to see this file.
+
+# How Teams Toolkit handles app setting for you
+
+## How Teams Toolkit provide app settings to your app during local debug
+
+When Teams Toolkit starts your app locally, it will read the `.env.teamsfx.local` file under tab/api/bot folder and add environment variables defined in the file to your app process. There is no need to use packages like dotenv to read the file content in your app.
+
+## How Teams Toolkit provide app settings to your app when host in Azure
+
+The Azure Web App and Azure Functions used to host your Teams app has [configuration](https://docs.microsoft.com/en-us/azure/app-service/configure-common?tabs=portal) support. It will make all the configurations available as environment variables in your app. Teams Toolkit uses ARM template to update the service configurations. You can refer above tutorials to add your own app settings via ARM template too.
+
+## How Teams Toolkit define app setting values for different environment
+
+Teams Toolkit gives you ability to manage multiple environments. You can learn more about the multiple environment feature at [here](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/teamsfx-multi-env).
+
+Here is an example about where to define different app setting values for different environment. Imaging you have 3 environments: `local`, `dev`, `prod`, you need to add your app setting values to following files for each environment:
+| Environment | File to modify |
+| --- | --- |
+| local | .env.teamsfx.local under tab/api/bot folder |
+| dev (hosted on Azure) | .fx/configs/azure.parameters.dev.json |
+| prod (hosted on Azure) | .fx/configs/azure.parameters.prod.json |
+
+> Note: the `azure.parameters.{env}.json` file is consumed by ARM template under `templates/azure` folder. You need to update the ARM template to reference the values in parameter file first before adding values to the parameter file. You can refer the tutorials at the beginning of this page to understand how to add an extra app settings.
