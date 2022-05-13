@@ -26,11 +26,11 @@ In this tutorial, you will learn:
 
 2. Select `Create a new Teams app`.
 
-![image](https://user-images.githubusercontent.com/11220663/165435420-566f8b99-ab44-482e-ba5f-857f80af4081.png)
+![image](https://user-images.githubusercontent.com/11220663/168242250-34ca599f-1c9b-4c0c-80a7-ac07ebe10a1a.png)
 
 3. Select the `Command bot` from Scenario-based Teams app section.
 
-![image](https://user-images.githubusercontent.com/11220663/165442739-16ecd6da-ac09-4f8e-b6e8-3452905e2f22.png)
+![image](https://user-images.githubusercontent.com/11220663/168245299-91749fa4-00b6-4466-89bf-6f35b105828e.png)
 
 4. Select programming language
 
