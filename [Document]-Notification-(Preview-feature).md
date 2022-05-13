@@ -25,11 +25,13 @@ In this tutorial, you will learn:
 
 2. Select `Create a new Teams app`.
   
-![image](https://user-images.githubusercontent.com/11220663/165435420-566f8b99-ab44-482e-ba5f-857f80af4081.png)
+![image](https://user-images.githubusercontent.com/11220663/168242250-34ca599f-1c9b-4c0c-80a7-ac07ebe10a1a.png)
+
 
 3. Select `Notification bot` from Scenario-based Teams app section.
 
-![image](https://user-images.githubusercontent.com/11220663/165435543-a2de8080-9467-4dee-93e7-11f08b1b2245.png)
+![image](https://user-images.githubusercontent.com/11220663/168242197-189ee9ac-79e4-4525-941d-99f6af44d8a4.png)
+
 
 4. Select triggers. You can choose from `HTTP Trigger` or `Timer Trigger`. The triggers are based on `Restify Server` (means the created app code is a restify web app) or `Azure Functions` (means the created app code is Azure Functions).
   
