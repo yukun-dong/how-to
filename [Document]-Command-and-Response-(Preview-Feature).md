@@ -46,7 +46,7 @@ In this tutorial, you will learn:
 
 * If you prefer non-interactive mode, enter all required parameters in one command.
 
-`teamsfx new --interactive false --capabilities "command-and-response" --programming-language "typescript" --folder "./" --app-name myAppName`
+`teamsfx new --interactive false --capabilities "command-bot" --programming-language "typescript" --folder "./" --app-name myAppName`
 
 After you successfully created the project, you can quickly start local debugging via `F5` in VSCode. Select `Debug (Edge)` or `Debug (Chrome)` debug option of your preferred browser. You can send a `helloWorld` command after running this template and get a response as below:
 
