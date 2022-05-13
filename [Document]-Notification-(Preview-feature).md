@@ -130,7 +130,7 @@ You can initialize with your own adapter, or customize after initialization.
 // Create your own adapter
 const adapter = new BotFrameworkAdapter(...);
 
-// Customize your adater, e.g., error handling
+// Customize your adapter, e.g., error handling
 adapter.onTurnError = ...
 
 const bot = new ConversationBot({

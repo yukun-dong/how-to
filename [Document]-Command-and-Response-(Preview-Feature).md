@@ -72,7 +72,7 @@ You can initialize with your own adapter or customize after initialization.
 // Create your own adapter
 const adapter = new BotFrameworkAdapter(...);
 
-// Customize your adater, e.g., error handling
+// Customize your adapter, e.g., error handling
 adapter.onTurnError = ...
 
 const bot = new ConversationBot({
@@ -110,13 +110,13 @@ bot.adapter.onTurnError = ...
         }
         ```
 
-    1. Provide the `triggerPatterns` that can trigger this command handler. Usally it's the command name defined in your manifest, or you can use RegExp to handle a complex command (e.g. with some options in the command message).
+    1. Provide the `triggerPatterns` that can trigger this command handler. Usually it's the command name defined in your manifest, or you can use RegExp to handle a complex command (e.g. with some options in the command message).
 
     1. Implement `handleCommandReceived` to handle the command and return a response that will be used to notify the end users. 
         * You can retrieve useful information for the conversation from the `context` parameter if needed.
         * Parse command input if needed: 
           * `message.text`: the use input message
-          * `message.macthes`: the capture groups if you uses the RegExp for `triggerPatterns` to trigger the command.
+          * `message.matches`: the capture groups if you uses the RegExp for `triggerPatterns` to trigger the command.
 
 1. Register your command handler to the underlying bot.
 
@@ -138,7 +138,7 @@ bot.adapter.onTurnError = ...
             },
         });
         ```
-    * Or, use `registerCommand`/ `registerCommands` API from your `ConverrsationBot` instance to incrementally add your command(s) to a command bot.
+    * Or, use `registerCommand`/ `registerCommands` API from your `ConversationBot` instance to incrementally add your command(s) to a command bot.
 
        ```
        // register a single command
@@ -208,14 +208,14 @@ bot.adapter.onTurnError = ...
 
 > Note: If you'd like to send adaptive card with dynamic data, please refer to [this section](#how-to-build-command-response-using-adaptive-card-with-dynamic-content).
 
-Now, you are all done with the code development of adding a new command and response into your bot app. You can just press `F5` to loca debug with the command-response bot, or use provision and deploy command to deploy the change to Azure.     
+Now, you are all done with the code development of adding a new command and response into your bot app. You can just press `F5` to local debug with the command-response bot, or use provision and deploy command to deploy the change to Azure.     
 
 <p align="right"><a href="#Build-command-and-response">back to top</a></p>
 
 ## How command-and-response works
-The TeamsFx Command-Response Bots are created using the [Bot Framework SDK](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-basics?view=azure-bot-service-4.0). The Bot Framework SDK provides [built-in message handler](https://docs.microsoft.com/en-us/microsoftteams/platform/bots/bot-basics?tabs=javascript#teams-activity-handlers) to handle the incoming message activity, which requires learning curve to understand the concept of Bot Framework (e.g. the [event-driven conversation model](https://docs.microsoft.com/en-us/azure/bot-service/bot-activity-handler-concept?view=azure-bot-service-4.0&tabs=javascript)). To simplify the development, the TeamsFx SDK provides command-response abstraction layer to let developers only focus on the development of business logic to handle the command request without learning the Bot Framework SDK.
+The TeamsFx Command-Response Bots are created using the [Bot Framework SDK](https://docs.microsoft.com/azure/bot-service/bot-builder-basics?view=azure-bot-service-4.0). The Bot Framework SDK provides [built-in message handler](https://docs.microsoft.com/microsoftteams/platform/bots/bot-basics?tabs=javascript#teams-activity-handlers) to handle the incoming message activity, which requires learning curve to understand the concept of Bot Framework (e.g. the [event-driven conversation model](https://docs.microsoft.com/azure/bot-service/bot-activity-handler-concept?view=azure-bot-service-4.0&tabs=javascript)). To simplify the development, the TeamsFx SDK provides command-response abstraction layer to let developers only focus on the development of business logic to handle the command request without learning the Bot Framework SDK.
 
-Behind the scenes, the TeamsFx SDK leverages [Bot Framework Middleware](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-middleware?view=azure-bot-service-4.0) to handle the integration with the underlying activity handlers. This middleware handles the incoming message activity and invokes the corresponding `handlerCommandReceived` function if the received message text matches the command pattern provided in a `TeamsFxBotCommandHandler` instance. After processing, the middleware will call `context.sendActivity` to send the command response returned from the `handlerCommandReceived` function to the user.
+Behind the scenes, the TeamsFx SDK leverages [Bot Framework Middleware](https://docs.microsoft.com/azure/bot-service/bot-builder-concept-middleware?view=azure-bot-service-4.0) to handle the integration with the underlying activity handlers. This middleware handles the incoming message activity and invokes the corresponding `handlerCommandReceived` function if the received message text matches the command pattern provided in a `TeamsFxBotCommandHandler` instance. After processing, the middleware will call `context.sendActivity` to send the command response returned from the `handlerCommandReceived` function to the user.
 
 <p align="right"><a href="#Build-command-and-response">back to top</a></p>
 
@@ -228,9 +228,9 @@ If you want to invoke external APIs in your code but do not have the appropriate
 ## Frequently Asked Questions
 
 ### How to build command response using adaptive card with dynamic content?
-Adaptive card provides [Template Language](https://docs.microsoft.com/en-us/adaptive-cards/templating/) to allow users to render dynamic content with the same layout (the template). For example, use the adaptive card to render a list of items (todo items, assigned bugs, etc) that could varies according to different user. 
+Adaptive card provides [Template Language](https://docs.microsoft.com/adaptive-cards/templating/) to allow users to render dynamic content with the same layout (the template). For example, use the adaptive card to render a list of items (todo items, assigned bugs, etc) that could varies according to different user. 
 
-1. Add your adaptive card template JSON file under `bot/adativeCards` folder
+1. Add your adaptive card template JSON file under `bot/adaptiveCards` folder
 1. Import the card template to you code file where your command handler exists (e.g. `myCommandHandler.ts`)
 1. Model your card data
 1. Use `MessageBuilder.attachAdaptiveCard` to render the template with dynamic card data
@@ -251,7 +251,7 @@ Adaptive card provides [Template Language](https://docs.microsoft.com/en-us/adap
 
     ![enable-notification](https://user-images.githubusercontent.com/10163840/165462039-12bd4f61-3fc2-4fc8-8910-6a4b1e138626.png)
 
-2. Follow [this intruction](https://aka.ms/teamsfx-notification#notify) to send notification to the bot installation target (channel/group chat/personal chat). To quickly add a sample notification triggered by a HTTP request, you can add the following sample code in `bot\src\index.ts(js)`:
+2. Follow [this instruction](https://aka.ms/teamsfx-notification#notify) to send notification to the bot installation target (channel/group chat/personal chat). To quickly add a sample notification triggered by a HTTP request, you can add the following sample code in `bot\src\index.ts(js)`:
 
     ```typescript
     server.post("/api/notification", async (req, res) => {

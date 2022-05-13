@@ -33,7 +33,7 @@ To enable SSO support:
 
 ![image](https://user-images.githubusercontent.com/11220663/165349151-bf009c88-907a-4fd1-9d2d-cdb26e2a93cc.png)
 
-3. Sroll down and select `Single Sign-On`
+3. Scroll down and select `Single Sign-On`
 
 ![image](https://user-images.githubusercontent.com/11220663/165349533-1227b49d-3df7-4e1b-8d09-202c93b29e9f.png)
 
