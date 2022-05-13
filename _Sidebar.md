@@ -9,5 +9,5 @@ Extend Teams app across Microsoft 365
 * [Create and test a search-based message extension across Microsoft 365](https://github.com/OfficeDev/TeamsFx/wiki/Create-and-debug-a-search-based-message-extension-across-Microsoft-365)
 
 Documentations
-* [Manage App Settings with Teams Toolkit](https://aka.ms/teamsfx-add-appsettings)
+* [Manage app settings with Teams Toolkit](https://aka.ms/teamsfx-add-appsettings)
 * [Manage AAD application with Teams Toolkit](https://aka.ms/teamsfx-aad-manifest)
