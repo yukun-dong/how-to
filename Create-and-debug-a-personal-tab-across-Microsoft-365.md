@@ -14,6 +14,13 @@ Personal tabs provide a great way to enhance the Microsoft Teams experience. Usi
 
 ## Getting Started
 
+### Create a personal tab
+1. From Visual Studio Code, open the command palette (`Ctrl+Shift+P`), type `Teams: Create a new Teams app`
+1. Select **SSO-enabled personal tab**
+
+![image](https://user-images.githubusercontent.com/11220663/168228778-0aadd4b8-6f72-4ca6-9084-739b39da356f.png)
+
+
 Follow below instructions to get started with this application template for local debugging. 
 
 ### Test your application with Visual Studio Code

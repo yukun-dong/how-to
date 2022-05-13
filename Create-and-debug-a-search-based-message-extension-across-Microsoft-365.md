@@ -15,6 +15,13 @@ Search-based [message extensions](https://docs.microsoft.com/microsoftteams/plat
 
 ## Getting Started
 
+### Create a message extension
+1. From Visual Studio Code, open the command palette (`Ctrl+Shift+P`), type `Teams: Create a new Teams app`
+1. Select **Search-based message extension**
+
+![image](https://user-images.githubusercontent.com/11220663/168229318-23cc849d-94b8-48c8-be49-e5edb9010728.png)
+
+
 Follow below instructions to get started with this application template for local debugging.
 
 ### Test your application with Visual Studio Code
