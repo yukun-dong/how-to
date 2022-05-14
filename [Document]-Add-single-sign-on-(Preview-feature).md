@@ -6,19 +6,21 @@ Microsoft Teams provides a mechanism by which an application can obtain the sign
 
 For applications that interact with the user in a chat, a Team, or a channel, SSO manifests as an Adaptive Card which the user can interact with to invoke the AAD consent flow.
 
-In this tutorial, you will learn:
+In this tutorial, you will:
 
-* [How to enable SSO for your project](#How-to-enable-sso-support)
-* [How to understand what will be changed for your project](#What-we-will-do-in-Add-SSO-command)
-* [How to update your code and debug your application](#What-you-need-to-do-after-triggering-Add-SSO-command)
-  * [How to update code for a tab project](#Update-your-source-code-for-Tab-project)
-  * [How to update code for a bot project](#Update-your-source-code-for-Bot-project)
+* [Enable SSO for your project](#How-to-enable-sso)
+* [Understand what will be changed for your project](#Understanding-the-changes-Teams-Toolkit-makes-to-your-project)
+* [Update your code and debug your application](#What-you-need-to-do-after-triggering-Add-SSO-command)
+  * [Update code for a tab project](#Update-your-source-code-for-Tab-project)
+  * [Update code for a bot project](#Update-your-source-code-for-Bot-project)
 * [SSO authentication concepts](#SSO-authentication-concepts)
   * [How SSO works in Teams](#How-SSO-works-in-Teams)
   * [How SSO is simplified with Teams Framework](#How-SSO-are-simplified-with-TeamsFx)
 
-## How to enable sso support
-If you started with following project, you can incrementally add SSO: 
+## How to enable SSO
+
+Teams Toolkit can add SSO to the following Teams capabilities: 
+
 * Tab
 * Bot
 * Notification bot (restify server)
@@ -27,27 +29,27 @@ If you started with following project, you can incrementally add SSO:
 To enable SSO support:
 
 ### In Visual Studio Code
-1. Open Teams Toolkit extension from left side ![image](https://user-images.githubusercontent.com/11220663/165348935-9838d8d4-bd7f-409f-ad25-7479fc64a8bf.png)
+1. Open the Teams Toolkit panel ![image](https://user-images.githubusercontent.com/11220663/165348935-9838d8d4-bd7f-409f-ad25-7479fc64a8bf.png)
 
-2. From the Teams Toolkit side bar select `Add features` or open command palette and select `Teams: Add features`
+2. Select `Add features` or open Visual Studio Code Command Palette and select `Teams: Add features`
 
 ![image](https://user-images.githubusercontent.com/11220663/165349151-bf009c88-907a-4fd1-9d2d-cdb26e2a93cc.png)
 
-3. Scroll down and select `Single Sign-On`
+3. Select `Single Sign-On`
 
 ![image](https://user-images.githubusercontent.com/11220663/165349533-1227b49d-3df7-4e1b-8d09-202c93b29e9f.png)
 
 ### In TeamsFx CLI: 
 
-Execute `teamsfx add sso` command in your project root directory.
+Run the `teamsfx add sso` command in your project root directory.
 
-> Note: This feature will enable SSO for all applicable capabilities. If you add an SSO-applicable capability later to the project, you can follow the same steps to enable SSO for that capability.
+> Note: This feature will enable SSO for all existing applicable capabilities. If you add an capability later to the project, you can follow the same steps to enable SSO for that capability.
 
 <p align="right"><a href="#Add-single-sign-on">back to top</a></p>
 
-## What we will do in 'Add SSO' command
+## Understanding the changes Teams Toolkit makes to your project
 
-After command execution, Teams Toolkit will do the following things:
+Teams Toolkit will make the following changes to your project:
 
 |Type| File | Purpose |
 |-| - | - |
