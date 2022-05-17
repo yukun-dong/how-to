@@ -70,7 +70,7 @@ After adding the SSO feature, follow these steps to enable SSO in your applicati
 
 ### Tab applications
 
-1. Move `auth-start.html` and `auth-end.htm`** in `auth/public` folder to `tabs/public/`. These two HTML files are used for auth redirects.
+1. Move `auth-start.html` and `auth-end.htm`** in `auth/public` folder to `tabs/public/`. Teams Toolkit registers these two endpoints in AAD for AAD's redirect flow.
 
 1. Move `sso` folder under `auth/tab` to `tabs/src/sso/`.
 
@@ -78,21 +78,21 @@ After adding the SSO feature, follow these steps to enable SSO in your applicati
 
     * `GetUserProfile`: This file implements a function that calls Microsoft Graph API to get user info.
 
-1. Execute `npm install @microsoft/teamsfx-react` under `tabs/`
-1. Add the following lines to `tabs/src/components/sample/Welcome.tsx` to import `InitTeamsFx`:
+2. Execute `npm install @microsoft/teamsfx-react` under `tabs/`
+3. Add the following lines to `tabs/src/components/sample/Welcome.tsx` to import `InitTeamsFx`:
     ```
     import { InitTeamsFx } from "../../sso/InitTeamsFx";
     ```
-1. Replace the following line: `<AddSSO />` with `<InitTeamsFx />` to replace the `AddSso` component with `InitTeamsFx` component.
+4. Replace the following line: `<AddSSO />` with `<InitTeamsFx />` to replace the `AddSso` component with `InitTeamsFx` component.
 
 <p align="right"><a href="#Add-single-sign-on">back to top</a></p>
 
 ### Bot applications
 
 1. Move `auth/bot/public` folder to `bot/src`. 
-These folder contains HTML pages used for auth redirect, please note that you need to modify `bot/src/index` file to add routing to these pages.
+This folder contains HTML pages used for AAD's redirect flow. *Note*: you need to modify `bot/src/index` file to add routing to these pages.
 
-1. Move `auth/bot/sso` folder to `bot/src`.
+2. Move `auth/bot/sso` folder to `bot/src`.
 These folder contains three files as reference for sso implementation:
     * `showUserInfo`: This implements a function to get user info with SSO token. You can follow this method and create your own method that requires SSO token.
     * `ssoDialog`: This creates a [ComponentDialog](https://docs.microsoft.com/en-us/javascript/api/botbuilder-dialogs/componentdialog?view=botbuilder-ts-latest) that used for SSO.
