@@ -53,12 +53,12 @@ Teams Toolkit will make the following changes to your project:
 
 |Type| File | Purpose |
 |-| - | - |
-|Create| `aad.template.json` under `templates/appPackage` | This is the Azure Active Directory application manifest used to represent your AAD app. This template will be used to register an AAD app during local debug or provision stage. |
-|Modify | `manifest.template.json` under `templates/appPackage` | An `webApplicationInfo` object will be added into your Teams app manifest template. This field is required by Teams when enabling SSO. This change will take effect when you trigger local debug or provision.|
-|Create| `auth/tab` | reference code, auth redirect pages and a `README.md` file will be generated in this path for a tab project. |
-|Create| `auth/bot` | reference code, auth redirect pages and a `README.md` file will be generated in this path for a bot project. |
+|Create| `aad.template.json` under `templates/appPackage` | This is the Azure Active Directory application manifest. This template defines your application registration. Your application is registered during provisioning.|
+|Modify | `manifest.template.json` under `templates/appPackage` | The Toolkit adds a `webApplicationInfo` definition to the Teams app manifest template. This field is required by Teams when enabling SSO. This change will take effect when provisioning the application.|
+|Create| `auth/tab` | Reference code, auth redirect pages and a `README.md` file will be generated for a tab project. |
+|Create| `auth/bot` | Reference code, auth redirect pages and a `README.md` file will be generated for a bot project. |
 
-> Please note this by adding SSO, Teams Toolkit won't change anything in the cloud until you trigger local debug or provision. You also need to update your code to ensure SSO works in your project. 
+> Note: Adding SSO only makes changes to your project. These changes will be applied to Azure when you provision your application. You also need to update your code to light up the SSO feature. 
 
 <p align="right"><a href="#Add-single-sign-on">back to top</a></p>
 
