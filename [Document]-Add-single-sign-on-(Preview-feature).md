@@ -55,20 +55,20 @@ Teams Toolkit will make the following changes to your project:
 |-| - | - |
 |Create| `aad.template.json` under `templates/appPackage` | This is the Azure Active Directory application manifest. This template defines your application registration. Your application is registered during provisioning.|
 |Modify | `manifest.template.json` under `templates/appPackage` | The Toolkit adds a `webApplicationInfo` definition to the Teams app manifest template. This field is required by Teams when enabling SSO. This change will take effect when provisioning the application.|
-|Create| `auth/tab` | Reference code, auth redirect pages and a `README.md` file will be generated for a tab project. |
-|Create| `auth/bot` | Reference code, auth redirect pages and a `README.md` file will be generated for a bot project. |
+|Create| `auth/tab` | Reference code and auth redirect pages for a tab project. |
+|Create| `auth/bot` | Reference code and auth redirect pages for a bot project. |
 
 > Note: Adding SSO only makes changes to your project. These changes will be applied to Azure when you provision your application. You also need to update your code to light up the SSO feature. 
 
 <p align="right"><a href="#Add-single-sign-on">back to top</a></p>
 
-## What you need to do after triggering 'Add SSO' command
+## Updating your application to use SSO
 
-You can follow the steps below to add SSO in your Teams app based on your Teams app capabilities.
+After adding the SSO feature, follow these steps to enable SSO in your application.
 
 *Note: These changes are based on the templates we scaffold.*
 
-### Update your source code for Tab project
+### Tab applications
 
 1. Move `auth-start.html` and `auth-end.htm`** in `auth/public` folder to `tabs/public/`. These two HTML files are used for auth redirects.
 
@@ -87,7 +87,7 @@ You can follow the steps below to add SSO in your Teams app based on your Teams 
 
 <p align="right"><a href="#Add-single-sign-on">back to top</a></p>
 
-### Update your source code for Bot project
+### Bot applications
 
 1. Move `auth/bot/public` folder to `bot/src`. 
 These folder contains HTML pages used for auth redirect, please note that you need to modify `bot/src/index` file to add routing to these pages.
