@@ -270,7 +270,7 @@ Teams Toolkit will use the AAD manifest file to register the AAD application for
 
 To learn more about Teams Toolkit local debugging, refer to this [document](https://docs.microsoft.com/microsoftteams/platform/toolkit/debug-local).
 
-## Customize AAD applications
+## Customize the AAD application registration
 
 The AAD [manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) allows you to customize various aspects of your application registration. You can update the manifest as needed.
 
@@ -284,21 +284,22 @@ Follow this [document](https://aka.ms/teamsfx-aad-manifest#How-to-view-the-AAD-a
 
 Single sign-on (SSO) authentication in Microsoft Azure Active Directory (Azure AD) silently refreshes the authentication token to minimize the number of times users need to enter their sign in credentials. If users agree to use your app, they don't have to provide consent again on another device as they're signed in automatically. 
 
-Teams Tabs and bots have similar flow for SSO support, to learn in detail, please refer to:
+Teams Tabs and bots have similar flows for SSO. To learn more, refer to:
 * [Use SSO authentication in Tabs](https://docs.microsoft.com/en-us/microsoftteams/platform/tabs/how-to/authentication/auth-aad-sso?tabs=dotnet) 
 * [Use SSO authentication in Bots](https://docs.microsoft.com/en-us/microsoftteams/platform/bots/how-to/authentication/auth-aad-sso-bots)
 
 <p align="right"><a href="#Add-single-sign-on">back to top</a></p>
 
-### How SSO are simplified with TeamsFx
-TeamsFx helps to reduce the developer tasks by leveraging Teams SSO and accessing cloud resources down to single line statements with zero configuration. 
+### How Teams Toolkit simplifies bringing SSO to your application
 
-With TeamsFx SDK, you can write user authentication code in a simplified way using Credentials:
+Teams Toolkit helps to reduce the developer tasks by leveraging Teams SSO and accessing cloud resources down to single line statements with zero configuration. 
+
+With Teams Toolkit you can write user authentication code in a simplified way using Credentials:
 * User identity in browser environment: `TeamsUserCredential` represents Teams current user's identity.
 * User identity in Node.js environment: `OnBehalfOfUserCredential` uses On-Behalf-Of flow and Teams SSO token.
 * Application Identity in Node.js environment: `AppCredential` represents the application identity.
 
-To learn more about TeamsFx SDK, please read the [documentation](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/teamsfx-sdk) or check out the API [reference](https://docs.microsoft.com/en-us/javascript/api/@microsoft/teamsfx/?view=msteams-client-js-latest).
+To learn more read the [documentation](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/teamsfx-sdk) or check out the API [reference](https://docs.microsoft.com/en-us/javascript/api/@microsoft/teamsfx/?view=msteams-client-js-latest).
 
 You can also explore more samples with SSO built by Teams Framework in the [repo](https://github.com/OfficeDev/TeamsFx-Samples/tree/v2)
 
