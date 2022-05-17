@@ -98,9 +98,8 @@ These folder contains three files as reference for sso implementation:
     * `ssoDialog`: This creates a [ComponentDialog](https://docs.microsoft.com/en-us/javascript/api/botbuilder-dialogs/componentdialog?view=botbuilder-ts-latest) that used for SSO.
     * `teamsSsoBot`: This create a [TeamsActivityHandler](https://docs.microsoft.com/en-us/javascript/api/botbuilder/teamsactivityhandler?view=botbuilder-ts-latest) with `ssoDialog` and add `showUserInfo` as a command that can be triggered. 
 
-1. (Optional) Follow the code sample and register your own command with `addCommand` in this file.
-1. Execute the following commands under `bot/`: `npm install isomorphic-fetch`
-1. Execute the following commands under `bot/`: `npm install copyfiles` and replace following line in package.json:
+3. Execute the following commands under `bot/`: `npm install isomorphic-fetch`
+4. Execute the following commands under `bot/`: `npm install copyfiles` and replace following line in package.json:
     ```
     "build": "tsc --build",
     ```
@@ -108,9 +107,9 @@ These folder contains three files as reference for sso implementation:
     ```
     "build": "tsc --build && copyfiles public/*.html lib/",
     ```
-    By doing this, the HTML pages used for auth redirect will be copied when building this bot project.
-1. After adding the following files, you need to create a new `teamsSsoBot` instance in `bot/src/index` file. 
-Please replace the following code:
+    This will copy the HTML files used for the AAD redirect flow during build.
+
+5. Create a new `teamsSsoBot` instance in `bot/src/index` file. Replace the following code:
     ```
     // Process Teams activity with Bot Framework.
     server.post("/api/messages", async (req, res) => {
@@ -130,7 +129,7 @@ Please replace the following code:
     });
     ```
 
-1. Add routing in `bot/src/index` file as below:
+1. Add the HTML routes in the `bot/src/index` file:
 
     ```
     server.get(
@@ -165,7 +164,7 @@ Please replace the following code:
 
 #### (Optional) Add a new command to the bot
 
-After successfully add SSO in your project, you can also add a new command.
+After adding SSO in your application, you can also add a new command for your bot to handle.
 
 1. Create a new file (e.g. `todo.ts` or `todo.js`) under `bot/src/` and add your own business logic to call Graph API:
 
@@ -243,7 +242,7 @@ After successfully add SSO in your project, you can also add a new command.
     this.dialog.addCommand("ShowUserProfile", "show", showUserInfo);
     ```
 
-    and add following lines after the above line to register a new command `photo` and hook up with method `showUserImage` added above:
+    and add the following lines to register a new command `photo` and connect it with the method `showUserImage`:
 
     ```
     // As shown here, you can add your own parameter into the `showUserImage` method
@@ -252,7 +251,7 @@ After successfully add SSO in your project, you can also add a new command.
     this.dialog.addCommand("ShowUserPhoto", new RegExp("photo\s*.*"), showUserImage, scope);
     ```
 
-1. Register your command in the Teams app manifest. Open 'templates/appPackage/manifest.template.json', and add following lines under `command` in `commandLists` of your bot:
+1. Register your command in the Teams application manifest. Open 'templates/appPackage/manifest.template.json' and add following lines under `command` in `commandLists`:
 
     ```
     {
@@ -267,9 +266,9 @@ After successfully add SSO in your project, you can also add a new command.
 
 You can debug your application by pressing F5.
 
-Teams Toolkit will use the AAD manifest file to register a AAD application registered for SSO.
+Teams Toolkit will use the AAD manifest file to register the AAD application for SSO.
 
-To learn more about Teams Toolkit local debug functionalities, refer to this [document](https://docs.microsoft.com/microsoftteams/platform/toolkit/debug-local).
+To learn more about Teams Toolkit local debugging, refer to this [document](https://docs.microsoft.com/microsoftteams/platform/toolkit/debug-local).
 
 ## Customize AAD applications
 
