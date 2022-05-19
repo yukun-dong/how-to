@@ -6,7 +6,8 @@ Teams Toolkit now natively support add other collaborators for TeamsFx project w
 ### Collaborating - Use VSCode
 
 #### Usage
-- To use collaboration feature, you need to **login M365 and Azure account** and your **TeamsFx project should be provisioned first**
+
+- To use collaboration feature, you need to **login M365 and Azure account**(Only needed for Tab project, and for SPFX project, it is not needed) and your **TeamsFx project should be provisioned first**
 
 - In the Teams Toolkit panel, click ENVIRONMENT, and expand an environment name which you want to work with others, then you can see collaboration buttons:
 
@@ -22,15 +23,18 @@ Teams Toolkit now natively support add other collaborators for TeamsFx project w
   ![view-collaborators](https://user-images.githubusercontent.com/5545529/168957068-84ff633e-8612-4805-a1a2-fe4afe42a00d.png)
 
 
-- Share your project and secret file with the collaborator:
+- Share your project with the collaborator:
   - Commit your project to GitHub repository
   - Collaborator clone the project to his computer
-  - Share secret file `.fx\states\[Environment-Name].userdata` to the collaborator (**This step is not strictly required for Tab project, however, if your project contains Bot, this is required**)
-    ![secret-file](https://user-images.githubusercontent.com/5545529/168957952-7bb53831-c377-4b2b-a88a-282334aec3b1.png)
+  - If your project contains Bot capability, share secret file `.fx\states\[Environment-Name].userdata` to the collaborator, and collaborator should copy the secret file to same place in the project:
+    ![secret-file](https://user-images.githubusercontent.com/5545529/169196511-9a426695-af8e-4b03-980c-5fcb7935d163.png)
 
-  - Collaborator copy the secret file to the project folder
 
-- Collaborator login to M365 account, and login Azure account which **at least has contributor permission** for all the Azure resources
+- Collaborator login to M365 account
+
+- For Tab project, login Azure account which **at least has contributor permission** for all the Azure resources. Project owner can refer this [link](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal?tabs=current) to assign Azure roles using the Azure portal.
+
+- For SPFX project, project owner needs to manually setup access policy via SharePoint admin center, please refer to this [link](https://docs.microsoft.com/en-us/sharepoint/manage-site-collection-administrators) for more details.
 
 - Now collaborator can develop, provision and deploy the project
 
@@ -80,7 +84,9 @@ teamsfx permission status --env dev --list-all-collaborators
 ### Limitations of collaboration feature
 - Azure related permissions should be handled manually by the Azure subscription administrator via Azure portal, different Azure account should at least have contributor role for the subscription so that developers can work together to provision and deploy TeamsFx project. For more information about how to assign Azure roles using the Azure portal, you can refer this [doc](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal?tabs=current).
 
-- For best practice, creator of the project should share secret file `.fx\states\[Environment-Name].userdata` with the collaborator. This is strict required if project contains Bot capability, otherwise collaborator will receive errors as below when provision: 
+- If your project is SPFX project, you need to manually setup access policy via SharePoint admin center, please refer to this [link](https://docs.microsoft.com/en-us/sharepoint/manage-site-collection-administrators) for more details.
+
+- If the project contains Bot capability, creator of the project should share secret file `.fx\states\[Environment-Name].userdata` with the collaborator, otherwise collaborator will receive errors as below when provision: 
 
   ![403-error](https://user-images.githubusercontent.com/5545529/168981368-2e97b9df-0f37-4eaa-acd1-33e85492b4cb.png)
 
