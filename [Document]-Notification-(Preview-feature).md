@@ -315,6 +315,8 @@ One possible cause is that the bot id or password is changed (usually due to cle
 
 And a quick fix could be:
 - **Clean your notification storage** (by default for local case it's `.notification.localstore.json`)
+  
+  After cleaning, message or re-install your bot in Teams to ensure the new installation is up-to-date.
 
 Technically, each stored notification installation is bound with one bot. If you are able to check your notification storage, its `bot` field should match the bot you are running (E.g., the bot id contains the same GUID).
 
