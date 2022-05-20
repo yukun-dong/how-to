@@ -1,8 +1,11 @@
-Microsoft Teams Framework is a library encapsulating common functionality and integration patterns (like simplified access to Microsoft Identity) for developers building apps for Microsoft Teams.
+Teams Toolkit for Visual Studio, Visual Studio Code, and Command Line Interface (CLI) are tools for building Teams apps, fast. Whether you are new to Teams platform or a seasoned developer, Teams Toolkit is the best way to create, build, debug, test, and deploy apps.
 
-The Teams Developer Platform offers a collection of solutions for Teams developers:
+Teams Toolkit provides support for the end-to-end Teams development journey, including:
 
-* IDE extensions for Visual Studio and Visual Studio Code named "Teams Toolkit"
-* Docs, samples
-* Code libraries including Teams Framework `teamsfx` and the Teams Client Library `teams-js`
-* A command line tool `teamsfx` for terminal users, automation, and CI
+* Support for all major Teams extensibility surfaces, including tabs, bots, and message extensions.
+* Integrations with the tools, languages, and frameworks you know and love.
+* Scaffolds for getting started fast with Teams extensibility surfaces and common scenarios such as notifications and command & response-style bots.
+* Rapid iteration with full stack debugging, hot reload, and secure tunneling.
+* Simplified SSO authentication.
+* Integrated support for hosting, data storage, and serverless functions.
+* CI/CD actions for GitHub and Azure DevOps to deliver apps with confidence.
