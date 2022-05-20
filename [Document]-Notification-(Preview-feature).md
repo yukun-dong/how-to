@@ -309,6 +309,15 @@ There are two options to fix this:
 
 Technically, notification target connections are stored in the persistence storage. If you are using the default local file storage, all installations will be stored under `bot/.notification.localstore.json`. Or refer to [Customize Storage](#customize-storage) to add your own storage.
 
+### Why BadRequest/BadArgument error occurs when sending notification?
+
+One possible cause is that the bot id or password is changed (usually due to cleaning local state or re-provisioning). E.g., if the notification installation does not match the bot (id/password) you are running, you may get a "*Failed to decrypt conversation id*" error.
+
+And a quick fix could be:
+- **Clean your notification storage** (by default for local case it's `.notification.localstore.json`)
+
+Technically, each stored notification installation is bound with one bot. If you are able to check your notification storage, its `bot` field should match the bot you are running (E.g., the bot id contains the same GUID).
+
 ### Why notification target is lost after restart / redeploy the bot app?
 
 Notification target connections are stored in the persistence storage. If you are using the default local file storage, Azure Web App and Azure Functions will clean up the local file when restart / redeploy.
