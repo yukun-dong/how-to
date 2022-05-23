@@ -9,3 +9,6 @@ Teams Toolkit provides support for the end-to-end Teams development journey, inc
 * Simplified SSO authentication.
 * Integrated support for hosting, data storage, and serverless functions.
 * CI/CD actions for GitHub and Azure DevOps to deliver apps with confidence.
+
+<img width="1350" alt="MicrosoftTeams-image" src="https://user-images.githubusercontent.com/11220663/169769447-56bed814-ef71-45c1-9ce6-badab2ffb1f4.png">
+
