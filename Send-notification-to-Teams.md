@@ -1,6 +1,4 @@
-# Send notification to Teams
-
-> This feature is currently under active development. Report any issues to us [here](https://github.com/OfficeDev/TeamsFx/issues/new/choose).
+> We appreciate your feedback, please report any issues to us [here](https://github.com/OfficeDev/TeamsFx/issues/new/choose).
 
 The Notification in Teams feature enables you to build applications that consume events and send these as notifications to an individual person, a chat, or a channel in Teams. Notifications can be sent as plain text or [Adaptive Cards](https://docs.microsoft.com/en-us/microsoftteams/platform/task-modules-and-cards/cards/cards-reference).
 
@@ -57,7 +55,7 @@ After you successfully created the project, you can quickly start local debuggin
 
 ![image](https://user-images.githubusercontent.com/11220663/166959087-a13abe67-e18a-4979-ab29-a8d7663b3489.png)
 
-<p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
+<p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
 
 ## Take a tour of your app source code
 
@@ -101,7 +99,7 @@ If you select `(Azure Functions)` trigger(s), the `bot/` folder is azure functio
 | `local.settings.json` | The azure functions local setting file |
 | `package.json` | The NPM package file for bot project |
 
-<p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
+<p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
 
 ## How to send more notifications
 
@@ -234,7 +232,7 @@ for (const target of await bot.notification.installations()) {
 }
 ```
 
-<p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
+<p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
 
 ## Add authentication for your notification API
 
@@ -246,7 +244,7 @@ If you choose http trigger, the scaffolded notification API does not have authen
 
 There would be more authentication / authorization solutions for an API. You can choose the one that satisfies your requirement best.
 
-<p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
+<p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
 
 ## How notification works
 
@@ -273,13 +271,13 @@ for (const target of await bot.notification.installations()) {
 }
 ```
 
-<p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
+<p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
 
 ## Connect to existing API
 
 If you want to invoke external APIs in your code but do not have the appropriate SDK, the "Teams: Connect to an API" command in Teams Toolkit VS Code extension or "teamsfx add api-connection" command in TeamsFx CLI would be helpful to bootstrap code to call target APIs. For more information, you can visit [Connect existing API document](https://aka.ms/teamsfx-connect-api).
 
-<p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
+<p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
 
 ## Frequently Asked Questions
 
@@ -338,7 +336,7 @@ In the notification project, it uses persistence storage to store installation t
 If azurite exits due to port in use, you can [specify another listening port](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio#blob-listening-port-configuration) and update the [connection string](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio#http-connection-strings
 ) of `AzureWebJobsStorage` in `bot/local.settings.json`
 
-<p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
+<p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
 
 # Teams bot application or Teams incoming webhook
 Microsoft Teams Framework (TeamsFx) supports two major ways to help you send notifications from your system to Teams by creating a Teams Bot Application or Teams Incoming Webhook.
@@ -357,7 +355,7 @@ Here's the comparison of the two approaches to help you make the decision.
 | Require installation step on Teams | Yes | No |
 | Require Azure resource | Azure Bot Service | No |
 
-<p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
+<p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
 
 # Notification via Incoming Webhook
 Incoming Webhooks help in posting messages from apps to Teams. If Incoming Webhooks are enabled for a team in any channel, it exposes the HTTPS endpoint, which accepts correctly formatted JSON and inserts the messages into that channel. For example, you can create an Incoming Webhook in your DevOps channel, configure your build, and simultaneously deploy and monitor services to send alerts.
@@ -367,4 +365,4 @@ Teams Framework has built a [sample](https://github.com/OfficeDev/TeamsFx-Sample
 * How to send notifications using incoming webhooks with adaptive cards.
 
 
-<p align="right"><a href="#Send-notification-to-Teams">back to top</a></p>
+<p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
