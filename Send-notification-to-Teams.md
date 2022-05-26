@@ -254,10 +254,11 @@ Current TeamsFx SDK recognize following bot events:
 
 | Event | Behavior |
 | - | - |
-| Bot is installed | Add the target conversation reference to storage |
-| Bot is uninstalled | Remove the target conversation reference from storage |
+| The first time Bot is added(installed) to Person/Group/Team | Add the target conversation reference to storage |
+| Bot is removed(uninstalled) from Person/Group/Team | Remove the target conversation reference from storage |
 | Team that bot installed in is deleted | Remove the target conversation reference from storage |
 | Team that bot installed in is restored | Add the target conversation reference to storage |
+| Bot is messaged/mentioned | Add the target conversation reference to storage if not exist |
 
 When notifying, TeamsFx SDK creates new conversation from the selected conversation reference and send messages. Or, for advanced usage, you can directly access the conversation reference to execute your own bot logic:
 ``` typescript
