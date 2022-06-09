@@ -11,3 +11,7 @@ Extend Teams app across Microsoft 365
 Documentation
 * [Manage Application settings with Teams Toolkit](https://aka.ms/teamsfx-add-appsettings)
 * [Manage AAD Application Registration with Teams Toolkit](https://aka.ms/teamsfx-aad-manifest)
+
+How To Guides
+* [How to use an existing AAD app](https://github.com/OfficeDev/TeamsFx/wiki/Using-existing-Azure-AD-app-in-TeamsFx-project)
+* [How to use a multi-tenant AAD app](https://github.com/OfficeDev/TeamsFx/wiki/Multi-tenancy-Support-for-Azure-AD-app)
