@@ -36,6 +36,18 @@ In this tutorial, you will learn:
 
 ![image](https://user-images.githubusercontent.com/11220663/165435852-686deaef-119e-4311-9343-d8ef4b335516.png)
 
+### In Visual Studio
+1. Make sure you have installed ASP.NET workloads and "Microsoft Teams development tools".
+![image](https://user-images.githubusercontent.com/25972542/180788786-95a98752-1207-41e8-9095-613a6b21b78d.png)
+
+2. Create a new project and select "Microsoft Teams App".
+![image](https://user-images.githubusercontent.com/25972542/180789311-d0d74a1a-b27e-4d79-b26c-1a839ec48371.png)
+
+3. In next window enter your project name.
+
+4. In next window select Command Bot.
+![image](https://user-images.githubusercontent.com/25972542/180798463-eb91c825-aada-48bb-8f7c-83b34d46bc9e.png)
+
 ### In TeamsFx CLI
 
 * If you prefer interactive mode, execute `teamsfx new` command, then use the keyboard to go through the same flow as in Visual Studio Code.
@@ -51,6 +63,8 @@ After you successfully created the project, you can quickly start local debuggin
 <p align="right"><a href="#How-to-create-a-command-response-bot">back to top</a></p>
 
 ## Take a tour of your app source code
+
+### For JS/TS project (In Visual Studio Code)
 After scaffolding or adding a command-response bot, you will find your bot's source code under `bot/` folder:
 | File name | Contents |
 |- | -|
@@ -58,6 +72,21 @@ After scaffolding or adding a command-response bot, you will find your bot's sou
 |`bot/src/index.ts`| Server code to host the bot app and listen on `/api/messages` to process Teams activity with Bot Framework |
 |`bot/src/helloworldCommandHandler.ts`| A hello world command handler to process a `helloworld` command and return an adaptive card as response |
 |`bot/src/adaptiveCards/*.json`| Adaptive card JSON file used as your command response |
+
+### For CSharp project (In Visual Studio)
+| File name | Contents |
+|- | -|
+| `Properties` | LaunchSetting file for local debug |
+| `.fx` | Project level settings and configurations |
+| `Commands` | Define the commands and how your Bot will react to these commands |
+| `Controllers` | BotController and NotificationControllers to handle the conversation with user |
+| `Models` | Adaptive card data models |
+| `Resources` | Adaptive card templates |
+| `Templates` | Templates for Teams app manifest and corresponding Azure resources |
+| `appsettings` | The Bot settings |
+| `GettingStarted.txt` | Instructions on minimal steps to wonderful|
+| `Program.cs` | Create the Teams Bot instance |
+| `TeamsBot.cs` | An empty Bot handler |
 
 <p align="right"><a href="#How-to-create-a-command-response-bot">back to top</a></p>
 
