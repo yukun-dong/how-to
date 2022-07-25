@@ -43,6 +43,18 @@ In this tutorial, you will learn:
 
 ![image](https://user-images.githubusercontent.com/11220663/165435852-686deaef-119e-4311-9343-d8ef4b335516.png)
 
+### In Visual Studio
+1. Make sure you have installed ASP.NET workloads and "Microsoft Teams development tools".
+![image](https://user-images.githubusercontent.com/25972542/180788786-95a98752-1207-41e8-9095-613a6b21b78d.png)
+
+2. Create a new project and select "Microsoft Teams App".
+![image](https://user-images.githubusercontent.com/25972542/180789311-d0d74a1a-b27e-4d79-b26c-1a839ec48371.png)
+
+3. In next window enter your project name.
+
+4. In next window select Notification Bot. Then select a trigger type in right panel. You can choose from HTTP Trigger or Timer Trigger. The triggers are based on WebApi Server (means the created app code is a web app) or Azure Functions (means the created app code is Azure Functions)..
+![image](https://user-images.githubusercontent.com/25972542/180789649-6c752c22-1ff1-4294-a281-b88bb763d464.png)
+
 
 ### In TeamsFx CLI
 * If you prefer interactive mode, execute `teamsfx new` command, then use the keyboard to go through the same flow as in Visual Studio Code.
@@ -59,6 +71,7 @@ After you successfully created the project, you can quickly start local debuggin
 
 ## Take a tour of your app source code
 
+### For JS/TS project (In Visual Studio Code)
 The created app is a normal TeamsFx project that will contain following folders:
 
 | Folder | Contents |
@@ -68,7 +81,7 @@ The created app is a normal TeamsFx project that will contain following folders:
 | `bot` | The bot source code |
 | `templates` |Templates for Teams app manifest and corresponding Azure resources|
 
-### Restify hosted Bot
+#### Restify hosted Bot
 
 If you select `(Restify)` trigger(s), the `bot/` folder is restify web app with following content:
 
@@ -81,7 +94,7 @@ If you select `(Restify)` trigger(s), the `bot/` folder is restify web app with 
 | `.gitignore` | The git ignore file to exclude local files from bot project |
 | `package.json` | The NPM package file for bot project |
 
-### Azure Functions hosted Bot
+#### Azure Functions hosted Bot
 
 If you select `(Azure Functions)` trigger(s), the `bot/` folder is azure functions app with following content:
 
@@ -98,6 +111,40 @@ If you select `(Azure Functions)` trigger(s), the `bot/` folder is azure functio
 | `host.json` | The azure functions host file |
 | `local.settings.json` | The azure functions local setting file |
 | `package.json` | The NPM package file for bot project |
+
+
+### For CSharp project (In Visual Studio)
+
+If you selected WebApi Http trigger, the project structure would like this:
+
+| Folder | Contents |
+| - | - |
+| `Properties` | LaunchSetting file for local debug |
+| `.fx` | Project level settings and configurations |
+| `Controllers` | BotController and NotificationControllers to handle the message content |
+| `Models` | Adaptive card data models |
+| `Resources` | Adaptive card templates |
+| `Templates` | Templates for Teams app manifest and corresponding Azure resources |
+| `appsettings` | The Bot settings |
+| `GettingStarted.txt` | Instructions on minimal steps to wonderful|
+| `Program.cs` | Create the Teams Bot instance |
+| `TeamsBot.cs` | An empty Bot handler |
+
+If you selected Timer trigger, the project structure would be generally the same, only differences are listed in below table:
+
+| Folder | Contents |
+| - | - |
+| "MessageHandler.cs" | Instead of Controller folder, MessageHandler is where you can define the message content |
+| "NotifyTimerTrigger.cs" | Define the time interval to trigger the notification |
+| "Startup.cs" | Instead of Program.cs, Startup.cs create the Teams Bot instance  |
+
+If you selected Azure Functions based HTTP trigger, the project structure would be generally the same, only differences are listed in below table:
+
+| Folder | Contents |
+| - | - |
+| "MessageHandler.cs" | Start an asynchronized task to call http request |
+| "NotifyHttpTrigger.cs" | Handle the request result and convert to message content |
+| "Startup.cs" | Instead of Program.cs, Startup.cs create the Teams Bot instance  |
 
 <p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
 
