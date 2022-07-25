@@ -134,17 +134,17 @@ If you selected Timer trigger, the project structure would be generally the same
 
 | Folder | Contents |
 | - | - |
-| "MessageHandler.cs" | Instead of Controller folder, MessageHandler is where you can define the message content |
-| "NotifyTimerTrigger.cs" | Define the time interval to trigger the notification |
-| "Startup.cs" | Instead of Program.cs, Startup.cs create the Teams Bot instance  |
+| `MessageHandler.cs` | Instead of Controller folder, MessageHandler is where you can define the message content |
+| `NotifyTimerTrigger.cs` | Define the time interval to trigger the notification |
+| `Startup.cs` | Instead of Program.cs, Startup.cs create the Teams Bot instance  |
 
 If you selected Azure Functions based HTTP trigger, the project structure would be generally the same, only differences are listed in below table:
 
 | Folder | Contents |
 | - | - |
-| "MessageHandler.cs" | Start an asynchronized task to call http request |
-| "NotifyHttpTrigger.cs" | Handle the request result and convert to message content |
-| "Startup.cs" | Instead of Program.cs, Startup.cs create the Teams Bot instance  |
+| `MessageHandler.cs` | Start an asynchronized task to call http request |
+| `NotifyHttpTrigger.cs` | Handle the request result and convert to message content |
+| `Startup.cs` | Instead of Program.cs, Startup.cs create the Teams Bot instance  |
 
 <p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
 
