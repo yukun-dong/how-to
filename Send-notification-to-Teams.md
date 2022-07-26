@@ -152,9 +152,10 @@ If you selected Azure Functions based HTTP trigger, the project structure would 
 
 ### Initialize
 
-To send notification, you need to create `ConversationBot` first. (Code already generated at `bot/src/internal/initialize.*s`)
+To send notification, you need to create `ConversationBot` first. (Code already generated in project)
 
 ``` typescript
+/** Javascript/Typescript: bot/src/internal/initialize.*s **/
 const bot = new ConversationBot({
     // The bot id and password to create BotFrameworkAdapter.
     // See https://aka.ms/about-bot-adapter to learn more about adapters.
@@ -169,11 +170,31 @@ const bot = new ConversationBot({
 });
 ```
 
+``` csharp
+/** .NET: Program.cs or Startup.cs **/
+// Create the Conversation with notification feature enabled.
+builder.Services.AddSingleton(sp =>
+{
+    var options = new ConversationOptions()
+    {
+        // To use your own CloudAdapter
+        Adapter = sp.GetService<CloudAdapter>(),
+        Notification = new NotificationOptions
+        {
+            BotAppId = builder.Configuration["MicrosoftAppId"],
+        },
+    };
+
+    return new ConversationBot(options);
+});
+```
+
 ### Customize Adapter
 
 You can initialize with your own adapter, or customize after initialization.
 
 ``` typescript
+/** Typescript **/
 // Create your own adapter
 const adapter = new BotFrameworkAdapter(...);
 
@@ -195,6 +216,7 @@ bot.adapter.onTurnError = ...
 You can initialize with your own storage. This storage will be used to persist notification connections.
 
 ``` typescript
+/** Typescript **/
 // implement your own storage
 class MyStorage implements NotificationTargetStorage {...}
 const myStorage = new MyStorage(...);
@@ -215,6 +237,29 @@ const bot = new ConversationBot({
 });
 ```
 
+``` csharp
+/** .NET **/
+// implement your own storage
+public class MyStorage : INotificationTargetStorage {...}
+
+// initialize ConversationBot with notification enabled and customized storage
+builder.Services.AddSingleton(sp =>
+{
+    var options = new ConversationOptions()
+    {
+        Adapter = sp.GetService<CloudAdapter>(),
+        Notification = new NotificationOptions
+        {
+            BotAppId = builder.Configuration["MicrosoftAppId"],
+            // Use your own storage
+            Storage = new MyStorage(),
+        },
+    };
+
+    return new ConversationBot(options);
+});
+```
+
 **[This Sample](https://github.com/OfficeDev/TeamsFx-Samples/blob/ga/adaptive-card-notification/bot/src/storage/blobsStorage.ts)** provides a sample implementation that persists to Azure Blob Storage.
 
 > Note: It's recommended to use your own shared storage for production environment. If `storage` is not provided, a default local file storage will be used, which stores notification connections into:
@@ -227,6 +272,7 @@ A Teams bot can be installed into a team, or a group chat, or as personal app, d
 
 To send notification in team/channel:
 ``` typescript
+/** Typescript **/
 // list all installation targets
 for (const target of await bot.notification.installations()) {
     // "Channel" means this bot is installed to a Team (default to notify General channel)
@@ -249,8 +295,34 @@ for (const target of await bot.notification.installations()) {
 }
 ```
 
+``` csharp
+/** .NET **/
+// list all installation targets
+foreach (var target in await _conversation.Notification.GetInstallationsAsync()) {
+    // "Channel" means this bot is installed to a Team (default to notify General channel)
+    if (target.Type == NotificationTargetType.Channel)
+    {
+        // Directly notify the Team (to the default General channel)
+        await target.SendAdaptiveCard(...);
+
+        // List all members in the Team then notify each member
+        var members = await target.GetMembersAsync();
+        foreach (var member in members) {
+            await member.SendAdaptiveCard(...);
+        }
+
+        // List all channels in the Team then notify each channel
+        var channels = await target.GetChannelsAsync();
+        foreach (var channel in channels) {
+            await channel.SendAdaptiveCard(...);
+        }
+    }
+}
+```
+
 To send notification in group chat
 ``` typescript
+/** Typescript **/
 // list all installation targets
 for (const target of await bot.notification.installations()) {
     // "Group" means this bot is installed to a Group Chat
@@ -267,14 +339,47 @@ for (const target of await bot.notification.installations()) {
 }
 ```
 
+``` csharp
+/** .NET **/
+// list all installation targets
+foreach (var target in await _conversation.Notification.GetInstallationsAsync()) {
+    // "Group" means this bot is installed to a Group Chat
+    if (target.Type == NotificationTargetType.Group)
+    {
+        // Directly notify the Group Chat
+        await target.SendAdaptiveCard(...);
+
+        // List all members in the Group Chat then notify each member
+        var members = await target.GetMembersAsync();
+        foreach (var member in members) {
+            await member.SendAdaptiveCard(...);
+        }
+    }
+}
+```
+
 To send notification in personal chat
 ``` typescript
+/** Typescript **/
 // list all installation targets
 for (const target of await bot.notification.installations()) {
     // "Person" means this bot is installed as Personal app
     if (target.type === "Person") {
         // Directly notify the individual person
         await target.sendAdaptiveCard(...);
+    }
+}
+```
+
+``` csharp
+/** .NET **/
+// list all installation targets
+foreach (var target in await _conversation.Notification.GetInstallationsAsync()) {
+    // "Person" means this bot is installed as Personal app
+    if (target.Type == NotificationTargetType.Person)
+    {
+        // Directly notify the individual person
+        await target.SendAdaptiveCard(...);
     }
 }
 ```
@@ -309,6 +414,7 @@ Current TeamsFx SDK recognize following bot events:
 
 When notifying, TeamsFx SDK creates new conversation from the selected conversation reference and send messages. Or, for advanced usage, you can directly access the conversation reference to execute your own bot logic:
 ``` typescript
+/** Typescript **/
 // list all installation targets
 for (const target of await bot.notification.installations()) {
     // call Bot Framework's adapter.continueConversation()
@@ -316,6 +422,23 @@ for (const target of await bot.notification.installations()) {
         // your own bot logic
         await context...
     });
+}
+```
+
+``` csharp
+/** .NET **/
+// list all installation targets
+foreach (var target in await _conversation.Notification.GetInstallationsAsync()) {
+    // call Bot Framework's adapter.ContinueConversationAsync()
+    await target.Adapter.ContinueConversationAsync(
+        target.BotAppId,
+        target.ConversationReference,
+        async (context, ctx) =>
+        {
+            // your own bot logic
+            await context...
+        },
+        cancellationToken);
 }
 ```
 
@@ -336,6 +459,7 @@ It depends on your host type.
 - If you created Restify notification project, you can add HTTP trigger(s) by creating new routing
 
   ``` typescript
+  /** Javascript/Typescript **/
   server.post("/api/new-trigger", ...);
   ```
 
