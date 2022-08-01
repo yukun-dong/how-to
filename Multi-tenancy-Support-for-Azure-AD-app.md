@@ -1,6 +1,6 @@
 ## How to support Multi-tenancy in TeamsFx project
 
-When SSO is enabled, Teams Toolkit will by default provision a [single-tenant](https://docs.microsoft.com/azure/active-directory/develop/single-and-multi-tenant-apps#who-can-sign-in-to-your-app) Azure AD app, which means only user and guest accounts in thea same directory as your M365 account can successfully sign in to your Teams app. 
+When SSO is enabled, Teams Toolkit will by default provision a [single-tenant](https://docs.microsoft.com/azure/active-directory/develop/single-and-multi-tenant-apps#who-can-sign-in-to-your-app) Azure AD app, which means only user and guest accounts in the same directory as your M365 account can successfully sign in to your Teams app. 
 
 To support [multi-tenant](https://docs.microsoft.com/azure/active-directory/develop/single-and-multi-tenant-apps#who-can-sign-in-to-your-app), you can follow the steps below to update your TeamsFx project.
 
