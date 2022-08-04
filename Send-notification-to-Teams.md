@@ -270,7 +270,7 @@ builder.Services.AddSingleton(sp =>
 
 A Teams bot can be installed into a team, or a group chat, or as personal app, depending on difference scopes. You can choose the installation target when adding the App. (See [Distribute your app](https://docs.microsoft.com/microsoftteams/platform/concepts/deploy-and-publish/apps-publish-overview) for more install options.)
 
-![image](notification/addanapp.png)
+![Installation Target](notification/addanapp.png)
 
 To send notification in team/channel:
 ``` typescript
