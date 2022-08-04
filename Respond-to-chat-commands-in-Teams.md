@@ -110,6 +110,11 @@ const bot = new ConversationBot({
 bot.adapter.onTurnError = ...
 ```
 
+## Customize installation
+A Teams bot can be installed into a team, or a group chat, or as personal app, depending on difference scopes. You can choose the installation target when adding the App. (See [Distribute your app](https://docs.microsoft.com/microsoftteams/platform/concepts/deploy-and-publish/apps-publish-overview) for more install options.)
+
+![image](notification/addanapp.png)
+
 ## How to add more command and response
 1. Add new command handler to your bot
     1. Add a .ts/.js file (e.g. `xxxCommandHandler.ts`) under `bot/src` to handle your bot command, and include the following boilerplate code to get-started:   
