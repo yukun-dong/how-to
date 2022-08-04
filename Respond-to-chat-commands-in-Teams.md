@@ -116,7 +116,7 @@ A Teams bot can be installed into a team, or a group chat, or as personal app, d
 
   ![Installation Target](notification/addanapp.png)
 
-- See [Remove an app from Teams](https://support.microsoft.com/office/remove-an-app-from-teams-0bc48d54-e572-463c-a7b7-71bfdc0e4a9d) for uninstallation.)
+- See [Remove an app from Teams](https://support.microsoft.com/office/remove-an-app-from-teams-0bc48d54-e572-463c-a7b7-71bfdc0e4a9d) for uninstallation.
 
 ## How to add more command and response
 1. Add new command handler to your bot
