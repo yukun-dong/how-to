@@ -1,10 +1,9 @@
-This doc is for using existing Azure AD app or Manually Create Azure AD app for TeamsFx project. Please follow the instruction and make sure all reqirued info is properly set in your TeamsFx project.
+This doc is for using existing Azure AD app or Manually Create Azure AD app for TeamsFx project in Visual Studio or Visual Studio Code. Please follow the instruction and make sure all reqirued info is properly set in your TeamsFx project.
 
 
 # Create an Azure AD app (Optional)
 
 > You may skip this part if you already has an Azure AD app.
-
 1. Go to the [Azure Portal](https://portal.azure.com) and select "Azure Active Directory".
 
 1. Select "App Registrations" and click on "New registration" to create a new Azure AD app:
@@ -28,7 +27,6 @@ This doc is for using existing Azure AD app or Manually Create Azure AD app for 
 # Create Access As User Scope for Azure AD app (Optional)
 
 > You can skip this part if your M365 account has permission to update this Azure AD app. We will create the scope for you.
-
 1. Go to app's "Expose an API" page, click on "Add a scope" under "Scopes defined by this API".
    * Click on "Save and continue".
    * **Scope name**: Fill in "access_as_user".
@@ -50,7 +48,7 @@ This doc is for using existing Azure AD app or Manually Create Azure AD app for 
    * **Authorized scopes**: Choose the existing "access_as_user" scope.
    * Click on "Add application".
 
-2. Go to app's "Manifest" page, copy the "id" under "oauth2Permissions" as **Access As User Scope ID**.
+1. Go to app's "Manifest" page, copy the "id" under "oauth2Permissions" as **Access As User Scope ID**.
 
 
 # Get necessary info from existing Azure AD app
@@ -73,7 +71,7 @@ This doc is for using existing Azure AD app or Manually Create Azure AD app for 
 1. Open your TeamsFx project, and open `.fx/configs/config.dev.json`.
 
 1. Set `AAD_APP_CLIENT_SECRET` = **Client Secret** in your system environment variable.
-   
+
     *Note: You can change the env name `AAD_APP_CLIENT_SECRET` here, and remember to replace  `AAD_APP_CLIENT_SECRET` with your env name in the next step.*
 
 1. Add follow code after existing code.
@@ -93,7 +91,9 @@ This doc is for using existing Azure AD app or Manually Create Azure AD app for 
      }
      ```
 
-1. Open Teams Toolkit extension and click on "Provision in the cloud". Wait until your project is successfully provisioned.
+1. [For Visual Studio Code] Open Teams Toolkit extension and click on "Provision in the cloud". Wait until your project is successfully provisioned.
+
+1. [For Visual Studio] Click "Project" -> "Teams Toolkit" -> "Provision in the cloud". Wait until your project is successfully provisioned.
 
 # Upload Azure AD app manifest to Azure portal
 
@@ -107,15 +107,22 @@ This doc is for using existing Azure AD app or Manually Create Azure AD app for 
 
 1. Open `templates/appPackage/aad.template.json`
 
-1. Click on "preview" as shown below:
+1. Get content of Azure AD app manifest
+   - For Visual Studio Code:
 
-   
-![image](https://user-images.githubusercontent.com/11220663/172798183-98becfab-fb82-4518-b569-684b65c72563.png)
+      1. Click on "preview" as shown below:
+
+         ![image](https://user-images.githubusercontent.com/11220663/172798183-98becfab-fb82-4518-b569-684b65c72563.png)
 
 
-1. Select your env, and you manifest can be found under `build/appPackage/manifest.${env}.json`.
+      1. Select your env, and you manifest can be found under `build/appPackage/manifest.${env}.json`.
 
-1. Copy the content in the manifest file.
+      1. Copy the content in the manifest file.
+
+   - For Viusal Studio: 
+      1. Copy the content and follow the structure below to replace all the values in the pattern `{{file.component.value}}` in the manifest file:
+         - {{state.component.value}}: you can get the value by finding `value` under `component` in `.fx/states/state.{env}.json`
+         - {{config.component.value}}: you can get the value by finding `value` under `component` in `.fx/configs/config.{env}.json`
 
 1. Go to the [Azure Portal](https://portal.azure.com) and select "Azure Active Directory".
 
