@@ -1,6 +1,7 @@
 Scenario-based Tutorials
 * [Send notifications to Teams](https://aka.ms/teamsfx-send-notification)
 * [Respond to chat commands in Teams](https://aka.ms/teamsfx-create-command)
+* [Respond to card actions in Teams](https://aka.ms/teamsfx-card-action-response)
 * [Connect to existing APIs](https://aka.ms/teamsfx-connect-api)
 * [Add single sign on](https://aka.ms/teamsfx-add-sso)
 
