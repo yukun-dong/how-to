@@ -28,9 +28,9 @@ In this tutorial you will learn:
 
 3. Select the `Workflow bot` from Scenario-based Teams app section.
 
-![image](https://user-images.githubusercontent.com/11220663/192218730-ea4419c9-6d9d-460e-884e-896e7ad428df.png)
+![image](https://user-images.githubusercontent.com/11220663/192220388-910a2708-ab57-4492-b942-4be3b3ea9930.png)
 
-4. Select programming language
+4. Select programming language.
 
 ![image](https://user-images.githubusercontent.com/11220663/165435816-e6d46074-6e0a-4186-804b-c83bfbe12b6f.png)
 
