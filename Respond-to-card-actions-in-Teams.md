@@ -3,15 +3,26 @@
 The Adaptive Card action handler feature enables the app to respond to adaptive card actions that triggered by end users to complete a sequential workflow. When user gets an Adaptive Card, it can provide one or more buttons in the card to ask for user's input, do something like calling some APIs, and then send another adaptive card in conversation to response to the card action.
 
 In this tutorial you will learn:
+
+Basic Concepts:
+* [What are Teams Bots](https://learn.microsoft.com/microsoftteams/platform/bots/what-are-bots)
+* [Adaptive Card and Card Actions](https://learn.microsoft.com/microsoftteams/platform/task-modules-and-cards/cards/cards-actions?tabs=json)
+* [Sequential Workflow Support in Adaptive Card Universal Action](https://learn.microsoft.com/microsoftteams/platform/task-modules-and-cards/cards/universal-actions-for-adaptive-cards/sequential-workflows)
+
+Get started with Teams Toolkit and TeamsFx SDK:
 * [How to create a workflow bot](#How-to-create-a-workflow-bot)
 * [How to understand the workflow bot project](#Take-a-tour-of-your-app-source-code)
 * [How to understand the card action handler](#Card-Action-Handler)
+
+Customize the scaffolded app template:
 * [How to customize the initialization](#Customize-the-initialization)
 * [How to customize the installation](#Customize-installation)
 * [How to customize the command logic](#Customize-the-command-logic)
 * [How to customize your app to add more actions and responses](#Add-more-card-actions)
 * [How to customize the action response](#Customize-the-action-response)
 * [How to create user specific view](#Auto-refresh-to-user-specific-view)
+
+Connect your app with Graph or other APIs:
 * [How to access Microsoft Graph from your workflow bot](#Access-Microsoft-Graph)
 * [How to connect to existing APIs from your workflow bot](#Connect-to-existing-APIs)
 
