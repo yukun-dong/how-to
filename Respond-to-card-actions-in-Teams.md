@@ -64,8 +64,8 @@ After you successfully created the project, you can quickly start local debuggin
 <p align="right"><a href="#How-to-create-a-workflow-bot">back to top</a></p>
 
 ## Take a tour of your app source code
-
-This section walks through the generated code. The project folder contains the following:
+### For JS/TS project (in Visual Studio Code)
+The created app is a normal TeamsFx project that will contain following folders:
 
 | Folder | Contents |
 | - | - |
@@ -74,16 +74,15 @@ This section walks through the generated code. The project folder contains the f
 | `bot` | The source code for the workflow bot Teams application |
 | `templates` | Templates for the Teams application manifest and for provisioning Azure resources |
 
-The core command-response implementation is in `bot` folder.
-
-The following files provide the business logic for the workflow bot. These files can be updated to fit your business logic requirements. The default implementation provides a starting point to help you get started.
+The core implementation for the Teams bot is in `bot/` folder.
+The following files under `bot/` folder provide the business logic for the workflow bot. These files can be updated to fit your business logic requirements. The default implementation provides a starting point to help you get started:
 
 | File | Contents |
 | - | - |
-| `src/index.ts` | Application entry point and `restify` handlers for the workflow bot |
+| `src/index.js(ts)` | Application entry point and `restify` handlers for the workflow bot |
 | `src/adaptiveCards/helloworldCommand.json` | A generated Adaptive Card that is sent to Teams |
-| `src/commands/helloworldCommandHandler.ts` | Responds to the command message |
-| `src/cardActions/doStuffActionHandler.ts` | Responds to the `doStuff` card action |
+| `src/commands/helloworldCommandHandler.js(ts)` | Responds to the command message |
+| `src/cardActions/doStuffActionHandler.js(ts)` | Responds to the `doStuff` card action |
 | `src/cardModels.ts` | The default Adaptive Card data model |
 
 The following files implement the core workflow bot on the Bot Framework. You generally will not need to customize these files.
@@ -176,8 +175,8 @@ You can use the following 4 steps to add more card action:
 4. [Step 4: register the action handler](#step-4-register-the-action-handler)
 
 ### Step 1: add an action to your Adaptive Card
-
-Here's a sample action with type `Action.Execute`:
+User universal action `Action.Execute` to define your action in an adaptive card, which will be rendered as a button in the card:
+Here's a sample `Action.Execute`action:
 ```json
 { 
   "type": "AdaptiveCard", 
@@ -198,7 +197,7 @@ Here's a sample action with type `Action.Execute`:
 } 
 ```
 
-`Action.Execute` invoking the bot can return Adaptive Cards as a response, which will replace the existing card in conversation by default.  
+> **_NOTE:_**  the `verb` property is required here so that the TeamsFx conversation SDK can invoke the corresponding action handler when the action is invoked in Teams. You should provide a global unique string for the `verb` property, otherwise you may experience unexpected behavior if you're using a general string that might cause a collision with other bot actions. 
 
 ### Step 2: add adaptive card for action response
 For each action invoke, you can return a new adaptive card to display the response to end user. You can use [adaptive card designer](https://adaptivecards.io/designer/) to design your card layout according to your business needs.
