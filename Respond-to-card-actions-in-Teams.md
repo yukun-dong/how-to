@@ -6,7 +6,7 @@ In this tutorial you will learn:
 
 Basic Concepts:
 * [What are Teams Bots](https://learn.microsoft.com/microsoftteams/platform/bots/what-are-bots)
-* [Adaptive Card and Card Actions](https://learn.microsoft.com/microsoftteams/platform/task-modules-and-cards/cards/cards-actions?tabs=json)
+* [Adaptive Card Universal Action](https://learn.microsoft.com/microsoftteams/platform/task-modules-and-cards/cards/universal-actions-for-adaptive-cards/work-with-universal-actions-for-adaptive-cards)
 * [Sequential Workflow Support in Adaptive Card Universal Action](https://learn.microsoft.com/microsoftteams/platform/task-modules-and-cards/cards/universal-actions-for-adaptive-cards/sequential-workflows)
 
 Get started with Teams Toolkit and TeamsFx SDK:
