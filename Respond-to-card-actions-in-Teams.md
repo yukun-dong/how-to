@@ -87,13 +87,13 @@ The following files under `bot/` folder provide the business logic for the workf
 | `src/adaptiveCards/helloworldCommand.json` | A generated Adaptive Card that is sent to Teams |
 | `src/commands/helloworldCommandHandler.js(ts)` | Responds to the command message |
 | `src/cardActions/doStuffActionHandler.js(ts)` | Responds to the `doStuff` card action |
-| `src/cardModels.ts` | The default Adaptive Card data model |
+| `src/cardModels.js(ts)` | The default Adaptive Card data model |
 
 The following files implement the core workflow bot on the Bot Framework. You generally will not need to customize these files.
 
 | File / Folder | Contents |
 | - | - |
-| `src/internal/initialize.ts` | Application initialization and bot message handling |
+| `src/internal/initialize.js(ts)` | Application initialization and bot message handling |
 
 The following files are project-related files. You generally will not need to customize these files.
 
@@ -143,7 +143,7 @@ export interface TeamsFxAdaptiveCardActionHandler {
 
 ## Customize the initialization
 
-The default initialization is located in `bot/src/internal/initialize.ts`.
+The default initialization is located in `bot/src/internal/initialize.js(ts)`.
 
 You can update the initialization logic to:
 
@@ -253,7 +253,7 @@ export class Handler1 implements TeamsFxAdaptiveCardActionHandler {
 
 ### Step 4: register the action handler
 
-1. Go to `bot/src/internal/initialize.ts`;
+1. Go to `bot/src/internal/initialize.js(ts)`;
 2. Update your `conversationBot` initialization to enable cardAction feature and add the handler to `actions` array:
 
 ```typescript
@@ -460,7 +460,7 @@ export class Handler1 implements TeamsFxBotCardActionHandler {
 ```
  
 #### Step 4: register the action handler 
-Register the refresh action handler in `bot/src/internal/initialize.ts`: 
+Register the refresh action handler in `bot/src/internal/initialize.js(ts)`: 
 ```typescript
 export const commandBot = new ConversationBot({ 
   ... 
@@ -497,7 +497,7 @@ The notification feature adds the ability for your application to send Adaptive 
 
 To add the notification feature:
 
-1. Go to `bot\src\internal\initialize.ts`
+1. Go to `bot\src\internal\initialize.js(ts)`
 2. Update your `conversationBot` initialization to enable notification feature:
     ```typescript
     const conversationBot = new ConversationBot({ 
@@ -514,7 +514,7 @@ To add the notification feature:
     }); 
     ```
 
-3. To quickly add a sample notification triggered by a HTTP request, you can add the following sample code in `bot\src\index.ts`:
+3. To quickly add a sample notification triggered by a HTTP request, you can add the following sample code in `bot\src\index.js(ts)`:
 
     ```typescript
     server.post("/api/notification", async (req, res) => {
