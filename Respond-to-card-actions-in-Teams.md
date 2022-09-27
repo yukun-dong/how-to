@@ -126,7 +126,7 @@ export interface TeamsFxAdaptiveCardActionHandler {
      * The default value is `AdaptiveCardResponse.ReplaceForInteractor`, which means the card
      * response will replace the current one only for the interactor.
      */
-    adaptiveCardResponse?: AdaptiveCardResponse,
+    adaptiveCardResponse?: AdaptiveCardResponse;
     
     /**
      * The handler function that will be invoked when the action is fired.
