@@ -59,7 +59,11 @@ Connect your app with Graph or other APIs:
 
 After you successfully created the project, you can quickly start local debugging via `F5` in VSCode. Select `Debug (Edge)` or `Debug (Chrome)` debug option of your preferred browser. You can send a `helloWorld` command after running this template and get a response as below:
 
-![image](https://user-images.githubusercontent.com/11220663/192219663-a970b23d-3f11-4b1d-afc8-381d26c67327.png)
+<img src="https://user-images.githubusercontent.com/10163840/192477792-dc447b3a-e304-4cd8-b4df-b1eb9d226292.png" alt="initial-response" width="600"/>
+
+Then you can click the `DoStuff` button to invoke the action, and you will received the following updated adaptive card:
+
+<img src="https://user-images.githubusercontent.com/10163840/192477148-29d9edfc-085b-4d02-b3de-b47b9a456108.png" alt="action-response" width="600"/>
 
 <p align="right"><a href="#How-to-create-a-workflow-bot">back to top</a></p>
 
