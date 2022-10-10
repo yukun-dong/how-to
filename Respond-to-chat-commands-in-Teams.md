@@ -300,3 +300,10 @@ Adaptive card provides [Template Language](https://docs.microsoft.com/adaptive-c
 To explore more details of the notification feature (e.g. send notification with adaptive card, add more triggers), you can further refer to [the notification document](https://aka.ms/teamsfx-notification).
 
 <p align="right"><a href="#How-to-create-a-command-response-bot">back to top</a></p>
+
+### How to extend my command bot to support adaptive card actions
+The Adaptive Card action handler feature enables the app to respond to adaptive card actions that triggered by end users to complete a sequential workflow. When user gets an Adaptive Card, it can provide one or more buttons in the card to ask for user's input, do something like calling some APIs, and then send another adaptive card in conversation to response to the card action.
+
+To add adaptive card actions to command bot, you can follow the steps [here](https://aka.ms/teamsfx-card-action-response#add-more-card-actions).
+
+<p align="right"><a href="#How-to-create-a-command-response-bot">back to top</a></p>
