@@ -11,6 +11,7 @@ In this tutorial, you will learn:
 * [How to build dynamic content in response with adaptive cards](#How-to-build-command-response-using-adaptive-card-with-dynamic-content)
 * [How to extend my notification bot to support command and response](#how-to-extend-my-notification-bot-to-support-command-and-response)
 * [How to extend my command and response bot to support notification](#how-to-extend-my-command-and-response-bot-to-support-notification)
+* [How to extend my command and response bot to support adaptive card actions](#how-to-extend-my-command-bot-to-support-adaptive-card-actions)
 
 ## How to create a command-response bot
 
