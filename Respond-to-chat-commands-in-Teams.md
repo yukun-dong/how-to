@@ -9,7 +9,6 @@ In this tutorial, you will learn:
 * [How command and response bot works](#How-command-and-response-works)
 * [How to connect to and existing API](#Connect-to-existing-API)
 * [How to build dynamic content in response with adaptive cards](#How-to-build-command-response-using-adaptive-card-with-dynamic-content)
-* [How to extend my notification bot to support command and response](#how-to-extend-my-notification-bot-to-support-command-and-response)
 * [How to extend my command and response bot to support notification](#how-to-extend-my-command-and-response-bot-to-support-notification)
 * [How to extend my command and response bot to support adaptive card actions](#how-to-extend-my-command-bot-to-support-adaptive-card-actions)
 
@@ -271,16 +270,8 @@ Adaptive card provides [Template Language](https://docs.microsoft.com/adaptive-c
 
 <p align="right"><a href="#How-to-create-a-command-response-bot">back to top</a></p>
 
-### How to extend my notification bot to support command and response?
-1. Go to `bot\src\internal\initialize.ts(js)`, update your `conversationBot` initialization to enable command-response feature:
-
-   ![enable-command](https://user-images.githubusercontent.com/10163840/165430233-04648a2a-d637-41f0-bb17-b34ddbd609f7.png)
-
-1. Follow [this instruction](#How-to-add-more-command-and-response) to add command to your bot.
-
-<p align="right"><a href="#How-to-create-a-command-response-bot">back to top</a></p>
-
 ### How to extend my command and response bot to support notification?
+
 1. Go to `bot\src\internal\initialize.ts(js)`, update your `conversationBot` initialization to enable notification feature:
 
     ![enable-notification](https://user-images.githubusercontent.com/10163840/165462039-12bd4f61-3fc2-4fc8-8910-6a4b1e138626.png)
@@ -303,6 +294,7 @@ To explore more details of the notification feature (e.g. send notification with
 <p align="right"><a href="#How-to-create-a-command-response-bot">back to top</a></p>
 
 ### How to extend my command bot to support adaptive card actions
+
 The Adaptive Card action handler feature enables the app to respond to adaptive card actions that triggered by end users to complete a sequential workflow. When user gets an Adaptive Card, it can provide one or more buttons in the card to ask for user's input, do something like calling some APIs, and then send another adaptive card in conversation to response to the card action.
 
 To add adaptive card actions to command bot, you can follow the steps [here](https://aka.ms/teamsfx-card-action-response#add-more-card-actions).
