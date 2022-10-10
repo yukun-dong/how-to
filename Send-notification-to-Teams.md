@@ -513,6 +513,21 @@ In the notification project, it uses persistence storage to store installation t
 If azurite exits due to port in use, you can [specify another listening port](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio#blob-listening-port-configuration) and update the [connection string](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio#http-connection-strings
 ) of `AzureWebJobsStorage` in `bot/local.settings.json`
 
+### How to extend my notification bot to support command and response
+
+1. Go to `bot\src\internal\initialize.ts(js)`, update your `conversationBot` initialization to enable command-response feature:
+
+   ![enable-command](https://user-images.githubusercontent.com/10163840/165430233-04648a2a-d637-41f0-bb17-b34ddbd609f7.png)
+
+1. Follow [this instruction](https://aka.ms/teamsfx-create-command#How-to-add-more-command-and-response) to add command to your bot.
+
+
+### How to extend my notification bot to support adaptive card actions
+
+The Adaptive Card action handler feature enables the app to respond to adaptive card actions that triggered by end users to complete a sequential workflow. When user gets an Adaptive Card, it can provide one or more buttons in the card to ask for user's input, do something like calling some APIs, and then send another adaptive card in conversation to response to the card action.
+
+To add adaptive card actions to command bot, you can follow the steps [here](https://aka.ms/teamsfx-card-action-response#add-more-card-actions).
+
 <p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
 
 # Teams bot application or Teams incoming webhook
@@ -531,21 +546,6 @@ Here's the comparison of the two approaches to help you make the decision.
 | Able to retrieve Teams context | Yes | No |
 | Require installation step on Teams | Yes | No |
 | Require Azure resource | Azure Bot Service | No |
-
-### How to extend my notification bot to support command and response
-
-1. Go to `bot\src\internal\initialize.ts(js)`, update your `conversationBot` initialization to enable command-response feature:
-
-   ![enable-command](https://user-images.githubusercontent.com/10163840/165430233-04648a2a-d637-41f0-bb17-b34ddbd609f7.png)
-
-1. Follow [this instruction](https://aka.ms/teamsfx-create-command#How-to-add-more-command-and-response) to add command to your bot.
-
-
-### How to extend my notification bot to support adaptive card actions
-
-The Adaptive Card action handler feature enables the app to respond to adaptive card actions that triggered by end users to complete a sequential workflow. When user gets an Adaptive Card, it can provide one or more buttons in the card to ask for user's input, do something like calling some APIs, and then send another adaptive card in conversation to response to the card action.
-
-To add adaptive card actions to command bot, you can follow the steps [here](https://aka.ms/teamsfx-card-action-response#add-more-card-actions).
 
 <p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
 
