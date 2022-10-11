@@ -169,7 +169,7 @@ To resolve this issue, see [How to use my own bot messaging endpoint]({Debug}-Te
 
 ## Legacy Prerequisites Checker Settings
 
-> Start from Teams Toolkit (>= 4.0.7), it generates [new tasks]({Debug}-Teams-Toolkit-VS-Code-Tasks) that can be customized in `tasks.json` file.
+> Start from Teams Toolkit (>= 4.1.0), it generates [new tasks]({Debug}-Teams-Toolkit-VS-Code-Tasks) that can be customized in `tasks.json` file.
 
 For project created by Teams Toolkit (<= 4.0.6), if you prefer to manage some or all of the Teams app development prerequisites your self, you can use Visual Studio Code settings (Visual Studio Code Settings -> Teams Toolkit -> Prerequisite Check) to diasable the prerequisite checker. To open your user and workspace settings, use the following Visual Studio Code menu command:
 
