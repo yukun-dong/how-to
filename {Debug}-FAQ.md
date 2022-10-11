@@ -67,7 +67,7 @@ Since Bot and Messaging Extension requires a public address as the messaging end
 
 ### Mitigation
 
-> Following mitigation is for project created by Teams Toolkit (<= 4.0.6). For project created by Teams Toolkit (>= 4.0.7), see [How to use my own bot messaging endpoint]({Debug}-Teams-Toolkit-VS-Code-Tasks#how-to-use-my-own-bot-messaging-endpoint).
+> Following mitigation is for project created by Teams Toolkit (<= 4.0.6). For project created by Teams Toolkit (>= 4.1.0), see [How to use my own bot messaging endpoint]({Debug}-Teams-Toolkit-VS-Code-Tasks#how-to-use-my-own-bot-messaging-endpoint).
 
 To use your own tunneling service, you should set `siteEndpoint` configuration in *.fx/configs/config.local.json* under the project root.
 ```json
