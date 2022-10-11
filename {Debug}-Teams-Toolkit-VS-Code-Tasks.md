@@ -57,7 +57,7 @@ This task is to validate and install prerequisites that will be used in followed
 
 | Arguments       | type   | required | description                                                                                                                               |
 |-----------------|--------|----------|------------------------------------------------------------------------------------------------------------|
-| prerequisites   | array  | required | The enabled prerequisite checkers. Checkers: nodejs, m365Account, devCert, azureFunc, ngrok, dotnet, portOccupancy |
+| prerequisites   | array  | required | The enabled prerequisite checkers. Checkers: nodejs, m365Account, devCert, func, ngrok, dotnet, portOccupancy |
 | portOccupancy   | array  | required | The ports to check if they are in use.                                                                    |
 
 | prerequisites  | description |
@@ -65,7 +65,7 @@ This task is to validate and install prerequisites that will be used in followed
 | nodejs | Validate if Node.js is installed. |
 | m365Account | Sign-in prompt for Microsoft 365 account, then validate if the account enables the sideloading permission. |
 | devCert | Install localhost SSL certificate. It's used to serve the development sites over HTTPS to debug the Tab app in Teams. |
-| azureFunc | Install Azure Functions Core Tools. It's used to serve Azure Functions hosted project locally. |
+| func | Install Azure Functions Core Tools. It's used to serve Azure Functions hosted project locally. |
 | ngrok | Install Ngrok. Bot project requires a public message endpoint, and ngrok can help create public tunnel for your local service. |
 | dotnet | Ensure .NET Core SDK is installed. TeamsFx Azure Functions project depends on extra .NET binding extensions for HTTP trigger authorization. |
 | portOccupancy | Validate available ports to ensure those debug ones are not occupied. |
@@ -103,6 +103,7 @@ For newly created project, there may be following ports to be validated:
 - 9239: the default debugger port for local bot service
 - 7071: the default port for local api/backend service
 - 9229: the default debugger port for local api/backend service
+- 4321: the default port for local SPFx service
 
 ### Install NPM packages
 
@@ -174,7 +175,7 @@ This task is to start local tunnel service (ngrok) to make your local bot messag
 
 | Arguments       | Type    | Required | Description                                                                                                                                                                                             |
 |-----------------|---------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ngrokArgs        | string  | required | The ngrok command line arguments to start the tunnel. Full references can be found in [ngrok document](https://ngrok.com/docs/ngrok-agent/ngrok). |
+| ngrokArgs        | string or string[]  | required | The ngrok command line arguments to start the tunnel. Full references can be found in [ngrok document](https://ngrok.com/docs/ngrok-agent/ngrok). |
 | ngrokPath        | string | optional | The ngrok binary path. If undefined, use Teams Toolkit ngrok, otherwise use provided path. E.g.,"ngrokPath": <ul><li>"ngrok" // use ngrok from `env:PATH`</li><li>"C:/some-path/ngrok" // use ngrok from absolute path</li><li>"./bot/my-ngrok/ngrok" // use ngrok from relative path</li></ul> |
 | tunnelInspection | string  | optional | Teams Toolkit tries to get tunnel public URL from ngrok log first, then the first PublicURL via default inspection "http://127.0.0.1:4040/api/tunnels". If you specify your own `ngrokArgs` with different log format or inspection, set this arg to provide your own inspection location. |
 
