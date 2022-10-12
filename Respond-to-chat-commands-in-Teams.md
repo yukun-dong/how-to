@@ -199,28 +199,29 @@ You can build your response data in text format or follow the steps bellow to us
 
 ### Step 3: Handle the command
 
-1. Add a .ts/.js file (e.g. `xxxCommandHandler.ts`) under `bot/src` to handle your bot command, and include the following boilerplate code to get-started:   
-        ```typescript
-        import { Activity, TurnContext } from "botbuilder";
-        import { CommandMessage, TeamsFxBotCommandHandler, TriggerPatterns } from "@microsoft/teamsfx";
-        import { MessageBuilder } from "@microsoft/teamsfx";
+1. Add a .ts/.js file (e.g. `xxxCommandHandler.ts`) under `bot/src` to handle your bot command, and include the following boilerplate code to get-started:
 
-        export class xxxCommandHandler implements TeamsFxBotCommandHandler {
-            triggerPatterns: TriggerPatterns = "<string or RegExp pattern to trigger the command>";
+    ```typescript
+    import { Activity, TurnContext } from "botbuilder";
+    import { CommandMessage, TeamsFxBotCommandHandler, TriggerPatterns } from "@microsoft/teamsfx";
+    import { MessageBuilder } from "@microsoft/teamsfx";
 
-            async handleCommandReceived(
-                context: TurnContext,
-                message: CommandMessage
-            ): Promise<string | Partial<Activity>> {
-                // verify the command arguments which are received from the client if needed.
-                console.log(`Bot received message: ${message.text}`);
+    export class xxxCommandHandler implements TeamsFxBotCommandHandler {
+        triggerPatterns: TriggerPatterns = "<string or RegExp pattern to trigger the command>";
 
-                // do something to process your command and return message activity as the response.
-                // You can leverage `MessageBuilder` utilities from the `@microsoft/teamsfx` SDK 
-                // to facilitate building message with cards supported in Teams.
-            }    
-        }
-        ```
+        async handleCommandReceived(
+            context: TurnContext,
+            message: CommandMessage
+        ): Promise<string | Partial<Activity>> {
+            // verify the command arguments which are received from the client if needed.
+            console.log(`Bot received message: ${message.text}`);
+
+            // do something to process your command and return message activity as the response.
+            // You can leverage `MessageBuilder` utilities from the `@microsoft/teamsfx` SDK 
+            // to facilitate building message with cards supported in Teams.
+        }    
+    }
+    ```
 
 1. Provide the `triggerPatterns` that can trigger this command handler. Usually it's the command name defined in your manifest, or you can use RegExp to handle a complex command (e.g. with some options in the command message).
 
@@ -234,33 +235,34 @@ You can build your response data in text format or follow the steps bellow to us
 
 Open `bot\src\internal\initialize.ts` and update the call to `ConversationBot` constructor to include your new added command handlers.
 
-        ```typescript
-        export const commandBot = new ConversationBot({
-            // The bot id and password to create BotFrameworkAdapter.
-            // See https://aka.ms/about-bot-adapter to learn more about adapters.
-            adapterConfig: {
-                appId: process.env.BOT_ID,
-                appPassword: process.env.BOT_PASSWORD,
-            },
-            command: {
-                enabled: true,
-                commands: [ new HelloWorldCommandHandler(), new xxxCommandHandler() ],
-            },
-        });
-        ```
+```typescript
+export const commandBot = new ConversationBot({
+    // The bot id and password to create BotFrameworkAdapter.
+    // See https://aka.ms/about-bot-adapter to learn more about adapters.
+    adapterConfig: {
+        appId: process.env.BOT_ID,
+        appPassword: process.env.BOT_PASSWORD,
+    },
+    command: {
+        enabled: true,
+        commands: [ new HelloWorldCommandHandler(), new xxxCommandHandler() ],
+    },
+});
+```
+
 
 Or, use `registerCommand`/ `registerCommands` API from your `ConversationBot` instance to incrementally add your command(s) to a command bot.
 
-       ```
-       // register a single command
-       commandBot.command.registerCommand(new xxxCommandHandler());
-       
-       // register a set of commands
-       commandBot.command.registerCommands([
-           new xxxCommandHandler(),
-           new yyyCommandHandler()
-       ]);
-       ```
+```
+// register a single command
+commandBot.command.registerCommand(new xxxCommandHandler());
+
+// register a set of commands
+commandBot.command.registerCommands([
+    new xxxCommandHandler(),
+    new yyyCommandHandler()
+]);
+```
 
 Now, you are all done with the code development of adding a new command and response into your bot app. You can just press `F5` to local debug with the command-response bot, or use provision and deploy command to deploy the change to Azure.
 
