@@ -298,6 +298,8 @@ Adaptive card provides [Template Language](https://docs.microsoft.com/adaptive-c
 1. Model your card data
 1. Use `MessageBuilder.attachAdaptiveCard` to render the template with dynamic card data
 
+You can also add new cards if appropriate for your application. Please follow this [sample](https://aka.ms/teamsfx-adaptive-card-sample) to see how to build different types of adaptive cards with a list or a table of dynamic contents using `ColumnSet` and `FactSet`.
+
 <p align="right"><a href="#How-to-create-a-command-response-bot">back to top</a></p>
 
 ### How to extend my command and response bot to support notification?
