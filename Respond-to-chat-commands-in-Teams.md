@@ -245,6 +245,36 @@ Now, you are all done with the code development of adding a new command and resp
 
 <p align="right"><a href="#How-to-create-a-command-response-bot">back to top</a></p>
 
+## Customize the trigger pattern
+
+The default pattern to trigger a command is through a defined keyword. But often times you would want to collect and process additional information retrieved after the trigger keyword. In addition to keyword match, you could also define your trigger pattern with [regular expressions](https://regex101.com/) and match against `message.text` with more controls.
+
+When using regular expressions, any capture group can be found in `message.matches`. Below is an example that uses regular expression to capture strings after `reboot`, for example if user inputs `reboot myMachine`, `message.matches[1]` will capture `myMachine`:
+
+```javascript
+class HelloWorldCommandHandler {
+  triggerPatterns = /^reboot (.*?)$/i; //"helloWorld";
+  async handleCommandReceived(context, message) {
+    console.log(`Bot received message: ${message.text}`);
+    const machineName = message.matches[1];
+    console.log(machineName);
+    // Render your adaptive card for reply message
+    const cardData = {
+      title: "Your Hello World Bot is Running",
+      body: "Congratulations! Your hello world bot is running. Click the button below to trigger an action.",
+    };
+    const cardJson = AdaptiveCards.declare(helloWorldCard).render(cardData);
+    return MessageFactory.attachment(CardFactory.adaptiveCard(cardJson));
+  }
+}
+
+module.exports = {
+  HelloWorldCommandHandler,
+}
+```
+
+<p align="right"><a href="#How-to-create-a-command-response-bot">back to top</a></p>
+
 ## How command-and-response works
 The TeamsFx Command-Response Bots are created using the [Bot Framework SDK](https://docs.microsoft.com/azure/bot-service/bot-builder-basics?view=azure-bot-service-4.0). The Bot Framework SDK provides [built-in message handler](https://docs.microsoft.com/microsoftteams/platform/bots/bot-basics?tabs=javascript#teams-activity-handlers) to handle the incoming message activity, which requires learning curve to understand the concept of Bot Framework (e.g. the [event-driven conversation model](https://docs.microsoft.com/azure/bot-service/bot-activity-handler-concept?view=azure-bot-service-4.0&tabs=javascript)). To simplify the development, the TeamsFx SDK provides command-response abstraction layer to let developers only focus on the development of business logic to handle the command request without learning the Bot Framework SDK.
 
