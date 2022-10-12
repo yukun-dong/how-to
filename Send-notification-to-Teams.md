@@ -232,7 +232,7 @@ You can also add new cards if needed. Follow this [sample](https://aka.ms/teamsf
 
 ### Step 3: Customize where notifications are sent
 
-#### Send notification in team/channel:
+#### Send notifications to a channel
 
 ``` typescript
 /** Typescript **/
@@ -283,7 +283,7 @@ foreach (var target in await _conversation.Notification.GetInstallationsAsync())
 }
 ```
 
-#### Send notification in group chat
+#### Send notifications to a group chat
 
 ``` typescript
 /** Typescript **/
@@ -322,7 +322,7 @@ foreach (var target in await _conversation.Notification.GetInstallationsAsync())
 }
 ```
 
-#### Send notification in personal chat
+#### Send notifications to a personal chat
 
 ``` typescript
 /** Typescript **/
