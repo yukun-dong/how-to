@@ -450,6 +450,11 @@ For backend:
 3. If SSO is enabled, set the `REACT_APP_FUNC_ENDPOINT` environment variable in `tabs/.env.teamsfx.local`, and set the `API_ENDPOINT` environment variable in `api/.env.teamsfx.local`.
 4. If SSO is enabled and bot is included, set the `API_ENDPOINT` environment variable in `bot/.env.teamsfx.local`.
 
+For SPFx:
+1. Change the port value in `SPFx/config/serve.json`
+2. Change `portOccupancy` argument in `Validate & Install prerequisites` task.
+2. Change the `staticTabs.contentUrl` and `configurableTabs.configurationUrl` arguments in `templates/appPackage/manifest.template.json`.
+
 ### How to use the existing AAD app for SSO?
 1. Set `objectId`, `clientId`, `clientSecret` and `accessAsUserScopeId` arguments in `Set up SSO` task. For `clientSecret`, use plain text or environment variable reference like `${env:CLIENT_SECRET}`.
 2. If bot is included, set the `M365_CLIENT_SECRET` environment variable in `bot/.env.teamsfx.local`.
