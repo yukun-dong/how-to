@@ -15,7 +15,6 @@ Customize the scaffolded app template:
   * [How to customize the installation](#customize-installation)
   * [How to customize the adapter](#customize-adapter)
   * [How to customize the storage](#customize-storage)
-  * [How to add more triggers](#how-to-add-more-triggers)
   * [How to add authentication for your notification API](#add-authentication-for-your-notification-API)
   * [How to connect to an existing API](#connect-to-existing-API)
 
@@ -30,6 +29,7 @@ Alternative ways to send notifications to Teams:
 ## Create a new notification project
 
 ### In Visual Studio Code
+
 1. From Teams Toolkit side bar click `Create a new Teams app` or select `Teams: Create a new Teams app` from the command palette.
 
 ![image](https://user-images.githubusercontent.com/11220663/165435370-99aa79b8-044f-44ea-b2a9-e42a055a3f6c.png)
@@ -38,11 +38,9 @@ Alternative ways to send notifications to Teams:
   
 ![image](https://user-images.githubusercontent.com/11220663/168242250-34ca599f-1c9b-4c0c-80a7-ac07ebe10a1a.png)
 
-
 3. Select `Notification bot` from Scenario-based Teams app section.
 
 ![image](https://user-images.githubusercontent.com/11220663/168242197-189ee9ac-79e4-4525-941d-99f6af44d8a4.png)
-
 
 4. Select triggers. You can choose from `HTTP Trigger` or `Timer Trigger`. The triggers are based on `Restify Server` (means the created app code is a restify web app) or `Azure Functions` (means the created app code is Azure Functions).
   
@@ -57,6 +55,7 @@ Alternative ways to send notifications to Teams:
 ![image](https://user-images.githubusercontent.com/11220663/165435852-686deaef-119e-4311-9343-d8ef4b335516.png)
 
 ### In Visual Studio
+
 1. Make sure you have installed ASP.NET workloads and "Microsoft Teams development tools".
 ![image](https://user-images.githubusercontent.com/25972542/180788786-95a98752-1207-41e8-9095-613a6b21b78d.png)
 
@@ -70,6 +69,7 @@ Alternative ways to send notifications to Teams:
 
 
 ### In TeamsFx CLI
+
 * If you prefer interactive mode, execute `teamsfx new` command, then use the keyboard to go through the same flow as in Visual Studio Code.
 
 * If you prefer non-interactive mode, enter all required parameters in one command.
@@ -216,11 +216,27 @@ There are few customizations you can make to extend the template to fit your bus
 
 ### Step 1: Customize the trigger point from event source
 
-By default Teams Toolkit scaffolds a single `restify` entry point in `src/index.js`. When a HTTP request is sent to this entry point, the default implementation sends a hard-coded Adaptive Card to Teams.
+#### For `Restify` based notification
 
-You can customize this behavior by customizing `src/index.js`. A typical implementation might make an API call to retrieve some events and/or data, and then send an Adaptive Card as appropriate.
+By default Teams Toolkit scaffolds a single `restify` entry point in `src/index.js`. When a HTTP request is sent to this entry point, the default implementation sends a hard-coded Adaptive Card to Teams. You can customize this behavior by customizing `src/index.js`. A typical implementation might make an API call to retrieve some events and/or data, and then send an Adaptive Card as appropriate.
 
-You can also add additional triggers by creating new routing: `server.post("/api/new-trigger", ...);`
+You can also add additional triggers by:
+
+- Creating new routing: `server.post("/api/new-trigger", ...);`
+- Add Timer trigger(s) via widely-used npm packages such as [cron](https://www.npmjs.com/package/cron), [node-schedule](https://www.npmjs.com/package/node-schedule), etc. Or add other trigger(s) via other packages.
+
+#### For Azure Functions based notification
+
+If you selected `timer` trigger, the default Azure Function timer trigger (`src/timerTrigger.ts`) implementation simply sends a hard-coded Adaptive Card every 30 seconds. You can edit the file `*Trigger/function.json` to customize the `schedule` property. Refer to the [Azure Function documentation](https://docs.microsoft.com/azure/azure-functions/functions-bindings-timer?tabs=in-process&pivots=programming-language-javascript#ncrontab-expressions) for more details.
+
+If you selected `http` trigger, when this trigger is hit (via a HTTP request), the default implementation sends a hard-coded Adaptive Card to Teams. You can change this behavior by customizing `src/*Trigger.ts`. A typical implementation might make an API call to retrieve some events and/or data, and then send an Adaptive Card as appropriate.
+
+You can also add any Azure Function trigger. For example:
+
+- You can use an `Event Hub` trigger to send notifications when an event is pushed to Azure Event Hub.
+- You can use a `Cosmos DB` trigger to send notifications when a Cosmos document has been created or updated.
+
+See Azure Functions [supported triggers](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings?tabs=javascript#supported-bindings).
 
 ### Step 2: Customize the notification content
 
@@ -484,25 +500,6 @@ builder.Services.AddSingleton(sp =>
 > Note: It's recommended to use your own shared storage for production environment. If `storage` is not provided, a default local file storage will be used, which stores notification connections into:
 >   - *.notification.localstore.json* if running locally
 >   - *${process.env.TEMP}/.notification.localstore.json* if `process.env.RUNNING_ON_AZURE` is set to "1"
-
-<p align="right"><a href="#in-this-tutorial-you-will-learn">back to top</a></p>
-
-## How to add more triggers
-
-It depends on your host type.
-
-- If you created Restify notification project, you can add HTTP trigger(s) by creating new routing
-
-  ``` typescript
-  /** Javascript/Typescript **/
-  server.post("/api/new-trigger", ...);
-  ```
-
-  Or add Timer trigger(s) via widely-used npm packages such as [cron](https://www.npmjs.com/package/cron), [node-schedule](https://www.npmjs.com/package/node-schedule), etc.
-
-  Or add other trigger(s) via other packages.
-
-- If you created Azure Functions notification project, you can add any Azure Functions trigger(s) with your own `function.json` file and code file(s). [Azure Functions supported triggers](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings?tabs=javascript#supported-bindings).
 
 <p align="right"><a href="#in-this-tutorial-you-will-learn">back to top</a></p>
 
