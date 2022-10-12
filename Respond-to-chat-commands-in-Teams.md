@@ -151,7 +151,8 @@ You can edit the manifest template file `templates\appPackage\manifest.template.
     * The command `title` that user type in the message compose area to trigger the command.
     * The `command` description for this command.
 
-      ![manifest-add-command](https://user-images.githubusercontent.com/10163840/160374446-7fd164d6-63c9-47b2-9bf1-0d6a88731e8d.png)
+![manifest-add-command](https://user-images.githubusercontent.com/10163840/160374446-7fd164d6-63c9-47b2-9bf1-0d6a88731e8d.png)
+
 ### Step 2: Respond with an Adaptive Card
 
 You can build your response data in text format or follow the steps bellow to use adaptive card to render rich content in Teams:
