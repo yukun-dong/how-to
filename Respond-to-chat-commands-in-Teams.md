@@ -15,11 +15,14 @@ Customize the scaffolded app template:
 * [How to customize your app to add more command and response](#How-to-add-more-command-and-response)
 * [How to customize the trigger pattern](#Customize-the-trigger-pattern)
 * [How to build dynamic content in response with adaptive cards](#How-to-build-command-response-using-adaptive-card-with-dynamic-content)
-* [How to connect to and existing API](#Connect-to-existing-API)
+
+Connect your app with Graph or other APIs:
+* [How to access Microsoft Graph from your workflow bot](#Access-Microsoft-Graph)
+* [How to connect to existing APIs from your command bot](#Connect-to-existing-APIs)
 
 Extend command bot to other bot scenarios:
-* [How to extend my command bot with notification](#how-to-extend-my-command-and-response-bot-to-support-notification)
-* [How to extend my command bot with worfklow](#how-to-extend-my-command-bot-to-support-adaptive-card-actions)
+* [How to extend command bot with notification](#how-to-extend-my-command-and-response-bot-to-support-notification)
+* [How to extend command bot with workflow](#how-to-extend-my-command-bot-to-support-adaptive-card-actions)
 
 ## How to create a command-response bot
 
@@ -302,6 +305,12 @@ Adaptive card provides [Template Language](https://docs.microsoft.com/adaptive-c
 1. Use `MessageBuilder.attachAdaptiveCard` to render the template with dynamic card data
 
 You can also add new cards if appropriate for your application. Please follow this [sample](https://aka.ms/teamsfx-adaptive-card-sample) to see how to build different types of adaptive cards with a list or a table of dynamic contents using `ColumnSet` and `FactSet`.
+
+<p align="right"><a href="#How-to-create-a-command-response-bot">back to top</a></p>
+
+## Access Microsoft Graph
+
+If you are responding to a command that needs access to Microsoft Graph, you can leverage single sign on to leverage the logged-in Teams user token to access their Microsoft Graph data. Read more about how Teams Toolkit can help you [add SSO](https://aka.ms/teamsfx-add-sso) to your application.
 
 <p align="right"><a href="#How-to-create-a-command-response-bot">back to top</a></p>
 
