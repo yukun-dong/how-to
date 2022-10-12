@@ -26,6 +26,10 @@ Connect your app with Graph or other APIs:
 * [How to access Microsoft Graph from your workflow bot](#Access-Microsoft-Graph)
 * [How to connect to existing APIs from your workflow bot](#Connect-to-existing-APIs)
 
+Extend workflow bot to other bot scenarios:
+* [How to extend workflow bot with notification](#How-to-extend-workflow-bot-with-Notification-feature)
+* [How to extend workflow bot with command](#How-to-extend-workflow-bot-with-Command-and-response-feature)
+
 ## How to create a workflow bot
 
 ### In Visual Studio Code
@@ -534,3 +538,5 @@ To learn more, refer to [the notification document](https://aka.ms/teamsfx-notif
 ### How to extend workflow bot with Command and response feature
 
 The default workflow bot comes with command and response, you can follow [this document](https://aka.ms/teamsfx-create-command#How-to-add-more-command-and-response) to add more command and responses.
+
+<p align="right"><a href="#How-to-create-a-workflow-bot">back to top</a></p>
