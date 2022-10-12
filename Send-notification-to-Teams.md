@@ -2,7 +2,7 @@
 
 The Notification in Teams feature enables you to build applications that consume events and send these as notifications to an individual person, a chat, or a channel in Teams. Notifications can be sent as plain text or [Adaptive Cards](https://docs.microsoft.com/en-us/microsoftteams/platform/task-modules-and-cards/cards/cards-reference).
 
-In this tutorial, you will learn:
+## In this tutorial, you will learn
 
 Get started with Teams Toolkit and TeamsFx SDK:
   * [How to create a new notification bot](#Create-a-new-Notification-Project)
@@ -16,7 +16,7 @@ Customize the scaffolded app template:
   * [How to customize the adapter](#customize-adapter)
   * [How to customize the storage](#customize-storage)
   * [How to add more triggers](#how-to-add-more-triggers)
-  * [How to add authentication for your notification API](#addd-authentication-for-your-notification-API)
+  * [How to add authentication for your notification API](#add-authentication-for-your-notification-API)
   * [How to connect to an existing API](#connect-to-existing-API)
 
 Extend notification bot to other bot scenarios:
@@ -80,7 +80,7 @@ After you successfully created the project, you can quickly start local debuggin
 
 ![image](https://user-images.githubusercontent.com/11220663/166959087-a13abe67-e18a-4979-ab29-a8d7663b3489.png)
 
-<p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
+<p align="right"><a href="#in-this-tutorial-you-will-learn">back to top</a></p>
 
 ## Take a tour of your app source code
 
@@ -125,7 +125,6 @@ If you select `(Azure Functions)` trigger(s), the `bot/` folder is azure functio
 | `local.settings.json` | The azure functions local setting file |
 | `package.json` | The NPM package file for bot project |
 
-
 ### For CSharp project (In Visual Studio)
 
 If you selected WebApi Http trigger, the project structure would like this:
@@ -159,7 +158,7 @@ If you selected Azure Functions based HTTP trigger, the project structure would 
 | `NotifyHttpTrigger.cs` | Handle the request result and convert to message content |
 | `Startup.cs` | Instead of Program.cs, Startup.cs create the Teams Bot instance  |
 
-<p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
+<p align="right"><a href="#in-this-tutorial-you-will-learn">back to top</a></p>
 
 ## How notification works
 
@@ -205,7 +204,7 @@ foreach (var target in await _conversation.Notification.GetInstallationsAsync())
 }
 ```
 
-<p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
+<p align="right"><a href="#in-this-tutorial-you-will-learn">back to top</a></p>
 
 ## Customize the notification behavior
 
@@ -354,7 +353,7 @@ foreach (var target in await _conversation.Notification.GetInstallationsAsync())
 
 #### Send notifications to a specific person
 
-<p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
+<p align="right"><a href="#in-this-tutorial-you-will-learn">back to top</a></p>
 
 ## Customize initialization
 
@@ -395,7 +394,7 @@ builder.Services.AddSingleton(sp =>
 });
 ```
 
-<p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
+<p align="right"><a href="#in-this-tutorial-you-will-learn">back to top</a></p>
 
 ## Customize installation
 
@@ -406,7 +405,7 @@ A Teams bot can be installed into a team, or a group chat, or as personal app, d
 
 - See [Remove an app from Teams](https://support.microsoft.com/office/remove-an-app-from-teams-0bc48d54-e572-463c-a7b7-71bfdc0e4a9d) for uninstallation.
 
-<p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
+<p align="right"><a href="#in-this-tutorial-you-will-learn">back to top</a></p>
 
 ## Customize adapter
 
@@ -429,6 +428,7 @@ const bot = new ConversationBot({
 // Or, customize later
 bot.adapter.onTurnError = ...
 ```
+<p align="right"><a href="#in-this-tutorial-you-will-learn">back to top</a></p>
 
 ## Customize storage
 
@@ -485,6 +485,8 @@ builder.Services.AddSingleton(sp =>
 >   - *.notification.localstore.json* if running locally
 >   - *${process.env.TEMP}/.notification.localstore.json* if `process.env.RUNNING_ON_AZURE` is set to "1"
 
+<p align="right"><a href="#in-this-tutorial-you-will-learn">back to top</a></p>
+
 ## How to add more triggers
 
 It depends on your host type.
@@ -502,7 +504,7 @@ It depends on your host type.
 
 - If you created Azure Functions notification project, you can add any Azure Functions trigger(s) with your own `function.json` file and code file(s). [Azure Functions supported triggers](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings?tabs=javascript#supported-bindings).
 
-<p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
+<p align="right"><a href="#in-this-tutorial-you-will-learn">back to top</a></p>
 
 ## Add authentication for your notification API
 
@@ -514,13 +516,13 @@ If you choose http trigger, the scaffolded notification API does not have authen
 
 There would be more authentication / authorization solutions for an API. You can choose the one that satisfies your requirement best.
 
-<p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
+<p align="right"><a href="#in-this-tutorial-you-will-learn">back to top</a></p>
 
 ## Connect to existing API
 
 If you want to invoke external APIs in your code but do not have the appropriate SDK, the "Teams: Connect to an API" command in Teams Toolkit VS Code extension or "teamsfx add api-connection" command in TeamsFx CLI would be helpful to bootstrap code to call target APIs. For more information, you can visit [Connect existing API document](https://aka.ms/teamsfx-connect-api).
 
-<p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
+<p align="right"><a href="#in-this-tutorial-you-will-learn">back to top</a></p>
 
 ## Frequently Asked Questions
 
@@ -578,7 +580,7 @@ The Adaptive Card action handler feature enables the app to respond to adaptive 
 
 To add adaptive card actions to command bot, you can follow the steps [here](https://aka.ms/teamsfx-card-action-response#add-more-card-actions).
 
-<p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
+<p align="right"><a href="#in-this-tutorial-you-will-learn">back to top</a></p>
 
 ## Teams bot application or Teams incoming webhook
 Microsoft Teams Framework (TeamsFx) supports two major ways to help you send notifications from your system to Teams by creating a Teams Bot Application or Teams Incoming Webhook.
@@ -597,7 +599,7 @@ Here's the comparison of the two approaches to help you make the decision.
 | Require installation step on Teams | Yes | No |
 | Require Azure resource | Azure Bot Service | No |
 
-<p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
+<p align="right"><a href="#in-this-tutorial-you-will-learn">back to top</a></p>
 
 ## Notification via Incoming Webhook
 Incoming Webhooks help in posting messages from apps to Teams. If Incoming Webhooks are enabled for a team in any channel, it exposes the HTTPS endpoint, which accepts correctly formatted JSON and inserts the messages into that channel. For example, you can create an Incoming Webhook in your DevOps channel, configure your build, and simultaneously deploy and monitor services to send alerts.
@@ -606,4 +608,4 @@ Teams Framework has built a [sample](https://github.com/OfficeDev/TeamsFx-Sample
 * How to create an incoming webhook in Teams.
 * How to send notifications using incoming webhooks with adaptive cards.
 
-<p align="right"><a href="#Notification-via-Teams-bot-application">back to top</a></p>
+<p align="right"><a href="#in-this-tutorial-you-will-learn">back to top</a></p>
