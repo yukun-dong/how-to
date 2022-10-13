@@ -367,7 +367,25 @@ foreach (var target in await _conversation.Notification.GetInstallationsAsync())
 
 #### Send notifications to a specific channel
 
+```typescript
+/** Typescript **/
+// find the first channel when the predicate is true.
+const channel = await bot.notification.findChannel(c => Promise.resolve(c.info.name === "MyChannelName"));
+
+// send adaptive card to the specific channel. 
+await channel.sendAdaptiveCard(...);
+```
+
 #### Send notifications to a specific person
+
+```typescript
+/** Typescript **/
+// find the first person when the predicate is true.
+const member = await bot.notification.findMember(m => Promise.resolve(m.account.name === "Bob"));
+
+// send adaptive card to the specific person. 
+await member.sendAdaptiveCard(...);
+```
 
 <p align="right"><a href="#in-this-tutorial-you-will-learn">back to top</a></p>
 
