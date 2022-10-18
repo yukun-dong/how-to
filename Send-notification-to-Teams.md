@@ -367,16 +367,20 @@ foreach (var target in await _conversation.Notification.GetInstallationsAsync())
 
 #### Send notifications to a specific channel
 
+> Note: It's required to install the bot app into the 'General' channel of a team, otherwise undefined will be returned.
+
 ```typescript
 /** Typescript **/
 // find the first channel when the predicate is true.
 const channel = await bot.notification.findChannel(c => Promise.resolve(c.info.name === "MyChannelName"));
 
 // send adaptive card to the specific channel. 
-await channel.sendAdaptiveCard(...);
+await channel?.sendAdaptiveCard(...);
 ```
 
 #### Send notifications to a specific person
+
+> Note: The specified person should belongs to the notification installation scope, otherwise it can't be found and undefined will be returned.
 
 ```typescript
 /** Typescript **/
@@ -384,7 +388,7 @@ await channel.sendAdaptiveCard(...);
 const member = await bot.notification.findMember(m => Promise.resolve(m.account.name === "Bob"));
 
 // send adaptive card to the specific person. 
-await member.sendAdaptiveCard(...);
+await member?.sendAdaptiveCard(...);
 ```
 
 <p align="right"><a href="#in-this-tutorial-you-will-learn">back to top</a></p>
@@ -569,6 +573,15 @@ Notification target connections are stored in the persistence storage. If you ar
 It's recommended to use your own shared storage for production environment. See [Customize Storage](#customize-storage).
 
 Or, as a workaround, after restart / redeploy, uninstall the bot from Teams, then re-install it to re-add connections to the storage.
+
+### Why undefined returned when using the API `findChannel()`?
+
+One possible cause is that the bot app is installed into other channels instead of the `General` channel.
+
+And a quick fix could be:
+- **Uninstall the bot app from Teams then re-debug/re-launch again**.
+  
+  Ensure the bot app is installed into the `General` channel after re-debugged/re-launched.
 
 ### Can I know all the targets my bot is installed in, out of the notification project?
 
