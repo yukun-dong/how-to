@@ -17,3 +17,4 @@ How To Guides
 * [How to use an existing AAD app](https://github.com/OfficeDev/TeamsFx/wiki/Using-existing-Azure-AD-app-in-TeamsFx-project)
 * [How to use a multi-tenant AAD app](https://github.com/OfficeDev/TeamsFx/wiki/Multi-tenancy-Support-for-Azure-AD-app)
 * [How to customize debug tasks](https://github.com/OfficeDev/TeamsFx/wiki/%7BDebug%7D-Teams-Toolkit-VS-Code-Tasks)
+* [How to enable Single Sign-on in Teams Toolkit for Visual Studio](https://github.com/OfficeDev/TeamsFx/wiki/How-to-enable-Single-Sign-on-in-Teams-Toolkit-for-Visual-Studio)
