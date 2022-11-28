@@ -39,5 +39,6 @@ This action will update your AAD app based on give AAD app manifest. It will ref
 ### Error message "Permission (scope or role) cannot be deleted or updated unless disabled first
 This is a known issue that OAuth permission id for an existing permission in your AAD manifest is different than the id in AAD application. One possible reason is the value of `AAD_APP_ACCESS_AS_USER_PERMISSION_ID` environment variable in `.env.{env_name}` is out of sync.
 
-To fix this error: find the id of `access_as_user` scope for your application and set it to `AAD_APP_ACCESS_AS_USER_PERMISSION_ID` environment variable in `.env.{env_name}`.
+To fix this error: find the id of `access_as_user` scope for your application in [AAD app registration portal](https://ms.portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) and set it to `AAD_APP_ACCESS_AS_USER_PERMISSION_ID` environment variable in `.env.{env_name}`.
+
 ![image](https://user-images.githubusercontent.com/16605901/204182487-8eb46f6d-cee6-4d97-9cd4-68db59d4a572.png)
