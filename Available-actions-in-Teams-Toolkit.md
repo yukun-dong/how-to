@@ -104,3 +104,36 @@ This action will override or add environment viriables to target file (e.g., app
 
 ## Output:
 NA
+
+# botFramework/createOrUpdateBot
+This action will create or update the bot registration on [dev.botframework.com](https://dev.botframework.com/bots). If the bot registraion specified by `botId` does not exist, this action will create a new one; otherwise, this action will update it.
+
+## Syntax:
+```yml
+  - uses: botFramework/createOrUpdateBot
+    with: 
+      botId: <your-microsoft-app-id> # Required. Microsoft App Id for the bot registration.
+      name: <your-bot-name> # Required. The name of the bot registration.
+      messagingEndpoint: <your-messaging-endpoint> # Required. The messaging endpoint of the bot registration.
+      description: <your-description> # Optional. The description of the bot registration.
+      iconUrl: <your-icon-url> # Optional. The icon url of the bot registration.
+```
+
+## Output:
+NA
+
+# env/generate
+This action will generate environment variables to `.env` file.
+
+## Syntax:
+```yml
+  - uses: env/generate
+    with: 
+      target: /path/to/your/.env/file # Optional. The path of a `.env` file. The default value is `./teamsfx/.env.${TEAMSFX_ENV}`.
+      envs: 
+        <your-env-key-1>: <your-env-value-1>
+        <your-env-key-2>: <your-env-value-2>
+```
+
+## Output:
+NA
