@@ -143,7 +143,6 @@ This action will install the developing tools that are required to debug a Teams
 
 ## Syntax:
 ```yml
-deploy:
   - uses: tools/install
     with:
       devCert: # Optional. The SSL certificate for Teams Tab app. This action will generate a SSL certificate and install it to the system certificate management center.
