@@ -35,6 +35,52 @@ This action will update your AAD app based on give AAD app manifest. It will ref
 ## Output:
 * AAD_APP_ACCESS_AS_USER_PERMISSION_ID: the id of access_as_user permission which is used to enable SSO
 
+# npx/command
+This action will execute `npx` commands under specified directory with parameters. It can be used to run `gulp` commands to bundle and package sppkg.
+
+## Syntax:
+```
+  - uses: npx/command
+    with:
+      workingDirectory: ./src
+      args: gulp bundle --ship --no-color
+  - uses: npx/command
+    with:
+      workingDirectory: ./src
+      args: gulp package-solution --ship --no-color
+```
+
+## Output:
+* A client-side solution package that is located in `{workingDirectory}`/sharepoint/solution/*.sppkg
+
+# spfx/deploy
+This action will upload and deploy generated sppkg to SharePoint app catalog. You can create tenant app catalog manually or by setting `createAppCatalogIfNotExist` to true if you don't have one in current M365 tenant.
+
+## Syntax:
+```
+  - uses: spfx/deploy
+    with:
+      createAppCatalogIfNotExist: false # If the value is true, this action will create tenant app catalog first if not exist, default value is `false`.
+      packageSolutionPath: ./src/config/package-solution.json # Required. Path to package-solution.json in SPFx project. This action will honor the configuration to get target sppkg.
+```
+
+## Output:
+NA
+
+# teamsApp/copyAppPackageForSPFx
+This action will copy the Teams App zipped package to `teams` folder in SPFx directory to keep it updated. This is to ensure user will have aligned experience whether to publish Teams App from Teams Toolkit or manually sync to Teams in SharePoint app catalog.
+
+## Syntax:
+```
+  - uses: teamsApp/copyAppPackageForSPFx
+    with:
+      appPackagePath: ${{TEAMS_APP_PACKAGE_PATH}}
+      spfxFolder: ./src # Path to SPFx solution.
+```
+
+## Output:
+NA
+
 ## Troubleshooting:
 ### Error message "Permission (scope or role) cannot be deleted or updated unless disabled first
 This is a known issue that OAuth permission id for an existing permission in your AAD manifest is different than the id in AAD application. One possible reason is the value of `AAD_APP_ACCESS_AS_USER_PERMISSION_ID` environment variable in `.env.{env_name}` is out of sync.
