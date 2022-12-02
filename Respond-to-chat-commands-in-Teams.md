@@ -277,7 +277,7 @@ When using regular expressions, any capture group can be found in `message.match
 
 ```javascript
 class HelloWorldCommandHandler {
-  triggerPatterns = /^reboot (.*?)$/i; //"helloWorld";
+  triggerPatterns = /^reboot (.*?)$/i; //"reboot myDevMachine";
   async handleCommandReceived(context, message) {
     console.log(`Bot received message: ${message.text}`);
     const machineName = message.matches[1];
