@@ -157,3 +157,45 @@ This action will install the developing tools that are required to debug a Teams
 - SSL_KEY_FILE: The path of the key file of the SSL certificate.
 - FUNC_PATH: The path of the Azure Functions Core Tools binary.
 - DOTNET_PATH: The path of the .NET binary.
+
+# arm/deploy
+This action will deploy given ARM templates parallelly
+
+## Syntax
+``` yaml
+  - uses: arm/deploy
+    with:
+      subscriptionId: ${{AZURE_SUBSCRIPTION_ID}} # Required. You can use built-in environment variable `AZURE_SUBSCRIPTION_ID` here. TeamsFx will ask you select one subscription if its value is empty. You're free to reference other environment variable here, but TeamsFx will not ask you to select subscription if it's empty in this case.
+      resourceGroupName: ${{AZURE_RESOURCE_GROUP_NAME}} # Required. You can use built-in environment variable `AZURE_RESOURCE_GROUP_NAME` here. TeamsFx will ask you to select or create one resource group if its value is empty. You're free to reference other environment variable here, but TeamsFx will not ask you to select or create resource group if it's empty in this case.
+      templates:
+      - path: ./infra/azure.bicep # Required. Relative path to teamsfx folder.
+        parameters: ./infra/azure.parameters.json # Required. Relative path to teamsfx folder. TeamsFx will replace the environment variable reference with real value before deploy ARM template.
+        deploymentName: your-deployment-name # Required. Name of the ARM template deployment.
+      bicepCliVersion: v0.9.1 # Optional. Teams Toolkit will download this bicep CLI version from github for you, will use bicep CLI in PATH if you remove this config.
+```
+
+## Output
+This action will covert ARM deployment output to environment variables, with following naming conversion rule for output names:
+
+1. Alphabet characters will be converted to upper case
+2. Non alphanumeric character will be converted to `_`
+3. If output is a hierarchy object, in the hierarchy is separated by a double underscore `__`
+
+Taking following bicep output as example
+```
+output endpoint string = 'example'
+output all_resource_ids object = {
+  azureWebApp: {
+    apiResourceId: 'web app id 1'
+    frontendResourceId: 'web app id 2'
+  }
+  azureStorageId: 'storage id'
+}
+```
+They will be outputted as following environment variables
+``` env
+ENDPOINT=example
+ALL_RESOURCE_IDS__AZUREWEBAPP__APIRESOURCEID=web app id 1
+ALL_RESOURCE_IDS__AZUREWEBAPP__FRONTENDRESOURCEID=web app id 2
+ALL_RESOURCE_IDS__AZURESTORAGEID=storage id
+```
