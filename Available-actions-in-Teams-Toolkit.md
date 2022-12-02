@@ -179,7 +179,7 @@ This action will covert ARM deployment output to environment variables, with fol
 
 1. Alphabet characters will be converted to upper case
 2. Non alphanumeric character will be converted to `_`
-3. If output is a hierarchy object, in the hierarchy is separated by a double underscore `__`
+3. If output is a hierarchy object, elements in the hierarchy is separated by a double underscore `__`
 
 Taking following bicep output as example
 ```
