@@ -44,6 +44,21 @@ To fix this error: find the id of `access_as_user` scope for your application in
 ![image](https://user-images.githubusercontent.com/16605901/204182487-8eb46f6d-cee6-4d97-9cd4-68db59d4a572.png)
 
 
+# azureStorage/enableStaticWebsite
+This action will enable static website setting in Azure Stroage.
+
+## Syntax:
+```
+  - uses: azureStorage/enableStaticWebsite
+    with:
+      storageResourceId: ${{TAB_AZURE_STORAGE_RESOURCE_ID}}
+      indexPage: index.html
+      errorPage: error.html
+```
+
+## Output:
+NA
+
 # npx/command
 This action will execute `npx` commands under specified directory with parameters. It can be used to run `gulp` commands to bundle and package sppkg.
 
@@ -61,6 +76,90 @@ This action will execute `npx` commands under specified directory with parameter
 
 ## Output:
 * A client-side solution package that is located in `{workingDirectory}`/sharepoint/solution/*.sppkg
+
+
+# npm/command
+This action will execute `npm` commands under specified directory with parameters. The parameter `workingDirectory` can be removed if you want to run this command in the project root.
+
+## Syntax:
+```
+  - uses: npm/command
+    with:
+      args: run build
+  - uses: npx/command
+    with:
+      workingDirectory: ./src
+      args: install
+```
+
+## Output:
+NA
+
+# dotnet/command
+This action will execute `dotnet` commands under specified directory with parameters. The parameter `workingDirectory` can be removed if you want to run this command in the project root.
+
+## Syntax:
+```
+  - uses: dotnet/command
+    with:
+      args: publish
+  - uses: dotnet/command
+    with:
+      workingDirectory: ./src
+      args: install
+```
+
+## Output:
+NA
+
+# azureAppService/deploy
+This action will upload and deploy the project to Azure APP Service. The parameter `workingDirectory` can be removed if you want to run this command in the project root.
+
+## Syntax:
+```
+  - uses: azureAppService/deploy
+    with:
+      workingDirectory: ./src
+      distributionPath: . # Deploy base folder
+      ignoreFile: ./.webappignore # Can be changed to any ignore file location, leave blank will ignore nothing
+      resourceId: ${{BOT_AZURE_APP_SERVICE_RESOURCE_ID}} # The resource id of the cloud resource to be deployed to
+```
+
+## Output:
+NA
+
+# azureFunctions/deploy
+This action will upload and deploy the project to Azure Functions. The parameter `workingDirectory` can be removed if you want to run this command in the project root.
+
+## Syntax:
+```
+  - uses: azureFunctions/deploy
+    with:
+      workingDirectory: ./src
+      distributionPath: . # Deploy base folder
+      ignoreFile: ./.webappignore # Can be changed to any ignore file location, leave blank will ignore nothing
+      resourceId: ${{BOT_AZURE_APP_SERVICE_RESOURCE_ID}} # The resource id of the cloud resource to be deployed to
+```
+
+## Output:
+NA
+
+# azureStorage/deploy
+This action will upload and deploy the project to Azure Storage. The parameter `workingDirectory` can be removed if you want to run this command in the project root.
+
+## Syntax:
+```
+  - uses: azureStorage/deploy
+    with:
+      workingDirectory: ./src
+      distributionPath: . # Deploy base folder
+      ignoreFile: ./.webappignore # Can be changed to any ignore file location, leave blank will ignore nothing
+      resourceId: ${{BOT_AZURE_APP_SERVICE_RESOURCE_ID}} # The resource id of the cloud resource to be deployed to
+```
+
+## Output:
+NA
+
 
 # spfx/deploy
 This action will upload and deploy generated sppkg to SharePoint app catalog. You can create tenant app catalog manually or by setting `createAppCatalogIfNotExist` to true if you don't have one in current M365 tenant.
