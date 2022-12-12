@@ -13,7 +13,6 @@ To configure message extension as additional capability, please make sure:
 
 - You have a Teams application and its manifest.
 - You have a Microsoft 365 account to test the application.
-- You have a message extension Teams app created using Teams Toolkit [Create a message extension app with Teams Toolkit](https://learn.microsoft.com/microsoftteams/platform/toolkit/create-new-project?pivots=visual-studio-code).
 
 For adding message extension to a tab Teams app, please go to: 
 [Add message extension to a tab Teams app](#add-message-extension-to-a-tab-teams-app).
@@ -23,12 +22,18 @@ For adding message extension to a bot Teams app, please go to: [Add message exte
 ## Add message extension to a tab Teams app:
 
 Following are the steps to add Message Extension capability to a tab app:
+1. [Create a message extension Teams app using Teams Toolkit](#create-a-message-extension-app-using-teams-toolkit).
 1. [Update manifest file](#configure-message-extension-capability-in-teams-application-manifest).
 1. [Bring message extension code to your project](#bring-message-extension-code-to-your-project).
 1. [Setup local debug environment](#setup-local-debug-environment).
 1. [Move the application to Azure](#move-the-application-to-azure).
 
+### Create a message extension app using Teams Toolkit
+
+Please check the guide [Create a message extension app with Teams Toolkit](https://learn.microsoft.com/microsoftteams/platform/toolkit/create-new-project?pivots=visual-studio-code)
+
 ### Configure Message Extension capability in Teams application manifest
+
 1. In `appPackage/manifest.template.json`, copy the "composeExtensions" section from previously created message extension app to yours. 
 
 1. Add your bot domain to the `validDomains` field.
@@ -41,6 +46,7 @@ Following are the steps to add Message Extension capability to a tab app:
     `BOT_ID` and `BOT_DOMAIN` are built-in variables of Teams Toolkit. They will be replaced with the true value in runtime based on your current environment(local, dev, etc.).
 
 ### Bring message extension code to your project
+
 1. Copy all source code from previously created message extension app to your own Teams app. We suggest you to copy them into a `bot/` folder. Your folder structure will be like:
     ```
     |-- teasmfx/
@@ -60,14 +66,14 @@ Following are the steps to add Message Extension capability to a tab app:
     |-- teasmfx/
     |-- infra/
     |-- appPackage/
-    |-- tabs/           <!--move your current source code to a new sub folder-->
-    |   |-- src/
-    |   |   |-- index.tsx
-    |   |-- package.json
     |-- bot/            <!--message extension source code-->
     |   |-- index.ts
     |   |-- config.ts
     |   |-- teamsBot.ts
+    |   |-- package.json
+    |-- tabs/           <!--move your current source code to a new sub folder-->
+    |   |-- src/
+    |   |   |-- index.tsx
     |   |-- package.json
     |-- package.json <!--root package.json-->
     ```
@@ -99,6 +105,7 @@ Here is an [sample project](https://github.com/OfficeDev/TeamsFx-Samples/tree/v3
 
 
 1. Open the `Run and Debug Activity Panel` and select `Debug (Edge)` or `Debug (Chrome)`. Press F5 to preview your Teams app locally.
+
 ### Move the application to Azure
 
 1. Manually merge the content in `infra/` and `teamsfx/app.yml` folder with yours.
@@ -110,13 +117,20 @@ Here is an [sample project](https://github.com/OfficeDev/TeamsFx-Samples/tree/v3
 1. Open the `Run and Debug Activity Panel` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)`. Press F5 to preview your Teams app.
 
 ## Add message extension to a bot Teams app:
+
 Since message extensions are implemented on top of the Bot support architecture within Teams. Adding Message Extension to a bot Teams app is simpler than adding to a tab Teams app.
 
 Following are the steps to add Message Extension capability to a bot app:
+1. [Create a message extension Teams app using Teams Toolkit](#create-a-message-extension-app-using-teams-toolkit).
 1. [Update manifest file](#configure-message-extension-capability-in-teams-application-manifest).
 1. [Bring message extension code to your project](#bring-message-extension-code-to-your-project).
 
+### Create a message extension app using Teams Toolkit
+
+Please check the guide [Create a message extension app with Teams Toolkit](https://learn.microsoft.com/microsoftteams/platform/toolkit/create-new-project?pivots=visual-studio-code)
+
 ### Configure Message Extension capability in Teams application manifest
+
 1. In `appPackage/manifest.template.json`, copy the "composeExtensions" section from previously created message extension app to yours. 
 
 1. Add your bot domain to the `validDomains` field.
@@ -129,6 +143,7 @@ Following are the steps to add Message Extension capability to a bot app:
     `BOT_ID` and `BOT_DOMAIN` are built-in variables of Teams Toolkit. They will be replaced with the true value in runtime based on your current environment(local, dev, etc.).
 
 ### Bring message extension code to your project
+
 1. If you are adding message extension to a bot Teams app, then you should already have a class that extends `TeamsActivityHandler`. Copy all methods from `TeamsBot` class in `teamsBot.ts` from your previously created message extension app, and append them to your own class. After this your own class will be like:
 
     ```ts
@@ -161,6 +176,4 @@ Following are the steps to add Message Extension capability to a bot app:
 
 There are other commonly suggested next steps, for example:
 
-- [Add authentication and make a Graph API call](#How-to-add-SSO)
 - [Set up CI/CD pipelines](#How-to-add-CICD)
-- [Call a backend API](#How-to-add-Azure-Functions)
