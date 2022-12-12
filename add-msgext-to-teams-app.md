@@ -118,7 +118,7 @@ Here is an [sample project](https://github.com/OfficeDev/TeamsFx-Samples/tree/v3
 
 ## Add message extension to a bot Teams app:
 
-Since message extensions are implemented on top of the Bot support architecture within Teams. Adding Message Extension to a bot Teams app is simpler than adding to a tab Teams app.
+Since message extensions are implemented on top of the Bot support architecture within Teams, adding Message Extension to a bot Teams app is simpler than adding to a tab Teams app.
 
 Following are the steps to add Message Extension capability to a bot app:
 1. [Create a message extension Teams app using Teams Toolkit](#create-a-message-extension-app-using-teams-toolkit).
