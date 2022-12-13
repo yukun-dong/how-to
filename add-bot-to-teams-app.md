@@ -32,7 +32,9 @@ Please check the guide [Create a bot app with Teams Toolkit](https://learn.micro
 
 ### Configure bot capability in Teams application manifest
 
-1. In `appPackage/manifest.template.json`, copy the following "bots" section to yours: 
+1. You can configure bot in `appPackage/manifest.template.json`. You can also refer to [bot schema](https://learn.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema#bots) if you want to customize.
+
+    Example: 
     ```json
         "bots": [
             {
@@ -78,7 +80,7 @@ Please check the guide [Create a bot app with Teams Toolkit](https://learn.micro
 
 ### Bring bot code to your project
 
-1. Copy all source code from previously created bot app to your own Teams app. We suggest you to copy them into a `bot/` folder. Your folder structure will be like:
+1. Bring your own bot app code into your project. If you don't have one, you can use the bot app project previously created and copy the source code to into your current project. We suggest you to copy them into a `bot/` folder. Your folder structure will be like:
     ```
     |-- teasmfx/
     |-- infra/
@@ -162,7 +164,9 @@ Please check the guide [Create a bot app with Teams Toolkit](https://learn.micro
 
 ### Configure bot capability in Teams application manifest
 
-1. In `appPackage/manifest.template.json`, copy the following "bots" section to yours: 
+1. You can configure bot in `appPackage/manifest.template.json`. You can also refer to [bot schema](https://learn.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema#bots) if you want to customize.
+
+    Example:  
     ```json
         "bots": [
             {
@@ -208,7 +212,7 @@ Please check the guide [Create a bot app with Teams Toolkit](https://learn.micro
 
 ### Bring bot code to your project
 
-1. If you are adding bot to a bot Teams app, then you should already have a class that extends `TeamsActivityHandler`. Copy `constructor()` and `onAdaptiveCardInvoke()` methods from `TeamsBot` class in `teamsBot.ts` from your previously created bot app, and append them to your own class. After this your own class will be like:
+1. If you are adding bot to a bot Teams app, then you should already have a class that extends `TeamsActivityHandler`. Bring your own bot code, or copy code from your previously created bot app to your own class. Below is an example if you copy code from Teams Toolkit created bot app:
 
     ```ts
       public class YourHandler extends TeamsActivityHandler{
