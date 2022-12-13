@@ -34,7 +34,36 @@ Please check the guide [Create a message extension app with Teams Toolkit](https
 
 ### Configure Message Extension capability in Teams application manifest
 
-1. In `appPackage/manifest.template.json`, copy the "composeExtensions" section from previously created message extension app to yours. 
+1. You can configure message extension in `appPackage/manifest.template.json`. You can also refer to [message extension schema](https://learn.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema#composeextensions) if you want to customize.
+
+    Example:
+    ```json
+    "composeExtensions": [
+      {
+        "botId": "${{BOT_ID}}",
+        "commands": [
+          {
+            "id": "searchQuery",
+            "context": [
+              "compose",
+              "commandBox"
+            ],
+            "description": "Test command to run query",
+            "title": "Search",
+            "type": "query",
+            "parameters": [
+              {
+                "name": "searchQuery",
+                "title": "Search Query",
+                "description": "Your search query",
+                "inputType": "text"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+    ```
 
 1. Add your bot domain to the `validDomains` field.
     Example:
@@ -47,7 +76,7 @@ Please check the guide [Create a message extension app with Teams Toolkit](https
 
 ### Bring message extension code to your project
 
-1. Copy all source code from previously created message extension app to your own Teams app. We suggest you to copy them into a `bot/` folder. Your folder structure will be like:
+1. Bring your own message extension app code into your project. If you don't have one, you can use the message extension app project previously created and copy the source code to into your current project. We suggest you to copy them into a `bot/` folder. Your folder structure will be like:
     ```
     |-- teasmfx/
     |-- infra/
@@ -131,7 +160,36 @@ Please check the guide [Create a message extension app with Teams Toolkit](https
 
 ### Configure Message Extension capability in Teams application manifest
 
-1. In `appPackage/manifest.template.json`, copy the "composeExtensions" section from previously created message extension app to yours. 
+1. You can configure message extension in `appPackage/manifest.template.json`. You can also refer to [message extension schema](https://learn.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema#composeextensions) if you want to customize.
+
+    Example:
+    ```json
+    "composeExtensions": [
+      {
+        "botId": "${{BOT_ID}}",
+        "commands": [
+          {
+            "id": "searchQuery",
+            "context": [
+              "compose",
+              "commandBox"
+            ],
+            "description": "Test command to run query",
+            "title": "Search",
+            "type": "query",
+            "parameters": [
+              {
+                "name": "searchQuery",
+                "title": "Search Query",
+                "description": "Your search query",
+                "inputType": "text"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+    ``` 
 
 1. Add your bot domain to the `validDomains` field.
     Example:
@@ -144,7 +202,7 @@ Please check the guide [Create a message extension app with Teams Toolkit](https
 
 ### Bring message extension code to your project
 
-1. If you are adding message extension to a bot Teams app, then you should already have a class that extends `TeamsActivityHandler`. Copy all methods from `TeamsBot` class in `teamsBot.ts` from your previously created message extension app, and append them to your own class. After this your own class will be like:
+1. If you are adding message extension to a bot Teams app, then you should already have a class that extends `TeamsActivityHandler`. Bring your own message extension functions, or copy functions from your previously created message extension app to your own class. Below is an example if you copy functions from Teams Toolkit created message extension app:
 
     ```ts
       public class YourHandler extends TeamsActivityHandler{
